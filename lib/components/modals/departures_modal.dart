@@ -38,7 +38,7 @@ class DeparturesModal {
                                 color: Colors.amber),
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
-                                  vertical: 5, horizontal: 10),
+                                  vertical: 5, horizontal: 12),
                               child: Text(
                                 "M1",
                                 style: TextStyle(
@@ -153,56 +153,67 @@ class DeparturesModal {
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(9)),
-                    child: FixedTimeline.tileBuilder(
-                      theme: TimelineThemeData(
-                          nodePosition: 0,
-                          indicatorTheme:
-                              IndicatorThemeData(size: 20, color: Colors.black),
-                          connectorTheme: ConnectorThemeData(thickness: 2)),
-                      builder: TimelineTileBuilder.connected(
-                        connectionDirection: ConnectionDirection.before,
-                        contentsAlign: ContentsAlign.basic,
-                        indicatorBuilder: (context, index) {
-                          return DotIndicator();
-                        },
-                        connectorBuilder: (context, index, type) {
-                          return SolidLineConnector();
-                        },
-                        contentsBuilder: (context, index) => Padding(
-                          padding: const EdgeInsets.only(left: 8.0),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    "Piata Victoriei",
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        fontFamily: "UberMoveBold"),
-                                  ),
-                                  Row(
-                                    children: [
-                                      Shorthand(
-                                          isWalk: false,
-                                          time: 20,
-                                          lineName: "24",
-                                          lineType: "BUS")
-                                    ],
-                                  )
-                                ],
-                              ),
-                              Text(
-                                "23:23",
-                                style: TextStyle(
-                                    fontSize: 16, fontFamily: "UberMoveMedium"),
-                              ),
-                            ],
+                    child: Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: FixedTimeline.tileBuilder(
+                        theme: TimelineThemeData(
+                            nodePosition: 0,
+                            indicatorTheme: IndicatorThemeData(
+                                size: 20, color: Colors.black),
+                            connectorTheme: ConnectorThemeData(thickness: 2)),
+                        builder: TimelineTileBuilder.connected(
+                          connectionDirection: ConnectionDirection.before,
+                          contentsAlign: ContentsAlign.basic,
+                          indicatorBuilder: (context, index) {
+                            return OutlinedDotIndicator(
+                              borderWidth: 4,
+                              color: index < 2 ? Colors.grey : Colors.amber,
+                            );
+                          },
+                          connectorBuilder: (context, index, type) {
+                            return SolidLineConnector(
+                              color: index < 2 ? Colors.grey : Colors.amber,
+                              thickness: 4,
+                            );
+                          },
+                          contentsBuilder: (context, index) => Padding(
+                            padding:
+                                const EdgeInsets.only(left: 8.0, bottom: 20),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "Piata Victoriei",
+                                      style: TextStyle(
+                                          fontSize: 16,
+                                          fontFamily: "UberMoveBold"),
+                                    ),
+                                    Row(
+                                      children: [
+                                        Shorthand(
+                                            isWalk: false,
+                                            time: 20,
+                                            lineName: "24",
+                                            lineType: "BUS")
+                                      ],
+                                    )
+                                  ],
+                                ),
+                                Text(
+                                  "23:23",
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontFamily: "UberMoveMedium"),
+                                ),
+                              ],
+                            ),
                           ),
+                          itemCount: 3,
                         ),
-                        itemCount: 4,
                       ),
                     ),
                   )

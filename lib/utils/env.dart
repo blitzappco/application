@@ -125,3 +125,28 @@ Map<String, IconData> lineIcons = {
   "TRAM": Icons.tram,
   "TROLLEYBUS": Icons.directions_transit,
 };
+
+Map<String, IconData> mapPlaceIcons = {
+  "restaurant": Icons.restaurant_rounded,
+  "cafe": Icons.local_cafe_rounded,
+  "bar": Icons.local_bar_rounded,
+  "atm": Icons.atm_rounded,
+  "bank": Icons.money_rounded,
+  "gas_station": Icons.local_gas_station_rounded,
+  "parking": Icons.local_parking_rounded,
+  "pharmacy": Icons.local_pharmacy_rounded,
+  "hospital": Icons.local_hospital_rounded,
+  "museum": Icons.museum_rounded,
+  "park": Icons.park_rounded,
+  "library": Icons.local_library_rounded,
+  "grocery_or_supermarket": Icons.shopping_cart_rounded,
+  "convenience_store": Icons.local_convenience_store_rounded,
+  "train_station": Icons.directions_railway_rounded,
+  "bus_station": Icons.directions_bus_rounded,
+  "airport": Icons.flight_rounded,
+  "movie_theater": Icons.local_movies_rounded,
+  "taxi_stand": Icons.local_taxi_rounded,
+  "bicycle_rental": Icons.directions_bike_rounded,
+  "tourist_information_center": Icons.info_outline_rounded,
+  "post_office": Icons.local_post_office_rounded,
+};
