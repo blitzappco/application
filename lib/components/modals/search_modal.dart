@@ -1,4 +1,5 @@
 import 'package:application/components/place_list.dart';
+import 'package:application/components/suggestions_icon.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/env.dart';
@@ -31,6 +32,37 @@ class SearchModal {
             child: Column(
               children: [
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Search",
+                      style: TextStyle(
+                        fontFamily: "UberMoveBold",
+                        fontSize: 26,
+                      ),
+                    ),
+                    Container(
+                      decoration: const BoxDecoration(
+                          shape: BoxShape.circle, color: lightGrey),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: const Padding(
+                          padding: EdgeInsets.all(3.0),
+                          child: Icon(
+                            Icons.close,
+                            color: darkGrey,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Row(
                   children: [
                     Expanded(
                       child: Container(
@@ -45,10 +77,6 @@ class SearchModal {
                           ),
                           child: Row(
                             children: [
-                              const Icon(
-                                Icons.search,
-                                color: darkGrey,
-                              ),
                               const SizedBox(width: 10),
                               Expanded(
                                 child: TextField(
@@ -74,23 +102,43 @@ class SearchModal {
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 10.0),
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                        child: const Text(
-                          'Cancel',
-                          style: TextStyle(
-                            fontSize: 15,
-                            fontFamily: 'UberMoveMedium',
-                            color: Colors.blue,
-                          ),
-                        ),
-                      ),
-                    ),
+                    // Padding(
+                    //   padding: const EdgeInsets.only(left: 10.0),
+                    //   child: GestureDetector(
+                    //     onTap: () {
+                    //       Navigator.pop(context);
+                    //     },
+                    //     child: const Text(
+                    //       'Cancel',
+                    //       style: TextStyle(
+                    //         fontSize: 15,
+                    //         fontFamily: 'UberMoveMedium',
+                    //         color: Colors.blue,
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
                   ],
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Container(
+                  height: 80,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: [
+                      SuggestionsIcon(),
+                      SuggestionsIcon(),
+                      SuggestionsIcon(),
+                      SuggestionsIcon(),
+                      SuggestionsIcon(),
+                      SuggestionsIcon(),
+                      SuggestionsIcon(),
+                      SuggestionsIcon(),
+                      SuggestionsIcon(),
+                    ],
+                  ),
                 ),
                 const SizedBox(height: 20),
                 // if (controller.text.isEmpty && trips.trips.isNotEmpty)

@@ -56,17 +56,19 @@ class StationCard extends StatelessWidget {
                   Row(
                     children: [
                       Shorthand(
-                        lineType: 'bus',
-                        lineColor: Colors.blue,
-                        lineNumber: '104',
+                        isWalk: false,
+                        time: 20,
+                        lineName: '21',
+                        lineType: "BUS",
                       ),
                       SizedBox(
                         width: 3,
                       ),
                       Shorthand(
-                        lineType: 'tram',
-                        lineColor: Colors.orange,
-                        lineNumber: '35',
+                        isWalk: false,
+                        time: 20,
+                        lineName: '21',
+                        lineType: "BUS",
                       ),
                     ],
                   ),

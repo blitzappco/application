@@ -70,16 +70,20 @@ class NearbyStationModal {
                   Row(
                     children: [
                       Shorthand(
-                          lineNumber: "M1",
-                          lineColor: Colors.amber,
-                          lineType: 'Sub'),
+                        isWalk: false,
+                        time: 20,
+                        lineName: '21',
+                        lineType: "BUS",
+                      ),
                       SizedBox(
                         width: 5,
                       ),
                       Shorthand(
-                          lineNumber: "M3",
-                          lineColor: Colors.green,
-                          lineType: 'Sub')
+                        isWalk: false,
+                        time: 20,
+                        lineName: '21',
+                        lineType: "BUS",
+                      ),
                     ],
                   ),
                   SizedBox(

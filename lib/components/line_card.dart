@@ -12,7 +12,11 @@ class LineCard extends StatelessWidget {
       child: Row(
         children: [
           Shorthand(
-              lineNumber: "M1", lineColor: Colors.amber, lineType: "lineType"),
+            isWalk: false,
+            time: 20,
+            lineName: '21',
+            lineType: "BUS",
+          ),
           SizedBox(
             width: 20,
           ),
