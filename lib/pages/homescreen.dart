@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:application/components/modals/main_modal%20copy.dart';
 import 'package:application/components/modals/main_modal.dart';
 import 'package:application/components/modals/route_preview_modal.dart';
 import 'package:application/maps/map_controller.dart';
@@ -55,10 +56,10 @@ class _HomescreenState extends State<Homescreen> {
             },
           ),
           //Bottom screen
-          // MainModal(),
-          RoutePreviewModal(
-            mapController: mapController,
-          ),
+          MainModal(),
+          // RoutePreviewModal(
+          //   mapController: mapController,
+          // ),
         ],
       ),
     );
