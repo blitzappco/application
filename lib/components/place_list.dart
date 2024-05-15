@@ -2,7 +2,8 @@ import 'package:application/components/place_card.dart';
 import 'package:flutter/material.dart';
 
 class PlaceList extends StatelessWidget {
-  const PlaceList({super.key});
+  final int max;
+  const PlaceList({required this.max, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,7 @@ class PlaceList extends StatelessWidget {
         removeBottom: true,
         child: ListView.separated(
           physics: FixedExtentScrollPhysics(),
-          itemCount: 2,
+          itemCount: max,
           itemBuilder: (context, index) {
             return PlaceCard(
               PlaceName: "Universitatea Politehnica",

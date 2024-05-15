@@ -109,7 +109,9 @@ class MainModal extends StatelessWidget {
                               color: Colors.white),
                           child: Padding(
                             padding: const EdgeInsets.all(15.0),
-                            child: PlaceList(),
+                            child: PlaceList(
+                              max: 2,
+                            ),
                           )),
                     ],
                   ),

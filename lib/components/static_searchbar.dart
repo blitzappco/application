@@ -1,3 +1,4 @@
+import 'package:application/components/modals/search_modal.dart';
 import 'package:flutter/material.dart';
 import '../utils/env.dart';
 // import 'modals/search_modal.dart';
@@ -15,7 +16,7 @@ class _StaticSearchbarState extends State<StaticSearchbar> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // SearchModal.show(context);
+        SearchModal.show(context, "to");
       },
       child: Container(
         height: 40,
@@ -34,7 +35,7 @@ class _StaticSearchbarState extends State<StaticSearchbar> {
                 width: 10,
               ),
               Text(
-                'Unde mergem?',
+                'Where are we going?',
                 style: TextStyle(
                     fontSize: 15,
                     fontFamily: 'UberMoveMedium',
