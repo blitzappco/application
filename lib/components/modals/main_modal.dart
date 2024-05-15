@@ -1,4 +1,5 @@
 import 'package:application/components/nearby_stations.dart';
+import 'package:application/components/place_list.dart';
 import 'package:application/components/static_searchbar.dart';
 import 'package:application/utils/env.dart';
 import 'package:flutter/material.dart';
@@ -97,18 +98,19 @@ class MainModal extends StatelessWidget {
                                 fontSize: 14,
                                 fontFamily: 'UberMoveMedium'),
                           ),
-                          Text(
-                            "More",
-                            style: TextStyle(
-                                color: Colors.blue,
-                                fontSize: 14,
-                                fontFamily: 'UberMoveMedium'),
-                          )
                         ],
                       ),
                       SizedBox(
                         height: 10,
                       ),
+                      Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: Colors.white),
+                          child: Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: PlaceList(),
+                          )),
                     ],
                   ),
                 ),
