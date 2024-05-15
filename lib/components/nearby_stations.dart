@@ -1,4 +1,4 @@
-import 'package:application/components/station_item.dart';
+import 'package:application/components/station_card.dart';
 import 'package:flutter/material.dart';
 
 class NearbyStations extends StatelessWidget {
@@ -12,7 +12,7 @@ class NearbyStations extends StatelessWidget {
         itemCount: 5,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
-          return StationItem(
+          return StationCard(
             stationDistance: '100 meters',
             stationName: 'Piata Operei',
             Shorthand1: '104',

@@ -1,7 +1,10 @@
+import 'package:application/components/modals/departures_modal.dart';
 import 'package:application/components/nearby_stations.dart';
+import 'package:application/components/place_list.dart';
 import 'package:application/components/static_searchbar.dart';
 import 'package:application/utils/env.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class MainModal extends StatelessWidget {
   const MainModal({super.key});
@@ -42,9 +45,14 @@ class MainModal extends StatelessWidget {
                           ),
                           Row(
                             children: [
-                              Icon(
-                                Icons.wallet,
-                                size: 25,
+                              GestureDetector(
+                                onTap: () {
+                                  DeparturesModal.show(context);
+                                },
+                                child: Icon(
+                                  Icons.wallet,
+                                  size: 25,
+                                ),
                               ),
                               SizedBox(
                                 width: 15,
@@ -97,18 +105,21 @@ class MainModal extends StatelessWidget {
                                 fontSize: 14,
                                 fontFamily: 'UberMoveMedium'),
                           ),
-                          Text(
-                            "More",
-                            style: TextStyle(
-                                color: Colors.blue,
-                                fontSize: 14,
-                                fontFamily: 'UberMoveMedium'),
-                          )
                         ],
                       ),
                       SizedBox(
                         height: 10,
                       ),
+                      Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: Colors.white),
+                          child: Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: PlaceList(
+                              max: 2,
+                            ),
+                          )),
                     ],
                   ),
                 ),

@@ -1,43 +1,53 @@
 import 'package:flutter/material.dart';
+import '../../utils/env.dart';
+import './line_shorthand.dart';
 
 class Shorthand extends StatelessWidget {
-  final String lineNumber;
-  final Color lineColor;
+  final bool isWalk;
+  final int time;
+  final String lineName;
   final String lineType;
   const Shorthand({
-    required this.lineNumber,
-    required this.lineColor,
+    required this.isWalk,
+    required this.time,
+    required this.lineName,
     required this.lineType,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-          color: lineColor, borderRadius: BorderRadius.circular(4)),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 3),
-        child: Row(
-          children: [
-            Icon(
-              Icons.directions_bus_rounded,
-              size: 15,
-              color: Colors.white,
-            ),
-            SizedBox(
-              width: 3,
-            ),
-            Text(
-              lineNumber,
-              style: TextStyle(
-                  fontSize: 13,
-                  fontFamily: 'UberMoveBold',
-                  color: Colors.white),
-            )
-          ],
-        ),
-      ),
-    );
+    return isWalk
+        ? Row(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                    color: lightGrey, borderRadius: BorderRadius.circular(20)),
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 3, vertical: 3),
+                  child: Row(children: [
+                    const Icon(
+                      Icons.directions_walk_rounded,
+                      color: darkGrey,
+                      size: 15,
+                    ),
+                    Text(
+                      '$time mins',
+                      style: const TextStyle(fontSize: 13, color: darkGrey),
+                    )
+                  ]),
+                ),
+              ),
+            ],
+          )
+        : Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              LineShorthand(
+                lineName: lineName,
+              ),
+            ],
+          );
   }
 }
