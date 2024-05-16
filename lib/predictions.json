@@ -1,0 +1,251 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Universitatea din București, Bulevardul Regina Elisabeta, Bucharest, Romania",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 27,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJP_VpOEf_sUARUsGG16TtYu4",
+         "reference" : "ChIJP_VpOEf_sUARUsGG16TtYu4",
+         "structured_formatting" : 
+         {
+            "main_text" : "Universitatea din București",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 27,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Bulevardul Regina Elisabeta, Bucharest, Romania"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Universitatea din București"
+            },
+            {
+               "offset" : 29,
+               "value" : "Bulevardul Regina Elisabeta"
+            },
+            {
+               "offset" : 58,
+               "value" : "Bucharest"
+            },
+            {
+               "offset" : 69,
+               "value" : "Romania"
+            }
+         ],
+         "types" : 
+         [
+            "university",
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Universitatea Bucuresti, Strada Republicii, Focșani, Romania",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 22,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJuyKAPgAZtEAR335Q_BnSsUE",
+         "reference" : "ChIJuyKAPgAZtEAR335Q_BnSsUE",
+         "structured_formatting" : 
+         {
+            "main_text" : "Universitatea Bucuresti",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 22,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Strada Republicii, Focșani, Romania"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Universitatea Bucuresti"
+            },
+            {
+               "offset" : 25,
+               "value" : "Strada Republicii"
+            },
+            {
+               "offset" : 44,
+               "value" : "Focșani"
+            },
+            {
+               "offset" : 53,
+               "value" : "Romania"
+            }
+         ],
+         "types" : 
+         [
+            "university",
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Rectorat Universitatea din București, Șoseaua Panduri, Bucharest, Romania",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 36,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJudmJml3_sUARK1eNZvMhImo",
+         "reference" : "ChIJudmJml3_sUARK1eNZvMhImo",
+         "structured_formatting" : 
+         {
+            "main_text" : "Rectorat Universitatea din București",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 36,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Șoseaua Panduri, Bucharest, Romania"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Rectorat Universitatea din București"
+            },
+            {
+               "offset" : 38,
+               "value" : "Șoseaua Panduri"
+            },
+            {
+               "offset" : 55,
+               "value" : "Bucharest"
+            },
+            {
+               "offset" : 66,
+               "value" : "Romania"
+            }
+         ],
+         "types" : 
+         [
+            "university",
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Facultatea de Sociologie și Asistență Socială, Bulevardul Schitu Măgureanu, Bucharest, Romania",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 45,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJJXhBH0P_sUARWmGfeaaGcQI",
+         "reference" : "ChIJJXhBH0P_sUARWmGfeaaGcQI",
+         "structured_formatting" : 
+         {
+            "main_text" : "Facultatea de Sociologie și Asistență Socială",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 45,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Bulevardul Schitu Măgureanu, Bucharest, Romania"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Facultatea de Sociologie și Asistență Socială"
+            },
+            {
+               "offset" : 47,
+               "value" : "Bulevardul Schitu Măgureanu"
+            },
+            {
+               "offset" : 76,
+               "value" : "Bucharest"
+            },
+            {
+               "offset" : 87,
+               "value" : "Romania"
+            }
+         ],
+         "types" : 
+         [
+            "university",
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Facultatea de Drept, Bulevardul Mihail Kogălniceanu, Bucharest, Romania",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 19,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJOzM8vl3_sUARaw4osOHWxgU",
+         "reference" : "ChIJOzM8vl3_sUARaw4osOHWxgU",
+         "structured_formatting" : 
+         {
+            "main_text" : "Facultatea de Drept",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 19,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Bulevardul Mihail Kogălniceanu, Bucharest, Romania"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Facultatea de Drept"
+            },
+            {
+               "offset" : 21,
+               "value" : "Bulevardul Mihail Kogălniceanu"
+            },
+            {
+               "offset" : 53,
+               "value" : "Bucharest"
+            },
+            {
+               "offset" : 64,
+               "value" : "Romania"
+            }
+         ],
+         "types" : 
+         [
+            "university",
+            "point_of_interest",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

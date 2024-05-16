@@ -1,0 +1,116 @@
+{
+   "results" : 
+   [
+      {
+         "address_components" : 
+         [
+            {
+               "long_name" : "313",
+               "short_name" : "313",
+               "types" : 
+               [
+                  "street_number"
+               ]
+            },
+            {
+               "long_name" : "Splaiul Independenței",
+               "short_name" : "Splaiul Independenței",
+               "types" : 
+               [
+                  "route"
+               ]
+            },
+            {
+               "long_name" : "Bucureşti Sectorul 6",
+               "short_name" : "Bucureşti Sectorul 6",
+               "types" : 
+               [
+                  "political",
+                  "sublocality",
+                  "sublocality_level_1"
+               ]
+            },
+            {
+               "long_name" : "București",
+               "short_name" : "București",
+               "types" : 
+               [
+                  "locality",
+                  "political"
+               ]
+            },
+            {
+               "long_name" : "Municipiul București",
+               "short_name" : "Municipiul București",
+               "types" : 
+               [
+                  "administrative_area_level_2",
+                  "political"
+               ]
+            },
+            {
+               "long_name" : "București",
+               "short_name" : "București",
+               "types" : 
+               [
+                  "administrative_area_level_1",
+                  "political"
+               ]
+            },
+            {
+               "long_name" : "Romania",
+               "short_name" : "RO",
+               "types" : 
+               [
+                  "country",
+                  "political"
+               ]
+            },
+            {
+               "long_name" : "060042",
+               "short_name" : "060042",
+               "types" : 
+               [
+                  "postal_code"
+               ]
+            }
+         ],
+         "formatted_address" : "Splaiul Independenței 313, București 060042, Romania",
+         "geometry" : 
+         {
+            "location" : 
+            {
+               "lat" : 44.4386064,
+               "lng" : 26.0494925
+            },
+            "location_type" : "ROOFTOP",
+            "viewport" : 
+            {
+               "northeast" : 
+               {
+                  "lat" : 44.4442356,
+                  "lng" : 26.0555544
+               },
+               "southwest" : 
+               {
+                  "lat" : 44.4344447,
+                  "lng" : 26.0451615
+               }
+            }
+         },
+         "place_id" : "ChIJQVEtE-oBskARx236lMuu1fU",
+         "plus_code" : 
+         {
+            "compound_code" : "C2QX+CQ Bucharest, Romania",
+            "global_code" : "8GP8C2QX+CQ"
+         },
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "university"
+         ]
+      }
+   ],
+   "status" : "OK"
+}
