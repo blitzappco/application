@@ -55,10 +55,10 @@ class _HomescreenState extends State<Homescreen> {
             },
           ),
           //Bottom screen
-          // MainModal(),
-          RoutePreviewModal(
-            mapController: mapController,
-          ),
+          MainModal(),
+          // RoutePreviewModal(
+          //   mapController: mapController,
+          // ),
         ],
       ),
     );
