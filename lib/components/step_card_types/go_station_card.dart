@@ -1,8 +1,12 @@
+import 'package:application/utils/env.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class GoStationCard extends StatelessWidget {
-  const GoStationCard({super.key});
+  final String vehicle;
+  final String vehicle_dest;
+  const GoStationCard(
+      {required this.vehicle, required this.vehicle_dest, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +38,7 @@ class GoStationCard extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(
                               vertical: 1, horizontal: 7),
                           child: Text(
-                            "M1",
+                            vehicle,
                             style: TextStyle(
                                 color: Colors.white,
                                 fontFamily: 'UberMoveBold',
@@ -46,7 +50,7 @@ class GoStationCard extends StatelessWidget {
                         width: 5,
                       ),
                       Text(
-                        "to Dristor",
+                        "to $vehicle_dest",
                         style: TextStyle(
                             fontSize: 14,
                             fontFamily: "UberMoveMedium",
