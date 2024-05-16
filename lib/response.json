@@ -1,0 +1,2897 @@
+{
+   "geocoded_waypoints" : 
+   [
+      {
+         "geocoder_status" : "OK",
+         "place_id" : "ChIJSXffqfwBskARd6UO_FI4HH8",
+         "types" : 
+         [
+            "neighborhood",
+            "political"
+         ]
+      },
+      {
+         "geocoder_status" : "OK",
+         "place_id" : "ChIJ8_9CI9ABskARBjvQLt48i-A",
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "shopping_mall"
+         ]
+      }
+   ],
+   "routes" : 
+   [
+      {
+         "bounds" : 
+         {
+            "northeast" : 
+            {
+               "lat" : 44.446305,
+               "lng" : 26.0756215
+            },
+            "southwest" : 
+            {
+               "lat" : 44.4318633,
+               "lng" : 26.0536527
+            }
+         },
+         "copyrights" : "Map data ©2024",
+         "fare" : 
+         {
+            "currency" : "RON",
+            "text" : "RON 3.00",
+            "value" : 3
+         },
+         "legs" : 
+         [
+            {
+               "arrival_time" : 
+               {
+                  "text" : "9:38 PM",
+                  "time_zone" : "Europe/Bucharest",
+                  "value" : 1715798286
+               },
+               "departure_time" : 
+               {
+                  "text" : "9:22 PM",
+                  "time_zone" : "Europe/Bucharest",
+                  "value" : 1715797361
+               },
+               "distance" : 
+               {
+                  "text" : "2.8 km",
+                  "value" : 2844
+               },
+               "duration" : 
+               {
+                  "text" : "15 mins",
+                  "value" : 925
+               },
+               "end_address" : "Bulevardul General Paul Teodorescu 4, București 061344, Romania",
+               "end_location" : 
+               {
+                  "lat" : 44.4318633,
+                  "lng" : 26.0536527
+               },
+               "start_address" : "North Railway Station Neighborhood, Bucharest, Romania",
+               "start_location" : 
+               {
+                  "lat" : 44.446305,
+                  "lng" : 26.0756215
+               },
+               "steps" : 
+               [
+                  {
+                     "distance" : 
+                     {
+                        "text" : "85 m",
+                        "value" : 85
+                     },
+                     "duration" : 
+                     {
+                        "text" : "1 min",
+                        "value" : 79
+                     },
+                     "end_location" : 
+                     {
+                        "lat" : 44.4457838,
+                        "lng" : 26.0750065
+                     },
+                     "html_instructions" : "Walk to Gara de Nord",
+                     "polyline" : 
+                     {
+                        "points" : "k|gnGs{c~CJTBHLXf@t@JOTX"
+                     },
+                     "start_location" : 
+                     {
+                        "lat" : 44.446305,
+                        "lng" : 26.0756215
+                     },
+                     "steps" : 
+                     [
+                        {
+                           "distance" : 
+                           {
+                              "text" : "11 m",
+                              "value" : 11
+                           },
+                           "duration" : 
+                           {
+                              "text" : "1 min",
+                              "value" : 9
+                           },
+                           "end_location" : 
+                           {
+                              "lat" : 44.446242,
+                              "lng" : 26.0755123
+                           },
+                           "html_instructions" : "Head \u003cb\u003esouthwest\u003c/b\u003e",
+                           "polyline" : 
+                           {
+                              "points" : "k|gnGs{c~CJT"
+                           },
+                           "start_location" : 
+                           {
+                              "lat" : 44.446305,
+                              "lng" : 26.0756215
+                           },
+                           "travel_mode" : "WALKING"
+                        },
+                        {
+                           "distance" : 
+                           {
+                              "text" : "49 m",
+                              "value" : 49
+                           },
+                           "duration" : 
+                           {
+                              "text" : "1 min",
+                              "value" : 50
+                           },
+                           "end_location" : 
+                           {
+                              "lat" : 44.4459454,
+                              "lng" : 26.0750633
+                           },
+                           "html_instructions" : "Take the crosswalk",
+                           "polyline" : 
+                           {
+                              "points" : "_|gnG}zc~CBHLXf@t@"
+                           },
+                           "start_location" : 
+                           {
+                              "lat" : 44.446242,
+                              "lng" : 26.0755123
+                           },
+                           "travel_mode" : "WALKING"
+                        },
+                        {
+                           "distance" : 
+                           {
+                              "text" : "9 m",
+                              "value" : 9
+                           },
+                           "duration" : 
+                           {
+                              "text" : "1 min",
+                              "value" : 7
+                           },
+                           "end_location" : 
+                           {
+                              "lat" : 44.4458935,
+                              "lng" : 26.0751423
+                           },
+                           "html_instructions" : "Turn \u003cb\u003eleft\u003c/b\u003e",
+                           "maneuver" : "turn-left",
+                           "polyline" : 
+                           {
+                              "points" : "ezgnGcxc~CJO"
+                           },
+                           "start_location" : 
+                           {
+                              "lat" : 44.4459454,
+                              "lng" : 26.0750633
+                           },
+                           "travel_mode" : "WALKING"
+                        },
+                        {
+                           "distance" : 
+                           {
+                              "text" : "16 m",
+                              "value" : 16
+                           },
+                           "duration" : 
+                           {
+                              "text" : "1 min",
+                              "value" : 13
+                           },
+                           "end_location" : 
+                           {
+                              "lat" : 44.4457838,
+                              "lng" : 26.0750065
+                           },
+                           "html_instructions" : "Turn \u003cb\u003eright\u003c/b\u003e\u003cdiv style=\"font-size:0.9em\"\u003eDestination will be on the left\u003c/div\u003e",
+                           "maneuver" : "turn-right",
+                           "polyline" : 
+                           {
+                              "points" : "yygnGsxc~CTX"
+                           },
+                           "start_location" : 
+                           {
+                              "lat" : 44.4458935,
+                              "lng" : 26.0751423
+                           },
+                           "travel_mode" : "WALKING"
+                        }
+                     ],
+                     "travel_mode" : "WALKING"
+                  },
+                  {
+                     "distance" : 
+                     {
+                        "text" : "2.5 km",
+                        "value" : 2541
+                     },
+                     "duration" : 
+                     {
+                        "text" : "11 mins",
+                        "value" : 660
+                     },
+                     "end_location" : 
+                     {
+                        "lat" : 44.433352,
+                        "lng" : 26.054247
+                     },
+                     "html_instructions" : "Trolleybus towards Cartier Constantin Brancusi",
+                     "polyline" : 
+                     {
+                        "points" : "}xgnGcxc~CHMd@p@`@d@@B@@FBBJDHRZVXd@j@`AfAlBzB`AjA|@bAnB|BLPHJHPHPRKBERMn@]TMNIZQlC}Ar@a@BATMNININXJTxDtFt@jAV`@dAvAPT~@nAl@x@JNHLHPHPJ\\r@rCFRFV\\lAh@nBLf@HZJ^b@vA\\~@Z|@Pb@|@~Bb@jA`@hABHBLLd@Nx@Hn@Dx@Bn@DbAL~@Hf@BJ@Hr@`Df@nBBPDX?L@H?B@\\@VAf@@h@@`EBrH@jB?hA@lC?nB?N@H?RZAXEV@jA?zA@?D"
+                     },
+                     "start_location" : 
+                     {
+                        "lat" : 44.44575,
+                        "lng" : 26.07506
+                     },
+                     "transit_details" : 
+                     {
+                        "arrival_stop" : 
+                        {
+                           "location" : 
+                           {
+                              "lat" : 44.433352,
+                              "lng" : 26.054247
+                           },
+                           "name" : "Bd. Iuliu Maniu"
+                        },
+                        "arrival_time" : 
+                        {
+                           "text" : "9:35 PM",
+                           "time_zone" : "Europe/Bucharest",
+                           "value" : 1715798100
+                        },
+                        "departure_stop" : 
+                        {
+                           "location" : 
+                           {
+                              "lat" : 44.44575,
+                              "lng" : 26.07506
+                           },
+                           "name" : "Gara de Nord"
+                        },
+                        "departure_time" : 
+                        {
+                           "text" : "9:24 PM",
+                           "time_zone" : "Europe/Bucharest",
+                           "value" : 1715797440
+                        },
+                        "headsign" : "Cartier Constantin Brancusi",
+                        "line" : 
+                        {
+                           "agencies" : 
+                           [
+                              {
+                                 "name" : "STB SA",
+                                 "phone" : "011 40 21 311 0595",
+                                 "url" : "https://stbsa.ro/"
+                              }
+                           ],
+                           "color" : "#008d36",
+                           "short_name" : "93",
+                           "text_color" : "#ffffff",
+                           "vehicle" : 
+                           {
+                              "icon" : "//maps.gstatic.com/mapfiles/transit/iw2/6/bus2.png",
+                              "name" : "Trolleybus",
+                              "type" : "TROLLEYBUS"
+                           }
+                        },
+                        "num_stops" : 5
+                     },
+                     "travel_mode" : "TRANSIT"
+                  },
+                  {
+                     "distance" : 
+                     {
+                        "text" : "0.2 km",
+                        "value" : 218
+                     },
+                     "duration" : 
+                     {
+                        "text" : "3 mins",
+                        "value" : 186
+                     },
+                     "end_location" : 
+                     {
+                        "lat" : 44.4318633,
+                        "lng" : 26.0536527
+                     },
+                     "html_instructions" : "Walk to Bulevardul General Paul Teodorescu 4, București 061344, Romania",
+                     "polyline" : 
+                     {
+                        "points" : "mkenGgv_~CvA?vC@H?D?D?FR@H@L?NJ`@HW?T@^"
+                     },
+                     "start_location" : 
+                     {
+                        "lat" : 44.4333518,
+                        "lng" : 26.0542827
+                     },
+                     "steps" : 
+                     [
+                        {
+                           "distance" : 
+                           {
+                              "text" : "0.1 km",
+                              "value" : 146
+                           },
+                           "duration" : 
+                           {
+                              "text" : "2 mins",
+                              "value" : 119
+                           },
+                           "end_location" : 
+                           {
+                              "lat" : 44.4320388,
+                              "lng" : 26.0542726
+                           },
+                           "html_instructions" : "Head \u003cb\u003esouth\u003c/b\u003e on \u003cb\u003eBulevardul General Paul Teodorescu\u003c/b\u003e",
+                           "polyline" : 
+                           {
+                              "points" : "mkenGgv_~CvA?vC@H?D?D?"
+                           },
+                           "start_location" : 
+                           {
+                              "lat" : 44.4333518,
+                              "lng" : 26.0542827
+                           },
+                           "travel_mode" : "WALKING"
+                        },
+                        {
+                           "distance" : 
+                           {
+                              "text" : "40 m",
+                              "value" : 40
+                           },
+                           "duration" : 
+                           {
+                              "text" : "1 min",
+                              "value" : 39
+                           },
+                           "end_location" : 
+                           {
+                              "lat" : 44.4319205,
+                              "lng" : 26.0538046
+                           },
+                           "html_instructions" : "Turn \u003cb\u003eright\u003c/b\u003e onto \u003cb\u003eStrada Fruntaș Anghel Mihai\u003c/b\u003e",
+                           "maneuver" : "turn-right",
+                           "polyline" : 
+                           {
+                              "points" : "gcenGev_~CFR@H@L?NJ`@"
+                           },
+                           "start_location" : 
+                           {
+                              "lat" : 44.4320388,
+                              "lng" : 26.0542726
+                           },
+                           "travel_mode" : "WALKING"
+                        },
+                        {
+                           "distance" : 
+                           {
+                              "text" : "11 m",
+                              "value" : 11
+                           },
+                           "duration" : 
+                           {
+                              "text" : "1 min",
+                              "value" : 10
+                           },
+                           "end_location" : 
+                           {
+                              "lat" : 44.43187469999999,
+                              "lng" : 26.0539191
+                           },
+                           "html_instructions" : "Turn \u003cb\u003eleft\u003c/b\u003e",
+                           "maneuver" : "turn-left",
+                           "polyline" : 
+                           {
+                              "points" : "obenGgs_~CHW"
+                           },
+                           "start_location" : 
+                           {
+                              "lat" : 44.4319205,
+                              "lng" : 26.0538046
+                           },
+                           "travel_mode" : "WALKING"
+                        },
+                        {
+                           "distance" : 
+                           {
+                              "text" : "21 m",
+                              "value" : 21
+                           },
+                           "duration" : 
+                           {
+                              "text" : "1 min",
+                              "value" : 18
+                           },
+                           "end_location" : 
+                           {
+                              "lat" : 44.4318633,
+                              "lng" : 26.0536527
+                           },
+                           "html_instructions" : "Sharp \u003cb\u003eright\u003c/b\u003e onto \u003cb\u003eStrada Fruntaș Anghel Mihai\u003c/b\u003e\u003cdiv style=\"font-size:0.9em\"\u003eDestination will be on the left\u003c/div\u003e",
+                           "maneuver" : "turn-sharp-right",
+                           "polyline" : 
+                           {
+                              "points" : "ebenG_t_~C?T@^"
+                           },
+                           "start_location" : 
+                           {
+                              "lat" : 44.43187469999999,
+                              "lng" : 26.0539191
+                           },
+                           "travel_mode" : "WALKING"
+                        }
+                     ],
+                     "travel_mode" : "WALKING"
+                  }
+               ],
+               "traffic_speed_entry" : [],
+               "via_waypoint" : []
+            }
+         ],
+         "overview_polyline" : 
+         {
+            "points" : "k|gnGs{c~CN^t@nAJOTXNWjA|AFBBJXd@lFhG|F~GR\\HPRKVSdAk@lF{Cx@c@Zn@nF`I|AxBpAdBlAhBpAvE|A|FTz@`AvCjB`FlAlD\\~ANhBHrBVfB`BfHJbA@`BHjS@vI@\\t@GbB@zA@?D?EvA?`D@J?H\\@\\J`@HW@t@"
+         },
+         "summary" : "",
+         "warnings" : 
+         [
+            "Walking directions are in beta. Use caution – This route may be missing sidewalks or pedestrian paths."
+         ],
+         "waypoint_order" : []
+      },
+      {
+         "bounds" : 
+         {
+            "northeast" : 
+            {
+               "lat" : 44.4497729,
+               "lng" : 26.0756215
+            },
+            "southwest" : 
+            {
+               "lat" : 44.4318633,
+               "lng" : 26.0536527
+            }
+         },
+         "copyrights" : "Map data ©2024",
+         "fare" : 
+         {
+            "currency" : "RON",
+            "text" : "RON 3.00",
+            "value" : 3
+         },
+         "legs" : 
+         [
+            {
+               "arrival_time" : 
+               {
+                  "text" : "9:41 PM",
+                  "time_zone" : "Europe/Bucharest",
+                  "value" : 1715798466
+               },
+               "departure_time" : 
+               {
+                  "text" : "9:25 PM",
+                  "time_zone" : "Europe/Bucharest",
+                  "value" : 1715797541
+               },
+               "distance" : 
+               {
+                  "text" : "3.5 km",
+                  "value" : 3454
+               },
+               "duration" : 
+               {
+                  "text" : "15 mins",
+                  "value" : 925
+               },
+               "end_address" : "Bulevardul General Paul Teodorescu 4, București 061344, Romania",
+               "end_location" : 
+               {
+                  "lat" : 44.4318633,
+                  "lng" : 26.0536527
+               },
+               "start_address" : "North Railway Station Neighborhood, Bucharest, Romania",
+               "start_location" : 
+               {
+                  "lat" : 44.446305,
+                  "lng" : 26.0756215
+               },
+               "steps" : 
+               [
+                  {
+                     "distance" : 
+                     {
+                        "text" : "85 m",
+                        "value" : 85
+                     },
+                     "duration" : 
+                     {
+                        "text" : "1 min",
+                        "value" : 79
+                     },
+                     "end_location" : 
+                     {
+                        "lat" : 44.4457838,
+                        "lng" : 26.0750065
+                     },
+                     "html_instructions" : "Walk to Gara de Nord",
+                     "polyline" : 
+                     {
+                        "points" : "k|gnGs{c~CJTBHLXf@t@JOTX"
+                     },
+                     "start_location" : 
+                     {
+                        "lat" : 44.446305,
+                        "lng" : 26.0756215
+                     },
+                     "steps" : 
+                     [
+                        {
+                           "distance" : 
+                           {
+                              "text" : "11 m",
+                              "value" : 11
+                           },
+                           "duration" : 
+                           {
+                              "text" : "1 min",
+                              "value" : 9
+                           },
+                           "end_location" : 
+                           {
+                              "lat" : 44.446242,
+                              "lng" : 26.0755123
+                           },
+                           "html_instructions" : "Head \u003cb\u003esouthwest\u003c/b\u003e",
+                           "polyline" : 
+                           {
+                              "points" : "k|gnGs{c~CJT"
+                           },
+                           "start_location" : 
+                           {
+                              "lat" : 44.446305,
+                              "lng" : 26.0756215
+                           },
+                           "travel_mode" : "WALKING"
+                        },
+                        {
+                           "distance" : 
+                           {
+                              "text" : "49 m",
+                              "value" : 49
+                           },
+                           "duration" : 
+                           {
+                              "text" : "1 min",
+                              "value" : 50
+                           },
+                           "end_location" : 
+                           {
+                              "lat" : 44.4459454,
+                              "lng" : 26.0750633
+                           },
+                           "html_instructions" : "Take the crosswalk",
+                           "polyline" : 
+                           {
+                              "points" : "_|gnG}zc~CBHLXf@t@"
+                           },
+                           "start_location" : 
+                           {
+                              "lat" : 44.446242,
+                              "lng" : 26.0755123
+                           },
+                           "travel_mode" : "WALKING"
+                        },
+                        {
+                           "distance" : 
+                           {
+                              "text" : "9 m",
+                              "value" : 9
+                           },
+                           "duration" : 
+                           {
+                              "text" : "1 min",
+                              "value" : 7
+                           },
+                           "end_location" : 
+                           {
+                              "lat" : 44.4458935,
+                              "lng" : 26.0751423
+                           },
+                           "html_instructions" : "Turn \u003cb\u003eleft\u003c/b\u003e",
+                           "maneuver" : "turn-left",
+                           "polyline" : 
+                           {
+                              "points" : "ezgnGcxc~CJO"
+                           },
+                           "start_location" : 
+                           {
+                              "lat" : 44.4459454,
+                              "lng" : 26.0750633
+                           },
+                           "travel_mode" : "WALKING"
+                        },
+                        {
+                           "distance" : 
+                           {
+                              "text" : "16 m",
+                              "value" : 16
+                           },
+                           "duration" : 
+                           {
+                              "text" : "1 min",
+                              "value" : 13
+                           },
+                           "end_location" : 
+                           {
+                              "lat" : 44.4457838,
+                              "lng" : 26.0750065
+                           },
+                           "html_instructions" : "Turn \u003cb\u003eright\u003c/b\u003e\u003cdiv style=\"font-size:0.9em\"\u003eDestination will be on the left\u003c/div\u003e",
+                           "maneuver" : "turn-right",
+                           "polyline" : 
+                           {
+                              "points" : "yygnGsxc~CTX"
+                           },
+                           "start_location" : 
+                           {
+                              "lat" : 44.4458935,
+                              "lng" : 26.0751423
+                           },
+                           "travel_mode" : "WALKING"
+                        }
+                     ],
+                     "travel_mode" : "WALKING"
+                  },
+                  {
+                     "distance" : 
+                     {
+                        "text" : "3.2 km",
+                        "value" : 3151
+                     },
+                     "duration" : 
+                     {
+                        "text" : "11 mins",
+                        "value" : 660
+                     },
+                     "end_location" : 
+                     {
+                        "lat" : 44.433352,
+                        "lng" : 26.054247
+                     },
+                     "html_instructions" : "Bus towards Valea Oltului",
+                     "polyline" : 
+                     {
+                        "points" : "}xgnGcxc~CHMd@p@`@d@@BQ\\eAdBOVGJgAhBo@fAoCvEQX{AhCiB~CyCfF[h@A@_@n@KJEDIHMNEFGJGFED?@GJAL?N@L@HXp@BD@BLXHR`@x@JXRd@Nb@Pd@jBxFhAdERv@T~@BDDNBFFRJ`@n@tADLDJDNBL@PHd@BVJn@n@zELr@PLPHPBXAt@KHALCh@IJCFBD@DAF?f@Gh@Gd@GdAM@AZCDA\\CXE^FhAR~@NhB^tAXZDr@Lz@PVJJFFDJJHLnAhBx@bALP`A|@`ArA`@j@BFl@v@xB~CpAhBv@hAn@t@^^XVVRVPNJZP\\Rf@Tl@R\\L`@JVDD@j@Fh@Db@DjAJfBBD?X?ZAXEV@jA?zA@?D"
+                     },
+                     "start_location" : 
+                     {
+                        "lat" : 44.44575,
+                        "lng" : 26.07506
+                     },
+                     "transit_details" : 
+                     {
+                        "arrival_stop" : 
+                        {
+                           "location" : 
+                           {
+                              "lat" : 44.433352,
+                              "lng" : 26.054247
+                           },
+                           "name" : "Bd. Iuliu Maniu"
+                        },
+                        "arrival_time" : 
+                        {
+                           "text" : "9:38 PM",
+                           "time_zone" : "Europe/Bucharest",
+                           "value" : 1715798280
+                        },
+                        "departure_stop" : 
+                        {
+                           "location" : 
+                           {
+                              "lat" : 44.44575,
+                              "lng" : 26.07506
+                           },
+                           "name" : "Gara de Nord"
+                        },
+                        "departure_time" : 
+                        {
+                           "text" : "9:27 PM",
+                           "time_zone" : "Europe/Bucharest",
+                           "value" : 1715797620
+                        },
+                        "headsign" : "Valea Oltului",
+                        "line" : 
+                        {
+                           "agencies" : 
+                           [
+                              {
+                                 "name" : "STB SA",
+                                 "phone" : "011 40 21 311 0595",
+                                 "url" : "https://stbsa.ro/"
+                              }
+                           ],
+                           "color" : "#1d71b8",
+                           "short_name" : "105",
+                           "text_color" : "#ffffff",
+                           "vehicle" : 
+                           {
+                              "icon" : "//maps.gstatic.com/mapfiles/transit/iw2/6/bus2.png",
+                              "name" : "Bus",
+                              "type" : "BUS"
+                           }
+                        },
+                        "num_stops" : 5
+                     },
+                     "travel_mode" : "TRANSIT"
+                  },
+                  {
+                     "distance" : 
+                     {
+                        "text" : "0.2 km",
+                        "value" : 218
+                     },
+                     "duration" : 
+                     {
+                        "text" : "3 mins",
+                        "value" : 186
+                     },
+                     "end_location" : 
+                     {
+                        "lat" : 44.4318633,
+                        "lng" : 26.0536527
+                     },
+                     "html_instructions" : "Walk to Bulevardul General Paul Teodorescu 4, București 061344, Romania",
+                     "polyline" : 
+                     {
+                        "points" : "mkenGgv_~CvA?vC@H?D?D?FR@H@L?NJ`@HW?T@^"
+                     },
+                     "start_location" : 
+                     {
+                        "lat" : 44.4333518,
+                        "lng" : 26.0542827
+                     },
+                     "steps" : 
+                     [
+                        {
+                           "distance" : 
+                           {
+                              "text" : "0.1 km",
+                              "value" : 146
+                           },
+                           "duration" : 
+                           {
+                              "text" : "2 mins",
+                              "value" : 119
+                           },
+                           "end_location" : 
+                           {
+                              "lat" : 44.4320388,
+                              "lng" : 26.0542726
+                           },
+                           "html_instructions" : "Head \u003cb\u003esouth\u003c/b\u003e on \u003cb\u003eBulevardul General Paul Teodorescu\u003c/b\u003e",
+                           "polyline" : 
+                           {
+                              "points" : "mkenGgv_~CvA?vC@H?D?D?"
+                           },
+                           "start_location" : 
+                           {
+                              "lat" : 44.4333518,
+                              "lng" : 26.0542827
+                           },
+                           "travel_mode" : "WALKING"
+                        },
+                        {
+                           "distance" : 
+                           {
+                              "text" : "40 m",
+                              "value" : 40
+                           },
+                           "duration" : 
+                           {
+                              "text" : "1 min",
+                              "value" : 39
+                           },
+                           "end_location" : 
+                           {
+                              "lat" : 44.4319205,
+                              "lng" : 26.0538046
+                           },
+                           "html_instructions" : "Turn \u003cb\u003eright\u003c/b\u003e onto \u003cb\u003eStrada Fruntaș Anghel Mihai\u003c/b\u003e",
+                           "maneuver" : "turn-right",
+                           "polyline" : 
+                           {
+                              "points" : "gcenGev_~CFR@H@L?NJ`@"
+                           },
+                           "start_location" : 
+                           {
+                              "lat" : 44.4320388,
+                              "lng" : 26.0542726
+                           },
+                           "travel_mode" : "WALKING"
+                        },
+                        {
+                           "distance" : 
+                           {
+                              "text" : "11 m",
+                              "value" : 11
+                           },
+                           "duration" : 
+                           {
+                              "text" : "1 min",
+                              "value" : 10
+                           },
+                           "end_location" : 
+                           {
+                              "lat" : 44.43187469999999,
+                              "lng" : 26.0539191
+                           },
+                           "html_instructions" : "Turn \u003cb\u003eleft\u003c/b\u003e",
+                           "maneuver" : "turn-left",
+                           "polyline" : 
+                           {
+                              "points" : "obenGgs_~CHW"
+                           },
+                           "start_location" : 
+                           {
+                              "lat" : 44.4319205,
+                              "lng" : 26.0538046
+                           },
+                           "travel_mode" : "WALKING"
+                        },
+                        {
+                           "distance" : 
+                           {
+                              "text" : "21 m",
+                              "value" : 21
+                           },
+                           "duration" : 
+                           {
+                              "text" : "1 min",
+                              "value" : 18
+                           },
+                           "end_location" : 
+                           {
+                              "lat" : 44.4318633,
+                              "lng" : 26.0536527
+                           },
+                           "html_instructions" : "Sharp \u003cb\u003eright\u003c/b\u003e onto \u003cb\u003eStrada Fruntaș Anghel Mihai\u003c/b\u003e\u003cdiv style=\"font-size:0.9em\"\u003eDestination will be on the left\u003c/div\u003e",
+                           "maneuver" : "turn-sharp-right",
+                           "polyline" : 
+                           {
+                              "points" : "ebenG_t_~C?T@^"
+                           },
+                           "start_location" : 
+                           {
+                              "lat" : 44.43187469999999,
+                              "lng" : 26.0539191
+                           },
+                           "travel_mode" : "WALKING"
+                        }
+                     ],
+                     "travel_mode" : "WALKING"
+                  }
+               ],
+               "traffic_speed_entry" : [],
+               "via_waypoint" : []
+            }
+         ],
+         "overview_polyline" : 
+         {
+            "points" : "k|gnGs{c~CN^t@nAJOTXNWfAvA@BQ\\uA|BoAtBmHbMaHrLk@z@ONc@j@EFGJAL@\\Zz@\\v@pA|C|B~G|A|Fb@|ARt@t@bBPz@hAhILr@PLb@LXAt@KVEt@MLD~AQhC[b@EXE^FhCb@~Dx@nARrA\\RLTXhClDnAnAtC~DjEhGfB~Bx@v@n@d@j@\\dAh@jA`@x@P~BTjAJfBB^?t@GbB@zA@?D?EvA?`D@J?H\\@\\J`@HW@t@"
+         },
+         "summary" : "",
+         "warnings" : 
+         [
+            "Walking directions are in beta. Use caution – This route may be missing sidewalks or pedestrian paths."
+         ],
+         "waypoint_order" : []
+      },
+      {
+         "bounds" : 
+         {
+            "northeast" : 
+            {
+               "lat" : 44.446305,
+               "lng" : 26.0756215
+            },
+            "southwest" : 
+            {
+               "lat" : 44.4318633,
+               "lng" : 26.0536527
+            }
+         },
+         "copyrights" : "Map data ©2024",
+         "fare" : 
+         {
+            "currency" : "RON",
+            "text" : "RON 3.00",
+            "value" : 3
+         },
+         "legs" : 
+         [
+            {
+               "arrival_time" : 
+               {
+                  "text" : "9:50 PM",
+                  "time_zone" : "Europe/Bucharest",
+                  "value" : 1715799006
+               },
+               "departure_time" : 
+               {
+                  "text" : "9:34 PM",
+                  "time_zone" : "Europe/Bucharest",
+                  "value" : 1715798081
+               },
+               "distance" : 
+               {
+                  "text" : "2.8 km",
+                  "value" : 2844
+               },
+               "duration" : 
+               {
+                  "text" : "15 mins",
+                  "value" : 925
+               },
+               "end_address" : "Bulevardul General Paul Teodorescu 4, București 061344, Romania",
+               "end_location" : 
+               {
+                  "lat" : 44.4318633,
+                  "lng" : 26.0536527
+               },
+               "start_address" : "North Railway Station Neighborhood, Bucharest, Romania",
+               "start_location" : 
+               {
+                  "lat" : 44.446305,
+                  "lng" : 26.0756215
+               },
+               "steps" : 
+               [
+                  {
+                     "distance" : 
+                     {
+                        "text" : "85 m",
+                        "value" : 85
+                     },
+                     "duration" : 
+                     {
+                        "text" : "1 min",
+                        "value" : 79
+                     },
+                     "end_location" : 
+                     {
+                        "lat" : 44.4457838,
+                        "lng" : 26.0750065
+                     },
+                     "html_instructions" : "Walk to Gara de Nord",
+                     "polyline" : 
+                     {
+                        "points" : "k|gnGs{c~CJTBHLXf@t@JOTX"
+                     },
+                     "start_location" : 
+                     {
+                        "lat" : 44.446305,
+                        "lng" : 26.0756215
+                     },
+                     "steps" : 
+                     [
+                        {
+                           "distance" : 
+                           {
+                              "text" : "11 m",
+                              "value" : 11
+                           },
+                           "duration" : 
+                           {
+                              "text" : "1 min",
+                              "value" : 9
+                           },
+                           "end_location" : 
+                           {
+                              "lat" : 44.446242,
+                              "lng" : 26.0755123
+                           },
+                           "html_instructions" : "Head \u003cb\u003esouthwest\u003c/b\u003e",
+                           "polyline" : 
+                           {
+                              "points" : "k|gnGs{c~CJT"
+                           },
+                           "start_location" : 
+                           {
+                              "lat" : 44.446305,
+                              "lng" : 26.0756215
+                           },
+                           "travel_mode" : "WALKING"
+                        },
+                        {
+                           "distance" : 
+                           {
+                              "text" : "49 m",
+                              "value" : 49
+                           },
+                           "duration" : 
+                           {
+                              "text" : "1 min",
+                              "value" : 50
+                           },
+                           "end_location" : 
+                           {
+                              "lat" : 44.4459454,
+                              "lng" : 26.0750633
+                           },
+                           "html_instructions" : "Take the crosswalk",
+                           "polyline" : 
+                           {
+                              "points" : "_|gnG}zc~CBHLXf@t@"
+                           },
+                           "start_location" : 
+                           {
+                              "lat" : 44.446242,
+                              "lng" : 26.0755123
+                           },
+                           "travel_mode" : "WALKING"
+                        },
+                        {
+                           "distance" : 
+                           {
+                              "text" : "9 m",
+                              "value" : 9
+                           },
+                           "duration" : 
+                           {
+                              "text" : "1 min",
+                              "value" : 7
+                           },
+                           "end_location" : 
+                           {
+                              "lat" : 44.4458935,
+                              "lng" : 26.0751423
+                           },
+                           "html_instructions" : "Turn \u003cb\u003eleft\u003c/b\u003e",
+                           "maneuver" : "turn-left",
+                           "polyline" : 
+                           {
+                              "points" : "ezgnGcxc~CJO"
+                           },
+                           "start_location" : 
+                           {
+                              "lat" : 44.4459454,
+                              "lng" : 26.0750633
+                           },
+                           "travel_mode" : "WALKING"
+                        },
+                        {
+                           "distance" : 
+                           {
+                              "text" : "16 m",
+                              "value" : 16
+                           },
+                           "duration" : 
+                           {
+                              "text" : "1 min",
+                              "value" : 13
+                           },
+                           "end_location" : 
+                           {
+                              "lat" : 44.4457838,
+                              "lng" : 26.0750065
+                           },
+                           "html_instructions" : "Turn \u003cb\u003eright\u003c/b\u003e\u003cdiv style=\"font-size:0.9em\"\u003eDestination will be on the left\u003c/div\u003e",
+                           "maneuver" : "turn-right",
+                           "polyline" : 
+                           {
+                              "points" : "yygnGsxc~CTX"
+                           },
+                           "start_location" : 
+                           {
+                              "lat" : 44.4458935,
+                              "lng" : 26.0751423
+                           },
+                           "travel_mode" : "WALKING"
+                        }
+                     ],
+                     "travel_mode" : "WALKING"
+                  },
+                  {
+                     "distance" : 
+                     {
+                        "text" : "2.5 km",
+                        "value" : 2541
+                     },
+                     "duration" : 
+                     {
+                        "text" : "11 mins",
+                        "value" : 660
+                     },
+                     "end_location" : 
+                     {
+                        "lat" : 44.433352,
+                        "lng" : 26.054247
+                     },
+                     "html_instructions" : "Trolleybus towards Cartier Constantin Brancusi",
+                     "polyline" : 
+                     {
+                        "points" : "}xgnGcxc~CHMd@p@`@d@@B@@FBBJDHRZVXd@j@`AfAlBzB`AjA|@bAnB|BLPHJHPHPRKBERMn@]TMNIZQlC}Ar@a@BATMNININXJTxDtFt@jAV`@dAvAPT~@nAl@x@JNHLHPHPJ\\r@rCFRFV\\lAh@nBLf@HZJ^b@vA\\~@Z|@Pb@|@~Bb@jA`@hABHBLLd@Nx@Hn@Dx@Bn@DbAL~@Hf@BJ@Hr@`Df@nBBPDX?L@H?B@\\@VAf@@h@@`EBrH@jB?hA@lC?nB?N@H?RZAXEV@jA?zA@?D"
+                     },
+                     "start_location" : 
+                     {
+                        "lat" : 44.44575,
+                        "lng" : 26.07506
+                     },
+                     "transit_details" : 
+                     {
+                        "arrival_stop" : 
+                        {
+                           "location" : 
+                           {
+                              "lat" : 44.433352,
+                              "lng" : 26.054247
+                           },
+                           "name" : "Bd. Iuliu Maniu"
+                        },
+                        "arrival_time" : 
+                        {
+                           "text" : "9:47 PM",
+                           "time_zone" : "Europe/Bucharest",
+                           "value" : 1715798820
+                        },
+                        "departure_stop" : 
+                        {
+                           "location" : 
+                           {
+                              "lat" : 44.44575,
+                              "lng" : 26.07506
+                           },
+                           "name" : "Gara de Nord"
+                        },
+                        "departure_time" : 
+                        {
+                           "text" : "9:36 PM",
+                           "time_zone" : "Europe/Bucharest",
+                           "value" : 1715798160
+                        },
+                        "headsign" : "Cartier Constantin Brancusi",
+                        "line" : 
+                        {
+                           "agencies" : 
+                           [
+                              {
+                                 "name" : "STB SA",
+                                 "phone" : "011 40 21 311 0595",
+                                 "url" : "https://stbsa.ro/"
+                              }
+                           ],
+                           "color" : "#008d36",
+                           "short_name" : "93",
+                           "text_color" : "#ffffff",
+                           "vehicle" : 
+                           {
+                              "icon" : "//maps.gstatic.com/mapfiles/transit/iw2/6/bus2.png",
+                              "name" : "Trolleybus",
+                              "type" : "TROLLEYBUS"
+                           }
+                        },
+                        "num_stops" : 5
+                     },
+                     "travel_mode" : "TRANSIT"
+                  },
+                  {
+                     "distance" : 
+                     {
+                        "text" : "0.2 km",
+                        "value" : 218
+                     },
+                     "duration" : 
+                     {
+                        "text" : "3 mins",
+                        "value" : 186
+                     },
+                     "end_location" : 
+                     {
+                        "lat" : 44.4318633,
+                        "lng" : 26.0536527
+                     },
+                     "html_instructions" : "Walk to Bulevardul General Paul Teodorescu 4, București 061344, Romania",
+                     "polyline" : 
+                     {
+                        "points" : "mkenGgv_~CvA?vC@H?D?D?FR@H@L?NJ`@HW?T@^"
+                     },
+                     "start_location" : 
+                     {
+                        "lat" : 44.4333518,
+                        "lng" : 26.0542827
+                     },
+                     "steps" : 
+                     [
+                        {
+                           "distance" : 
+                           {
+                              "text" : "0.1 km",
+                              "value" : 146
+                           },
+                           "duration" : 
+                           {
+                              "text" : "2 mins",
+                              "value" : 119
+                           },
+                           "end_location" : 
+                           {
+                              "lat" : 44.4320388,
+                              "lng" : 26.0542726
+                           },
+                           "html_instructions" : "Head \u003cb\u003esouth\u003c/b\u003e on \u003cb\u003eBulevardul General Paul Teodorescu\u003c/b\u003e",
+                           "polyline" : 
+                           {
+                              "points" : "mkenGgv_~CvA?vC@H?D?D?"
+                           },
+                           "start_location" : 
+                           {
+                              "lat" : 44.4333518,
+                              "lng" : 26.0542827
+                           },
+                           "travel_mode" : "WALKING"
+                        },
+                        {
+                           "distance" : 
+                           {
+                              "text" : "40 m",
+                              "value" : 40
+                           },
+                           "duration" : 
+                           {
+                              "text" : "1 min",
+                              "value" : 39
+                           },
+                           "end_location" : 
+                           {
+                              "lat" : 44.4319205,
+                              "lng" : 26.0538046
+                           },
+                           "html_instructions" : "Turn \u003cb\u003eright\u003c/b\u003e onto \u003cb\u003eStrada Fruntaș Anghel Mihai\u003c/b\u003e",
+                           "maneuver" : "turn-right",
+                           "polyline" : 
+                           {
+                              "points" : "gcenGev_~CFR@H@L?NJ`@"
+                           },
+                           "start_location" : 
+                           {
+                              "lat" : 44.4320388,
+                              "lng" : 26.0542726
+                           },
+                           "travel_mode" : "WALKING"
+                        },
+                        {
+                           "distance" : 
+                           {
+                              "text" : "11 m",
+                              "value" : 11
+                           },
+                           "duration" : 
+                           {
+                              "text" : "1 min",
+                              "value" : 10
+                           },
+                           "end_location" : 
+                           {
+                              "lat" : 44.43187469999999,
+                              "lng" : 26.0539191
+                           },
+                           "html_instructions" : "Turn \u003cb\u003eleft\u003c/b\u003e",
+                           "maneuver" : "turn-left",
+                           "polyline" : 
+                           {
+                              "points" : "obenGgs_~CHW"
+                           },
+                           "start_location" : 
+                           {
+                              "lat" : 44.4319205,
+                              "lng" : 26.0538046
+                           },
+                           "travel_mode" : "WALKING"
+                        },
+                        {
+                           "distance" : 
+                           {
+                              "text" : "21 m",
+                              "value" : 21
+                           },
+                           "duration" : 
+                           {
+                              "text" : "1 min",
+                              "value" : 18
+                           },
+                           "end_location" : 
+                           {
+                              "lat" : 44.4318633,
+                              "lng" : 26.0536527
+                           },
+                           "html_instructions" : "Sharp \u003cb\u003eright\u003c/b\u003e onto \u003cb\u003eStrada Fruntaș Anghel Mihai\u003c/b\u003e\u003cdiv style=\"font-size:0.9em\"\u003eDestination will be on the left\u003c/div\u003e",
+                           "maneuver" : "turn-sharp-right",
+                           "polyline" : 
+                           {
+                              "points" : "ebenG_t_~C?T@^"
+                           },
+                           "start_location" : 
+                           {
+                              "lat" : 44.43187469999999,
+                              "lng" : 26.0539191
+                           },
+                           "travel_mode" : "WALKING"
+                        }
+                     ],
+                     "travel_mode" : "WALKING"
+                  }
+               ],
+               "traffic_speed_entry" : [],
+               "via_waypoint" : []
+            }
+         ],
+         "overview_polyline" : 
+         {
+            "points" : "k|gnGs{c~CN^t@nAJOTXNWjA|AFBBJXd@lFhG|F~GR\\HPRKVSdAk@lF{Cx@c@Zn@nF`I|AxBpAdBlAhBpAvE|A|FTz@`AvCjB`FlAlD\\~ANhBHrBVfB`BfHJbA@`BHjS@vI@\\t@GbB@zA@?D?EvA?`D@J?H\\@\\J`@HW@t@"
+         },
+         "summary" : "",
+         "warnings" : 
+         [
+            "Walking directions are in beta. Use caution – This route may be missing sidewalks or pedestrian paths."
+         ],
+         "waypoint_order" : []
+      },
+      {
+         "bounds" : 
+         {
+            "northeast" : 
+            {
+               "lat" : 44.4497729,
+               "lng" : 26.0756215
+            },
+            "southwest" : 
+            {
+               "lat" : 44.4318633,
+               "lng" : 26.0536527
+            }
+         },
+         "copyrights" : "Map data ©2024",
+         "fare" : 
+         {
+            "currency" : "RON",
+            "text" : "RON 3.00",
+            "value" : 3
+         },
+         "legs" : 
+         [
+            {
+               "arrival_time" : 
+               {
+                  "text" : "9:51 PM",
+                  "time_zone" : "Europe/Bucharest",
+                  "value" : 1715799066
+               },
+               "departure_time" : 
+               {
+                  "text" : "9:35 PM",
+                  "time_zone" : "Europe/Bucharest",
+                  "value" : 1715798141
+               },
+               "distance" : 
+               {
+                  "text" : "3.5 km",
+                  "value" : 3454
+               },
+               "duration" : 
+               {
+                  "text" : "15 mins",
+                  "value" : 925
+               },
+               "end_address" : "Bulevardul General Paul Teodorescu 4, București 061344, Romania",
+               "end_location" : 
+               {
+                  "lat" : 44.4318633,
+                  "lng" : 26.0536527
+               },
+               "start_address" : "North Railway Station Neighborhood, Bucharest, Romania",
+               "start_location" : 
+               {
+                  "lat" : 44.446305,
+                  "lng" : 26.0756215
+               },
+               "steps" : 
+               [
+                  {
+                     "distance" : 
+                     {
+                        "text" : "85 m",
+                        "value" : 85
+                     },
+                     "duration" : 
+                     {
+                        "text" : "1 min",
+                        "value" : 79
+                     },
+                     "end_location" : 
+                     {
+                        "lat" : 44.4457838,
+                        "lng" : 26.0750065
+                     },
+                     "html_instructions" : "Walk to Gara de Nord",
+                     "polyline" : 
+                     {
+                        "points" : "k|gnGs{c~CJTBHLXf@t@JOTX"
+                     },
+                     "start_location" : 
+                     {
+                        "lat" : 44.446305,
+                        "lng" : 26.0756215
+                     },
+                     "steps" : 
+                     [
+                        {
+                           "distance" : 
+                           {
+                              "text" : "11 m",
+                              "value" : 11
+                           },
+                           "duration" : 
+                           {
+                              "text" : "1 min",
+                              "value" : 9
+                           },
+                           "end_location" : 
+                           {
+                              "lat" : 44.446242,
+                              "lng" : 26.0755123
+                           },
+                           "html_instructions" : "Head \u003cb\u003esouthwest\u003c/b\u003e",
+                           "polyline" : 
+                           {
+                              "points" : "k|gnGs{c~CJT"
+                           },
+                           "start_location" : 
+                           {
+                              "lat" : 44.446305,
+                              "lng" : 26.0756215
+                           },
+                           "travel_mode" : "WALKING"
+                        },
+                        {
+                           "distance" : 
+                           {
+                              "text" : "49 m",
+                              "value" : 49
+                           },
+                           "duration" : 
+                           {
+                              "text" : "1 min",
+                              "value" : 50
+                           },
+                           "end_location" : 
+                           {
+                              "lat" : 44.4459454,
+                              "lng" : 26.0750633
+                           },
+                           "html_instructions" : "Take the crosswalk",
+                           "polyline" : 
+                           {
+                              "points" : "_|gnG}zc~CBHLXf@t@"
+                           },
+                           "start_location" : 
+                           {
+                              "lat" : 44.446242,
+                              "lng" : 26.0755123
+                           },
+                           "travel_mode" : "WALKING"
+                        },
+                        {
+                           "distance" : 
+                           {
+                              "text" : "9 m",
+                              "value" : 9
+                           },
+                           "duration" : 
+                           {
+                              "text" : "1 min",
+                              "value" : 7
+                           },
+                           "end_location" : 
+                           {
+                              "lat" : 44.4458935,
+                              "lng" : 26.0751423
+                           },
+                           "html_instructions" : "Turn \u003cb\u003eleft\u003c/b\u003e",
+                           "maneuver" : "turn-left",
+                           "polyline" : 
+                           {
+                              "points" : "ezgnGcxc~CJO"
+                           },
+                           "start_location" : 
+                           {
+                              "lat" : 44.4459454,
+                              "lng" : 26.0750633
+                           },
+                           "travel_mode" : "WALKING"
+                        },
+                        {
+                           "distance" : 
+                           {
+                              "text" : "16 m",
+                              "value" : 16
+                           },
+                           "duration" : 
+                           {
+                              "text" : "1 min",
+                              "value" : 13
+                           },
+                           "end_location" : 
+                           {
+                              "lat" : 44.4457838,
+                              "lng" : 26.0750065
+                           },
+                           "html_instructions" : "Turn \u003cb\u003eright\u003c/b\u003e\u003cdiv style=\"font-size:0.9em\"\u003eDestination will be on the left\u003c/div\u003e",
+                           "maneuver" : "turn-right",
+                           "polyline" : 
+                           {
+                              "points" : "yygnGsxc~CTX"
+                           },
+                           "start_location" : 
+                           {
+                              "lat" : 44.4458935,
+                              "lng" : 26.0751423
+                           },
+                           "travel_mode" : "WALKING"
+                        }
+                     ],
+                     "travel_mode" : "WALKING"
+                  },
+                  {
+                     "distance" : 
+                     {
+                        "text" : "3.2 km",
+                        "value" : 3151
+                     },
+                     "duration" : 
+                     {
+                        "text" : "11 mins",
+                        "value" : 660
+                     },
+                     "end_location" : 
+                     {
+                        "lat" : 44.433352,
+                        "lng" : 26.054247
+                     },
+                     "html_instructions" : "Bus towards Valea Oltului",
+                     "polyline" : 
+                     {
+                        "points" : "}xgnGcxc~CHMd@p@`@d@@BQ\\eAdBOVGJgAhBo@fAoCvEQX{AhCiB~CyCfF[h@A@_@n@KJEDIHMNEFGJGFED?@GJAL?N@L@HXp@BD@BLXHR`@x@JXRd@Nb@Pd@jBxFhAdERv@T~@BDDNBFFRJ`@n@tADLDJDNBL@PHd@BVJn@n@zELr@PLPHPBXAt@KHALCh@IJCFBD@DAF?f@Gh@Gd@GdAM@AZCDA\\CXE^FhAR~@NhB^tAXZDr@Lz@PVJJFFDJJHLnAhBx@bALP`A|@`ArA`@j@BFl@v@xB~CpAhBv@hAn@t@^^XVVRVPNJZP\\Rf@Tl@R\\L`@JVDD@j@Fh@Db@DjAJfBBD?X?ZAXEV@jA?zA@?D"
+                     },
+                     "start_location" : 
+                     {
+                        "lat" : 44.44575,
+                        "lng" : 26.07506
+                     },
+                     "transit_details" : 
+                     {
+                        "arrival_stop" : 
+                        {
+                           "location" : 
+                           {
+                              "lat" : 44.433352,
+                              "lng" : 26.054247
+                           },
+                           "name" : "Bd. Iuliu Maniu"
+                        },
+                        "arrival_time" : 
+                        {
+                           "text" : "9:48 PM",
+                           "time_zone" : "Europe/Bucharest",
+                           "value" : 1715798880
+                        },
+                        "departure_stop" : 
+                        {
+                           "location" : 
+                           {
+                              "lat" : 44.44575,
+                              "lng" : 26.07506
+                           },
+                           "name" : "Gara de Nord"
+                        },
+                        "departure_time" : 
+                        {
+                           "text" : "9:37 PM",
+                           "time_zone" : "Europe/Bucharest",
+                           "value" : 1715798220
+                        },
+                        "headsign" : "Valea Oltului",
+                        "line" : 
+                        {
+                           "agencies" : 
+                           [
+                              {
+                                 "name" : "STB SA",
+                                 "phone" : "011 40 21 311 0595",
+                                 "url" : "https://stbsa.ro/"
+                              }
+                           ],
+                           "color" : "#1d71b8",
+                           "short_name" : "105",
+                           "text_color" : "#ffffff",
+                           "vehicle" : 
+                           {
+                              "icon" : "//maps.gstatic.com/mapfiles/transit/iw2/6/bus2.png",
+                              "name" : "Bus",
+                              "type" : "BUS"
+                           }
+                        },
+                        "num_stops" : 5
+                     },
+                     "travel_mode" : "TRANSIT"
+                  },
+                  {
+                     "distance" : 
+                     {
+                        "text" : "0.2 km",
+                        "value" : 218
+                     },
+                     "duration" : 
+                     {
+                        "text" : "3 mins",
+                        "value" : 186
+                     },
+                     "end_location" : 
+                     {
+                        "lat" : 44.4318633,
+                        "lng" : 26.0536527
+                     },
+                     "html_instructions" : "Walk to Bulevardul General Paul Teodorescu 4, București 061344, Romania",
+                     "polyline" : 
+                     {
+                        "points" : "mkenGgv_~CvA?vC@H?D?D?FR@H@L?NJ`@HW?T@^"
+                     },
+                     "start_location" : 
+                     {
+                        "lat" : 44.4333518,
+                        "lng" : 26.0542827
+                     },
+                     "steps" : 
+                     [
+                        {
+                           "distance" : 
+                           {
+                              "text" : "0.1 km",
+                              "value" : 146
+                           },
+                           "duration" : 
+                           {
+                              "text" : "2 mins",
+                              "value" : 119
+                           },
+                           "end_location" : 
+                           {
+                              "lat" : 44.4320388,
+                              "lng" : 26.0542726
+                           },
+                           "html_instructions" : "Head \u003cb\u003esouth\u003c/b\u003e on \u003cb\u003eBulevardul General Paul Teodorescu\u003c/b\u003e",
+                           "polyline" : 
+                           {
+                              "points" : "mkenGgv_~CvA?vC@H?D?D?"
+                           },
+                           "start_location" : 
+                           {
+                              "lat" : 44.4333518,
+                              "lng" : 26.0542827
+                           },
+                           "travel_mode" : "WALKING"
+                        },
+                        {
+                           "distance" : 
+                           {
+                              "text" : "40 m",
+                              "value" : 40
+                           },
+                           "duration" : 
+                           {
+                              "text" : "1 min",
+                              "value" : 39
+                           },
+                           "end_location" : 
+                           {
+                              "lat" : 44.4319205,
+                              "lng" : 26.0538046
+                           },
+                           "html_instructions" : "Turn \u003cb\u003eright\u003c/b\u003e onto \u003cb\u003eStrada Fruntaș Anghel Mihai\u003c/b\u003e",
+                           "maneuver" : "turn-right",
+                           "polyline" : 
+                           {
+                              "points" : "gcenGev_~CFR@H@L?NJ`@"
+                           },
+                           "start_location" : 
+                           {
+                              "lat" : 44.4320388,
+                              "lng" : 26.0542726
+                           },
+                           "travel_mode" : "WALKING"
+                        },
+                        {
+                           "distance" : 
+                           {
+                              "text" : "11 m",
+                              "value" : 11
+                           },
+                           "duration" : 
+                           {
+                              "text" : "1 min",
+                              "value" : 10
+                           },
+                           "end_location" : 
+                           {
+                              "lat" : 44.43187469999999,
+                              "lng" : 26.0539191
+                           },
+                           "html_instructions" : "Turn \u003cb\u003eleft\u003c/b\u003e",
+                           "maneuver" : "turn-left",
+                           "polyline" : 
+                           {
+                              "points" : "obenGgs_~CHW"
+                           },
+                           "start_location" : 
+                           {
+                              "lat" : 44.4319205,
+                              "lng" : 26.0538046
+                           },
+                           "travel_mode" : "WALKING"
+                        },
+                        {
+                           "distance" : 
+                           {
+                              "text" : "21 m",
+                              "value" : 21
+                           },
+                           "duration" : 
+                           {
+                              "text" : "1 min",
+                              "value" : 18
+                           },
+                           "end_location" : 
+                           {
+                              "lat" : 44.4318633,
+                              "lng" : 26.0536527
+                           },
+                           "html_instructions" : "Sharp \u003cb\u003eright\u003c/b\u003e onto \u003cb\u003eStrada Fruntaș Anghel Mihai\u003c/b\u003e\u003cdiv style=\"font-size:0.9em\"\u003eDestination will be on the left\u003c/div\u003e",
+                           "maneuver" : "turn-sharp-right",
+                           "polyline" : 
+                           {
+                              "points" : "ebenG_t_~C?T@^"
+                           },
+                           "start_location" : 
+                           {
+                              "lat" : 44.43187469999999,
+                              "lng" : 26.0539191
+                           },
+                           "travel_mode" : "WALKING"
+                        }
+                     ],
+                     "travel_mode" : "WALKING"
+                  }
+               ],
+               "traffic_speed_entry" : [],
+               "via_waypoint" : []
+            }
+         ],
+         "overview_polyline" : 
+         {
+            "points" : "k|gnGs{c~CN^t@nAJOTXNWfAvA@BQ\\uA|BoAtBmHbMaHrLk@z@ONc@j@EFGJAL@\\Zz@\\v@pA|C|B~G|A|Fb@|ARt@t@bBPz@hAhILr@PLb@LXAt@KVEt@MLD~AQhC[b@EXE^FhCb@~Dx@nARrA\\RLTXhClDnAnAtC~DjEhGfB~Bx@v@n@d@j@\\dAh@jA`@x@P~BTjAJfBB^?t@GbB@zA@?D?EvA?`D@J?H\\@\\J`@HW@t@"
+         },
+         "summary" : "",
+         "warnings" : 
+         [
+            "Walking directions are in beta. Use caution – This route may be missing sidewalks or pedestrian paths."
+         ],
+         "waypoint_order" : []
+      },
+      {
+         "bounds" : 
+         {
+            "northeast" : 
+            {
+               "lat" : 44.4504813,
+               "lng" : 26.0766305
+            },
+            "southwest" : 
+            {
+               "lat" : 44.4318633,
+               "lng" : 26.0536527
+            }
+         },
+         "copyrights" : "Map data ©2024",
+         "fare" : 
+         {
+            "currency" : "RON",
+            "text" : "RON 6.00",
+            "value" : 6
+         },
+         "legs" : 
+         [
+            {
+               "arrival_time" : 
+               {
+                  "text" : "9:43 PM",
+                  "time_zone" : "Europe/Bucharest",
+                  "value" : 1715798631
+               },
+               "departure_time" : 
+               {
+                  "text" : "9:22 PM",
+                  "time_zone" : "Europe/Bucharest",
+                  "value" : 1715797354
+               },
+               "distance" : 
+               {
+                  "text" : "3.5 km",
+                  "value" : 3548
+               },
+               "duration" : 
+               {
+                  "text" : "21 mins",
+                  "value" : 1277
+               },
+               "end_address" : "Bulevardul General Paul Teodorescu 4, București 061344, Romania",
+               "end_location" : 
+               {
+                  "lat" : 44.4318633,
+                  "lng" : 26.0536527
+               },
+               "start_address" : "North Railway Station Neighborhood, Bucharest, Romania",
+               "start_location" : 
+               {
+                  "lat" : 44.4463447,
+                  "lng" : 26.075684
+               },
+               "steps" : 
+               [
+                  {
+                     "distance" : 
+                     {
+                        "text" : "0.2 km",
+                        "value" : 169
+                     },
+                     "duration" : 
+                     {
+                        "text" : "2 mins",
+                        "value" : 146
+                     },
+                     "end_location" : 
+                     {
+                        "lat" : 44.44748,
+                        "lng" : 26.07597
+                     },
+                     "html_instructions" : "Walk to Gara de Nord 1 (M1)",
+                     "polyline" : 
+                     {
+                        "points" : "s|gnG_|c~CMWcBeC[_@KRiAnB"
+                     },
+                     "start_location" : 
+                     {
+                        "lat" : 44.4463447,
+                        "lng" : 26.075684
+                     },
+                     "steps" : 
+                     [
+                        {
+                           "distance" : 
+                           {
+                              "text" : "0.1 km",
+                              "value" : 109
+                           },
+                           "duration" : 
+                           {
+                              "text" : "1 min",
+                              "value" : 85
+                           },
+                           "end_location" : 
+                           {
+                              "lat" : 44.4470497,
+                              "lng" : 26.0766305
+                           },
+                           "html_instructions" : "Head \u003cb\u003enortheast\u003c/b\u003e\u003cdiv style=\"font-size:0.9em\"\u003eDestination will be on the left\u003c/div\u003e",
+                           "polyline" : 
+                           {
+                              "points" : "s|gnG_|c~CMWcBeC[_@"
+                           },
+                           "start_location" : 
+                           {
+                              "lat" : 44.4463447,
+                              "lng" : 26.075684
+                           },
+                           "travel_mode" : "WALKING"
+                        },
+                        {
+                           "distance" : 
+                           {
+                              "text" : "60 m",
+                              "value" : 60
+                           },
+                           "duration" : 
+                           {
+                              "text" : "1 min",
+                              "value" : 61
+                           },
+                           "end_location" : 
+                           {
+                              "lat" : 44.44748,
+                              "lng" : 26.07597
+                           },
+                           "html_instructions" : "Take entrance \u003cspan class=\"location\"\u003eScări, Scări rulante (doar urcare) și Lift Gara de Nord 1 (M1) C / Stairs, Escalators (only going upwards) & Elevator Gara de Nord 1 (M1) C\u003c/span\u003e",
+                           "polyline" : 
+                           {
+                              "points" : "mahnGiad~CiAnB"
+                           },
+                           "start_location" : 
+                           {
+                              "lat" : 44.44711299999999,
+                              "lng" : 26.076527
+                           },
+                           "travel_mode" : "WALKING"
+                        }
+                     ],
+                     "travel_mode" : "WALKING"
+                  },
+                  {
+                     "distance" : 
+                     {
+                        "text" : "0.8 km",
+                        "value" : 768
+                     },
+                     "duration" : 
+                     {
+                        "text" : "1 min",
+                        "value" : 87
+                     },
+                     "end_location" : 
+                     {
+                        "lat" : 44.44998,
+                        "lng" : 26.06809
+                     },
+                     "html_instructions" : "Subway towards Pantelimon",
+                     "polyline" : 
+                     {
+                        "points" : "wchnGy}c~Cb@Tk@hCUHoPhf@INbBbC"
+                     },
+                     "start_location" : 
+                     {
+                        "lat" : 44.44748,
+                        "lng" : 26.07597
+                     },
+                     "transit_details" : 
+                     {
+                        "arrival_stop" : 
+                        {
+                           "location" : 
+                           {
+                              "lat" : 44.44998,
+                              "lng" : 26.06809
+                           },
+                           "name" : "Basarab"
+                        },
+                        "arrival_time" : 
+                        {
+                           "text" : "9:26 PM",
+                           "time_zone" : "Europe/Bucharest",
+                           "value" : 1715797587
+                        },
+                        "departure_stop" : 
+                        {
+                           "location" : 
+                           {
+                              "lat" : 44.44748,
+                              "lng" : 26.07597
+                           },
+                           "name" : "Gara de Nord 1 (M1)"
+                        },
+                        "departure_time" : 
+                        {
+                           "text" : "9:25 PM",
+                           "time_zone" : "Europe/Bucharest",
+                           "value" : 1715797500
+                        },
+                        "headsign" : "Pantelimon",
+                        "line" : 
+                        {
+                           "agencies" : 
+                           [
+                              {
+                                 "name" : "Metrorex",
+                                 "phone" : "011 40 21 319 3601",
+                                 "url" : "http://www.metrorex.ro/"
+                              }
+                           ],
+                           "color" : "#f2c10a",
+                           "name" : "Pantelimon/Republica - Dristor 2",
+                           "short_name" : "M1",
+                           "text_color" : "#000000",
+                           "vehicle" : 
+                           {
+                              "icon" : "//maps.gstatic.com/mapfiles/transit/iw2/6/subway2.png",
+                              "name" : "Subway",
+                              "type" : "SUBWAY"
+                           }
+                        },
+                        "num_stops" : 1
+                     },
+                     "travel_mode" : "TRANSIT"
+                  },
+                  {
+                     "distance" : 
+                     {
+                        "text" : "84 m",
+                        "value" : 84
+                     },
+                     "duration" : 
+                     {
+                        "text" : "1 min",
+                        "value" : 82
+                     },
+                     "end_location" : 
+                     {
+                        "lat" : 44.4499521,
+                        "lng" : 26.0687512
+                     },
+                     "html_instructions" : "Walk to Pasajul Basarab",
+                     "polyline" : 
+                     {
+                        "points" : "kshnGqlb~CE@?BPYDFLSCGJOMY@ICGQ_@"
+                     },
+                     "start_location" : 
+                     {
+                        "lat" : 44.44998,
+                        "lng" : 26.06809
+                     },
+                     "steps" : 
+                     [
+                        {
+                           "distance" : 
+                           {
+                              "text" : "3 m",
+                              "value" : 3
+                           },
+                           "duration" : 
+                           {
+                              "text" : "1 min",
+                              "value" : 4
+                           },
+                           "end_location" : 
+                           {
+                              "lat" : 44.45001,
+                              "lng" : 26.068075
+                           },
+                           "html_instructions" : "Take exit \u003cspan class=\"location\"\u003eScări și Scări rulante (doar urcare) Basarab 2 (M4) C / Stairs & Escalators (only going upwards) Basarab 2 (M4) C\u003c/span\u003e",
+                           "polyline" : 
+                           {
+                              "points" : "kshnGqlb~CE@"
+                           },
+                           "start_location" : 
+                           {
+                              "lat" : 44.44998,
+                              "lng" : 26.06809
+                           },
+                           "travel_mode" : "WALKING"
+                        },
+                        {
+                           "distance" : 
+                           {
+                              "text" : "44 m",
+                              "value" : 44
+                           },
+                           "duration" : 
+                           {
+                              "text" : "1 min",
+                              "value" : 49
+                           },
+                           "end_location" : 
+                           {
+                              "lat" : 44.4497816,
+                              "lng" : 26.0683733
+                           },
+                           "html_instructions" : "Head \u003cb\u003esoutheast\u003c/b\u003e\u003cdiv style=\"font-size:0.9em\"\u003eTake the stairs\u003c/div\u003e",
+                           "polyline" : 
+                           {
+                              "points" : "qshnGklb~CPYDFLSCGJO"
+                           },
+                           "start_location" : 
+                           {
+                              "lat" : 44.4500104,
+                              "lng" : 26.0680568
+                           },
+                           "travel_mode" : "WALKING"
+                        },
+                        {
+                           "distance" : 
+                           {
+                              "text" : "37 m",
+                              "value" : 37
+                           },
+                           "duration" : 
+                           {
+                              "text" : "1 min",
+                              "value" : 29
+                           },
+                           "end_location" : 
+                           {
+                              "lat" : 44.4499521,
+                              "lng" : 26.0687512
+                           },
+                           "html_instructions" : "Turn \u003cb\u003eleft\u003c/b\u003e\u003cdiv style=\"font-size:0.9em\"\u003eDestination will be on the left\u003c/div\u003e",
+                           "maneuver" : "turn-left",
+                           "polyline" : 
+                           {
+                              "points" : "crhnGinb~CMY@ICGQ_@"
+                           },
+                           "start_location" : 
+                           {
+                              "lat" : 44.4497816,
+                              "lng" : 26.0683733
+                           },
+                           "travel_mode" : "WALKING"
+                        }
+                     ],
+                     "travel_mode" : "WALKING"
+                  },
+                  {
+                     "distance" : 
+                     {
+                        "text" : "2.2 km",
+                        "value" : 2153
+                     },
+                     "duration" : 
+                     {
+                        "text" : "6 mins",
+                        "value" : 360
+                     },
+                     "end_location" : 
+                     {
+                        "lat" : 44.43475,
+                        "lng" : 26.05436
+                     },
+                     "html_instructions" : "Tram towards Sura Mare",
+                     "polyline" : 
+                     {
+                        "points" : "ishnGqpb~CCBN\\`@~@FNTh@Tf@Tf@Rf@Vn@t@xBjAjDHRbA|C\\`ABL\\nABHFTRf@`@|@j@dAh@z@j@r@l@p@b@`@JJj@b@p@b@h@Xl@Vn@T`AThB^RBf@Bz@PdATNDXF`@HZFr@Pb@HNDr@NVDb@LHDXLXPJJJHJLVZb@l@dAzArC`E~BdDhCnDt@fANPPTZ\\\\\\^Zl@b@VNHFD@^Rd@Rf@Rf@Nh@Jb@Hn@FF@v@DxBBd@??@"
+                     },
+                     "start_location" : 
+                     {
+                        "lat" : 44.449969,
+                        "lng" : 26.068733
+                     },
+                     "transit_details" : 
+                     {
+                        "arrival_stop" : 
+                        {
+                           "location" : 
+                           {
+                              "lat" : 44.43475,
+                              "lng" : 26.05436
+                           },
+                           "name" : "Bd. Iuliu Maniu"
+                        },
+                        "arrival_time" : 
+                        {
+                           "text" : "9:38 PM",
+                           "time_zone" : "Europe/Bucharest",
+                           "value" : 1715798280
+                        },
+                        "departure_stop" : 
+                        {
+                           "location" : 
+                           {
+                              "lat" : 44.449969,
+                              "lng" : 26.068733
+                           },
+                           "name" : "Pasajul Basarab"
+                        },
+                        "departure_time" : 
+                        {
+                           "text" : "9:32 PM",
+                           "time_zone" : "Europe/Bucharest",
+                           "value" : 1715797920
+                        },
+                        "headsign" : "Sura Mare",
+                        "line" : 
+                        {
+                           "agencies" : 
+                           [
+                              {
+                                 "name" : "STB SA",
+                                 "phone" : "011 40 21 311 0595",
+                                 "url" : "https://stbsa.ro/"
+                              }
+                           ],
+                           "color" : "#ee292f",
+                           "short_name" : "1",
+                           "vehicle" : 
+                           {
+                              "icon" : "//maps.gstatic.com/mapfiles/transit/iw2/6/tram2.png",
+                              "name" : "Tram",
+                              "type" : "TRAM"
+                           }
+                        },
+                        "num_stops" : 2
+                     },
+                     "travel_mode" : "TRANSIT"
+                  },
+                  {
+                     "distance" : 
+                     {
+                        "text" : "0.4 km",
+                        "value" : 374
+                     },
+                     "duration" : 
+                     {
+                        "text" : "6 mins",
+                        "value" : 351
+                     },
+                     "end_location" : 
+                     {
+                        "lat" : 44.4318633,
+                        "lng" : 26.0536527
+                     },
+                     "html_instructions" : "Walk to Bulevardul General Paul Teodorescu 4, București 061344, Romania",
+                     "polyline" : 
+                     {
+                        "points" : "etenGcv_~C@?D?X?ZAXEV@jA?rD@vC@H?D?D?FR@H@L?NJ`@HW?T@^"
+                     },
+                     "start_location" : 
+                     {
+                        "lat" : 44.4347522,
+                        "lng" : 26.0542579
+                     },
+                     "steps" : 
+                     [
+                        {
+                           "distance" : 
+                           {
+                              "text" : "35 m",
+                              "value" : 35
+                           },
+                           "duration" : 
+                           {
+                              "text" : "1 min",
+                              "value" : 49
+                           },
+                           "end_location" : 
+                           {
+                              "lat" : 44.434439,
+                              "lng" : 26.0542747
+                           },
+                           "html_instructions" : "Head \u003cb\u003esouth\u003c/b\u003e on \u003cb\u003eBulevardul Doina Cornea\u003c/b\u003e",
+                           "polyline" : 
+                           {
+                              "points" : "etenGcv_~C@?D?X?ZA"
+                           },
+                           "start_location" : 
+                           {
+                              "lat" : 44.4347522,
+                              "lng" : 26.0542579
+                           },
+                           "travel_mode" : "WALKING"
+                        },
+                        {
+                           "distance" : 
+                           {
+                              "text" : "0.3 km",
+                              "value" : 267
+                           },
+                           "duration" : 
+                           {
+                              "text" : "4 mins",
+                              "value" : 235
+                           },
+                           "end_location" : 
+                           {
+                              "lat" : 44.4320388,
+                              "lng" : 26.0542726
+                           },
+                           "html_instructions" : "Continue onto \u003cb\u003eBulevardul General Paul Teodorescu\u003c/b\u003e",
+                           "polyline" : 
+                           {
+                              "points" : "grenGev_~CXEV@jA?rD@vC@H?D?D?"
+                           },
+                           "start_location" : 
+                           {
+                              "lat" : 44.434439,
+                              "lng" : 26.0542747
+                           },
+                           "travel_mode" : "WALKING"
+                        },
+                        {
+                           "distance" : 
+                           {
+                              "text" : "40 m",
+                              "value" : 40
+                           },
+                           "duration" : 
+                           {
+                              "text" : "1 min",
+                              "value" : 39
+                           },
+                           "end_location" : 
+                           {
+                              "lat" : 44.4319205,
+                              "lng" : 26.0538046
+                           },
+                           "html_instructions" : "Turn \u003cb\u003eright\u003c/b\u003e onto \u003cb\u003eStrada Fruntaș Anghel Mihai\u003c/b\u003e",
+                           "maneuver" : "turn-right",
+                           "polyline" : 
+                           {
+                              "points" : "gcenGev_~CFR@H@L?NJ`@"
+                           },
+                           "start_location" : 
+                           {
+                              "lat" : 44.4320388,
+                              "lng" : 26.0542726
+                           },
+                           "travel_mode" : "WALKING"
+                        },
+                        {
+                           "distance" : 
+                           {
+                              "text" : "11 m",
+                              "value" : 11
+                           },
+                           "duration" : 
+                           {
+                              "text" : "1 min",
+                              "value" : 10
+                           },
+                           "end_location" : 
+                           {
+                              "lat" : 44.43187469999999,
+                              "lng" : 26.0539191
+                           },
+                           "html_instructions" : "Turn \u003cb\u003eleft\u003c/b\u003e",
+                           "maneuver" : "turn-left",
+                           "polyline" : 
+                           {
+                              "points" : "obenGgs_~CHW"
+                           },
+                           "start_location" : 
+                           {
+                              "lat" : 44.4319205,
+                              "lng" : 26.0538046
+                           },
+                           "travel_mode" : "WALKING"
+                        },
+                        {
+                           "distance" : 
+                           {
+                              "text" : "21 m",
+                              "value" : 21
+                           },
+                           "duration" : 
+                           {
+                              "text" : "1 min",
+                              "value" : 18
+                           },
+                           "end_location" : 
+                           {
+                              "lat" : 44.4318633,
+                              "lng" : 26.0536527
+                           },
+                           "html_instructions" : "Sharp \u003cb\u003eright\u003c/b\u003e onto \u003cb\u003eStrada Fruntaș Anghel Mihai\u003c/b\u003e\u003cdiv style=\"font-size:0.9em\"\u003eDestination will be on the left\u003c/div\u003e",
+                           "maneuver" : "turn-sharp-right",
+                           "polyline" : 
+                           {
+                              "points" : "ebenG_t_~C?T@^"
+                           },
+                           "start_location" : 
+                           {
+                              "lat" : 44.43187469999999,
+                              "lng" : 26.0539191
+                           },
+                           "travel_mode" : "WALKING"
+                        }
+                     ],
+                     "travel_mode" : "WALKING"
+                  }
+               ],
+               "traffic_speed_entry" : [],
+               "via_waypoint" : []
+            }
+         ],
+         "overview_polyline" : 
+         {
+            "points" : "s|gnG_|c~CqB}C[_@KRiAnBb@Tk@hCUHoPhf@INbBbCE@?BPYDFLSCGJOMY@IUg@GFnAvC~@vBxCtInB`G`@xAZ|@lAbCtAnBpArAv@n@zA|@|Al@jDt@z@FjDt@tCl@~Bh@b@Rd@\\VVz@hAbNrRdAxAl@r@|@x@dAr@tAp@nAb@lATv@HpDHd@@@R^?t@GnLDN?D?FRBV?NJ`@HW?T@^"
+         },
+         "summary" : "",
+         "warnings" : 
+         [
+            "Walking directions are in beta. Use caution – This route may be missing sidewalks or pedestrian paths."
+         ],
+         "waypoint_order" : []
+      },
+      {
+         "bounds" : 
+         {
+            "northeast" : 
+            {
+               "lat" : 44.4497729,
+               "lng" : 26.0756215
+            },
+            "southwest" : 
+            {
+               "lat" : 44.4318633,
+               "lng" : 26.0536527
+            }
+         },
+         "copyrights" : "Map data ©2024",
+         "fare" : 
+         {
+            "currency" : "RON",
+            "text" : "RON 3.00",
+            "value" : 3
+         },
+         "legs" : 
+         [
+            {
+               "arrival_time" : 
+               {
+                  "text" : "10:01 PM",
+                  "time_zone" : "Europe/Bucharest",
+                  "value" : 1715799666
+               },
+               "departure_time" : 
+               {
+                  "text" : "9:45 PM",
+                  "time_zone" : "Europe/Bucharest",
+                  "value" : 1715798741
+               },
+               "distance" : 
+               {
+                  "text" : "3.5 km",
+                  "value" : 3454
+               },
+               "duration" : 
+               {
+                  "text" : "15 mins",
+                  "value" : 925
+               },
+               "end_address" : "Bulevardul General Paul Teodorescu 4, București 061344, Romania",
+               "end_location" : 
+               {
+                  "lat" : 44.4318633,
+                  "lng" : 26.0536527
+               },
+               "start_address" : "North Railway Station Neighborhood, Bucharest, Romania",
+               "start_location" : 
+               {
+                  "lat" : 44.446305,
+                  "lng" : 26.0756215
+               },
+               "steps" : 
+               [
+                  {
+                     "distance" : 
+                     {
+                        "text" : "85 m",
+                        "value" : 85
+                     },
+                     "duration" : 
+                     {
+                        "text" : "1 min",
+                        "value" : 79
+                     },
+                     "end_location" : 
+                     {
+                        "lat" : 44.4457838,
+                        "lng" : 26.0750065
+                     },
+                     "html_instructions" : "Walk to Gara de Nord",
+                     "polyline" : 
+                     {
+                        "points" : "k|gnGs{c~CJTBHLXf@t@JOTX"
+                     },
+                     "start_location" : 
+                     {
+                        "lat" : 44.446305,
+                        "lng" : 26.0756215
+                     },
+                     "steps" : 
+                     [
+                        {
+                           "distance" : 
+                           {
+                              "text" : "11 m",
+                              "value" : 11
+                           },
+                           "duration" : 
+                           {
+                              "text" : "1 min",
+                              "value" : 9
+                           },
+                           "end_location" : 
+                           {
+                              "lat" : 44.446242,
+                              "lng" : 26.0755123
+                           },
+                           "html_instructions" : "Head \u003cb\u003esouthwest\u003c/b\u003e",
+                           "polyline" : 
+                           {
+                              "points" : "k|gnGs{c~CJT"
+                           },
+                           "start_location" : 
+                           {
+                              "lat" : 44.446305,
+                              "lng" : 26.0756215
+                           },
+                           "travel_mode" : "WALKING"
+                        },
+                        {
+                           "distance" : 
+                           {
+                              "text" : "49 m",
+                              "value" : 49
+                           },
+                           "duration" : 
+                           {
+                              "text" : "1 min",
+                              "value" : 50
+                           },
+                           "end_location" : 
+                           {
+                              "lat" : 44.4459454,
+                              "lng" : 26.0750633
+                           },
+                           "html_instructions" : "Take the crosswalk",
+                           "polyline" : 
+                           {
+                              "points" : "_|gnG}zc~CBHLXf@t@"
+                           },
+                           "start_location" : 
+                           {
+                              "lat" : 44.446242,
+                              "lng" : 26.0755123
+                           },
+                           "travel_mode" : "WALKING"
+                        },
+                        {
+                           "distance" : 
+                           {
+                              "text" : "9 m",
+                              "value" : 9
+                           },
+                           "duration" : 
+                           {
+                              "text" : "1 min",
+                              "value" : 7
+                           },
+                           "end_location" : 
+                           {
+                              "lat" : 44.4458935,
+                              "lng" : 26.0751423
+                           },
+                           "html_instructions" : "Turn \u003cb\u003eleft\u003c/b\u003e",
+                           "maneuver" : "turn-left",
+                           "polyline" : 
+                           {
+                              "points" : "ezgnGcxc~CJO"
+                           },
+                           "start_location" : 
+                           {
+                              "lat" : 44.4459454,
+                              "lng" : 26.0750633
+                           },
+                           "travel_mode" : "WALKING"
+                        },
+                        {
+                           "distance" : 
+                           {
+                              "text" : "16 m",
+                              "value" : 16
+                           },
+                           "duration" : 
+                           {
+                              "text" : "1 min",
+                              "value" : 13
+                           },
+                           "end_location" : 
+                           {
+                              "lat" : 44.4457838,
+                              "lng" : 26.0750065
+                           },
+                           "html_instructions" : "Turn \u003cb\u003eright\u003c/b\u003e\u003cdiv style=\"font-size:0.9em\"\u003eDestination will be on the left\u003c/div\u003e",
+                           "maneuver" : "turn-right",
+                           "polyline" : 
+                           {
+                              "points" : "yygnGsxc~CTX"
+                           },
+                           "start_location" : 
+                           {
+                              "lat" : 44.4458935,
+                              "lng" : 26.0751423
+                           },
+                           "travel_mode" : "WALKING"
+                        }
+                     ],
+                     "travel_mode" : "WALKING"
+                  },
+                  {
+                     "distance" : 
+                     {
+                        "text" : "3.2 km",
+                        "value" : 3151
+                     },
+                     "duration" : 
+                     {
+                        "text" : "11 mins",
+                        "value" : 660
+                     },
+                     "end_location" : 
+                     {
+                        "lat" : 44.433352,
+                        "lng" : 26.054247
+                     },
+                     "html_instructions" : "Bus towards Valea Oltului",
+                     "polyline" : 
+                     {
+                        "points" : "}xgnGcxc~CHMd@p@`@d@@BQ\\eAdBOVGJgAhBo@fAoCvEQX{AhCiB~CyCfF[h@A@_@n@KJEDIHMNEFGJGFED?@GJAL?N@L@HXp@BD@BLXHR`@x@JXRd@Nb@Pd@jBxFhAdERv@T~@BDDNBFFRJ`@n@tADLDJDNBL@PHd@BVJn@n@zELr@PLPHPBXAt@KHALCh@IJCFBD@DAF?f@Gh@Gd@GdAM@AZCDA\\CXE^FhAR~@NhB^tAXZDr@Lz@PVJJFFDJJHLnAhBx@bALP`A|@`ArA`@j@BFl@v@xB~CpAhBv@hAn@t@^^XVVRVPNJZP\\Rf@Tl@R\\L`@JVDD@j@Fh@Db@DjAJfBBD?X?ZAXEV@jA?zA@?D"
+                     },
+                     "start_location" : 
+                     {
+                        "lat" : 44.44575,
+                        "lng" : 26.07506
+                     },
+                     "transit_details" : 
+                     {
+                        "arrival_stop" : 
+                        {
+                           "location" : 
+                           {
+                              "lat" : 44.433352,
+                              "lng" : 26.054247
+                           },
+                           "name" : "Bd. Iuliu Maniu"
+                        },
+                        "arrival_time" : 
+                        {
+                           "text" : "9:58 PM",
+                           "time_zone" : "Europe/Bucharest",
+                           "value" : 1715799480
+                        },
+                        "departure_stop" : 
+                        {
+                           "location" : 
+                           {
+                              "lat" : 44.44575,
+                              "lng" : 26.07506
+                           },
+                           "name" : "Gara de Nord"
+                        },
+                        "departure_time" : 
+                        {
+                           "text" : "9:47 PM",
+                           "time_zone" : "Europe/Bucharest",
+                           "value" : 1715798820
+                        },
+                        "headsign" : "Valea Oltului",
+                        "line" : 
+                        {
+                           "agencies" : 
+                           [
+                              {
+                                 "name" : "STB SA",
+                                 "phone" : "011 40 21 311 0595",
+                                 "url" : "https://stbsa.ro/"
+                              }
+                           ],
+                           "color" : "#1d71b8",
+                           "short_name" : "105",
+                           "text_color" : "#ffffff",
+                           "vehicle" : 
+                           {
+                              "icon" : "//maps.gstatic.com/mapfiles/transit/iw2/6/bus2.png",
+                              "name" : "Bus",
+                              "type" : "BUS"
+                           }
+                        },
+                        "num_stops" : 5
+                     },
+                     "travel_mode" : "TRANSIT"
+                  },
+                  {
+                     "distance" : 
+                     {
+                        "text" : "0.2 km",
+                        "value" : 218
+                     },
+                     "duration" : 
+                     {
+                        "text" : "3 mins",
+                        "value" : 186
+                     },
+                     "end_location" : 
+                     {
+                        "lat" : 44.4318633,
+                        "lng" : 26.0536527
+                     },
+                     "html_instructions" : "Walk to Bulevardul General Paul Teodorescu 4, București 061344, Romania",
+                     "polyline" : 
+                     {
+                        "points" : "mkenGgv_~CvA?vC@H?D?D?FR@H@L?NJ`@HW?T@^"
+                     },
+                     "start_location" : 
+                     {
+                        "lat" : 44.4333518,
+                        "lng" : 26.0542827
+                     },
+                     "steps" : 
+                     [
+                        {
+                           "distance" : 
+                           {
+                              "text" : "0.1 km",
+                              "value" : 146
+                           },
+                           "duration" : 
+                           {
+                              "text" : "2 mins",
+                              "value" : 119
+                           },
+                           "end_location" : 
+                           {
+                              "lat" : 44.4320388,
+                              "lng" : 26.0542726
+                           },
+                           "html_instructions" : "Head \u003cb\u003esouth\u003c/b\u003e on \u003cb\u003eBulevardul General Paul Teodorescu\u003c/b\u003e",
+                           "polyline" : 
+                           {
+                              "points" : "mkenGgv_~CvA?vC@H?D?D?"
+                           },
+                           "start_location" : 
+                           {
+                              "lat" : 44.4333518,
+                              "lng" : 26.0542827
+                           },
+                           "travel_mode" : "WALKING"
+                        },
+                        {
+                           "distance" : 
+                           {
+                              "text" : "40 m",
+                              "value" : 40
+                           },
+                           "duration" : 
+                           {
+                              "text" : "1 min",
+                              "value" : 39
+                           },
+                           "end_location" : 
+                           {
+                              "lat" : 44.4319205,
+                              "lng" : 26.0538046
+                           },
+                           "html_instructions" : "Turn \u003cb\u003eright\u003c/b\u003e onto \u003cb\u003eStrada Fruntaș Anghel Mihai\u003c/b\u003e",
+                           "maneuver" : "turn-right",
+                           "polyline" : 
+                           {
+                              "points" : "gcenGev_~CFR@H@L?NJ`@"
+                           },
+                           "start_location" : 
+                           {
+                              "lat" : 44.4320388,
+                              "lng" : 26.0542726
+                           },
+                           "travel_mode" : "WALKING"
+                        },
+                        {
+                           "distance" : 
+                           {
+                              "text" : "11 m",
+                              "value" : 11
+                           },
+                           "duration" : 
+                           {
+                              "text" : "1 min",
+                              "value" : 10
+                           },
+                           "end_location" : 
+                           {
+                              "lat" : 44.43187469999999,
+                              "lng" : 26.0539191
+                           },
+                           "html_instructions" : "Turn \u003cb\u003eleft\u003c/b\u003e",
+                           "maneuver" : "turn-left",
+                           "polyline" : 
+                           {
+                              "points" : "obenGgs_~CHW"
+                           },
+                           "start_location" : 
+                           {
+                              "lat" : 44.4319205,
+                              "lng" : 26.0538046
+                           },
+                           "travel_mode" : "WALKING"
+                        },
+                        {
+                           "distance" : 
+                           {
+                              "text" : "21 m",
+                              "value" : 21
+                           },
+                           "duration" : 
+                           {
+                              "text" : "1 min",
+                              "value" : 18
+                           },
+                           "end_location" : 
+                           {
+                              "lat" : 44.4318633,
+                              "lng" : 26.0536527
+                           },
+                           "html_instructions" : "Sharp \u003cb\u003eright\u003c/b\u003e onto \u003cb\u003eStrada Fruntaș Anghel Mihai\u003c/b\u003e\u003cdiv style=\"font-size:0.9em\"\u003eDestination will be on the left\u003c/div\u003e",
+                           "maneuver" : "turn-sharp-right",
+                           "polyline" : 
+                           {
+                              "points" : "ebenG_t_~C?T@^"
+                           },
+                           "start_location" : 
+                           {
+                              "lat" : 44.43187469999999,
+                              "lng" : 26.0539191
+                           },
+                           "travel_mode" : "WALKING"
+                        }
+                     ],
+                     "travel_mode" : "WALKING"
+                  }
+               ],
+               "traffic_speed_entry" : [],
+               "via_waypoint" : []
+            }
+         ],
+         "overview_polyline" : 
+         {
+            "points" : "k|gnGs{c~CN^t@nAJOTXNWfAvA@BQ\\uA|BoAtBmHbMaHrLk@z@ONc@j@EFGJAL@\\Zz@\\v@pA|C|B~G|A|Fb@|ARt@t@bBPz@hAhILr@PLb@LXAt@KVEt@MLD~AQhC[b@EXE^FhCb@~Dx@nARrA\\RLTXhClDnAnAtC~DjEhGfB~Bx@v@n@d@j@\\dAh@jA`@x@P~BTjAJfBB^?t@GbB@zA@?D?EvA?`D@J?H\\@\\J`@HW@t@"
+         },
+         "summary" : "",
+         "warnings" : 
+         [
+            "Walking directions are in beta. Use caution – This route may be missing sidewalks or pedestrian paths."
+         ],
+         "waypoint_order" : []
+      }
+   ],
+   "status" : "OK"
+}
