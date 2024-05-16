@@ -1,8 +1,10 @@
 import 'package:application/components/modals/departures_modal.dart';
+import 'package:application/components/modals/profile_modal.dart';
 import 'package:application/components/nearby_stations.dart';
 import 'package:application/components/place_list.dart';
 import 'package:application/components/static_searchbar.dart';
 import 'package:application/utils/env.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -66,12 +68,17 @@ class MainModal extends StatelessWidget {
                                 SizedBox(
                                   width: 15,
                                 ),
-                                Container(
-                                  decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: Colors.blue),
-                                  width: 37,
-                                  height: 37,
+                                GestureDetector(
+                                  onTap: () {
+                                    ProfileModal.show(context);
+                                  },
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: Colors.blue),
+                                    width: 37,
+                                    height: 37,
+                                  ),
                                 )
                               ],
                             )
