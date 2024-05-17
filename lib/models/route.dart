@@ -242,6 +242,10 @@ class Line {
       vehicleType: json['vehicle']['type'],
     );
   }
+
+  factory Line.empty() {
+    return Line(color: '', name: '', vehicleType: '');
+  }
 }
 
 class Field {
