@@ -3,7 +3,6 @@ import 'package:application/components/modals/profile_modal.dart';
 import 'package:application/components/nearby_stations.dart';
 import 'package:application/components/place_list.dart';
 import 'package:application/components/static_searchbar.dart';
-import 'package:application/components/step_card_types/step_card.dart';
 import 'package:application/utils/env.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
