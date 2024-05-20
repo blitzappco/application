@@ -61,35 +61,38 @@ class DirectionsModal extends StatelessWidget {
                     ),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20.0, vertical: 15),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 0, vertical: 15),
                     child: Column(
                       children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              '37 min • Arrival time: 14:32',
-                              style: TextStyle(
-                                  fontSize: 20, fontFamily: "UberMoveMedium"),
-                            ),
-                            Container(
-                              decoration: const BoxDecoration(
-                                  shape: BoxShape.circle, color: lightGrey),
-                              child: GestureDetector(
-                                onTap: () {
-                                  Navigator.pop(context);
-                                },
-                                child: const Padding(
-                                  padding: EdgeInsets.all(3.0),
-                                  child: Icon(
-                                    Icons.close,
-                                    color: darkGrey,
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                '37 min • Arrival time: 14:32',
+                                style: TextStyle(
+                                    fontSize: 20, fontFamily: "UberMoveMedium"),
+                              ),
+                              Container(
+                                decoration: const BoxDecoration(
+                                    shape: BoxShape.circle, color: lightGrey),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: const Padding(
+                                    padding: EdgeInsets.all(3.0),
+                                    child: Icon(
+                                      Icons.close,
+                                      color: darkGrey,
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                         SizedBox(
                           height: 5,
@@ -98,14 +101,17 @@ class DirectionsModal extends StatelessWidget {
                         SizedBox(
                           height: 10,
                         ),
-                        StepCard(
-                          type: 'walk_station',
-                          vehicle: 'vehicle',
-                          vehicle_dest: 'vehicle_dest',
-                          direction: '2',
-                          distance: 100,
-                          minutes: 8,
-                          address: 'address',
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                          child: StepCard(
+                            type: 'walk_station',
+                            vehicle: 'vehicle',
+                            vehicle_dest: 'vehicle_dest',
+                            direction: '2',
+                            distance: 100,
+                            minutes: 8,
+                            address: 'address',
+                          ),
                         ),
                         SizedBox(
                           height: 10,
@@ -114,14 +120,17 @@ class DirectionsModal extends StatelessWidget {
                         SizedBox(
                           height: 10,
                         ),
-                        StepCard(
-                          type: 'exit_station',
-                          vehicle: 'vehicle',
-                          vehicle_dest: 'vehicle_dest',
-                          direction: 'Splaiul Independentei',
-                          distance: 100,
-                          minutes: 8,
-                          address: 'address',
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                          child: StepCard(
+                            type: 'exit_station',
+                            vehicle: 'vehicle',
+                            vehicle_dest: 'vehicle_dest',
+                            direction: 'Splaiul Independentei',
+                            distance: 100,
+                            minutes: 8,
+                            address: 'address',
+                          ),
                         ),
                         SizedBox(
                           height: 10,
@@ -130,7 +139,10 @@ class DirectionsModal extends StatelessWidget {
                         SizedBox(
                           height: 10,
                         ),
-                        ActiveTrainTicket()
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                          child: ActiveTrainTicket(),
+                        )
                       ],
                     ),
                   ),
