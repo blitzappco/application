@@ -50,19 +50,12 @@ class Account {
   });
 
   factory Account.fromJSON(Map<String, dynamic> json) {
-    List<PaymentMethod> pmList = [];
-
-    for (int i = 0; i < json['paymentMethods'].length; i++) {
-      pmList[i] = PaymentMethod.fromJSON(json['paymentMethods'][i]);
-    }
-
     return Account(
       id: json['id'],
       phone: json['phone'],
       firstName: json['firstName'],
       lastName: json['lastName'],
       stripeCustomerID: json['stripeCustomerID'],
-      paymentMethods: pmList,
     );
   }
 

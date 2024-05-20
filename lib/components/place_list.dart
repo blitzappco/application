@@ -1,26 +1,29 @@
 import 'package:application/components/place_card.dart';
+import 'package:application/models/place.dart';
+import 'package:application/utils/types.dart';
 import 'package:flutter/material.dart';
+import '../utils/shorten.dart';
 
 class PlaceList extends StatelessWidget {
-  final int max;
-  const PlaceList({required this.max, super.key});
+  final List<Place> places;
+  const PlaceList({required this.places, super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 110,
+      height: 300,
       child: MediaQuery.removePadding(
         context: context,
         removeTop: true,
         removeBottom: true,
         child: ListView.separated(
           physics: FixedExtentScrollPhysics(),
-          itemCount: max,
+          itemCount: places.length,
           itemBuilder: (context, index) {
             return PlaceCard(
-              PlaceName: "Universitatea Politehnica",
-              PlaceAddrees: "Splaiul Independentei, 313, Bucharest",
-              IconColor: Colors.amber,
+              mainText: shorten(places[index].mainText, 35),
+              secondaryText: shorten(places[index].secondaryText ?? '', 35),
+              type: processTypes(places[index].types),
             );
           },
           separatorBuilder: (context, index) {

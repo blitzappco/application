@@ -2,7 +2,7 @@ import 'package:application/components/step_card_types/step_card.dart';
 import 'package:application/models/place.dart';
 import 'package:application/models/route.dart' as route;
 
-List<StepCard> getSteps(List<route.Step> steps, Place destination) {
+List<StepCard> processSteps(List<route.Step> steps, Place destination) {
   List<StepCard> result = [];
 
   List<route.Step> transitSteps = [];

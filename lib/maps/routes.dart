@@ -1,9 +1,10 @@
 import 'package:application/models/route.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import '../utils/vars.dart';
 import '../utils/env.dart';
 
-Future<List<Route>> getRoutes(String from, String to) async {
+Future<List<Route>> fetchRoutes(String from, String to) async {
   final url = 'https://maps.googleapis.com/maps/api/directions/json'
       '?language=en'
       '&mode=transit&alternatives=true'

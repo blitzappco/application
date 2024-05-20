@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../utils/env.dart';
+import '../utils/vars.dart';
 import './line_shorthand.dart';
 
 class Shorthand extends StatelessWidget {

@@ -1,5 +1,5 @@
 import 'package:application/components/shorthand.dart';
-import 'package:application/utils/env.dart';
+import 'package:application/utils/vars.dart';
 import 'package:flutter/material.dart';
 
 class LineCard extends StatelessWidget {

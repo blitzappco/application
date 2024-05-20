@@ -73,9 +73,6 @@ class AccountProvider with ChangeNotifier {
       account = Account.fromJSON(json['account']);
       setAccount(account);
 
-      if (newClient) {
-      } else {}
-
       errorMessage = '';
 
       notifyListeners();

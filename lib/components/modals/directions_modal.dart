@@ -4,13 +4,15 @@ import 'package:application/components/nearby_stations.dart';
 import 'package:application/components/place_list.dart';
 import 'package:application/components/static_searchbar.dart';
 import 'package:application/components/step_card_types/step_card.dart';
-import 'package:application/utils/env.dart';
+import 'package:application/utils/vars.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class DirectionsModal extends StatelessWidget {
-  const DirectionsModal({super.key});
+  late GoogleMapController mapController;
+  DirectionsModal({super.key, required this.mapController});
 
   @override
   Widget build(BuildContext context) {

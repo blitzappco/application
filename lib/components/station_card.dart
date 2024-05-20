@@ -1,6 +1,6 @@
 import 'package:application/components/modals/nearby_stations_modal.dart';
 import 'package:application/components/shorthand.dart';
-import 'package:application/utils/env.dart';
+import 'package:application/utils/vars.dart';
 import 'package:flutter/material.dart';
 
 class StationCard extends StatelessWidget {
