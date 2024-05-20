@@ -46,7 +46,7 @@ class _BuyTrainTicketState extends State<BuyTrainTicket> {
                     ),
                   ),
                 ],
-              )
+              ),
             ],
           ),
         ),

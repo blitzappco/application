@@ -3,7 +3,7 @@ import 'package:application/components/profile_button.dart';
 import 'package:application/components/shorthand.dart';
 
 import 'package:application/pages/buy_train_ticket.dart';
-import 'package:application/utils/env.dart';
+
 import 'package:flutter/cupertino.dart';
 
 import 'package:application/utils/vars.dart';

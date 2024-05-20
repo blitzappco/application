@@ -14,7 +14,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 class RouteProvider with ChangeNotifier {
   int routeIndex = 0;
 
-  String page = 'home';
+  String page = 'test';
   bool map = false;
 
   double mapPadding = 0;
