@@ -1,20 +1,20 @@
+import 'package:application/utils/polyline.dart';
+import 'package:application/models/route.dart';
 import 'package:application/utils/env.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class GoStationCard extends StatelessWidget {
-  final String vehicle;
-  final String vehicle_dest;
-  const GoStationCard(
-      {required this.vehicle, required this.vehicle_dest, super.key});
+  final Line line;
+  final String headsign;
+  const GoStationCard({required this.line, required this.headsign, super.key});
 
   @override
   Widget build(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Padding(
-          padding: const EdgeInsets.only(right: 20),
+        const Padding(
+          padding: EdgeInsets.only(right: 20),
           child: Icon(Icons.login_rounded, size: 35),
         ),
         Expanded(
@@ -24,7 +24,7 @@ class GoStationCard extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     "Go to platform",
                     style: TextStyle(fontSize: 18, fontFamily: "UberMoveBold"),
                   ),
@@ -33,25 +33,25 @@ class GoStationCard extends StatelessWidget {
                       Container(
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(5),
-                            color: Colors.amber),
+                            color: convertHex(line.color)),
                         child: Padding(
                           padding: const EdgeInsets.symmetric(
                               vertical: 1, horizontal: 7),
                           child: Text(
-                            vehicle,
-                            style: TextStyle(
+                            line.name,
+                            style: const TextStyle(
                                 color: Colors.white,
                                 fontFamily: 'UberMoveBold',
                                 fontSize: 12),
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 5,
                       ),
                       Text(
-                        "to $vehicle_dest",
-                        style: TextStyle(
+                        "to $headsign",
+                        style: const TextStyle(
                             fontSize: 14,
                             fontFamily: "UberMoveMedium",
                             color: darkGrey),
@@ -76,15 +76,15 @@ class GoStationCard extends StatelessWidget {
                       children: [
                         Transform.rotate(
                           angle: -45 * 3.1415926535897932 / 180,
-                          child: Icon(
+                          child: const Icon(
                             Icons.navigation_rounded,
                             size: 18,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 5,
                         ),
-                        Text(
+                        const Text(
                           "Navigate",
                           style: TextStyle(fontSize: 14),
                         )

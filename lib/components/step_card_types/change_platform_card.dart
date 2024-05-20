@@ -1,20 +1,20 @@
+import 'package:application/utils/polyline.dart';
+import 'package:application/models/route.dart';
 import 'package:application/utils/env.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ChangePlatform extends StatelessWidget {
-  final String vehicle;
-  final String vehicle_dest;
-  const ChangePlatform(
-      {required this.vehicle, required this.vehicle_dest, super.key});
+  final Line line;
+  final String headsign;
+  const ChangePlatform({required this.line, required this.headsign, super.key});
 
   @override
   Widget build(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Padding(
-          padding: const EdgeInsets.only(right: 20),
+        const Padding(
+          padding: EdgeInsets.only(right: 20),
           child: Icon(Icons.swap_horiz, size: 35),
         ),
         Expanded(
@@ -24,7 +24,7 @@ class ChangePlatform extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     "Change Platform",
                     style: TextStyle(fontSize: 18, fontFamily: "UberMoveBold"),
                   ),
@@ -33,25 +33,25 @@ class ChangePlatform extends StatelessWidget {
                       Container(
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(5),
-                            color: Colors.amber),
+                            color: convertHex(line.color)),
                         child: Padding(
                           padding: const EdgeInsets.symmetric(
                               vertical: 1, horizontal: 7),
                           child: Text(
-                            vehicle,
-                            style: TextStyle(
+                            line.name,
+                            style: const TextStyle(
                                 color: Colors.white,
                                 fontFamily: 'UberMoveBold',
                                 fontSize: 12),
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 5,
                       ),
                       Text(
-                        "to $vehicle_dest",
-                        style: TextStyle(
+                        "to $headsign",
+                        style: const TextStyle(
                             fontSize: 14,
                             fontFamily: "UberMoveMedium",
                             color: darkGrey),
@@ -76,15 +76,15 @@ class ChangePlatform extends StatelessWidget {
                       children: [
                         Transform.rotate(
                           angle: -45 * 3.1415926535897932 / 180,
-                          child: Icon(
+                          child: const Icon(
                             Icons.navigation_rounded,
                             size: 18,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 5,
                         ),
-                        Text(
+                        const Text(
                           "Navigate",
                           style: TextStyle(fontSize: 14),
                         )

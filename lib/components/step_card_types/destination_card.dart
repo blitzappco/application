@@ -1,10 +1,10 @@
+import 'package:application/models/place.dart';
 import 'package:application/utils/env.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class DestinationCard extends StatelessWidget {
-  final String address;
-  const DestinationCard({required this.address, super.key});
+  final Place? destination;
+  const DestinationCard({this.destination, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,12 +14,12 @@ class DestinationCard extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(right: 20),
           child: Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.orange,
                 shape: BoxShape.circle,
               ),
-              child: Padding(
-                padding: const EdgeInsets.all(5.0),
+              child: const Padding(
+                padding: EdgeInsets.all(5.0),
                 child: Icon(
                   Icons.directions_walk,
                   size: 20,
@@ -30,23 +30,43 @@ class DestinationCard extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Destination",
-                  style: TextStyle(fontSize: 18, fontFamily: "UberMoveBold"),
-                ),
-                Text(
-                  address,
-                  style: TextStyle(
-                      fontSize: 14,
-                      fontFamily: "UberMoveMedium",
-                      color: darkGrey),
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ],
-            ),
+            destination?.secondaryText != ''
+                ? Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        destination?.mainText ?? '',
+                        style: const TextStyle(
+                            fontSize: 18, fontFamily: "UberMoveBold"),
+                      ),
+                      Text(
+                        destination?.secondaryText ?? '',
+                        style: const TextStyle(
+                            fontSize: 14,
+                            fontFamily: "UberMoveMedium",
+                            color: darkGrey),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ],
+                  )
+                : Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        'Destination',
+                        style:
+                            TextStyle(fontSize: 18, fontFamily: "UberMoveBold"),
+                      ),
+                      Text(
+                        destination?.mainText ?? '',
+                        style: const TextStyle(
+                            fontSize: 14,
+                            fontFamily: "UberMoveMedium",
+                            color: darkGrey),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ],
+                  ),
           ],
         ),
       ],
