@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 class PlaceCard extends StatelessWidget {
-  final String PlaceName;
-  final String PlaceAddrees;
-  final Color IconColor;
+  final String mainText;
+  final String secondaryText;
+  final String type;
   const PlaceCard({
-    required this.PlaceName,
-    required this.PlaceAddrees,
-    required this.IconColor,
+    required this.mainText,
+    required this.secondaryText,
+    required this.type,
     super.key,
   });
 
@@ -16,7 +16,10 @@ class PlaceCard extends StatelessWidget {
     return Row(
       children: [
         Container(
-          decoration: BoxDecoration(shape: BoxShape.circle, color: IconColor),
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: Colors.amber,
+          ),
           child: Padding(
             padding: const EdgeInsets.all(7),
             child: Icon(
@@ -33,11 +36,11 @@ class PlaceCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              PlaceName,
+              mainText,
               style: TextStyle(fontSize: 16, fontFamily: 'UberMoveBold'),
             ),
             Text(
-              PlaceAddrees,
+              secondaryText,
               style: TextStyle(fontSize: 14, fontFamily: 'UberMoveMedium'),
             )
           ],

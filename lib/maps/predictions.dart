@@ -1,9 +1,11 @@
 import 'package:application/models/place.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import '../utils/vars.dart';
 import '../utils/env.dart';
 
-Future<List<Place>> getPredictions(String input) async {
+
+Future<List<Place>> fetchPredictions(String input) async {
   final url = 'https://maps.googleapis.com/maps/api/place/autocomplete/json'
       '?language=en'
       '&input=$input'

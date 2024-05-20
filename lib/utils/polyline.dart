@@ -25,10 +25,10 @@ Color convertHex(String hex) {
   return Color(int.parse(buffer.toString(), radix: 16));
 }
 
-List<Polyline> getPolylines(route.Route r) {
+List<Polyline> processPolylines(List<route.Step> steps) {
   List<Polyline> result = [];
-  for (int i = 0; i < r.leg.steps.length; i++) {
-    route.Step s = r.leg.steps[i];
+  for (int i = 0; i < steps.length; i++) {
+    route.Step s = steps[i];
     if (s.travelMode == "WALKING") {
       result.add(Polyline(
         polylineId: PolylineId('$i'),

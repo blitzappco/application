@@ -2,7 +2,7 @@ import 'package:application/components/route_preview_card.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../../maps/map_controller.dart';
-import '../../utils/env.dart';
+import '../../utils/vars.dart';
 import 'search_modal.dart';
 
 class RoutePreviewModal extends StatefulWidget {

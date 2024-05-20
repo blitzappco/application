@@ -1,6 +1,6 @@
 import 'package:application/components/modals/search_modal.dart';
 import 'package:flutter/material.dart';
-import '../utils/env.dart';
+import '../utils/vars.dart';
 // import 'modals/search_modal.dart';
 
 class StaticSearchbar extends StatefulWidget {

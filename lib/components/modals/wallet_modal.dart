@@ -2,7 +2,7 @@ import 'package:application/components/active_train_ticket.dart';
 import 'package:application/components/line_card.dart';
 import 'package:application/components/profile_button.dart';
 import 'package:application/components/shorthand.dart';
-import 'package:application/utils/env.dart';
+import 'package:application/utils/vars.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 

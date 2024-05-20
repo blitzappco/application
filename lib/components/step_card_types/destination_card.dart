@@ -1,5 +1,5 @@
 import 'package:application/models/place.dart';
-import 'package:application/utils/env.dart';
+import 'package:application/utils/vars.dart';
 import 'package:flutter/material.dart';
 
 class DestinationCard extends StatelessWidget {
