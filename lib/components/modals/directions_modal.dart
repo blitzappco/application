@@ -61,37 +61,43 @@ class DirectionsModal extends StatelessWidget {
                     ),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20.0, vertical: 15),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 0, vertical: 15),
                     child: Column(
                       children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              '37 min • Arrival time: 14:32',
-                              style: TextStyle(
-                                  fontSize: 20, fontFamily: "UberMoveMedium"),
-                            ),
-                            Container(
-                              decoration: const BoxDecoration(
-                                  shape: BoxShape.circle, color: lightGrey),
-                              child: GestureDetector(
-                                onTap: () {
-                                  Navigator.pop(context);
-                                },
-                                child: const Padding(
-                                  padding: EdgeInsets.all(3.0),
-                                  child: Icon(
-                                    Icons.close,
-                                    color: darkGrey,
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                '37 min • Arrival time: 14:32',
+                                style: TextStyle(
+                                    fontSize: 20, fontFamily: "UberMoveMedium"),
+                              ),
+                              Container(
+                                decoration: const BoxDecoration(
+                                    shape: BoxShape.circle, color: lightGrey),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: const Padding(
+                                    padding: EdgeInsets.all(3.0),
+                                    child: Icon(
+                                      Icons.close,
+                                      color: darkGrey,
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                        ActiveTrainTicket()
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                          child: ActiveTrainTicket(),
+                        )
                       ],
                     ),
                   ),
