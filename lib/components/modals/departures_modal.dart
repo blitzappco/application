@@ -1,5 +1,6 @@
 import 'package:application/components/eta_element.dart';
 import 'package:application/components/shorthand.dart';
+import 'package:application/models/route.dart';
 import 'package:application/utils/vars.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -194,10 +195,12 @@ class DeparturesModal {
                                     Row(
                                       children: [
                                         Shorthand(
-                                            isWalk: false,
-                                            time: 20,
-                                            lineName: "24",
-                                            lineType: "BUS")
+                                            transit: true,
+                                            duration: "20 min",
+                                            line: Line(
+                                                color: "#ff0000",
+                                                name: "24",
+                                                vehicleType: "BUS"))
                                       ],
                                     )
                                   ],

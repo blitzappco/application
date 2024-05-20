@@ -1,4 +1,5 @@
 import 'package:application/components/shorthand.dart';
+import 'package:application/models/route.dart';
 import 'package:application/utils/vars.dart';
 import 'package:flutter/material.dart';
 
@@ -12,12 +13,10 @@ class LineCard extends StatelessWidget {
       child: Row(
         children: [
           Shorthand(
-            isWalk: false,
-            time: 20,
-            lineName: '21',
-            lineType: "BUS",
-          ),
-          SizedBox(
+              transit: true,
+              duration: "",
+              line: Line(color: "#ff0000", name: "24", vehicleType: "BUS")),
+          const SizedBox(
             width: 20,
           ),
           Expanded(
@@ -28,7 +27,7 @@ class LineCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Dristor 2",
+                      'Dristor 2',
                       style:
                           TextStyle(fontSize: 20, fontFamily: 'UberMoveBold'),
                     ),

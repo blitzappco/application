@@ -13,9 +13,9 @@ import 'package:flutter/widgets.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 
-class DirectionsModal extends StatelessWidget {
-  late GoogleMapController mapController;
-  DirectionsModal({super.key, required this.mapController});
+class RouteTest extends StatelessWidget {
+  final GoogleMapController mapController;
+  RouteTest({super.key, required this.mapController});
 
   @override
   Widget build(BuildContext context) {
@@ -114,11 +114,6 @@ class DirectionsModal extends StatelessWidget {
                               return route.stepCards[index];
                             },
                           ),
-                          const SizedBox(height: 10),
-                          const Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 20.0),
-                            child: ActiveTrainTicket(),
-                          )
                         ],
                       ),
                     ),

@@ -14,7 +14,10 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 class RouteProvider with ChangeNotifier {
   int routeIndex = 0;
 
-  String page = '';
+  String page = 'home';
+  bool map = false;
+
+  double mapPadding = 0;
 
   bool loading = false;
   String errorMessage = '';
@@ -63,12 +66,12 @@ class RouteProvider with ChangeNotifier {
     // notifyListeners();
   }
 
-  setFrom(Place f) async {
+  Future<void> setFrom(Place f) async {
     from = f;
     notifyListeners();
   }
 
-  setTo(Place t) async {
+  Future<void> setTo(Place t) async {
     to = t;
     notifyListeners();
   }
@@ -114,6 +117,22 @@ class RouteProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  unloadPolylines() async {
+    polylinesSet = <Polyline>{
+      const Polyline(polylineId: PolylineId("0")),
+      const Polyline(polylineId: PolylineId("1")),
+      const Polyline(polylineId: PolylineId("2")),
+      const Polyline(polylineId: PolylineId("3")),
+      const Polyline(polylineId: PolylineId("4")),
+      const Polyline(polylineId: PolylineId("5")),
+      const Polyline(polylineId: PolylineId("6")),
+      const Polyline(polylineId: PolylineId("7")),
+      const Polyline(polylineId: PolylineId("8")),
+      const Polyline(polylineId: PolylineId("9")),
+    };
+    notifyListeners();
+  }
+
   changeLoading(bool l) async {
     loading = l;
     notifyListeners();
@@ -128,6 +147,14 @@ class RouteProvider with ChangeNotifier {
 
   changePage(String np) async {
     page = np;
+    if (page == "preview") {
+      mapPadding = 300;
+    }
+    notifyListeners();
+  }
+
+  initMap() async {
+    map = true;
     notifyListeners();
   }
 }

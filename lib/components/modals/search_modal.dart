@@ -1,5 +1,6 @@
 import 'package:application/components/place_list.dart';
 import 'package:application/components/suggestions_icon.dart';
+import 'package:application/models/place.dart';
 import 'package:application/providers/route_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -147,10 +148,12 @@ class SearchModal {
                   if (controller.text.isEmpty)
                     PlaceList(
                       places: const [],
+                      set: route.setTo,
                     ),
                   if (controller.text.isNotEmpty)
                     PlaceList(
                       places: route.predictions,
+                      set: route.setTo,
                     ),
                   // if (controller.text.isNotEmpty)
                   //   Predictions(

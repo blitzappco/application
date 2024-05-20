@@ -1,4 +1,3 @@
-import 'package:application/components/line_card.dart';
 import 'package:application/components/past_transaction_card.dart';
 import 'package:application/components/profile_button.dart';
 import 'package:application/components/shorthand.dart';

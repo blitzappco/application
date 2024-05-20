@@ -1,5 +1,6 @@
 import 'package:application/components/line_card.dart';
 import 'package:application/components/shorthand.dart';
+import 'package:application/models/route.dart';
 import 'package:application/utils/vars.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -70,20 +71,22 @@ class NearbyStationModal {
                   Row(
                     children: [
                       Shorthand(
-                        isWalk: false,
-                        time: 20,
-                        lineName: '21',
-                        lineType: "BUS",
-                      ),
+                          transit: true,
+                          duration: "20 min",
+                          line: Line(
+                              color: "#ff0000",
+                              name: "24",
+                              vehicleType: "BUS")),
                       SizedBox(
                         width: 5,
                       ),
                       Shorthand(
-                        isWalk: false,
-                        time: 20,
-                        lineName: '21',
-                        lineType: "BUS",
-                      ),
+                          transit: true,
+                          duration: "20 min",
+                          line: Line(
+                              color: "#ff0000",
+                              name: "24",
+                              vehicleType: "BUS")),
                     ],
                   ),
                   SizedBox(
@@ -143,7 +146,7 @@ class NearbyStationModal {
                     child: ListView.separated(
                       itemCount: 6,
                       itemBuilder: (context, index) {
-                        return LineCard();
+                        return const LineCard();
                       },
                       separatorBuilder: (context, index) {
                         return Divider(
