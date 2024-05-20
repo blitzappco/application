@@ -46,4 +46,12 @@ class Place {
       types: ts,
     );
   }
+
+  factory Place.fromTrip(Map<String, dynamic> json) {
+    return Place(
+        placeID: json['placeID'],
+        mainText: json['mainText'],
+        secondaryText: json['secondaryText'],
+        types: [json['type']]);
+  }
 }

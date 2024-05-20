@@ -37,6 +37,9 @@ class _SplashScreenState extends State<SplashScreen> {
 
         await account.loadAccount();
 
+        await account.getTrips();
+        await account.getPaymentMethods();
+
         if (account.token == '' || account.account.id == '') {
           Timer(
               const Duration(milliseconds: 100),

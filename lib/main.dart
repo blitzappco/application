@@ -1,4 +1,3 @@
-import 'package:application/pages/homescreen.dart';
 import 'package:application/pages/splashscreen.dart';
 import 'package:application/providers/route_provider.dart';
 

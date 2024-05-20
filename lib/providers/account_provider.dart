@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:application/models/place.dart';
+import 'package:application/utils/types.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -19,6 +21,7 @@ class AccountProvider with ChangeNotifier {
   Account account = Account();
 
   loadAccount() async {
+    print('load account');
     token = await getToken();
     account = await getAccount();
     notifyListeners();
@@ -105,6 +108,89 @@ class AccountProvider with ChangeNotifier {
 
       account = Account.fromJSON(json['account']);
       setAccount(account);
+    } else {
+      errorMessage = json['message'];
+    }
+  }
+
+  getTrips() async {
+    loading = true;
+    notifyListeners();
+
+    final response = await http.get(
+        Uri.parse('${AppURL.baseURL}/accounts/trips'),
+        headers: authHeader(token));
+
+    loading = false;
+    notifyListeners();
+
+    final json = jsonDecode(utf8.decode(response.bodyBytes));
+    if (response.statusCode == 200) {
+      List<Place> tempTrips = [];
+      for (int i = json.length - 1; i >= 0; i--) {
+        tempTrips.add(Place.fromTrip(json[i]));
+      }
+
+      account.trips = tempTrips;
+      notifyListeners();
+    } else {
+      errorMessage = json['message'];
+    }
+  }
+
+  Future<void> addTrip(Place p) async {
+    loading = true;
+    notifyListeners();
+
+    final response =
+        await http.put(Uri.parse('${AppURL.baseURL}/accounts/trips'),
+            headers: authHeader(token),
+            body: jsonEncode(<String, String>{
+              'placeID': p.placeID,
+              'mainText': p.mainText,
+              'secondaryText': p.secondaryText ?? '',
+              'type': processTypes(p.types),
+            }));
+
+    loading = false;
+    notifyListeners();
+
+    final json = jsonDecode(utf8.decode(response.bodyBytes));
+    if (response.statusCode == 200) {
+      List<Place> tempTrips = [];
+
+      for (int i = json.length - 1; i > 0; i--) {
+        tempTrips.add(Place.fromTrip(json[i]));
+      }
+
+      account.trips = tempTrips;
+      notifyListeners();
+    } else {
+      errorMessage = json['message'];
+    }
+  }
+
+  getPaymentMethods() async {
+    loading = true;
+    notifyListeners();
+
+    final response = await http.get(
+        Uri.parse('${AppURL.baseURL}/accounts/payments/methods'),
+        headers: authHeader(token));
+
+    loading = false;
+    notifyListeners();
+
+    final json = jsonDecode(utf8.decode(response.bodyBytes));
+    if (response.statusCode == 200) {
+      print(json);
+      List<PaymentMethod> pmList = [];
+      for (int i = 0; i < json.length; i++) {
+        pmList.add(PaymentMethod.fromJSON(json[i]));
+      }
+
+      account.paymentMethods = pmList;
+      notifyListeners();
     } else {
       errorMessage = json['message'];
     }
