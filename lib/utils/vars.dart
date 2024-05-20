@@ -122,6 +122,7 @@ Map<String, IconData> lineIcons = {
   "BUS": Icons.directions_bus_rounded,
   "TRAM": Icons.tram,
   "TROLLEYBUS": Icons.directions_transit,
+  "SUBWAY": Icons.subway_rounded,
 };
 
 Map<String, IconData> mapPlaceIcons = {

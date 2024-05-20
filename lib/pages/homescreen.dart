@@ -4,6 +4,8 @@ import 'package:application/components/modals/loading.dart';
 import 'package:application/components/modals/directions_modal.dart';
 import 'package:application/components/modals/main_modal.dart';
 import 'package:application/components/modals/route_preview_modal.dart';
+import 'package:application/components/modals/route_test.dart';
+import 'package:application/maps/geocode.dart';
 import 'package:application/maps/map_controller.dart';
 import 'package:application/providers/account_provider.dart';
 import 'package:application/providers/route_provider.dart';
@@ -32,7 +34,13 @@ class _HomescreenState extends State<Homescreen> {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       final route = Provider.of<RouteProvider>(context, listen: false);
 
-      await route.rawGetRoutes();
+      final from = await fetchPlaceFromAddress("gara de nord");
+      route.setFrom(from);
+
+      final to = await fetchPlaceFromAddress("universitatea din bucuresti");
+      route.setTo(to);
+
+      route.getRoutes();
     });
   }
 
@@ -64,6 +72,7 @@ class _HomescreenState extends State<Homescreen> {
                 myLocationEnabled: true,
                 myLocationButtonEnabled: false,
                 mapToolbarEnabled: false,
+                padding: EdgeInsets.only(bottom: route.mapPadding),
                 initialCameraPosition: const CameraPosition(
                   target: LatLng(44.4464189, 26.0694408),
                   zoom: 14.0,
@@ -71,25 +80,23 @@ class _HomescreenState extends State<Homescreen> {
                 onMapCreated: (GoogleMapController controller) async {
                   _controller.complete(controller);
                   mapController = controller;
-
-                  await route.changeLoading(true);
-                  await route.changePage("home");
+                  await route.initMap();
                   // setCameraLocation(mapController);
-
-                  await route.changeLoading(false);
                 },
               ),
               if (route.loading) const Loading(),
-              if (route.page == 'home' && !route.loading)
+              if (route.page == 'home' && !route.loading && route.map)
                 MainModal(
                   mapController: mapController,
                 ),
-              if (route.page == 'preview' && !route.loading)
+              if (route.page == 'preview' && !route.loading && route.map)
                 RoutePreviewModal(
                   mapController: mapController,
                 ),
-              if (route.page == 'directions' && !route.loading)
+              if (route.page == 'directions' && !route.loading && route.map)
                 DirectionsModal(mapController: mapController),
+              if (route.page == 'test' && !route.loading && route.map)
+                RouteTest(mapController: mapController),
             ],
           ),
         );

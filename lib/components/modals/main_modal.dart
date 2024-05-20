@@ -143,6 +143,7 @@ class MainModal extends StatelessWidget {
                                 padding: const EdgeInsets.all(15.0),
                                 child: PlaceList(
                                   places: const [],
+                                  set: route.setTo,
                                 ),
                               )),
                         ],

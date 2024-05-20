@@ -17,6 +17,8 @@ List<StepCard> processSteps(List<route.Step> steps, Place destination) {
   for (int i = 0; i < steps.length; i++) {
     var step = steps[i];
 
+    print(step.travelMode);
+
     // WALKING
     if (step.travelMode == "WALKING") {
       if (i == steps.length - 1) {
