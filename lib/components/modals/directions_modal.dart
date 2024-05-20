@@ -94,51 +94,6 @@ class DirectionsModal extends StatelessWidget {
                             ],
                           ),
                         ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Divider(),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                          child: StepCard(
-                            type: 'walk_station',
-                            vehicle: 'vehicle',
-                            vehicle_dest: 'vehicle_dest',
-                            direction: '2',
-                            distance: 100,
-                            minutes: 8,
-                            address: 'address',
-                          ),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Divider(),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                          child: StepCard(
-                            type: 'exit_station',
-                            vehicle: 'vehicle',
-                            vehicle_dest: 'vehicle_dest',
-                            direction: 'Splaiul Independentei',
-                            distance: 100,
-                            minutes: 8,
-                            address: 'address',
-                          ),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Divider(),
-                        SizedBox(
-                          height: 10,
-                        ),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 20.0),
                           child: ActiveTrainTicket(),
