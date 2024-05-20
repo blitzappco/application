@@ -1,3 +1,4 @@
+import 'package:application/components/active_train_ticket.dart';
 import 'package:application/components/modals/departures_modal.dart';
 import 'package:application/components/modals/profile_modal.dart';
 import 'package:application/components/nearby_stations.dart';
@@ -29,6 +30,25 @@ class DirectionsModal extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 20.0, bottom: 10),
+                    child: Container(
+                        decoration: BoxDecoration(
+                            color: Colors.black, shape: BoxShape.circle),
+                        child: Padding(
+                          padding: const EdgeInsets.all(15.0),
+                          child: Icon(
+                            Icons.wallet_rounded,
+                            color: Colors.white,
+                            size: 35,
+                          ),
+                        )),
+                  ),
+                ],
+              ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 0),
                 child: Container(
@@ -95,10 +115,10 @@ class DirectionsModal extends StatelessWidget {
                           height: 10,
                         ),
                         StepCard(
-                          type: 'go_platform',
-                          vehicle: 'M1',
-                          vehicle_dest: 'Dristor 2',
-                          direction: '2',
+                          type: 'exit_station',
+                          vehicle: 'vehicle',
+                          vehicle_dest: 'vehicle_dest',
+                          direction: 'Splaiul Independentei',
                           distance: 100,
                           minutes: 8,
                           address: 'address',
@@ -110,15 +130,7 @@ class DirectionsModal extends StatelessWidget {
                         SizedBox(
                           height: 10,
                         ),
-                        StepCard(
-                          type: 'exit_station',
-                          vehicle: 'vehicle',
-                          vehicle_dest: 'vehicle_dest',
-                          direction: 'Splaiul Independentei',
-                          distance: 100,
-                          minutes: 8,
-                          address: 'address',
-                        )
+                        ActiveTrainTicket()
                       ],
                     ),
                   ),
