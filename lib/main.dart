@@ -1,3 +1,4 @@
+import 'package:application/pages/homescreen.dart';
 import 'package:application/pages/maps_test.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: MapsTest(),
+      home: Homescreen(),
     );
   }
 }
