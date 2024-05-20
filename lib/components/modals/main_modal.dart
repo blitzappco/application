@@ -1,5 +1,6 @@
 import 'package:application/components/modals/departures_modal.dart';
 import 'package:application/components/modals/profile_modal.dart';
+import 'package:application/components/modals/wallet_modal.dart';
 import 'package:application/components/nearby_stations.dart';
 import 'package:application/components/place_list.dart';
 import 'package:application/components/static_searchbar.dart';
@@ -63,7 +64,8 @@ class MainModal extends StatelessWidget {
                                 children: [
                                   GestureDetector(
                                     onTap: () {
-                                      DeparturesModal.show(context);
+                                      // DeparturesModal.show(context);
+                                      WalletModal.show(context);
                                     },
                                     child: Icon(
                                       Icons.wallet,
@@ -132,6 +134,7 @@ class MainModal extends StatelessWidget {
                           SizedBox(
                             height: 10,
                           ),
+
                           Container(
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(20),

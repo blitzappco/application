@@ -1,4 +1,5 @@
 import 'package:application/components/line_card.dart';
+import 'package:application/components/past_transaction_card.dart';
 import 'package:application/components/profile_button.dart';
 import 'package:application/components/shorthand.dart';
 import 'package:application/utils/vars.dart';
@@ -85,33 +86,49 @@ class ProfileModal {
                     ],
                   ),
                   SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Past transactions",
+                        style: TextStyle(fontFamily: "UberMoveMedium"),
+                      ),
+                      Text(
+                        "More",
+                        style: TextStyle(
+                            fontFamily: "UberMoveMedium", color: Colors.blue),
+                      )
+                    ],
+                  ),
+                  SizedBox(
                     height: 10,
                   ),
                   Container(
-                    height: 32,
-                    child: ListView(
-                      scrollDirection: Axis.horizontal,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(15)),
+                    child: Column(
                       children: [
-                        ProfileButton(
-                          ButtonIcon: Icons.airplane_ticket,
-                          ButtonText: "Buy Ticket",
+                        PastTransactionCard(),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 15.0),
+                          child: Divider(
+                            color: lightGrey,
+                          ),
                         ),
-                        ProfileButton(
-                          ButtonIcon: Icons.settings,
-                          ButtonText: "Settings",
-                        )
+                        PastTransactionCard(),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 15.0),
+                          child: Divider(
+                            color: lightGrey,
+                          ),
+                        ),
+                        PastTransactionCard(),
                       ],
                     ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Divider(
-                    color: Color.fromARGB(255, 225, 225, 225),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
+                  )
                 ],
               )),
         );
