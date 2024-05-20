@@ -15,6 +15,35 @@ class TicketsProvider with ChangeNotifier {
   bool loading = false;
   String errorMessage = '';
 
+  // get ticket types per city
+  getTicketTypes(String token, String city) async {
+    loading = true;
+    notifyListeners();
+
+    final response = await http.get(
+        Uri.parse('${AppURL.baseURL}/tickets/types?city=$city'),
+        headers: authHeader(token));
+
+    loading = false;
+    notifyListeners();
+
+    dynamic json = jsonDecode(response.body);
+    if (response.statusCode == 200) {
+      List<Ticket> ticketsList =
+          List<Ticket>.from(json.map((x) => Ticket.fromJSON(x)));
+
+      ticketsList.sort(
+          (b, a) => a.expiresAt.toString().compareTo(b.expiresAt.toString()));
+
+      list = ticketsList;
+      notifyListeners();
+    } else {
+      errorMessage = 'Nu s-au putut gasi tipurile de bilete';
+      notifyListeners();
+    }
+  }
+
+  // gets all tickets on account
   getTickets(String token) async {
     loading = true;
     notifyListeners();
@@ -41,11 +70,13 @@ class TicketsProvider with ChangeNotifier {
     }
   }
 
-  getLastTicket(String token) async {
+  // get last ticket per city
+  getLastTicket(String token, String city) async {
     loading = true;
     notifyListeners();
 
-    final response = await http.get(Uri.parse('${AppURL.baseURL}/tickets/last'),
+    final response = await http.get(
+        Uri.parse('${AppURL.baseURL}/tickets/last?city=$city'),
         headers: authHeader(token));
 
     loading = false;

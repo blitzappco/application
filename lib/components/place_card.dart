@@ -1,48 +1,56 @@
 import 'package:flutter/material.dart';
 
 class PlaceCard extends StatelessWidget {
-  final String PlaceName;
-  final String PlaceAddrees;
-  final Color IconColor;
+  final String mainText;
+  final String secondaryText;
+  final String type;
+  final Future<void> Function() callback;
   const PlaceCard({
-    required this.PlaceName,
-    required this.PlaceAddrees,
-    required this.IconColor,
+    required this.mainText,
+    required this.secondaryText,
+    required this.type,
+    required this.callback,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Container(
-          decoration: BoxDecoration(shape: BoxShape.circle, color: IconColor),
-          child: Padding(
-            padding: const EdgeInsets.all(7),
-            child: Icon(
-              Icons.school_rounded,
-              size: 25,
-              color: Colors.white,
+    return GestureDetector(
+      onTap: callback,
+      child: Row(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: Colors.amber,
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(7),
+              child: Icon(
+                Icons.school_rounded,
+                size: 25,
+                color: Colors.white,
+              ),
             ),
           ),
-        ),
-        SizedBox(
-          width: 15,
-        ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              PlaceName,
-              style: TextStyle(fontSize: 16, fontFamily: 'UberMoveBold'),
-            ),
-            Text(
-              PlaceAddrees,
-              style: TextStyle(fontSize: 14, fontFamily: 'UberMoveMedium'),
-            )
-          ],
-        )
-      ],
+          SizedBox(
+            width: 15,
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                mainText,
+                style: TextStyle(fontSize: 16, fontFamily: 'UberMoveBold'),
+              ),
+              Text(
+                secondaryText,
+                style: TextStyle(fontSize: 14, fontFamily: 'UberMoveMedium'),
+              )
+            ],
+          )
+        ],
+      ),
     );
   }
 }

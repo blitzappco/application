@@ -1,27 +1,30 @@
+import 'package:application/models/route.dart';
+import 'package:application/utils/polyline.dart';
 import 'package:flutter/material.dart';
-import '../../utils/env.dart';
+import '../utils/vars.dart';
 
 class LineShorthand extends StatelessWidget {
-  final String lineName;
-  const LineShorthand({required this.lineName, super.key});
+  final Line line;
+  const LineShorthand({required this.line, super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          color: lineColors[lineName] ?? Colors.black,
+          color: convertHex(line.color),
           borderRadius: BorderRadius.circular(4)),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
         child: Row(
           children: [
-            Icon(
-              Icons.directions_bus_filled_rounded,
-              color: Colors.white,
-              size: 18,
-            ),
+            if (line.vehicleType != "SUBWAY")
+              Icon(
+                lineIcons[line.vehicleType],
+                color: Colors.white,
+                size: 18,
+              ),
             Text(
-              lineName,
+              line.name,
               style: const TextStyle(
                   fontFamily: 'UberMoveBold',
                   color: Colors.white,

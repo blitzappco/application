@@ -1,6 +1,7 @@
 import 'package:application/components/modals/nearby_stations_modal.dart';
 import 'package:application/components/shorthand.dart';
-import 'package:application/utils/env.dart';
+import 'package:application/models/route.dart';
+import 'package:application/utils/vars.dart';
 import 'package:flutter/material.dart';
 
 class StationCard extends StatelessWidget {
@@ -56,20 +57,22 @@ class StationCard extends StatelessWidget {
                   Row(
                     children: [
                       Shorthand(
-                        isWalk: false,
-                        time: 20,
-                        lineName: '21',
-                        lineType: "BUS",
-                      ),
+                          transit: true,
+                          duration: "20 min",
+                          line: Line(
+                              color: "#ff0000",
+                              name: "24",
+                              vehicleType: "BUS")),
                       SizedBox(
                         width: 3,
                       ),
                       Shorthand(
-                        isWalk: false,
-                        time: 20,
-                        lineName: '21',
-                        lineType: "BUS",
-                      ),
+                          transit: true,
+                          duration: "20 min",
+                          line: Line(
+                              color: "#ff0000",
+                              name: "24",
+                              vehicleType: "BUS")),
                     ],
                   ),
                 ],

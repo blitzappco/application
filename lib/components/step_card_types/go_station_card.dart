@@ -1,6 +1,6 @@
 import 'package:application/utils/polyline.dart';
 import 'package:application/models/route.dart';
-import 'package:application/utils/env.dart';
+import 'package:application/utils/vars.dart';
 import 'package:flutter/material.dart';
 
 class GoStationCard extends StatelessWidget {

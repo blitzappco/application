@@ -2,7 +2,7 @@ import 'package:application/components/step_card_types/step_card.dart';
 import 'package:application/models/place.dart';
 import 'package:application/models/route.dart' as route;
 
-List<StepCard> getSteps(List<route.Step> steps, Place destination) {
+List<StepCard> processSteps(List<route.Step> steps, Place destination) {
   List<StepCard> result = [];
 
   List<route.Step> transitSteps = [];
@@ -16,6 +16,8 @@ List<StepCard> getSteps(List<route.Step> steps, Place destination) {
 
   for (int i = 0; i < steps.length; i++) {
     var step = steps[i];
+
+    print(step.travelMode);
 
     // WALKING
     if (step.travelMode == "WALKING") {

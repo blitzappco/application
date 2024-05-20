@@ -1,23 +1,22 @@
+import 'package:application/models/route.dart';
 import 'package:flutter/material.dart';
-import '../../utils/env.dart';
+import '../utils/vars.dart';
 import './line_shorthand.dart';
 
 class Shorthand extends StatelessWidget {
-  final bool isWalk;
-  final int time;
-  final String lineName;
-  final String lineType;
+  final bool transit;
+  final String duration;
+  final Line line;
   const Shorthand({
-    required this.isWalk,
-    required this.time,
-    required this.lineName,
-    required this.lineType,
+    required this.transit,
+    required this.duration,
+    required this.line,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return isWalk
+    return !transit
         ? Row(
             children: [
               Container(
@@ -33,7 +32,7 @@ class Shorthand extends StatelessWidget {
                       size: 15,
                     ),
                     Text(
-                      '$time mins',
+                      duration,
                       style: const TextStyle(fontSize: 13, color: darkGrey),
                     )
                   ]),
@@ -45,7 +44,7 @@ class Shorthand extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               LineShorthand(
-                lineName: lineName,
+                line: line,
               ),
             ],
           );
