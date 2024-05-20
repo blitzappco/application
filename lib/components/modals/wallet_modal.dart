@@ -2,7 +2,9 @@ import 'package:application/components/active_train_ticket.dart';
 import 'package:application/components/line_card.dart';
 import 'package:application/components/profile_button.dart';
 import 'package:application/components/shorthand.dart';
+import 'package:application/pages/buy_train_ticket.dart';
 import 'package:application/utils/env.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -67,13 +69,22 @@ class WalletModal {
                   SizedBox(
                     height: 10,
                   ),
-                  Container(
-                    color: Colors.black,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        "train tickets",
-                        style: TextStyle(color: Colors.white),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const BuyTrainTicket()),
+                      );
+                    },
+                    child: Container(
+                      color: Colors.black,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          "train tickets",
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ),
                     ),
                   ),
