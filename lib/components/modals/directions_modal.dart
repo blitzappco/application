@@ -26,11 +26,11 @@ class DirectionsModal extends StatelessWidget {
         maxChildSize: 0.9,
         minChildSize: 0.19,
         snap: true,
-        snapSizes: [0.19, 0.48, 0.9],
+        snapSizes: const [0.19, 0.48, 0.9],
         controller: _controller,
         builder: (BuildContext context, ScrollController scrollController) {
           return Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Color(0xFFF8F8F8),
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(20),
@@ -48,8 +48,8 @@ class DirectionsModal extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          '37 min • Arrival time: 14:32',
-                          style: TextStyle(
+                          '${route.routes[route.routeIndex].leg.duration.text} • Arrival time: ${route.routes[route.routeIndex].leg.arrivalTime.text}',
+                          style: const TextStyle(
                             fontSize: 20,
                             fontFamily: "UberMoveMedium",
                           ),
@@ -61,7 +61,7 @@ class DirectionsModal extends StatelessWidget {
                           ),
                           child: GestureDetector(
                             onTap: () {
-                              Navigator.pop(context);
+                              route.changePage('preview');
                             },
                             child: const Padding(
                               padding: EdgeInsets.all(3.0),
@@ -76,61 +76,17 @@ class DirectionsModal extends StatelessWidget {
                     ),
                   ),
                 ),
-                SliverToBoxAdapter(
-                  child: const Divider(),
+                const SliverToBoxAdapter(
+                  child: Divider(),
                 ),
                 SliverList(
                   delegate: SliverChildBuilderDelegate(
                     (BuildContext context, int index) {
                       return Column(
                         children: [
-                          Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 20.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  '${route.routes[route.routeIndex].leg.duration.text} • Arrival time: ${route.routes[route.routeIndex].leg.arrivalTime.text}',
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      fontFamily: "UberMoveMedium"),
-                                ),
-                                Container(
-                                  decoration: const BoxDecoration(
-                                      shape: BoxShape.circle, color: lightGrey),
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      route.changeLoading(true);
-                                      route.changePage('preview');
-                                      route.changeLoading(false);
-                                    },
-                                    child: const Padding(
-                                      padding: EdgeInsets.all(3.0),
-                                      child: Icon(
-                                        Icons.close,
-                                        color: darkGrey,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          const SizedBox(height: 5),
-                          const Divider(),
-                          ListView.separated(
-                            itemCount: route.stepCards.length,
-                            separatorBuilder: (context, index) {
-                              return const Divider();
-                            },
-                            physics: const ClampingScrollPhysics(),
-                            shrinkWrap: true,
-                            itemBuilder: (context, index) {
-                              return route.stepCards[index];
-                            },
-                          ),
-                          const Divider(),
+                          route.stepCards[index],
+                          if (index < route.stepCards.length - 1)
+                            const Divider(),
                         ],
                       );
                     },

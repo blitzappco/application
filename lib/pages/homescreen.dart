@@ -61,45 +61,48 @@ class _HomescreenState extends State<Homescreen> {
   Widget build(BuildContext context) {
     return Consumer<RouteProvider>(builder: (context, route, _) {
       return Consumer<AccountProvider>(builder: (context, account, _) {
-        return Scaffold(
-          body: Stack(
-            children: [
-              GoogleMap(
-                mapType: MapType.normal,
-                polylines: route.polylinesSet,
-                zoomControlsEnabled: false,
-                compassEnabled: false,
-                zoomGesturesEnabled: true,
-                myLocationEnabled: true,
-                myLocationButtonEnabled: false,
-                mapToolbarEnabled: false,
-                padding: EdgeInsets.only(bottom: route.mapPadding),
-                initialCameraPosition: const CameraPosition(
-                  target: LatLng(44.4464189, 26.0694408),
-                  zoom: 14.0,
+        return PopScope(
+          canPop: false,
+          child: Scaffold(
+            body: Stack(
+              children: [
+                GoogleMap(
+                  mapType: MapType.normal,
+                  polylines: route.polylinesSet,
+                  zoomControlsEnabled: false,
+                  compassEnabled: false,
+                  zoomGesturesEnabled: true,
+                  myLocationEnabled: true,
+                  myLocationButtonEnabled: false,
+                  mapToolbarEnabled: false,
+                  padding: EdgeInsets.only(bottom: route.mapPadding),
+                  initialCameraPosition: const CameraPosition(
+                    target: LatLng(44.4464189, 26.0694408),
+                    zoom: 14.0,
+                  ),
+                  onMapCreated: (GoogleMapController controller) async {
+                    _controller.complete(controller);
+                    mapController = controller;
+                    await route.initMap();
+                    // setCameraLocation(mapController);
+                  },
                 ),
-                onMapCreated: (GoogleMapController controller) async {
-                  _controller.complete(controller);
-                  mapController = controller;
-                  await route.initMap();
-                  // setCameraLocation(mapController);
-                },
-              ),
-              if (route.loading) const Loading(),
-              if (route.page == 'home' && !route.loading && route.map)
-                MainModal(
-                  mapController: mapController,
-                ),
-              if (route.page == 'preview' && !route.loading && route.map)
-                RoutePreviewModal(
-                  mapController: mapController,
-                ),
-              if (route.page == 'directions' && !route.loading && route.map)
-                DirectionsModal(mapController: mapController),
-              if (route.page == 'test' && !route.loading && route.map)
-                // RouteTest(mapController: mapController),
-                RouteTest(mapController: mapController),
-            ],
+                if (route.loading) const Loading(),
+                if (route.page == 'home' && !route.loading && route.map)
+                  MainModal(
+                    mapController: mapController,
+                  ),
+                if (route.page == 'preview' && !route.loading && route.map)
+                  RoutePreviewModal(
+                    mapController: mapController,
+                  ),
+                if (route.page == 'directions' && !route.loading && route.map)
+                  DirectionsModal(mapController: mapController),
+                if (route.page == 'test' && !route.loading && route.map)
+                  // RouteTest(mapController: mapController),
+                  RouteTest(mapController: mapController),
+              ],
+            ),
           ),
         );
       });
