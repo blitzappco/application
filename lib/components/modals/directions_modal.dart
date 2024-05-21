@@ -114,11 +114,6 @@ class DirectionsModal extends StatelessWidget {
                               return route.stepCards[index];
                             },
                           ),
-                          const SizedBox(height: 10),
-                          const Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 20.0),
-                            child: ActiveTrainTicket(),
-                          )
                         ],
                       ),
                     ),
