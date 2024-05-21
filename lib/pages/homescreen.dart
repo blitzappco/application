@@ -7,6 +7,7 @@ import 'package:application/components/modals/route_preview_modal.dart';
 import 'package:application/components/modals/route_test.dart';
 import 'package:application/maps/geocode.dart';
 import 'package:application/maps/map_controller.dart';
+import 'package:application/pages/indoor_nav.dart';
 import 'package:application/providers/account_provider.dart';
 import 'package:application/providers/route_provider.dart';
 import 'package:application/utils/get_location.dart';
@@ -96,6 +97,7 @@ class _HomescreenState extends State<Homescreen> {
               if (route.page == 'directions' && !route.loading && route.map)
                 DirectionsModal(mapController: mapController),
               if (route.page == 'test' && !route.loading && route.map)
+                // RouteTest(mapController: mapController),
                 RouteTest(mapController: mapController),
             ],
           ),

@@ -5,6 +5,7 @@ import 'package:application/components/nearby_stations.dart';
 import 'package:application/components/place_list.dart';
 import 'package:application/components/static_searchbar.dart';
 import 'package:application/components/step_card_types/step_card.dart';
+import 'package:application/pages/indoor_nav.dart';
 import 'package:application/providers/route_provider.dart';
 import 'package:application/utils/vars.dart';
 import 'package:flutter/cupertino.dart';
@@ -40,17 +41,23 @@ class RouteTest extends StatelessWidget {
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(right: 20.0, bottom: 10),
-                      child: Container(
-                          decoration: BoxDecoration(
-                              color: Colors.black, shape: BoxShape.circle),
-                          child: Padding(
-                            padding: const EdgeInsets.all(15.0),
-                            child: Icon(
-                              Icons.wallet_rounded,
-                              color: Colors.white,
-                              size: 35,
-                            ),
-                          )),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => IndoorNavPage()));
+                        },
+                        child: Container(
+                            decoration: BoxDecoration(
+                                color: Colors.black, shape: BoxShape.circle),
+                            child: Padding(
+                              padding: const EdgeInsets.all(15.0),
+                              child: Icon(
+                                Icons.wallet_rounded,
+                                color: Colors.white,
+                                size: 35,
+                              ),
+                            )),
+                      ),
                     ),
                   ],
                 ),
