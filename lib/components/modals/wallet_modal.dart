@@ -4,6 +4,7 @@ import 'package:application/components/profile_button.dart';
 import 'package:application/components/shorthand.dart';
 
 import 'package:application/pages/train_ticket/buy_train_ticket.dart';
+import 'package:application/utils/animated_text.dart';
 
 import 'package:flutter/cupertino.dart';
 
@@ -30,7 +31,7 @@ class WalletModal {
           padding: const EdgeInsets.all(20.0),
           child: Container(
               color: Colors.transparent,
-              height: MediaQuery.of(context).size.height * 0.6,
+              height: MediaQuery.of(context).size.height * 0.9,
               child: Column(
                 children: [
                   Row(
@@ -45,74 +46,62 @@ class WalletModal {
                     ],
                   ),
                   SizedBox(
-                    height: 10,
+                    height: 20,
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: .0),
-                    // child: Container(
-                    //   decoration: BoxDecoration(
-                    //       color: Colors.blue,
-                    //       borderRadius: BorderRadius.circular(24)),
-                    //   height: 234,
-                    //   width: 400,
-                    // ),
-                    //Active pass on top, inactive pass on the bottom
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => Buypass()),
-                        );
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
-                            border: Border.all(color: darkGrey, width: 2),
-                            borderRadius: BorderRadius.circular(24)),
-                        height: 234,
-                        width: 400,
-                        child: Center(
-                          child: Text("Buy transit pass",
-                              style: TextStyle(
-                                  fontFamily: "UberMoveMedium", fontSize: 25)),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const BuyTrainTicket()),
-                      );
-                    },
                     child: Container(
-                      color: Colors.black,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          "train tickets",
-                          style: TextStyle(color: Colors.white),
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage('assets/images/card.png'),
+                          fit: BoxFit.fill,
                         ),
+                        borderRadius: BorderRadius.circular(25),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 1,
+                            blurRadius: 4,
+                            offset: Offset(0, 3), // changes position of shadow
+                          ),
+                        ],
                       ),
+                      height: 234,
+                      width: 400,
                     ),
+                    //Active pass on top, inactive pass on the bottom
+                    // child: GestureDetector(
+                    //   onTap: () {
+                    //     Navigator.push(
+                    //       context,
+                    //       MaterialPageRoute(builder: (context) => Buypass()),
+                    //     );
+                    //   },
+                    //   child: Container(
+                    //     decoration: BoxDecoration(
+                    //         border: Border.all(color: darkGrey, width: 2),
+                    //         borderRadius: BorderRadius.circular(24)),
+                    //     height: 234,
+                    //     width: 400,
+                    //     child: Center(
+                    //       child: Text("Buy transit pass",
+                    //           style: TextStyle(
+                    //               fontFamily: "UberMoveMedium", fontSize: 25)),
+                    //     ),
+                    //   ),
+                    // ),
                   ),
                   SizedBox(
-                    height: 35,
+                    height: 40,
                   ),
-                  Row(
-                    children: [Text("Active tickets")],
-                  ),
-                  Divider(
-                    color: lightGrey,
+                  Image.asset(
+                    "assets/images/animation.gif",
+                    height: 80,
                   ),
                   SizedBox(
                     height: 15,
                   ),
-                  ActiveTrainTicket(),
+                  AnimatedText()
                 ],
               )),
         );
