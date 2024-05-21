@@ -94,3 +94,5 @@ flutter:
 
   assets:
     - assets/images/logo.png
+    - assets/images/card.png    
+    - assets/images/animation.gif   
