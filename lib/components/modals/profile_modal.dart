@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 class ProfileModal {
   static void show(BuildContext context) {
     showModalBottomSheet(
+      backgroundColor: Color.fromARGB(255, 250, 250, 250),
       isScrollControlled: true,
       context: context,
       shape: const RoundedRectangleBorder(

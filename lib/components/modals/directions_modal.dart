@@ -29,46 +29,60 @@ class DirectionsModal extends StatelessWidget {
         snapSizes: [0.19, 0.48, 0.9],
         controller: _controller,
         builder: (BuildContext context, ScrollController scrollController) {
-          return SingleChildScrollView(
-            physics: ClampingScrollPhysics(),
-            controller: scrollController,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(right: 20.0, bottom: 10),
-                      child: Container(
-                          decoration: BoxDecoration(
-                              color: Colors.black, shape: BoxShape.circle),
-                          child: Padding(
-                            padding: const EdgeInsets.all(15.0),
-                            child: Icon(
-                              Icons.wallet_rounded,
-                              color: Colors.white,
-                              size: 35,
+          return Container(
+            decoration: BoxDecoration(
+              color: Color(0xFFF8F8F8),
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(20),
+                topRight: Radius.circular(20),
+              ),
+            ),
+            child: CustomScrollView(
+              controller: scrollController,
+              slivers: [
+                SliverToBoxAdapter(
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                        left: 20, right: 20, top: 15, bottom: 5),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          '37 min • Arrival time: 14:32',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontFamily: "UberMoveMedium",
+                          ),
+                        ),
+                        Container(
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: lightGrey,
+                          ),
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.pop(context);
+                            },
+                            child: const Padding(
+                              padding: EdgeInsets.all(3.0),
+                              child: Icon(
+                                Icons.close,
+                                color: darkGrey,
+                              ),
                             ),
-                          )),
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 0),
-                  child: Container(
-                    height: MediaQuery.of(context).size.height * 0.9,
-                    decoration: BoxDecoration(
-                      color: Color(0xFFF8F8F8),
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(20),
-                        topRight: Radius.circular(20),
-                      ),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 0, vertical: 15),
-                      child: Column(
+                SliverToBoxAdapter(
+                  child: const Divider(),
+                ),
+                SliverList(
+                  delegate: SliverChildBuilderDelegate(
+                    (BuildContext context, int index) {
+                      return Column(
                         children: [
                           Padding(
                             padding:
@@ -118,8 +132,9 @@ class DirectionsModal extends StatelessWidget {
                           ),
                           const Divider(),
                         ],
-                      ),
-                    ),
+                      );
+                    },
+                    childCount: route.stepCards.length,
                   ),
                 ),
               ],
