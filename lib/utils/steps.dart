@@ -96,8 +96,8 @@ List<StepCard> processSteps(List<route.Step> steps, Place destination) {
             result.add(StepCard(
                 type: 'exit_station',
                 distance: 0,
-                duration: 0,
-                direction: '',
+                duration: step.duration.value,
+                direction: 'next point',
                 transitDetails: step.transitDetails));
           }
         }

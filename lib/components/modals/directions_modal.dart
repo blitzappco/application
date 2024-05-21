@@ -77,7 +77,7 @@ class DirectionsModal extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  '37 min • Arrival time: 14:32',
+                                  '${route.routes[route.routeIndex].leg.duration.text} • Arrival time: ${route.routes[route.routeIndex].leg.arrivalTime.text}',
                                   style: TextStyle(
                                       fontSize: 20,
                                       fontFamily: "UberMoveMedium"),
@@ -87,7 +87,9 @@ class DirectionsModal extends StatelessWidget {
                                       shape: BoxShape.circle, color: lightGrey),
                                   child: GestureDetector(
                                     onTap: () {
-                                      Navigator.pop(context);
+                                      route.changeLoading(true);
+                                      route.changePage('preview');
+                                      route.changeLoading(false);
                                     },
                                     child: const Padding(
                                       padding: EdgeInsets.all(3.0),
@@ -114,6 +116,7 @@ class DirectionsModal extends StatelessWidget {
                               return route.stepCards[index];
                             },
                           ),
+                          const Divider(),
                         ],
                       ),
                     ),

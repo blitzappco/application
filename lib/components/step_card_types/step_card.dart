@@ -66,6 +66,7 @@ class StepCard extends StatelessWidget {
       case 'transit':
         return TransitCard(
           transitDetails: transitDetails,
+          duration: duration,
         );
       default:
         return GoStationCard(

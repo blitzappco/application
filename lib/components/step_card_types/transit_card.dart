@@ -1,5 +1,6 @@
 import 'package:application/components/shorthand.dart';
 import 'package:application/models/route.dart';
+import 'package:application/utils/polyline.dart';
 import 'package:application/utils/vars.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -7,7 +8,10 @@ import 'package:timelines_plus/timelines_plus.dart';
 
 class TransitCard extends StatefulWidget {
   final TransitDetails? transitDetails;
-  const TransitCard({required this.transitDetails, Key? key}) : super(key: key);
+  final int duration;
+  const TransitCard(
+      {required this.transitDetails, required this.duration, Key? key})
+      : super(key: key);
 
   @override
   _TransitCardState createState() => _TransitCardState();
@@ -33,8 +37,9 @@ class _TransitCardState extends State<TransitCard> {
             padding: const EdgeInsets.only(top: 6.0),
             child: Shorthand(
               transit: true,
-              duration: "20 min",
-              line: Line(color: "#ff0000", name: "M1", vehicleType: "SUBWAY"),
+              duration: "",
+              line: widget.transitDetails?.line ??
+                  Line(color: "#ff0000", name: "M1", vehicleType: "SUBWAY"),
             ),
           ),
           SizedBox(width: 10),
@@ -45,12 +50,13 @@ class _TransitCardState extends State<TransitCard> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Take the M1 Train",
+                      "Take the ${widget.transitDetails?.line.name ?? ''}"
+                      " ${widget.transitDetails?.line.vehicleType.toLowerCase()}",
                       style:
                           TextStyle(fontFamily: "UberMoveBold", fontSize: 20),
                     ),
                     Text(
-                      "7 min",
+                      widget.transitDetails?.departureTime.text ?? '',
                       style: TextStyle(
                           fontFamily: "UberMoveBold",
                           fontSize: 20,
@@ -62,7 +68,7 @@ class _TransitCardState extends State<TransitCard> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Towards Preciziei",
+                      "Towards ${widget.transitDetails?.headsign}",
                       style: TextStyle(
                           fontFamily: "UberMoveMedium",
                           fontSize: 16,
@@ -85,7 +91,8 @@ class _TransitCardState extends State<TransitCard> {
                     decoration: BoxDecoration(
                       border: Border(
                         left: BorderSide(
-                          color: Colors.amber,
+                          color: convertHex(
+                              widget.transitDetails?.line.color ?? '#ff0000'),
                           width: 8,
                         ),
                       ),
@@ -99,12 +106,12 @@ class _TransitCardState extends State<TransitCard> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                "Gara de Nord",
+                                widget.transitDetails?.departureStop.name ?? '',
                                 style: TextStyle(
                                     fontSize: 18, fontFamily: "UberMoveBold"),
                               ),
                               Text(
-                                "12:30",
+                                widget.transitDetails?.departureTime.text ?? '',
                                 style: TextStyle(
                                     fontSize: 18,
                                     fontFamily: "UberMoveMedium",
@@ -122,7 +129,7 @@ class _TransitCardState extends State<TransitCard> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
-                                    "Go 5 stops, 14 min",
+                                    "Go ${widget.transitDetails?.numStops} stops, ${widget.duration} minutes",
                                     style: TextStyle(
                                         fontFamily: "UberMoveMedium",
                                         fontSize: 16,
@@ -205,12 +212,12 @@ class _TransitCardState extends State<TransitCard> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                "Eroilor",
+                                widget.transitDetails?.arrivalStop.name ?? '',
                                 style: TextStyle(
                                     fontSize: 18, fontFamily: "UberMoveBold"),
                               ),
                               Text(
-                                "12:44",
+                                widget.transitDetails?.arrivalTime.text ?? '',
                                 style: TextStyle(
                                     fontSize: 18,
                                     fontFamily: "UberMoveMedium",
