@@ -41,9 +41,11 @@ class _RoutePreviewModalState extends State<RoutePreviewModal> {
   Widget build(BuildContext context) {
     return Consumer<RouteProvider>(builder: (context, route, _) {
       return DraggableScrollableSheet(
-          minChildSize: 0.4,
-          initialChildSize: 0.4,
+          initialChildSize: 0.5,
           maxChildSize: 0.9,
+          minChildSize: 0.19,
+          snap: true,
+          snapSizes: [0.19, 0.48, 0.9],
           controller: draggableController,
           builder: (BuildContext context, scrollController) {
             return Container(

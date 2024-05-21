@@ -25,7 +25,7 @@ class _TransitCardState extends State<TransitCard> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -37,7 +37,7 @@ class _TransitCardState extends State<TransitCard> {
               line: Line(color: "#ff0000", name: "M1", vehicleType: "SUBWAY"),
             ),
           ),
-          SizedBox(width: 10),
+          SizedBox(width: 20),
           Expanded(
             child: Column(
               children: [

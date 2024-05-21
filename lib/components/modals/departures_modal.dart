@@ -9,6 +9,7 @@ import 'package:timelines_plus/timelines_plus.dart';
 class DeparturesModal {
   static void show(BuildContext context) {
     showModalBottomSheet(
+      backgroundColor: const Color.fromARGB(255, 244, 244, 244),
       isScrollControlled: true,
       context: context,
       shape: const RoundedRectangleBorder(
@@ -23,7 +24,6 @@ class DeparturesModal {
         return Padding(
           padding: const EdgeInsets.all(15.0),
           child: Container(
-              color: Colors.transparent,
               height: 500,
               child: Column(
                 children: [

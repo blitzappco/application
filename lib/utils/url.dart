@@ -1,5 +1,5 @@
 class AppURL {
-  static const String liveBaseURL = 'https://backend.blitzapp.co';
+  static const String liveBaseURL = 'https://api.blitzapp.co';
   static const String devBaseURL = 'http://localhost:6969';
 
   static const String baseURL = liveBaseURL;
