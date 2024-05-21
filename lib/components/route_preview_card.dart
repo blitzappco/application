@@ -53,6 +53,7 @@ class RoutePreviewCard extends StatelessWidget {
                 const SizedBox(
                   height: 10,
                 ),
+                //Here is the problem
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.55,
                   child: Wrap(
@@ -62,7 +63,7 @@ class RoutePreviewCard extends StatelessWidget {
                     children: [
                       Row(
                         // Remove this line
-                        // mainAxisSize: MainAxisSize.min,
+                        mainAxisSize: MainAxisSize.min,
                         children: processShorthands(route.leg.steps),
                       ),
                     ],

@@ -1,4 +1,5 @@
 import 'package:application/components/active_train_ticket.dart';
+import 'package:application/components/buy_pass.dart';
 import 'package:application/components/profile_button.dart';
 import 'package:application/components/shorthand.dart';
 
@@ -56,16 +57,24 @@ class WalletModal {
                     //   width: 400,
                     // ),
                     //Active pass on top, inactive pass on the bottom
-                    child: Container(
-                      decoration: BoxDecoration(
-                          border: Border.all(color: darkGrey, width: 2),
-                          borderRadius: BorderRadius.circular(24)),
-                      height: 234,
-                      width: 400,
-                      child: Center(
-                        child: Text("Buy transit pass",
-                            style: TextStyle(
-                                fontFamily: "UberMoveMedium", fontSize: 25)),
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Buypass()),
+                        );
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                            border: Border.all(color: darkGrey, width: 2),
+                            borderRadius: BorderRadius.circular(24)),
+                        height: 234,
+                        width: 400,
+                        child: Center(
+                          child: Text("Buy transit pass",
+                              style: TextStyle(
+                                  fontFamily: "UberMoveMedium", fontSize: 25)),
+                        ),
                       ),
                     ),
                   ),

@@ -13,6 +13,7 @@ class SearchModal {
     FocusNode focusNode = FocusNode();
 
     showModalBottomSheet(
+      backgroundColor: Colors.white,
       isScrollControlled: true,
       context: context,
       shape: const RoundedRectangleBorder(
@@ -31,7 +32,6 @@ class SearchModal {
           return Padding(
             padding: const EdgeInsets.all(15.0),
             child: Container(
-              color: Colors.transparent,
               height: MediaQuery.of(context).size.height * 0.9,
               child: Column(
                 children: [
@@ -42,7 +42,7 @@ class SearchModal {
                         "Search",
                         style: TextStyle(
                           fontFamily: "UberMoveBold",
-                          fontSize: 26,
+                          fontSize: 32,
                         ),
                       ),
                       Container(
