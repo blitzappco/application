@@ -8,6 +8,7 @@ import 'package:flutter/widgets.dart';
 class NearbyStationModal {
   static void show(BuildContext context) {
     showModalBottomSheet(
+      backgroundColor: Colors.white,
       isScrollControlled: true,
       context: context,
       shape: const RoundedRectangleBorder(
@@ -22,7 +23,7 @@ class NearbyStationModal {
         return Padding(
           padding: const EdgeInsets.all(15.0),
           child: Container(
-              color: Colors.transparent,
+              color: Colors.white,
               height: 500,
               child: Column(
                 children: [

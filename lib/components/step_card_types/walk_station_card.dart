@@ -9,37 +9,41 @@ class WalkStation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        const Padding(
-          padding: EdgeInsets.only(right: 20),
-          child: Icon(Icons.directions_walk, size: 35),
-        ),
-        Expanded(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    "Walk to Station",
-                    style: TextStyle(fontSize: 18, fontFamily: "UberMoveBold"),
-                  ),
-                  Text(
-                    "$distance m, $duration min",
-                    style: const TextStyle(
-                        fontSize: 14,
-                        fontFamily: "UberMoveMedium",
-                        color: darkGrey),
-                  ),
-                ],
-              ),
-            ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          const Padding(
+            padding: EdgeInsets.only(right: 20),
+            child: Icon(Icons.directions_walk, size: 35),
           ),
-        ),
-      ],
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      "Walk to Station",
+                      style:
+                          TextStyle(fontSize: 18, fontFamily: "UberMoveBold"),
+                    ),
+                    Text(
+                      "$distance m, $duration min",
+                      style: const TextStyle(
+                          fontSize: 14,
+                          fontFamily: "UberMoveMedium",
+                          color: darkGrey),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

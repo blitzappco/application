@@ -14,6 +14,7 @@ class SearchModal {
     FocusNode focusNode = FocusNode();
 
     showModalBottomSheet(
+      backgroundColor: Colors.white,
       isScrollControlled: true,
       context: context,
       shape: const RoundedRectangleBorder(

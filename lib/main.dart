@@ -31,8 +31,11 @@ class MyApp extends StatelessWidget {
               ChangeNotifierProvider(create: (_) => RouteProvider()),
             ],
             child: MaterialApp(
-                theme:
-                    ThemeData(scaffoldBackgroundColor: const Color(0xFFF8F8F8)),
+                theme: ThemeData(
+                    scaffoldBackgroundColor: const Color(0xFFF8F8F8),
+                    bottomSheetTheme: BottomSheetThemeData(
+                      surfaceTintColor: Colors.white,
+                    )),
                 debugShowCheckedModeBanner: false,
                 home: const SplashScreen())));
   }
