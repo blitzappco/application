@@ -84,9 +84,53 @@ class DirectionsModal extends StatelessWidget {
                     (BuildContext context, int index) {
                       return Column(
                         children: [
-                          route.stepCards[index],
-                          if (index < route.stepCards.length - 1)
-                            const Divider(),
+                          Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 20.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  '${route.routes[route.routeIndex].leg.duration.text} • Arrival time: ${route.routes[route.routeIndex].leg.arrivalTime.text}',
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontFamily: "UberMoveMedium"),
+                                ),
+                                Container(
+                                  decoration: const BoxDecoration(
+                                      shape: BoxShape.circle, color: lightGrey),
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      route.changeLoading(true);
+                                      route.changePage('preview');
+                                      route.changeLoading(false);
+                                    },
+                                    child: const Padding(
+                                      padding: EdgeInsets.all(3.0),
+                                      child: Icon(
+                                        Icons.close,
+                                        color: darkGrey,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(height: 5),
+                          const Divider(),
+                          ListView.separated(
+                            itemCount: route.stepCards.length,
+                            separatorBuilder: (context, index) {
+                              return const Divider();
+                            },
+                            physics: const ClampingScrollPhysics(),
+                            shrinkWrap: true,
+                            itemBuilder: (context, index) {
+                              return route.stepCards[index];
+                            },
+                          ),
+                          const Divider(),
                         ],
                       );
                     },

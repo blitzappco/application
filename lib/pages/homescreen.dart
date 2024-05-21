@@ -38,10 +38,10 @@ class _HomescreenState extends State<Homescreen> {
       final from = await fetchPlaceFromAddress("gara de nord");
       route.setFrom(from);
 
-      final to = await fetchPlaceFromAddress("universitatea din bucuresti");
-      route.setTo(to);
+      // final to = await fetchPlaceFromAddress("universitatea din bucuresti");
+      // route.setTo(to);
 
-      route.getRoutes();
+      // route.getRoutes();
     });
   }
 

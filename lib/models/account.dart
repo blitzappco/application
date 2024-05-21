@@ -1,3 +1,5 @@
+import 'package:application/models/place.dart';
+
 class PaymentMethod {
   String? id;
   String? type;
@@ -39,6 +41,7 @@ class Account {
   String? lastName;
   String? stripeCustomerID;
   List<PaymentMethod>? paymentMethods;
+  List<Place>? trips;
 
   Account({
     this.id,
