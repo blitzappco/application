@@ -3,12 +3,16 @@ import 'package:application/providers/route_provider.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:provider/provider.dart';
 
 import './providers/account_provider.dart';
 import './providers/tickets_provider.dart';
 
 void main() {
+  Stripe.publishableKey =
+      'pk_test_51N7GUIA57ELnbsBv1BTv3Ez0xrddttwv7fJAtC5u1ISSCR5yHHxH1gcY4md0u7iygd0k8nUhTDOplFUqbgwtP83t00vcnZRno7';
+  Stripe.merchantIdentifier = 'merchant.blitzapp.co';
   runApp(const MyApp());
 }
 
