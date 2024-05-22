@@ -146,7 +146,10 @@ class DirectionsModal extends StatelessWidget {
                 SliverList(
                   delegate: SliverChildBuilderDelegate(
                     (BuildContext context, int index) {
-                      return route.stepCards[index];
+                      return Column(children: [
+                        route.stepCards[index],
+                        if (index < route.stepCards.length - 1) const Divider(),
+                      ]);
                     },
                     childCount: route.stepCards.length,
                   ),

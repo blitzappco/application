@@ -114,6 +114,8 @@ class RouteProvider with ChangeNotifier {
 
     polylinesSet = Set<Polyline>.of(polylines);
 
+    routeIndex = 0;
+
     notifyListeners();
   }
 

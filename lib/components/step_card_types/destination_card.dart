@@ -1,4 +1,5 @@
 import 'package:application/models/place.dart';
+import 'package:application/utils/shorten.dart';
 import 'package:application/utils/vars.dart';
 import 'package:flutter/material.dart';
 
@@ -42,7 +43,7 @@ class DestinationCard extends StatelessWidget {
                               fontSize: 18, fontFamily: "UberMoveBold"),
                         ),
                         Text(
-                          destination?.secondaryText ?? '',
+                          shorten(destination?.secondaryText ?? '', 35),
                           style: const TextStyle(
                               fontSize: 14,
                               fontFamily: "UberMoveMedium",
