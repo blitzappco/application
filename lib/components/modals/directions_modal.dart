@@ -42,33 +42,96 @@ class DirectionsModal extends StatelessWidget {
               controller: scrollController,
               slivers: [
                 SliverToBoxAdapter(
+                  // child: Padding(
+                  //   padding: const EdgeInsets.only(
+                  //       left: 20, right: 20, top: 15, bottom: 5),
+                  //   child: Row(
+                  //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //     children: [
+                  //       Text(
+                  //         '${route.routes[route.routeIndex].leg.duration.text} • Arrival time: ${route.routes[route.routeIndex].leg.arrivalTime.text}',
+                  //         style: const TextStyle(
+                  //           fontSize: 20,
+                  //           fontFamily: "UberMoveMedium",
+                  //         ),
+                  //       ),
+                  //       Container(
+                  //         decoration: const BoxDecoration(
+                  //           shape: BoxShape.circle,
+                  //           color: lightGrey,
+                  //         ),
+                  //         child: GestureDetector(
+                  //           onTap: () {
+                  //             route.changePage('preview');
+                  //           },
+                  //           child: const Padding(
+                  //             padding: EdgeInsets.all(3.0),
+                  //             child: Icon(
+                  //               Icons.close,
+                  //               color: darkGrey,
+                  //             ),
+                  //           ),
+                  //         ),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
                   child: Padding(
                     padding: const EdgeInsets.only(
-                        left: 20, right: 20, top: 15, bottom: 5),
+                        left: 20, right: 20, top: 13, bottom: 5),
                     child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          '${route.routes[route.routeIndex].leg.duration.text} • Arrival time: ${route.routes[route.routeIndex].leg.arrivalTime.text}',
-                          style: const TextStyle(
-                            fontSize: 20,
-                            fontFamily: "UberMoveMedium",
+                        GestureDetector(
+                          onTap: () {
+                            route.changePage("preview");
+                          },
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                '${route.routes[route.routeIndex].leg.duration.text} ',
+                                style: TextStyle(
+                                    fontSize: 24, fontFamily: "UberMoveBold"),
+                              ),
+                              Text(
+                                'Arrival time: ${route.routes[route.routeIndex].leg.arrivalTime.text}',
+                                style: TextStyle(
+                                    fontSize: 16, fontFamily: "UberMoveMedium"),
+                              ),
+                            ],
                           ),
                         ),
                         Container(
-                          decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: lightGrey,
-                          ),
+                          decoration: BoxDecoration(
+                              color: Color.fromARGB(255, 102, 91, 252),
+                              borderRadius:
+                                  BorderRadiusDirectional.circular(30)),
                           child: GestureDetector(
                             onTap: () {
-                              route.changePage('preview');
+                              WalletModal.show(context);
                             },
                             child: const Padding(
-                              padding: EdgeInsets.all(3.0),
-                              child: Icon(
-                                Icons.close,
-                                color: darkGrey,
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 10, horizontal: 15),
+                              child: Row(
+                                children: [
+                                  Icon(
+                                    Icons.confirmation_num_rounded,
+                                    color: Colors.white,
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  Text(
+                                    "Wallet",
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        fontFamily: "UberMoveMedium",
+                                        color: Colors.white),
+                                  )
+                                ],
                               ),
                             ),
                           ),
@@ -83,84 +146,7 @@ class DirectionsModal extends StatelessWidget {
                 SliverList(
                   delegate: SliverChildBuilderDelegate(
                     (BuildContext context, int index) {
-                      return Column(
-                        children: [
-                          Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 20.0),
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      '${route.routes[route.routeIndex].leg.duration.text} ',
-                                      style: TextStyle(
-                                          fontSize: 24,
-                                          fontFamily: "UberMoveBold"),
-                                    ),
-                                    Text(
-                                      'Arrival time: ${route.routes[route.routeIndex].leg.arrivalTime.text}',
-                                      style: TextStyle(
-                                          fontSize: 16,
-                                          fontFamily: "UberMoveMedium"),
-                                    ),
-                                  ],
-                                ),
-                                Container(
-                                  decoration: BoxDecoration(
-                                      color: Color.fromARGB(255, 102, 91, 252),
-                                      borderRadius:
-                                          BorderRadiusDirectional.circular(30)),
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      WalletModal.show(context);
-                                    },
-                                    child: const Padding(
-                                      padding: EdgeInsets.symmetric(
-                                          vertical: 10, horizontal: 15),
-                                      child: Row(
-                                        children: [
-                                          Icon(
-                                            Icons.confirmation_num_rounded,
-                                            color: Colors.white,
-                                          ),
-                                          SizedBox(
-                                            width: 10,
-                                          ),
-                                          Text(
-                                            "Wallet",
-                                            style: TextStyle(
-                                                fontSize: 16,
-                                                fontFamily: "UberMoveMedium",
-                                                color: Colors.white),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          const SizedBox(height: 5),
-                          const Divider(),
-                          ListView.separated(
-                            itemCount: route.stepCards.length,
-                            separatorBuilder: (context, index) {
-                              return const Divider();
-                            },
-                            physics: const ClampingScrollPhysics(),
-                            shrinkWrap: true,
-                            itemBuilder: (context, index) {
-                              return route.stepCards[index];
-                            },
-                          ),
-                          const Divider(),
-                        ],
-                      );
+                      return route.stepCards[index];
                     },
                     childCount: route.stepCards.length,
                   ),

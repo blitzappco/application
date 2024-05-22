@@ -23,7 +23,7 @@ class PastTransactionCard extends StatelessWidget {
                 ),
               ),
               Text(
-                "RON 5.99",
+                "RON 8.00",
                 style: TextStyle(
                   fontFamily: "UberMoveMedium",
                   fontSize: 19,
