@@ -26,7 +26,7 @@ class PlaceList extends StatelessWidget {
     return Consumer<AccountProvider>(builder: (context, account, _) {
       return Consumer<RouteProvider>(builder: (context, route, _) {
         return SizedBox(
-          height: 410,
+          height: 185,
           child: MediaQuery.removePadding(
             context: context,
             removeTop: true,

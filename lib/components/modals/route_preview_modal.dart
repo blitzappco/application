@@ -71,7 +71,7 @@ class _RoutePreviewModalState extends State<RoutePreviewModal> {
                               "Routes",
                               style: TextStyle(
                                 fontFamily: "UberMoveBold",
-                                fontSize: 26,
+                                fontSize: 28,
                               ),
                             ),
                             Container(

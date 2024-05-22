@@ -13,7 +13,10 @@ List<Widget> processShorthands(List<r.Step> steps) {
       transit: step.travelMode == "TRANSIT",
       line: step.transitDetails?.line ?? Line.empty(),
     ));
-    result.add(const SizedBox(width: 10));
+    // Add an Icon between each Shorthand except for the last one
+    if (i < steps.length - 1) {
+      result.add(Icon(Icons.arrow_right_rounded));
+    }
   }
   return result;
 }

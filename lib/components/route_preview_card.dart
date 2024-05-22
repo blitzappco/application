@@ -55,18 +55,12 @@ class RoutePreviewCard extends StatelessWidget {
                 ),
                 //Here is the problem
                 SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.55,
+                  width: MediaQuery.of(context).size.width * 0.6,
                   child: Wrap(
                     spacing:
                         0.0, // Adjust the spacing between elements as needed
-                    runSpacing: 5.0, // Adjust the run spacing as needed
-                    children: [
-                      Row(
-                        // Remove this line
-                        mainAxisSize: MainAxisSize.min,
-                        children: processShorthands(route.leg.steps),
-                      ),
-                    ],
+                    runSpacing: 8.0, // Adjust the run spacing as needed
+                    children: processShorthands(route.leg.steps),
                   ),
                 )
               ],
