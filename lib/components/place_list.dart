@@ -46,7 +46,6 @@ class PlaceList extends StatelessWidget {
 
                     callback();
 
-                    await route.changeRouteIndex(0);
                     await route.changePage("preview");
                     await route.getRoutes();
                   },
