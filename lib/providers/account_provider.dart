@@ -20,8 +20,11 @@ class AccountProvider with ChangeNotifier {
 
   Account account = Account();
 
+  String clientSecret = '';
+  String paymentIntent = '';
+  bool setupConfirmed = true;
+
   loadAccount() async {
-    print('load account');
     token = await getToken();
     account = await getAccount();
     notifyListeners();
@@ -183,7 +186,6 @@ class AccountProvider with ChangeNotifier {
 
     final json = jsonDecode(utf8.decode(response.bodyBytes));
     if (response.statusCode == 200) {
-      print(json);
       List<PaymentMethod> pmList = [];
       for (int i = 0; i < json.length; i++) {
         pmList.add(PaymentMethod.fromJSON(json[i]));
@@ -193,6 +195,75 @@ class AccountProvider with ChangeNotifier {
       notifyListeners();
     } else {
       errorMessage = json['message'];
+    }
+  }
+
+  createSetupIntent() async {
+    loading = true;
+    notifyListeners();
+
+    final response = await http.post(
+        Uri.parse('${AppURL.baseURL}/accounts/payments/setup-intent'),
+        headers: authHeader(token));
+
+    loading = false;
+    notifyListeners();
+
+    final json = jsonDecode(utf8.decode(response.bodyBytes));
+    if (response.statusCode == 200) {
+      clientSecret = json['clientSecret'];
+      setupConfirmed = false;
+      notifyListeners();
+    } else {
+      errorMessage = json['message'];
+      notifyListeners();
+    }
+  }
+
+  confirmSetupIntent(String pm) async {
+    loading = true;
+    notifyListeners();
+
+    final response = await http.post(
+        Uri.parse('${AppURL.baseURL}/accounts/payments/setup-confirm'),
+        headers: authHeader(token),
+        body: jsonEncode(<String, String>{
+          "paymentMethod": pm,
+        }));
+
+    loading = false;
+    notifyListeners();
+
+    final json = jsonDecode(utf8.decode(response.bodyBytes));
+    if (response.statusCode == 200) {
+      token = json['token'];
+      setupConfirmed = true;
+      setToken(token);
+      notifyListeners();
+    } else {
+      errorMessage = json['message'];
+    }
+  }
+
+  createPaymentIntent() async {
+    loading = true;
+    notifyListeners();
+
+    final response = await http.post(
+        Uri.parse('${AppURL.baseURL}/accounts/payments/payment-intent'),
+        headers: authHeader(token));
+
+    loading = false;
+    notifyListeners();
+
+    final json = jsonDecode(utf8.decode(response.bodyBytes));
+    if (response.statusCode == 200) {
+      clientSecret = json['clientSecret'];
+      paymentIntent = json['paymentIntent'];
+      notifyListeners();
+    } else {
+      errorMessage = json['message'];
+      notifyListeners();
     }
   }
 

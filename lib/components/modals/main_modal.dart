@@ -1,5 +1,6 @@
 import 'package:application/components/active_train_ticket.dart';
 import 'package:application/components/modals/departures_modal.dart';
+import 'package:application/components/modals/payment_methods_modal.dart';
 import 'package:application/components/modals/profile_modal.dart';
 import 'package:application/components/modals/wallet_modal.dart';
 import 'package:application/components/nearby_stations.dart';
@@ -81,7 +82,7 @@ class MainModal extends StatelessWidget {
                                     ),
                                     GestureDetector(
                                       onTap: () {
-                                        ProfileModal.show(context);
+                                        PaymentMethodsModal.show(context);
                                       },
                                       child: Container(
                                         decoration: BoxDecoration(

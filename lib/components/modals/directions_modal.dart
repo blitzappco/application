@@ -27,11 +27,11 @@ class DirectionsModal extends StatelessWidget {
         maxChildSize: 0.9,
         minChildSize: 0.19,
         snap: true,
-        snapSizes: [0.19, 0.48, 0.9],
+        snapSizes: const [0.19, 0.48, 0.9],
         controller: _controller,
         builder: (BuildContext context, ScrollController scrollController) {
           return Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Color(0xFFF8F8F8),
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(20),
@@ -49,8 +49,8 @@ class DirectionsModal extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          '37 min • Arrival time: 14:32',
-                          style: TextStyle(
+                          '${route.routes[route.routeIndex].leg.duration.text} • Arrival time: ${route.routes[route.routeIndex].leg.arrivalTime.text}',
+                          style: const TextStyle(
                             fontSize: 20,
                             fontFamily: "UberMoveMedium",
                           ),
@@ -62,7 +62,7 @@ class DirectionsModal extends StatelessWidget {
                           ),
                           child: GestureDetector(
                             onTap: () {
-                              Navigator.pop(context);
+                              route.changePage('preview');
                             },
                             child: const Padding(
                               padding: EdgeInsets.all(3.0),
@@ -77,8 +77,8 @@ class DirectionsModal extends StatelessWidget {
                     ),
                   ),
                 ),
-                SliverToBoxAdapter(
-                  child: const Divider(),
+                const SliverToBoxAdapter(
+                  child: Divider(),
                 ),
                 SliverList(
                   delegate: SliverChildBuilderDelegate(
