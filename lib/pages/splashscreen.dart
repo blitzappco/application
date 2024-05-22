@@ -38,15 +38,14 @@ class _SplashScreenState extends State<SplashScreen> {
 
         await account.loadAccount();
 
-        await account.getTrips();
-        await account.getPaymentMethods();
-
         if (account.token == '' || account.account.id == '') {
           Timer(
               const Duration(milliseconds: 100),
               () => Navigator.push(context,
                   MaterialPageRoute(builder: (context) => const Onboarding())));
         } else {
+          await account.getTrips();
+          await account.getPaymentMethods();
           Timer(const Duration(milliseconds: 100), () {
             Navigator.push(
               context,
