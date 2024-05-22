@@ -5,15 +5,15 @@ import 'package:application/utils/vars.dart';
 import 'package:flutter/material.dart';
 
 class StationCard extends StatelessWidget {
-  final String stationName;
-  final String stationDistance;
-  final String Shorthand1;
-  final String Shorthand2;
+  final String name;
+  final String distance;
+  final Line line1;
+  final Line line2;
   const StationCard(
-      {required this.stationName,
-      required this.stationDistance,
-      required this.Shorthand1,
-      required this.Shorthand2,
+      {required this.name,
+      required this.distance,
+      required this.line1,
+      required this.line2,
       super.key});
 
   @override
@@ -38,12 +38,12 @@ class StationCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        stationName,
+                        name,
                         style:
                             TextStyle(fontSize: 16, fontFamily: 'UberMoveBold'),
                       ),
                       Text(
-                        stationDistance,
+                        distance,
                         style: TextStyle(
                             fontSize: 14,
                             fontFamily: 'UberMoveMedium',
@@ -56,23 +56,11 @@ class StationCard extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      Shorthand(
-                          transit: true,
-                          duration: "20 min",
-                          line: Line(
-                              color: "#ff0000",
-                              name: "24",
-                              vehicleType: "BUS")),
+                      Shorthand(transit: true, duration: "20 min", line: line1),
                       SizedBox(
                         width: 3,
                       ),
-                      Shorthand(
-                          transit: true,
-                          duration: "20 min",
-                          line: Line(
-                              color: "#ff0000",
-                              name: "24",
-                              vehicleType: "BUS")),
+                      Shorthand(transit: true, duration: "20 min", line: line2),
                     ],
                   ),
                 ],

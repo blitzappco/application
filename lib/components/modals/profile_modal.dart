@@ -35,7 +35,12 @@ class ProfileModal {
                         children: [
                           Container(
                             decoration: BoxDecoration(
-                                shape: BoxShape.circle, color: Colors.blue),
+                                image: DecorationImage(
+                                  image: AssetImage('assets/images/moaca.png'),
+                                  fit: BoxFit.fill,
+                                ),
+                                shape: BoxShape.circle,
+                                color: Colors.blue),
                             width: 42,
                             height: 42,
                           ),
@@ -46,14 +51,14 @@ class ProfileModal {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "Stanciu Gabriel",
+                                "Popescu Andrei",
                                 style: TextStyle(
                                   fontFamily: "UberMoveBold",
                                   fontSize: 22,
                                 ),
                               ),
                               Text(
-                                "+40735443699",
+                                "+40712345678",
                                 style: TextStyle(
                                   fontFamily: "UberMoveMedium",
                                   color: darkGrey,
