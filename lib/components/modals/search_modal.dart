@@ -131,33 +131,33 @@ class SearchModal {
                       height: 20,
                     ),
                     if (controller.text.isEmpty)
-                      Container(
-                        height: 80,
-                        child: ListView(
-                          scrollDirection: Axis.horizontal,
-                          children: [
-                            SuggestionsIcon(),
-                            SuggestionsIcon(),
-                            SuggestionsIcon(),
-                            SuggestionsIcon(),
-                            SuggestionsIcon(),
-                            SuggestionsIcon(),
-                            SuggestionsIcon(),
-                            SuggestionsIcon(),
-                            SuggestionsIcon(),
-                          ],
+                      // Container(
+                      //   height: 80,
+                      //   child: ListView(
+                      //     scrollDirection: Axis.horizontal,
+                      //     children: [
+                      //       SuggestionsIcon(),
+                      //       SuggestionsIcon(),
+                      //       SuggestionsIcon(),
+                      //       SuggestionsIcon(),
+                      //       SuggestionsIcon(),
+                      //       SuggestionsIcon(),
+                      //       SuggestionsIcon(),
+                      //       SuggestionsIcon(),
+                      //       SuggestionsIcon(),
+                      //     ],
+                      //   ),
+                      // ),
+
+                      if (controller.text.isEmpty)
+                        PlaceList(
+                          places: account.account.trips ?? [],
+                          set: route.setTo,
+                          trip: (Place p) async {},
+                          callback: () {
+                            Navigator.pop(context);
+                          },
                         ),
-                      ),
-                    const SizedBox(height: 20),
-                    if (controller.text.isEmpty)
-                      PlaceList(
-                        places: account.account.trips ?? [],
-                        set: route.setTo,
-                        trip: (Place p) async {},
-                        callback: () {
-                          Navigator.pop(context);
-                        },
-                      ),
                     if (controller.text.isNotEmpty)
                       PlaceList(
                           places: route.predictions,

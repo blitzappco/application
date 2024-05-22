@@ -1,6 +1,7 @@
 import 'package:application/components/active_train_ticket.dart';
 import 'package:application/components/modals/departures_modal.dart';
 import 'package:application/components/modals/profile_modal.dart';
+import 'package:application/components/modals/wallet_modal.dart';
 import 'package:application/components/nearby_stations.dart';
 import 'package:application/components/place_list.dart';
 import 'package:application/components/static_searchbar.dart';
@@ -84,9 +85,80 @@ class DirectionsModal extends StatelessWidget {
                     (BuildContext context, int index) {
                       return Column(
                         children: [
-                          route.stepCards[index],
-                          if (index < route.stepCards.length - 1)
-                            const Divider(),
+                          Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 20.0),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      '${route.routes[route.routeIndex].leg.duration.text} ',
+                                      style: TextStyle(
+                                          fontSize: 24,
+                                          fontFamily: "UberMoveBold"),
+                                    ),
+                                    Text(
+                                      'Arrival time: ${route.routes[route.routeIndex].leg.arrivalTime.text}',
+                                      style: TextStyle(
+                                          fontSize: 16,
+                                          fontFamily: "UberMoveMedium"),
+                                    ),
+                                  ],
+                                ),
+                                Container(
+                                  decoration: BoxDecoration(
+                                      color: Color.fromARGB(255, 102, 91, 252),
+                                      borderRadius:
+                                          BorderRadiusDirectional.circular(30)),
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      WalletModal.show(context);
+                                    },
+                                    child: const Padding(
+                                      padding: EdgeInsets.symmetric(
+                                          vertical: 10, horizontal: 15),
+                                      child: Row(
+                                        children: [
+                                          Icon(
+                                            Icons.confirmation_num_rounded,
+                                            color: Colors.white,
+                                          ),
+                                          SizedBox(
+                                            width: 10,
+                                          ),
+                                          Text(
+                                            "Wallet",
+                                            style: TextStyle(
+                                                fontSize: 16,
+                                                fontFamily: "UberMoveMedium",
+                                                color: Colors.white),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(height: 5),
+                          const Divider(),
+                          ListView.separated(
+                            itemCount: route.stepCards.length,
+                            separatorBuilder: (context, index) {
+                              return const Divider();
+                            },
+                            physics: const ClampingScrollPhysics(),
+                            shrinkWrap: true,
+                            itemBuilder: (context, index) {
+                              return route.stepCards[index];
+                            },
+                          ),
+                          const Divider(),
                         ],
                       );
                     },

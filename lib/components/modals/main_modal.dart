@@ -1,3 +1,4 @@
+import 'package:application/components/active_train_ticket.dart';
 import 'package:application/components/modals/departures_modal.dart';
 import 'package:application/components/modals/payment_methods_modal.dart';
 import 'package:application/components/modals/profile_modal.dart';
@@ -85,6 +86,11 @@ class MainModal extends StatelessWidget {
                                       },
                                       child: Container(
                                         decoration: BoxDecoration(
+                                            image: DecorationImage(
+                                              image: AssetImage(
+                                                  'assets/images/moaca.png'),
+                                              fit: BoxFit.fill,
+                                            ),
                                             shape: BoxShape.circle,
                                             color: Colors.blue),
                                         width: 37,
@@ -100,7 +106,18 @@ class MainModal extends StatelessWidget {
                             ),
                             StaticSearchbar(),
                             SizedBox(
+                              height: 35,
+                            ),
+
+                            ActiveTrainTicket(),
+                            SizedBox(
                               height: 15,
+                            ),
+                            Divider(
+                              color: lightGrey,
+                            ),
+                            SizedBox(
+                              height: 20,
                             ),
                             // Nearby stations
                             Row(

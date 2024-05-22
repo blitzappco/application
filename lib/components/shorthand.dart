@@ -17,30 +17,31 @@ class Shorthand extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return !transit
-        ? Row(
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                    color: lightGrey, borderRadius: BorderRadius.circular(20)),
-                child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 3, vertical: 3),
-                  child: Row(children: [
-                    const Icon(
-                      Icons.directions_walk_rounded,
-                      color: darkGrey,
-                      size: 15,
-                    ),
-                    Text(
-                      duration,
-                      style: const TextStyle(fontSize: 13, color: darkGrey),
-                    )
-                  ]),
-                ),
+        ? Container(
+            decoration: BoxDecoration(
+                color: lightGrey, borderRadius: BorderRadius.circular(20)),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+              child: Row(
+                mainAxisSize:
+                    MainAxisSize.min, // Ensure it takes only necessary space
+                children: [
+                  const Icon(
+                    Icons.directions_walk_rounded,
+                    color: darkGrey,
+                    size: 15,
+                  ),
+                  Text(
+                    duration,
+                    style: const TextStyle(fontSize: 13, color: darkGrey),
+                  ),
+                ],
               ),
-            ],
+            ),
           )
         : Row(
+            mainAxisSize:
+                MainAxisSize.min, // Ensure it takes only necessary space
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               LineShorthand(
