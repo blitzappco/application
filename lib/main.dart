@@ -1,4 +1,5 @@
 import 'package:application/pages/splashscreen.dart';
+import 'package:application/pages/temp_splashscreen.dart';
 import 'package:application/providers/route_provider.dart';
 
 import 'package:flutter/material.dart';
