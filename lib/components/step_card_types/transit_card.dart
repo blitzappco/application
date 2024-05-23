@@ -3,6 +3,7 @@ import 'package:application/models/route.dart';
 import 'package:application/utils/normalize.dart';
 import 'package:application/utils/polyline.dart';
 import 'package:application/utils/vars.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:timelines_plus/timelines_plus.dart';
@@ -29,6 +30,8 @@ class _TransitCardState extends State<TransitCard> {
 
   @override
   Widget build(BuildContext context) {
+    int numStops = widget.transitDetails?.numStops ?? 0;
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: Row(
@@ -46,6 +49,7 @@ class _TransitCardState extends State<TransitCard> {
           SizedBox(width: 20),
           Expanded(
             child: Column(
+              mainAxisSize: MainAxisSize.min,
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -67,14 +71,19 @@ class _TransitCardState extends State<TransitCard> {
                   ],
                 ),
                 Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      "Towards ${widget.transitDetails?.headsign}",
-                      style: TextStyle(
-                          fontFamily: "UberMoveMedium",
-                          fontSize: 16,
-                          color: darkGrey),
+                    Expanded(
+                      child: Wrap(children: [
+                        Text(
+                          "Towards ${widget.transitDetails?.headsign}",
+                          style: TextStyle(
+                              fontFamily: "UberMoveMedium",
+                              fontSize: 16,
+                              color: darkGrey),
+                        ),
+                      ]),
                     ),
                     Text(
                       "On Time",
@@ -133,7 +142,9 @@ class _TransitCardState extends State<TransitCard> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
-                                    "Go ${widget.transitDetails?.numStops} stops, ${normalizeDuration(widget.duration)}",
+                                    numStops != 1
+                                        ? "Go ${numStops} stops, ${normalizeDuration(widget.duration)} minutes"
+                                        : "Go 1 stop, ${normalizeDuration(widget.duration)} minutes",
                                     style: TextStyle(
                                         fontFamily: "UberMoveMedium",
                                         fontSize: 16,
@@ -150,64 +161,58 @@ class _TransitCardState extends State<TransitCard> {
                             ),
                           ),
                           if (showStations)
-                            Container(
-                              height: 140,
-                              child: FixedTimeline.tileBuilder(
-                                theme: TimelineThemeData(
-                                  nodePosition: 0,
-                                  indicatorTheme: IndicatorThemeData(
-                                      size: 20, color: Colors.black),
-                                  connectorTheme:
-                                      ConnectorThemeData(thickness: 2),
-                                ),
-                                builder: TimelineTileBuilder.connected(
-                                  connectionDirection:
-                                      ConnectionDirection.before,
-                                  contentsAlign: ContentsAlign.basic,
-                                  indicatorBuilder: (context, index) {
-                                    return OutlinedDotIndicator(
-                                      borderWidth: 4,
-                                      color: Colors.amber,
-                                    );
-                                  },
-                                  connectorBuilder: (context, index, type) {
-                                    return SolidLineConnector(
-                                      color: Colors.amber,
-                                      thickness: 4,
-                                    );
-                                  },
-                                  contentsBuilder: (context, index) => Padding(
-                                    padding: const EdgeInsets.only(left: 8.0),
-                                    child: Row(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              "Station ${index + 1}",
-                                              style: TextStyle(
-                                                  fontSize: 18,
-                                                  fontFamily: "UberMoveBold"),
-                                            ),
-                                          ],
-                                        ),
-                                        Text(
-                                          "12:${30 + index + 1}",
-                                          style: TextStyle(
-                                              fontSize: 18,
-                                              fontFamily: "UberMoveMedium",
-                                              color: darkGrey),
-                                        ),
-                                      ],
-                                    ),
+                            FixedTimeline.tileBuilder(
+                              theme: TimelineThemeData(
+                                nodePosition: 0,
+                                indicatorTheme: IndicatorThemeData(
+                                    size: 20, color: Colors.black),
+                                connectorTheme:
+                                    ConnectorThemeData(thickness: 2),
+                              ),
+                              builder: TimelineTileBuilder.connected(
+                                connectionDirection: ConnectionDirection.before,
+                                contentsAlign: ContentsAlign.basic,
+                                indicatorBuilder: (context, index) {
+                                  return OutlinedDotIndicator(
+                                    borderWidth: 4,
+                                    color: convertHex(
+                                        widget.transitDetails?.line.color ??
+                                            '#ff0000'),
+                                  );
+                                },
+                                connectorBuilder: (context, index, type) {
+                                  return SolidLineConnector(
+                                    color: convertHex(
+                                        widget.transitDetails?.line.color ??
+                                            '#ff0000'),
+                                    thickness: 4,
+                                  );
+                                },
+                                contentsBuilder: (context, index) => Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 8.0, top: 5, bottom: 5),
+                                  child: Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            "Station ${index + 1}",
+                                            style: TextStyle(
+                                                fontSize: 18,
+                                                fontFamily: "UberMoveMedium"),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
                                   ),
-                                  itemCount: 5,
                                 ),
+                                itemCount: numStops - 1,
                               ),
                             ),
                           SizedBox(height: 10),
