@@ -101,6 +101,25 @@ class _HomescreenState extends State<Homescreen> {
                 if (route.page == 'test' && !route.loading && route.map)
                   // RouteTest(mapController: mapController),
                   RouteTest(mapController: mapController),
+                if (route.page == 'directions' && !route.loading && route.map)
+                  Positioned(
+                      top: 60,
+                      left: 20,
+                      child: GestureDetector(
+                        onTap: () {
+                          route.changePage('preview');
+                        },
+                        child: Container(
+                            decoration: BoxDecoration(
+                                color: Colors.white, shape: BoxShape.circle),
+                            child: Padding(
+                              padding: const EdgeInsets.all(12.0),
+                              child: Icon(
+                                Icons.arrow_back_ios_new_rounded,
+                                size: 20,
+                              ),
+                            )),
+                      ))
               ],
             ),
           ),
