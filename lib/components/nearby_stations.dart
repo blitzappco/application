@@ -17,7 +17,7 @@ class NearbyStations extends StatelessWidget {
         //       distance: '100 meters',
         //       name: 'Piata Operei',
         //       line1:
-        //           Line(color: '#008d36', name: '85', vehicleType: "TROLLEYBUS"),
+        //           Line(color: '#008d36', name: '85', vehicleType: "TROLLEY"),
         //       line2: Line(color: '#1d71b8', name: '178', vehicleType: "BUS"),
         //     );
         //   },
@@ -28,8 +28,7 @@ class NearbyStations extends StatelessWidget {
             StationCard(
               distance: '57 meters',
               name: 'Universitate',
-              line1:
-                  Line(color: '#008d36', name: '85', vehicleType: "TROLLEYBUS"),
+              line1: Line(color: '#008d36', name: '85', vehicleType: "TROLLEY"),
               line2: Line(color: '#1d71b8', name: '178', vehicleType: "BUS"),
             ),
             StationCard(
@@ -41,8 +40,7 @@ class NearbyStations extends StatelessWidget {
             StationCard(
               distance: '250 meters',
               name: 'Piata 21 Decembrie 1969',
-              line1:
-                  Line(color: '#008d36', name: '85', vehicleType: "TROLLEYBUS"),
+              line1: Line(color: '#008d36', name: '85', vehicleType: "TROLLEY"),
               line2: Line(color: '#1d71b8', name: '100', vehicleType: "BUS"),
             ),
           ],

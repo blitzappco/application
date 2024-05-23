@@ -24,7 +24,7 @@ class PlaceCard extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: Colors.amber,
+              color: mapPlaceColors[type] ?? Colors.black,
             ),
             child: Padding(
               padding: const EdgeInsets.all(7),

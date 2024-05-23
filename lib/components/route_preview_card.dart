@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:application/utils/normalize.dart';
 import 'package:application/utils/shorthand.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -28,14 +29,16 @@ class RoutePreviewCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  route.leg.duration.text,
+                  normalizeDuration(route.leg.duration.value),
                   style:
                       const TextStyle(fontFamily: 'UberMoveBold', fontSize: 23),
                 ),
                 Row(
                   children: [
                     Text(
-                      'Leaves at ${route.leg.departureTime.text}',
+                      route.leg.steps[0].travelMode == "TRANSIT"
+                          ? 'Leaves at ${normalizeTime(route.leg.departureTime.text)}'
+                          : 'Leave now',
                       style: const TextStyle(
                           fontFamily: 'UberMove',
                           fontSize: 14,

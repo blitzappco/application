@@ -1,3 +1,4 @@
+import 'package:application/utils/normalize.dart';
 import 'package:application/utils/vars.dart';
 import 'package:flutter/material.dart';
 
@@ -31,7 +32,7 @@ class WalkDestination extends StatelessWidget {
                           TextStyle(fontSize: 18, fontFamily: "UberMoveBold"),
                     ),
                     Text(
-                      "$distance m, $duration min",
+                      "${normalizeDistance(distance)}, ${normalizeDuration(duration)}",
                       style: const TextStyle(
                           fontSize: 14,
                           fontFamily: "UberMoveMedium",
