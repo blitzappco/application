@@ -31,7 +31,7 @@ class WalletModal {
           padding: const EdgeInsets.all(20.0),
           child: Container(
               color: Colors.transparent,
-              height: MediaQuery.of(context).size.height * 0.9,
+              height: MediaQuery.of(context).size.height * 0.89,
               child: Column(
                 children: [
                   Row(

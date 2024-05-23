@@ -10,7 +10,7 @@ class DestinationCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      padding: const EdgeInsets.only(top: 10, left: 20, right: 20, bottom: 30),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
