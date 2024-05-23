@@ -80,10 +80,7 @@ class _RoutePreviewModalState extends State<RoutePreviewModal> {
                               child: GestureDetector(
                                 onTap: () async {
                                   await route.unloadPolylines();
-                                  Timer(const Duration(milliseconds: 350),
-                                      () async {
-                                    await route.changePage("home");
-                                  });
+                                  await route.changePage("home");
                                 },
                                 child: const Padding(
                                   padding: EdgeInsets.all(3.0),

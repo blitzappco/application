@@ -120,18 +120,8 @@ class RouteProvider with ChangeNotifier {
   }
 
   unloadPolylines() async {
-    polylinesSet = <Polyline>{
-      const Polyline(polylineId: PolylineId("0")),
-      const Polyline(polylineId: PolylineId("1")),
-      const Polyline(polylineId: PolylineId("2")),
-      const Polyline(polylineId: PolylineId("3")),
-      const Polyline(polylineId: PolylineId("4")),
-      const Polyline(polylineId: PolylineId("5")),
-      const Polyline(polylineId: PolylineId("6")),
-      const Polyline(polylineId: PolylineId("7")),
-      const Polyline(polylineId: PolylineId("8")),
-      const Polyline(polylineId: PolylineId("9")),
-    };
+    polylines = [];
+    polylinesSet = Set<Polyline>.of(polylines);
     notifyListeners();
   }
 
