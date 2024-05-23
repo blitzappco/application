@@ -239,7 +239,9 @@ class Line {
     return Line(
       color: json['color'],
       name: json['short_name'],
-      vehicleType: json['vehicle']['type'],
+      vehicleType: json['vehicle']['type'] == "TROLLEYBUS"
+          ? "TROLLEY"
+          : json['vehicle']['type'],
     );
   }
 

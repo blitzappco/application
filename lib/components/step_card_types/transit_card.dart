@@ -1,5 +1,6 @@
 import 'package:application/components/shorthand.dart';
 import 'package:application/models/route.dart';
+import 'package:application/utils/normalize.dart';
 import 'package:application/utils/polyline.dart';
 import 'package:application/utils/vars.dart';
 import 'package:flutter/cupertino.dart';
@@ -60,7 +61,8 @@ class _TransitCardState extends State<TransitCard> {
                           TextStyle(fontFamily: "UberMoveBold", fontSize: 20),
                     ),
                     Text(
-                      widget.transitDetails?.departureTime.text ?? '',
+                      normalizeTime(
+                          widget.transitDetails?.departureTime.text ?? ''),
                       style: TextStyle(
                           fontFamily: "UberMoveBold",
                           fontSize: 20,
@@ -120,7 +122,9 @@ class _TransitCardState extends State<TransitCard> {
                                     fontSize: 18, fontFamily: "UberMoveBold"),
                               ),
                               Text(
-                                widget.transitDetails?.departureTime.text ?? '',
+                                normalizeTime(
+                                    widget.transitDetails?.departureTime.text ??
+                                        ''),
                                 style: TextStyle(
                                     fontSize: 18,
                                     fontFamily: "UberMoveMedium",
@@ -139,8 +143,8 @@ class _TransitCardState extends State<TransitCard> {
                                 children: [
                                   Text(
                                     numStops != 1
-                                        ? "Go ${numStops} stops, ${widget.duration} minutes"
-                                        : "Go 1 stop, ${widget.duration} minutes",
+                                        ? "Go ${numStops} stops, ${normalizeDuration(widget.duration)} minutes"
+                                        : "Go 1 stop, ${normalizeDuration(widget.duration)} minutes",
                                     style: TextStyle(
                                         fontFamily: "UberMoveMedium",
                                         fontSize: 16,
@@ -222,7 +226,9 @@ class _TransitCardState extends State<TransitCard> {
                                     fontSize: 18, fontFamily: "UberMoveBold"),
                               ),
                               Text(
-                                widget.transitDetails?.arrivalTime.text ?? '',
+                                normalizeTime(
+                                    widget.transitDetails?.arrivalTime.text ??
+                                        ''),
                                 style: TextStyle(
                                     fontSize: 18,
                                     fontFamily: "UberMoveMedium",

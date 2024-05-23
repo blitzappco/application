@@ -1,3 +1,5 @@
+import 'package:application/utils/types.dart';
+import 'package:application/utils/vars.dart';
 import 'package:flutter/material.dart';
 
 class PlaceCard extends StatelessWidget {
@@ -22,12 +24,12 @@ class PlaceCard extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: Colors.amber,
+              color: mapPlaceColors[type] ?? Colors.black,
             ),
             child: Padding(
               padding: const EdgeInsets.all(7),
               child: Icon(
-                Icons.school_rounded,
+                mapPlaceIcons[type],
                 size: 25,
                 color: Colors.white,
               ),

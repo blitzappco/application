@@ -7,6 +7,7 @@ import 'package:application/components/place_list.dart';
 import 'package:application/components/static_searchbar.dart';
 import 'package:application/components/step_card_types/step_card.dart';
 import 'package:application/providers/route_provider.dart';
+import 'package:application/utils/normalize.dart';
 import 'package:application/utils/vars.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -91,12 +92,12 @@ class DirectionsModal extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                '${route.routes[route.routeIndex].leg.duration.text} ',
+                                '${normalizeDuration(route.routes[route.routeIndex].leg.duration.value)} ',
                                 style: TextStyle(
                                     fontSize: 24, fontFamily: "UberMoveBold"),
                               ),
                               Text(
-                                'Arrival time: ${route.routes[route.routeIndex].leg.arrivalTime.text}',
+                                'Arrival time: ${normalizeTime(route.routes[route.routeIndex].leg.arrivalTime.text)}',
                                 style: TextStyle(
                                     fontSize: 16, fontFamily: "UberMoveMedium"),
                               ),
