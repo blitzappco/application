@@ -143,8 +143,8 @@ class _TransitCardState extends State<TransitCard> {
                                 children: [
                                   Text(
                                     numStops != 1
-                                        ? "Go ${numStops} stops, ${normalizeDuration(widget.duration)} minutes"
-                                        : "Go 1 stop, ${normalizeDuration(widget.duration)} minutes",
+                                        ? "Go ${numStops} stops, ${normalizeDuration(widget.duration)}"
+                                        : "Go 1 stop, ${normalizeDuration(widget.duration)}",
                                     style: TextStyle(
                                         fontFamily: "UberMoveMedium",
                                         fontSize: 16,
