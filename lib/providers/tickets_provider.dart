@@ -21,6 +21,13 @@ class TicketsProvider with ChangeNotifier {
   String ticketID = '';
   bool confirmed = true;
 
+  bool disabled = true;
+
+  setDisabled(bool value) {
+    disabled = value;
+    notifyListeners();
+  }
+
   // get ticket types per city
   getTicketTypes(String token, String city) async {
     loading = true;
