@@ -2,7 +2,9 @@ import 'package:application/utils/vars.dart';
 import 'package:flutter/material.dart';
 
 class SuggestionsIcon extends StatelessWidget {
-  const SuggestionsIcon({super.key});
+  final String type;
+  final String name;
+  const SuggestionsIcon({super.key, required this.type, required this.name});
 
   @override
   Widget build(BuildContext context) {
@@ -11,12 +13,12 @@ class SuggestionsIcon extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            decoration:
-                BoxDecoration(shape: BoxShape.circle, color: Colors.blue),
+            decoration: BoxDecoration(
+                shape: BoxShape.circle, color: mapPlaceColors[type]),
             child: Padding(
               padding: const EdgeInsets.all(15.0),
               child: Icon(
-                Icons.shopping_bag_rounded,
+                mapPlaceIcons[type],
                 color: Colors.white,
               ),
             ),
@@ -25,7 +27,7 @@ class SuggestionsIcon extends StatelessWidget {
             height: 5,
           ),
           Text(
-            "Drinks",
+            name,
             style: TextStyle(
                 fontFamily: "UberMoveMedium", color: darkGrey, fontSize: 12),
           ),

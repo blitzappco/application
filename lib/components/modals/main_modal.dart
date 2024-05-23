@@ -59,7 +59,7 @@ class MainModal extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  'Route',
+                                  'Home',
                                   style: TextStyle(
                                       fontSize: 32,
                                       fontFamily: 'UberMoveBold',

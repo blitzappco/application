@@ -25,12 +25,7 @@ String normalizeDuration(int value) {
   }
 
   if (minutes != 0) {
-    result += '$minutes';
-    if (minutes == 1) {
-      result += ' min';
-    } else {
-      result += ' mins';
-    }
+    result += '$minutes min';
   }
 
   return result;
@@ -63,9 +58,9 @@ String normalizeDistance(int value) {
 
   if (value > 1000) {
     double km = value / 1000;
-    result += '${km.toStringAsFixed(1)}km';
+    result += '${km.toStringAsFixed(1)} km';
   } else {
-    result += '${value}m';
+    result += '$value m';
   }
 
   return result;

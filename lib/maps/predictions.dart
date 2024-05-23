@@ -4,12 +4,11 @@ import 'dart:convert';
 import '../utils/vars.dart';
 import '../utils/env.dart';
 
-
 Future<List<Place>> fetchPredictions(String input) async {
   final url = 'https://maps.googleapis.com/maps/api/place/autocomplete/json'
       '?language=en'
       '&input=$input'
-      // '&locationbias'
+      '&locationbias=circle:5000@44.4379187,26.0122375'
       '&key=$mapKey';
 
   final response = await http.get(Uri.parse(url));

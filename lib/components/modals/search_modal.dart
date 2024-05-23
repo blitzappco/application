@@ -131,37 +131,59 @@ class SearchModal {
                       height: 20,
                     ),
                     if (controller.text.isEmpty)
-                      // Container(
-                      //   height: 80,
-                      //   child: ListView(
-                      //     scrollDirection: Axis.horizontal,
-                      //     children: [
-                      //       SuggestionsIcon(),
-                      //       SuggestionsIcon(),
-                      //       SuggestionsIcon(),
-                      //       SuggestionsIcon(),
-                      //       SuggestionsIcon(),
-                      //       SuggestionsIcon(),
-                      //       SuggestionsIcon(),
-                      //       SuggestionsIcon(),
-                      //       SuggestionsIcon(),
-                      //     ],
-                      //   ),
-                      // ),
-
-                      if (controller.text.isEmpty)
-                        PlaceList(
-                          places: account.account.trips ?? [],
-                          set: route.setTo,
-                          trip: (Place p) async {},
-                          callback: () {
-                            Navigator.pop(context);
-                          },
+                      Container(
+                        height: 80,
+                        child: ListView(
+                          scrollDirection: Axis.horizontal,
+                          children: [
+                            const SuggestionsIcon(type: 'bar', name: "Drinks"),
+                            const SuggestionsIcon(
+                                type: 'shopping_mall', name: "Malls"),
+                            const SuggestionsIcon(
+                                type: 'restaurant', name: "Restaurants"),
+                            const SuggestionsIcon(
+                                type: 'university', name: "Universities"),
+                            const SuggestionsIcon(type: 'park', name: "Parks"),
+                            const SuggestionsIcon(type: 'cafe', name: "Cafes"),
+                            const SuggestionsIcon(
+                                type: 'pharmacy', name: "Pharmacies"),
+                            const SuggestionsIcon(type: 'bank', name: "Banks"),
+                          ],
                         ),
-                    if (controller.text.isNotEmpty)
+                      ),
+                    const SizedBox(height: 7),
+                    if (controller.text.isEmpty && type == "to")
+                      PlaceList(
+                        places: account.account.trips ?? [],
+                        set: route.setTo,
+                        trip: (Place p) async {},
+                        callback: () {
+                          Navigator.pop(context);
+                        },
+                      ),
+
+                    if (controller.text.isEmpty && type == "from")
+                      PlaceList(
+                        places: account.account.trips ?? [],
+                        set: route.setFrom,
+                        trip: (Place p) async {},
+                        callback: () {
+                          Navigator.pop(context);
+                        },
+                      ),
+                    if (controller.text.isNotEmpty && type == "to")
+                      if (type == "to")
+                        PlaceList(
+                            places: route.predictions,
+                            set: route.setTo,
+                            trip: account.addTrip,
+                            callback: () {
+                              Navigator.pop(context);
+                            }),
+                    if (controller.text.isNotEmpty && type == "from")
                       PlaceList(
                           places: route.predictions,
-                          set: route.setTo,
+                          set: route.setFrom,
                           trip: account.addTrip,
                           callback: () {
                             Navigator.pop(context);
