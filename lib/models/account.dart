@@ -1,4 +1,4 @@
-import 'package:application/models/place.dart';
+import 'package:blitz/models/place.dart';
 
 class PaymentMethod {
   String? id;

@@ -1,7 +1,6 @@
-import 'package:application/models/route.dart';
+import 'package:blitz/models/route.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import '../utils/vars.dart';
 import '../utils/env.dart';
 
 Future<List<Route>> fetchRoutes(String from, String to) async {

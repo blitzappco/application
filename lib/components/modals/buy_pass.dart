@@ -1,10 +1,9 @@
-import 'package:application/components/payment_methods.dart';
-import 'package:application/models/tickety_type.dart';
-import 'package:application/providers/account_provider.dart';
-import 'package:application/providers/tickets_provider.dart';
-import 'package:application/utils/process_ticket_types.dart';
+import 'package:blitz/components/payment_methods.dart';
+import 'package:blitz/models/tickety_type.dart';
+import 'package:blitz/providers/account_provider.dart';
+import 'package:blitz/providers/tickets_provider.dart';
+import 'package:blitz/utils/process_ticket_types.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:provider/provider.dart';
 
@@ -45,9 +44,9 @@ class _BuyPassPageState extends State<BuyPassPage> {
                               Navigator.pop(context);
                             },
                             child: Container(
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 shape: BoxShape.circle,
-                                color: const Color.fromARGB(255, 222, 222, 222),
+                                color: Color.fromARGB(255, 222, 222, 222),
                               ),
                               child: Padding(
                                 padding: const EdgeInsets.all(7),
@@ -61,21 +60,21 @@ class _BuyPassPageState extends State<BuyPassPage> {
                           ),
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
-                      Text(
+                      const Text(
                         'Buy tickets',
                         style: TextStyle(
                             fontFamily: "UberMoveMedium", fontSize: 28),
                       ),
-                      SizedBox(height: 20),
-                      Text(
+                      const SizedBox(height: 20),
+                      const Text(
                         'Select Category',
                         style: TextStyle(
                             fontFamily: "UberMoveMedium", fontSize: 18),
                       ),
-                      Container(
+                      SizedBox(
                         width: double.infinity,
                         child: DropdownButton<String>(
                           isExpanded: true,
@@ -103,13 +102,13 @@ class _BuyPassPageState extends State<BuyPassPage> {
                           },
                         ),
                       ),
-                      SizedBox(height: 20),
-                      Text(
+                      const SizedBox(height: 20),
+                      const Text(
                         'Select Type',
                         style: TextStyle(
                             fontFamily: "UberMoveMedium", fontSize: 18),
                       ),
-                      Container(
+                      SizedBox(
                         width: double.infinity,
                         child: DropdownButton<String>(
                           isExpanded: true,
@@ -143,10 +142,10 @@ class _BuyPassPageState extends State<BuyPassPage> {
                           },
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 30,
                       ),
-                      Container(height: 100, child: const PaymentMethods())
+                      const SizedBox(height: 100, child: PaymentMethods())
                     ],
                   ),
                   Column(
@@ -156,14 +155,14 @@ class _BuyPassPageState extends State<BuyPassPage> {
                         children: [
                           Text(
                             "${price / 100}",
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontFamily: "UberMoveBold", fontSize: 50),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 5,
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 12.0),
+                          const Padding(
+                            padding: EdgeInsets.only(bottom: 12.0),
                             child: Text(
                               "RON",
                               style: TextStyle(
@@ -172,7 +171,7 @@ class _BuyPassPageState extends State<BuyPassPage> {
                           )
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 15,
                       ),
                       GestureDetector(
@@ -202,7 +201,7 @@ class _BuyPassPageState extends State<BuyPassPage> {
                         },
                         child: Container(
                             decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 156, 57, 255),
+                                color: const Color.fromARGB(255, 156, 57, 255),
                                 borderRadius: BorderRadius.circular(40)),
                             child: Padding(
                               padding: const EdgeInsets.all(10.0),

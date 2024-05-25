@@ -18,9 +18,9 @@ class EtaElement extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Text(
+                  const Text(
                     '2 min',
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontFamily: 'UberMoveBold',
                       fontSize: 18,
                     ),
@@ -34,9 +34,9 @@ class EtaElement extends StatelessWidget {
                   )
                 ],
               ),
-              Text(
+              const Text(
                 "On-time",
-                style: const TextStyle(
+                style: TextStyle(
                     fontFamily: 'UberMoveMedium',
                     fontSize: 16,
                     color: Colors.green),

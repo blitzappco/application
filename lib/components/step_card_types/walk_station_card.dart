@@ -1,5 +1,5 @@
-import 'package:application/utils/normalize.dart';
-import 'package:application/utils/vars.dart';
+import 'package:blitz/utils/normalize.dart';
+import 'package:blitz/utils/vars.dart';
 import 'package:flutter/material.dart';
 
 class WalkStation extends StatelessWidget {

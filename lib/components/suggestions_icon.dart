@@ -1,4 +1,4 @@
-import 'package:application/utils/vars.dart';
+import 'package:blitz/utils/vars.dart';
 import 'package:flutter/material.dart';
 
 class SuggestionsIcon extends StatelessWidget {
@@ -23,12 +23,12 @@ class SuggestionsIcon extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 5,
           ),
           Text(
             name,
-            style: TextStyle(
+            style: const TextStyle(
                 fontFamily: "UberMoveMedium", color: darkGrey, fontSize: 12),
           ),
         ],

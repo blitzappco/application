@@ -1,7 +1,5 @@
-import 'package:application/pages/train_ticket/choose_line.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:blitz/pages/train_ticket/choose_line.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class BuyTrainTicket extends StatefulWidget {
   const BuyTrainTicket({super.key});
@@ -32,20 +30,11 @@ class _BuyTrainTicketState extends State<BuyTrainTicket> {
     });
   }
 
-  void _searchTickets() {
-    // Here you can add the functionality to handle the search action.
-    // For now, we'll just print the inputs to the console.
-    print('Departure: ${_departureController.text}');
-    print('Destination: ${_destinationController.text}');
-    print('Passengers: ${_passengersController.text}');
-    print('Date: ${_selectedDate?.toLocal().toString().split(' ')[0]}');
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Train Ticket Search'),
+        title: const Text('Train Ticket Search'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -56,31 +45,31 @@ class _BuyTrainTicketState extends State<BuyTrainTicket> {
                 color: Colors.grey[300],
                 borderRadius: BorderRadius.circular(8),
               ),
-              padding: EdgeInsets.symmetric(horizontal: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 10),
               child: TextField(
                 controller: _departureController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Departure Place',
                   border: InputBorder.none,
                 ),
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Container(
               decoration: BoxDecoration(
                 color: Colors.grey[300],
                 borderRadius: BorderRadius.circular(8),
               ),
-              padding: EdgeInsets.symmetric(horizontal: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 10),
               child: TextField(
                 controller: _destinationController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Destination',
                   border: InputBorder.none,
                 ),
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Row(
               children: <Widget>[
                 Expanded(
@@ -89,10 +78,10 @@ class _BuyTrainTicketState extends State<BuyTrainTicket> {
                       color: Colors.grey[300],
                       borderRadius: BorderRadius.circular(8),
                     ),
-                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: TextField(
                       controller: _passengersController,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: 'No. of Passengers',
                         border: InputBorder.none,
                       ),
@@ -100,18 +89,18 @@ class _BuyTrainTicketState extends State<BuyTrainTicket> {
                     ),
                   ),
                 ),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 Expanded(
                   child: Container(
                     decoration: BoxDecoration(
                       color: Colors.grey[300],
                       borderRadius: BorderRadius.circular(8),
                     ),
-                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: InkWell(
                       onTap: _presentDatePicker,
                       child: InputDecorator(
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           labelText: 'Date',
                           border: InputBorder.none,
                         ),
@@ -132,7 +121,7 @@ class _BuyTrainTicketState extends State<BuyTrainTicket> {
                 ),
               ],
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             GestureDetector(
                 onTap: () {
                   Navigator.push(
@@ -141,7 +130,7 @@ class _BuyTrainTicketState extends State<BuyTrainTicket> {
                         builder: (context) => const ChooseLinePage()),
                   );
                 },
-                child: Text('Search Tickets')),
+                child: const Text('Search Tickets')),
           ],
         ),
       ),

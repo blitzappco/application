@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:application/models/tickety_type.dart';
-import 'package:application/utils/process_ticket_types.dart';
+import 'package:blitz/models/tickety_type.dart';
+import 'package:blitz/utils/process_ticket_types.dart';
 import 'package:flutter/material.dart';
 import '../utils/url.dart';
 import 'package:http/http.dart' as http;

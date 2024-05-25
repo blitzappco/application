@@ -1,27 +1,17 @@
-import 'package:application/components/active_train_ticket.dart';
-import 'package:application/components/modals/departures_modal.dart';
-import 'package:application/components/modals/profile_modal.dart';
-import 'package:application/components/modals/wallet_modal.dart';
-import 'package:application/components/nearby_stations.dart';
-import 'package:application/components/place_list.dart';
-import 'package:application/components/static_searchbar.dart';
-import 'package:application/components/step_card_types/step_card.dart';
-import 'package:application/providers/route_provider.dart';
-import 'package:application/utils/normalize.dart';
-import 'package:application/utils/vars.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:blitz/components/modals/wallet_modal.dart';
+import 'package:blitz/providers/route_provider.dart';
+import 'package:blitz/utils/normalize.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 
 class DirectionsModal extends StatelessWidget {
-  late GoogleMapController mapController;
-  DirectionsModal({super.key, required this.mapController});
+  final GoogleMapController mapController;
+  const DirectionsModal({super.key, required this.mapController});
 
   @override
   Widget build(BuildContext context) {
-    final _controller = DraggableScrollableController();
+    final controller = DraggableScrollableController();
     return Consumer<RouteProvider>(builder: (context, route, _) {
       return DraggableScrollableSheet(
         initialChildSize: 0.5,
@@ -29,7 +19,7 @@ class DirectionsModal extends StatelessWidget {
         minChildSize: 0.19,
         snap: true,
         snapSizes: const [0.19, 0.48, 0.9],
-        controller: _controller,
+        controller: controller,
         builder: (BuildContext context, ScrollController scrollController) {
           return Container(
             decoration: const BoxDecoration(
@@ -59,12 +49,12 @@ class DirectionsModal extends StatelessWidget {
                             children: [
                               Text(
                                 '${normalizeDuration(route.routes[route.routeIndex].leg.duration.value)} ',
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontSize: 24, fontFamily: "UberMoveBold"),
                               ),
                               Text(
                                 'Arrival time: ${normalizeTime(route.routes[route.routeIndex].leg.arrivalTime.text)}',
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontSize: 16, fontFamily: "UberMoveMedium"),
                               ),
                             ],
@@ -72,7 +62,7 @@ class DirectionsModal extends StatelessWidget {
                         ),
                         Container(
                           decoration: BoxDecoration(
-                              color: Color.fromARGB(255, 102, 91, 252),
+                              color: const Color.fromARGB(255, 102, 91, 252),
                               borderRadius:
                                   BorderRadiusDirectional.circular(30)),
                           child: GestureDetector(

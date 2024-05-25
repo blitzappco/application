@@ -1,9 +1,8 @@
-import 'package:application/components/line_card.dart';
-import 'package:application/components/shorthand.dart';
-import 'package:application/models/route.dart';
-import 'package:application/utils/vars.dart';
+import 'package:blitz/components/line_card.dart';
+import 'package:blitz/components/shorthand.dart';
+import 'package:blitz/models/route.dart';
+import 'package:blitz/utils/vars.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class NearbyStationModal {
   static void show(BuildContext context) {
@@ -30,7 +29,7 @@ class NearbyStationModal {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
+                      const Text(
                         "Piata Operei",
                         style: TextStyle(
                           fontFamily: "UberMoveBold",
@@ -55,7 +54,7 @@ class NearbyStationModal {
                       ),
                     ],
                   ),
-                  Row(
+                  const Row(
                     children: [
                       Text(
                         "Subway Station · 100 m",
@@ -66,7 +65,7 @@ class NearbyStationModal {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 5,
                   ),
                   Row(
@@ -78,7 +77,7 @@ class NearbyStationModal {
                               color: "#ff0000",
                               name: "24",
                               vehicleType: "BUS")),
-                      SizedBox(
+                      const SizedBox(
                         width: 5,
                       ),
                       Shorthand(
@@ -90,7 +89,7 @@ class NearbyStationModal {
                               vehicleType: "BUS")),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Container(
@@ -98,11 +97,11 @@ class NearbyStationModal {
                       color: Colors.blue[500],
                       borderRadius: BorderRadius.circular(12),
                     ),
-                    child: Row(
+                    child: const Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.all(10.0),
+                          padding: EdgeInsets.all(10.0),
                           child: Column(
                             children: [
                               Text(
@@ -125,10 +124,10 @@ class NearbyStationModal {
                       ],
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
-                  Row(
+                  const Row(
                     children: [
                       Text(
                         "Departures",
@@ -142,7 +141,7 @@ class NearbyStationModal {
                   Divider(
                     color: Colors.grey[300],
                   ),
-                  Container(
+                  SizedBox(
                     height: 250,
                     child: ListView.separated(
                       itemCount: 6,

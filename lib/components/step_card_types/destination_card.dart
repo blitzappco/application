@@ -1,6 +1,6 @@
-import 'package:application/models/place.dart';
-import 'package:application/utils/shorten.dart';
-import 'package:application/utils/vars.dart';
+import 'package:blitz/models/place.dart';
+import 'package:blitz/utils/shorten.dart';
+import 'package:blitz/utils/vars.dart';
 import 'package:flutter/material.dart';
 
 class DestinationCard extends StatelessWidget {

@@ -1,37 +1,28 @@
-import 'package:application/components/active_train_ticket.dart';
-import 'package:application/components/modals/departures_modal.dart';
-import 'package:application/components/modals/profile_modal.dart';
-import 'package:application/components/nearby_stations.dart';
-import 'package:application/components/place_list.dart';
-import 'package:application/components/static_searchbar.dart';
-import 'package:application/components/step_card_types/step_card.dart';
-import 'package:application/pages/indoor_nav.dart';
-import 'package:application/providers/route_provider.dart';
-import 'package:application/utils/vars.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:blitz/pages/indoor_nav.dart';
+import 'package:blitz/providers/route_provider.dart';
+import 'package:blitz/utils/vars.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 
 class RouteTest extends StatelessWidget {
   final GoogleMapController mapController;
-  RouteTest({super.key, required this.mapController});
+  const RouteTest({super.key, required this.mapController});
 
   @override
   Widget build(BuildContext context) {
-    final _controller = DraggableScrollableController();
+    final controller = DraggableScrollableController();
     return Consumer<RouteProvider>(builder: (context, route, _) {
       return DraggableScrollableSheet(
         initialChildSize: 0.5,
         maxChildSize: 0.9,
         minChildSize: 0.19,
         snap: true,
-        snapSizes: [0.19, 0.48, 0.9],
-        controller: _controller,
+        snapSizes: const [0.19, 0.48, 0.9],
+        controller: controller,
         builder: (BuildContext context, ScrollController scrollController) {
           return SingleChildScrollView(
-            physics: ClampingScrollPhysics(),
+            physics: const ClampingScrollPhysics(),
             controller: scrollController,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
@@ -47,10 +38,10 @@ class RouteTest extends StatelessWidget {
                               builder: (context) => IndoorNavPage()));
                         },
                         child: Container(
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                                 color: Colors.black, shape: BoxShape.circle),
-                            child: Padding(
-                              padding: const EdgeInsets.all(15.0),
+                            child: const Padding(
+                              padding: EdgeInsets.all(15.0),
                               child: Icon(
                                 Icons.wallet_rounded,
                                 color: Colors.white,
@@ -65,7 +56,7 @@ class RouteTest extends StatelessWidget {
                   padding: const EdgeInsets.only(bottom: 0),
                   child: Container(
                     height: MediaQuery.of(context).size.height * 0.9,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: Color(0xFFF8F8F8),
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(20),
@@ -83,7 +74,7 @@ class RouteTest extends StatelessWidget {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text(
+                                const Text(
                                   '37 min • Arrival time: 14:32',
                                   style: TextStyle(
                                       fontSize: 20,

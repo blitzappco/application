@@ -1,7 +1,7 @@
-import 'package:application/components/modals/nearby_stations_modal.dart';
-import 'package:application/components/shorthand.dart';
-import 'package:application/models/route.dart';
-import 'package:application/utils/vars.dart';
+import 'package:blitz/components/modals/nearby_stations_modal.dart';
+import 'package:blitz/components/shorthand.dart';
+import 'package:blitz/models/route.dart';
+import 'package:blitz/utils/vars.dart';
 import 'package:flutter/material.dart';
 
 class StationCard extends StatelessWidget {
@@ -25,7 +25,7 @@ class StationCard extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(right: 10.0),
         child: ConstrainedBox(
-          constraints: BoxConstraints(minWidth: 145),
+          constraints: const BoxConstraints(minWidth: 145),
           child: Container(
             decoration: BoxDecoration(
                 color: Colors.white, borderRadius: BorderRadius.circular(20)),
@@ -39,25 +39,25 @@ class StationCard extends StatelessWidget {
                     children: [
                       Text(
                         name,
-                        style:
-                            TextStyle(fontSize: 16, fontFamily: 'UberMoveBold'),
+                        style: const TextStyle(
+                            fontSize: 16, fontFamily: 'UberMoveBold'),
                       ),
                       Text(
                         distance,
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 14,
                             fontFamily: 'UberMoveMedium',
                             color: darkGrey),
                       )
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 45,
                   ),
                   Row(
                     children: [
                       Shorthand(transit: true, duration: "20 min", line: line1),
-                      SizedBox(
+                      const SizedBox(
                         width: 3,
                       ),
                       Shorthand(transit: true, duration: "20 min", line: line2),

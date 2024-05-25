@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 class AnimatedText extends StatefulWidget {
+  const AnimatedText({super.key});
+
   @override
-  _AnimatedTextState createState() => _AnimatedTextState();
+  State<AnimatedText> createState() => _AnimatedTextState();
 }
 
 class _AnimatedTextState extends State<AnimatedText>
@@ -48,7 +50,7 @@ class _AnimatedTextState extends State<AnimatedText>
       opacity: _fadeInFadeOut,
       child: Text(
         _texts[_textIndex],
-        style: TextStyle(
+        style: const TextStyle(
           fontSize: 20,
           fontFamily: "UberMoveMedium",
           color: Colors

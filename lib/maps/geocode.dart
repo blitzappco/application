@@ -1,8 +1,6 @@
-import 'package:application/models/place.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:blitz/models/place.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import '../utils/vars.dart';
 import '../utils/env.dart';
 
 Future<Place> fetchAddressFromPlace(String placeID) async {

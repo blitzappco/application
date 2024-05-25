@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'package:application/components/route_preview_card.dart';
-import 'package:application/providers/route_provider.dart';
-import 'package:application/utils/shorten.dart';
+import 'package:blitz/components/route_preview_card.dart';
+import 'package:blitz/providers/route_provider.dart';
+import 'package:blitz/utils/shorten.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
@@ -45,7 +45,7 @@ class _RoutePreviewModalState extends State<RoutePreviewModal> {
           maxChildSize: 0.9,
           minChildSize: 0.19,
           snap: true,
-          snapSizes: [0.19, 0.48, 0.9],
+          snapSizes: const [0.19, 0.48, 0.9],
           controller: draggableController,
           builder: (BuildContext context, scrollController) {
             return Container(
@@ -67,7 +67,7 @@ class _RoutePreviewModalState extends State<RoutePreviewModal> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
+                            const Text(
                               "Routes",
                               style: TextStyle(
                                 fontFamily: "UberMoveBold",
@@ -93,13 +93,13 @@ class _RoutePreviewModalState extends State<RoutePreviewModal> {
                             ),
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         Container(
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(9),
-                              color: Color.fromARGB(255, 237, 237, 237)),
+                              color: const Color.fromARGB(255, 237, 237, 237)),
                           child: Padding(
                             padding: const EdgeInsets.symmetric(
                                 vertical: 10.0, horizontal: 15),
@@ -188,7 +188,7 @@ class _RoutePreviewModalState extends State<RoutePreviewModal> {
                             ),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
                         Container(

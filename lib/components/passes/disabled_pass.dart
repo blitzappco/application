@@ -1,5 +1,5 @@
-import 'package:application/components/modals/buy_pass.dart';
-import 'package:application/utils/vars.dart';
+import 'package:blitz/components/modals/buy_pass.dart';
+import 'package:blitz/utils/vars.dart';
 import 'package:flutter/material.dart';
 
 class DisabledPass extends StatefulWidget {
@@ -16,7 +16,7 @@ class _DisabledPassState extends State<DisabledPass> {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => BuyPassPage()),
+          MaterialPageRoute(builder: (context) => const BuyPassPage()),
         );
       },
       child: Container(
@@ -25,7 +25,7 @@ class _DisabledPassState extends State<DisabledPass> {
             borderRadius: BorderRadius.circular(24)),
         height: 234,
         width: 400,
-        child: Center(
+        child: const Center(
           child: Text("Buy transit pass",
               style: TextStyle(
                   fontFamily: "UberMoveMedium", fontSize: 25, color: darkGrey)),

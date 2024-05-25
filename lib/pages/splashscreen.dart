@@ -1,7 +1,5 @@
 import 'dart:async';
-import 'package:application/pages/train_ticket/buy_train_ticket.dart';
-import 'package:application/providers/tickets_provider.dart';
-import 'package:application/utils/normalize.dart';
+import 'package:blitz/providers/tickets_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:permission_handler/permission_handler.dart';
