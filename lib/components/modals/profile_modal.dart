@@ -1,8 +1,6 @@
 import 'package:application/components/modals/tickets_modal.dart';
 import 'package:application/components/past_transaction_card.dart';
 import 'package:application/components/payment_methods.dart';
-import 'package:application/components/profile_button.dart';
-import 'package:application/components/shorthand.dart';
 import 'package:application/pages/onboarding/onboarding.dart';
 import 'package:application/providers/account_provider.dart';
 import 'package:application/providers/tickets_provider.dart';
@@ -20,7 +18,7 @@ class ProfileModal {
       await account.getPaymentMethods();
     });
     showModalBottomSheet(
-      backgroundColor: Color.fromARGB(255, 250, 250, 250),
+      backgroundColor: const Color.fromARGB(255, 250, 250, 250),
       isScrollControlled: true,
       context: context,
       shape: const RoundedRectangleBorder(
@@ -58,7 +56,7 @@ class ProfileModal {
                                               const Onboarding()));
                                 },
                                 child: Container(
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                       image: DecorationImage(
                                         image: AssetImage(
                                             'assets/images/moaca.png'),
@@ -70,7 +68,7 @@ class ProfileModal {
                                   height: 42,
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 10,
                               ),
                               Column(
@@ -78,14 +76,14 @@ class ProfileModal {
                                 children: [
                                   Text(
                                     "${account.account.lastName} ${account.account.firstName}",
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       fontFamily: "UberMoveBold",
                                       fontSize: 22,
                                     ),
                                   ),
                                   Text(
                                     account.account.phone ?? '+40712345678',
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       fontFamily: "UberMoveMedium",
                                       color: darkGrey,
                                       fontSize: 14,
@@ -116,7 +114,7 @@ class ProfileModal {
                           ),
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       const Row(
@@ -128,7 +126,7 @@ class ProfileModal {
                           ),
                         ],
                       ),
-                      Container(
+                      const SizedBox(
                         height: 120,
                         child: PaymentMethods(),
                       ),

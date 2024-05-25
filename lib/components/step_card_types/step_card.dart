@@ -2,7 +2,6 @@ import 'package:application/components/step_card_types/change_platform_card.dart
 import 'package:application/components/step_card_types/destination_card.dart';
 import 'package:application/components/step_card_types/exit_station_card.dart';
 import 'package:application/components/step_card_types/go_station_card.dart';
-import 'package:application/components/line_card.dart';
 import 'package:application/components/step_card_types/transit_card.dart';
 import 'package:application/components/step_card_types/walk_destination_card.dart';
 import 'package:application/components/step_card_types/walk_station_card.dart';

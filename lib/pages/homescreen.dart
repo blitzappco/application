@@ -6,8 +6,6 @@ import 'package:application/components/modals/main_modal.dart';
 import 'package:application/components/modals/route_preview_modal.dart';
 import 'package:application/components/modals/route_test.dart';
 import 'package:application/maps/geocode.dart';
-import 'package:application/maps/map_controller.dart';
-import 'package:application/pages/indoor_nav.dart';
 import 'package:application/providers/account_provider.dart';
 import 'package:application/providers/route_provider.dart';
 import 'package:application/utils/get_location.dart';
@@ -110,10 +108,10 @@ class _HomescreenState extends State<Homescreen> {
                           route.changePage('preview');
                         },
                         child: Container(
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                                 color: Colors.white, shape: BoxShape.circle),
-                            child: Padding(
-                              padding: const EdgeInsets.all(12.0),
+                            child: const Padding(
+                              padding: EdgeInsets.all(12.0),
                               child: Icon(
                                 Icons.arrow_back_ios_new_rounded,
                                 size: 20,

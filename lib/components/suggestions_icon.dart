@@ -23,12 +23,12 @@ class SuggestionsIcon extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 5,
           ),
           Text(
             name,
-            style: TextStyle(
+            style: const TextStyle(
                 fontFamily: "UberMoveMedium", color: darkGrey, fontSize: 12),
           ),
         ],

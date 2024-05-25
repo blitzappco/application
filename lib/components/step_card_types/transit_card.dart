@@ -3,20 +3,17 @@ import 'package:application/models/route.dart';
 import 'package:application/utils/normalize.dart';
 import 'package:application/utils/polyline.dart';
 import 'package:application/utils/vars.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:timelines_plus/timelines_plus.dart';
 
 class TransitCard extends StatefulWidget {
   final TransitDetails? transitDetails;
   final int duration;
   const TransitCard(
-      {required this.transitDetails, required this.duration, Key? key})
-      : super(key: key);
+      {required this.transitDetails, required this.duration, super.key});
 
   @override
-  _TransitCardState createState() => _TransitCardState();
+  State<TransitCard> createState() => _TransitCardState();
 }
 
 class _TransitCardState extends State<TransitCard> {
@@ -47,7 +44,7 @@ class _TransitCardState extends State<TransitCard> {
                   Line(color: "#ff0000", name: "M1", vehicleType: "SUBWAY"),
             ),
           ),
-          SizedBox(width: 20),
+          const SizedBox(width: 20),
           Expanded(
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -59,12 +56,12 @@ class _TransitCardState extends State<TransitCard> {
                       "Take the ${widget.transitDetails?.line.name ?? ''}"
                       " ${widget.transitDetails?.line.vehicleType.toLowerCase()}",
                       style:
-                          TextStyle(fontFamily: "UberMoveBold", fontSize: 20),
+                          const TextStyle(fontFamily: "UberMoveBold", fontSize: 20),
                     ),
                     Text(
                       normalizeTime(
                           widget.transitDetails?.departureTime.text ?? ''),
-                      style: TextStyle(
+                      style: const TextStyle(
                           fontFamily: "UberMoveBold",
                           fontSize: 20,
                           color: Colors.green),
@@ -79,14 +76,14 @@ class _TransitCardState extends State<TransitCard> {
                       child: Wrap(children: [
                         Text(
                           "Towards ${widget.transitDetails?.headsign}",
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontFamily: "UberMoveMedium",
                               fontSize: 16,
                               color: darkGrey),
                         ),
                       ]),
                     ),
-                    Text(
+                    const Text(
                       "On Time",
                       style: TextStyle(
                           fontFamily: "UberMoveMedium",
@@ -95,7 +92,7 @@ class _TransitCardState extends State<TransitCard> {
                     )
                   ],
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 // Container to hold the yellow line and stations
                 ClipRRect(
                   borderRadius: BorderRadius.circular(5),
@@ -119,21 +116,21 @@ class _TransitCardState extends State<TransitCard> {
                             children: [
                               Text(
                                 widget.transitDetails?.departureStop.name ?? '',
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontSize: 18, fontFamily: "UberMoveBold"),
                               ),
                               Text(
                                 normalizeTime(
                                     widget.transitDetails?.departureTime.text ??
                                         ''),
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontSize: 18,
                                     fontFamily: "UberMoveMedium",
                                     color: darkGrey),
                               ),
                             ],
                           ),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           GestureDetector(
                             onTap: toggleStations,
                             child: Container(
@@ -144,9 +141,9 @@ class _TransitCardState extends State<TransitCard> {
                                 children: [
                                   Text(
                                     numStops != 1
-                                        ? "Go ${numStops} stops, ${normalizeDuration(widget.duration)}"
+                                        ? "Go $numStops stops, ${normalizeDuration(widget.duration)}"
                                         : "Go 1 stop, ${normalizeDuration(widget.duration)}",
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         fontFamily: "UberMoveMedium",
                                         fontSize: 16,
                                         color: Colors.blue),
@@ -166,10 +163,10 @@ class _TransitCardState extends State<TransitCard> {
                             FixedTimeline.tileBuilder(
                               theme: TimelineThemeData(
                                 nodePosition: 0,
-                                indicatorTheme: IndicatorThemeData(
+                                indicatorTheme: const IndicatorThemeData(
                                     size: 20, color: Colors.black),
                                 connectorTheme:
-                                    ConnectorThemeData(thickness: 2),
+                                    const ConnectorThemeData(thickness: 2),
                               ),
                               builder: TimelineTileBuilder.connected(
                                 connectionDirection: ConnectionDirection.before,
@@ -205,7 +202,7 @@ class _TransitCardState extends State<TransitCard> {
                                         children: [
                                           Text(
                                             "Station ${index + 1}",
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                 fontSize: 18,
                                                 fontFamily: "UberMoveMedium"),
                                           ),
@@ -217,21 +214,21 @@ class _TransitCardState extends State<TransitCard> {
                                 itemCount: numStops - 1,
                               ),
                             ),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           // Last station
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
                                 widget.transitDetails?.arrivalStop.name ?? '',
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontSize: 18, fontFamily: "UberMoveBold"),
                               ),
                               Text(
                                 normalizeTime(
                                     widget.transitDetails?.arrivalTime.text ??
                                         ''),
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontSize: 18,
                                     fontFamily: "UberMoveMedium",
                                     color: darkGrey),

@@ -53,28 +53,28 @@ Map<String, IconData> mapPlaceIcons = {
 };
 
 Map<String, Color> mapPlaceColors = {
-  "restaurant": Color(0xFFF44336), // Red
-  "cafe": Color(0xFF795548), // Brown
-  "bar": Color(0xFF9C27B0), // Purple
-  "atm": Color(0xFF4CAF50), // Green
-  "bank": Color(0xFF2196F3), // Blue
-  "gas_station": Color(0xFFFFC107), // Amber
-  "parking": Color(0xFF9E9E9E), // Grey
-  "pharmacy": Color(0xFFFF5722), // Deep Orange
-  "hospital": Color(0xFFE91E63), // Pink
-  "museum": Color(0xFF673AB7), // Deep Purple
-  "park": Color(0xFF4CAF50), // Green
-  "library": Color(0xFF3F51B5), // Indigo
-  "supermarket": Color(0xFFFFEB3B), // Yellow
-  "shopping_mall": Color(0xFF673AB7), // Yellow
-  "convenience_store": Color(0xFFFF9800), // Orange
-  "train_station": Color(0xFF607D8B), // Blue Grey
-  "bus_station": Color(0xFF2196F3), // Blue
-  "airport": Color(0xFF00BCD4), // Cyan
-  "movie_theater": Color(0xFFE91E63), // Pink
-  "taxi_stand": Color(0xFFFFC107), // Amber
-  "bicycle_store": Color(0xFF4CAF50), // Green
-  "post_office": Color(0xFFFF5722), // Deep Orange
-  "university": Color(0xFF3F51B5),
-  "general": Color(0xFF2196F3),
+  "restaurant": const Color(0xFFF44336), // Red
+  "cafe": const Color(0xFF795548), // Brown
+  "bar": const Color(0xFF9C27B0), // Purple
+  "atm": const Color(0xFF4CAF50), // Green
+  "bank": const Color(0xFF2196F3), // Blue
+  "gas_station": const Color(0xFFFFC107), // Amber
+  "parking": const Color(0xFF9E9E9E), // Grey
+  "pharmacy": const Color(0xFFFF5722), // Deep Orange
+  "hospital": const Color(0xFFE91E63), // Pink
+  "museum": const Color(0xFF673AB7), // Deep Purple
+  "park": const Color(0xFF4CAF50), // Green
+  "library": const Color(0xFF3F51B5), // Indigo
+  "supermarket": const Color(0xFFFFEB3B), // Yellow
+  "shopping_mall": const Color(0xFF673AB7), // Yellow
+  "convenience_store": const Color(0xFFFF9800), // Orange
+  "train_station": const Color(0xFF607D8B), // Blue Grey
+  "bus_station": const Color(0xFF2196F3), // Blue
+  "airport": const Color(0xFF00BCD4), // Cyan
+  "movie_theater": const Color(0xFFE91E63), // Pink
+  "taxi_stand": const Color(0xFFFFC107), // Amber
+  "bicycle_store": const Color(0xFF4CAF50), // Green
+  "post_office": const Color(0xFFFF5722), // Deep Orange
+  "university": const Color(0xFF3F51B5),
+  "general": const Color(0xFF2196F3),
 };

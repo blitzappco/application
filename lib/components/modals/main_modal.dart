@@ -1,5 +1,4 @@
 import 'package:application/components/active_train_ticket.dart';
-import 'package:application/components/modals/departures_modal.dart';
 import 'package:application/components/modals/profile_modal.dart';
 import 'package:application/components/modals/wallet_modal.dart';
 import 'package:application/components/nearby_stations.dart';
@@ -9,19 +8,17 @@ import 'package:application/models/place.dart';
 import 'package:application/providers/account_provider.dart';
 import 'package:application/providers/route_provider.dart';
 import 'package:application/utils/vars.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 
 class MainModal extends StatelessWidget {
-  late GoogleMapController mapController;
-  MainModal({super.key, required this.mapController});
+  final GoogleMapController mapController;
+  const MainModal({super.key, required this.mapController});
 
   @override
   Widget build(BuildContext context) {
-    final _controller = DraggableScrollableController();
+    final controller = DraggableScrollableController();
     return Consumer<AccountProvider>(builder: (context, account, _) {
       return Consumer<RouteProvider>(builder: (context, route, _) {
         return DraggableScrollableSheet(
@@ -29,11 +26,11 @@ class MainModal extends StatelessWidget {
           maxChildSize: 0.9,
           minChildSize: 0.19,
           snap: true,
-          snapSizes: [0.19, 0.48, 0.9],
-          controller: _controller,
+          snapSizes: const [0.19, 0.48, 0.9],
+          controller: controller,
           builder: (BuildContext context, ScrollController scrollController) {
             return SingleChildScrollView(
-              physics: ClampingScrollPhysics(),
+              physics: const ClampingScrollPhysics(),
               controller: scrollController,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -42,7 +39,7 @@ class MainModal extends StatelessWidget {
                     padding: const EdgeInsets.only(bottom: 0),
                     child: Container(
                       height: MediaQuery.of(context).size.height * 0.9,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Color(0xFFF8F8F8),
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(20),
@@ -57,7 +54,7 @@ class MainModal extends StatelessWidget {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text(
+                                const Text(
                                   'Home',
                                   style: TextStyle(
                                       fontSize: 32,
@@ -71,12 +68,12 @@ class MainModal extends StatelessWidget {
                                         // DeparturesModal.show(context);
                                         WalletModal.show(context);
                                       },
-                                      child: Icon(
+                                      child: const Icon(
                                         Icons.wallet,
                                         size: 25,
                                       ),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 15,
                                     ),
                                     GestureDetector(
@@ -84,7 +81,7 @@ class MainModal extends StatelessWidget {
                                         ProfileModal.show(context);
                                       },
                                       child: Container(
-                                        decoration: BoxDecoration(
+                                        decoration: const BoxDecoration(
                                             image: DecorationImage(
                                               image: AssetImage(
                                                   'assets/images/moaca.png'),
@@ -100,26 +97,26 @@ class MainModal extends StatelessWidget {
                                 )
                               ],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
-                            StaticSearchbar(),
-                            SizedBox(
+                            const StaticSearchbar(),
+                            const SizedBox(
                               height: 35,
                             ),
 
-                            ActiveTrainTicket(),
-                            SizedBox(
+                            const ActiveTrainTicket(),
+                            const SizedBox(
                               height: 15,
                             ),
-                            Divider(
+                            const Divider(
                               color: lightGrey,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 20,
                             ),
                             // Nearby stations
-                            Row(
+                            const Row(
                               children: [
                                 Text(
                                   "Nearby stations",
@@ -130,16 +127,16 @@ class MainModal extends StatelessWidget {
                                 )
                               ],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
-                            NearbyStations(),
+                            const NearbyStations(),
                             //Recents
-                            SizedBox(
+                            const SizedBox(
                               height: 15,
                             ),
                             // Nearby stations
-                            Row(
+                            const Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
@@ -151,7 +148,7 @@ class MainModal extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
 

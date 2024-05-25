@@ -1,7 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class Step {
   final String imageUrl;
@@ -28,7 +26,7 @@ class IndoorNavPage extends StatefulWidget {
         'The blue line is towards the back of the station.'),
   ];
 
-  IndoorNavPage({Key? key}) : super(key: key);
+  IndoorNavPage({super.key});
 
   @override
   State<IndoorNavPage> createState() => _MyNavigationStepsState();
@@ -93,10 +91,10 @@ class _MyNavigationStepsState extends State<IndoorNavPage> {
                               builder: (context) => IndoorNavPage()));
                         },
                         child: Container(
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                                 color: Colors.white, shape: BoxShape.circle),
-                            child: Padding(
-                              padding: const EdgeInsets.all(15.0),
+                            child: const Padding(
+                              padding: EdgeInsets.all(15.0),
                               child: Icon(
                                 Icons.arrow_back_ios_new_rounded,
                                 color: Colors.black,
@@ -107,17 +105,17 @@ class _MyNavigationStepsState extends State<IndoorNavPage> {
                     ),
                   ],
                 ),
-                Container(
+                SizedBox(
                   height: 80,
                   width: MediaQuery.of(context).size.width,
                   child: SingleChildScrollView(
-                    physics: PageScrollPhysics(),
+                    physics: const PageScrollPhysics(),
                     controller: _instructionsScrollController,
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: widget.mockSteps
-                          .map((step) => Container(
+                          .map((step) => SizedBox(
                                 width: MediaQuery.of(context)
                                     .size
                                     .width, // Ensure full width
@@ -144,10 +142,10 @@ class StepInstruction extends StatelessWidget {
   final String additionalText;
 
   const StepInstruction({
-    Key? key,
+    super.key,
     required this.instruction,
     required this.additionalText,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -161,15 +159,15 @@ class StepInstruction extends StatelessWidget {
           child: Center(
             child: Row(
               children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 5.0),
                   child: Icon(
                     Icons.directions,
                     size: 24.0,
                     color: Colors.white,
                   ),
                 ),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,

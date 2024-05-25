@@ -1,6 +1,5 @@
 import 'package:application/components/active_train_ticket.dart';
 import 'package:application/utils/vars.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ChooseLinePage extends StatefulWidget {
@@ -43,60 +42,60 @@ class _ChooseLinePageState extends State<ChooseLinePage> {
                       ),
                     ],
                   ),
-                  Text(
+                  const Text(
                     "Available routes",
                     style: TextStyle(fontFamily: "UberMoveBold", fontSize: 32),
                   ),
-                  Text(
+                  const Text(
                     "Select an option by pressing the desired route",
                     style:
                         TextStyle(fontFamily: "UberMoveMedium", fontSize: 16),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
-                  ActiveTrainTicket(),
-                  SizedBox(
+                  const ActiveTrainTicket(),
+                  const SizedBox(
                     height: 10,
                   ),
-                  Divider(
+                  const Divider(
                     color: lightGrey,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
-                  ActiveTrainTicket(),
-                  SizedBox(
+                  const ActiveTrainTicket(),
+                  const SizedBox(
                     height: 10,
                   ),
-                  Divider(
+                  const Divider(
                     color: lightGrey,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
-                  ActiveTrainTicket(),
-                  SizedBox(
+                  const ActiveTrainTicket(),
+                  const SizedBox(
                     height: 10,
                   ),
-                  Divider(
+                  const Divider(
                     color: lightGrey,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
-                  ActiveTrainTicket()
+                  const ActiveTrainTicket()
                 ],
               ),
               Container(
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     color: Colors.blue),
-                child: Row(
+                child: const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(10.0),
+                      padding: EdgeInsets.all(10.0),
                       child: Text(
                         "Continue",
                         style: TextStyle(

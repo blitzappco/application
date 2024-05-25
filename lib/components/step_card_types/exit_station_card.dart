@@ -1,5 +1,4 @@
 import 'package:application/utils/vars.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ExitStation extends StatelessWidget {
@@ -13,8 +12,8 @@ class ExitStation extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Padding(
-            padding: const EdgeInsets.only(right: 20),
+          const Padding(
+            padding: EdgeInsets.only(right: 20),
             child: Icon(Icons.logout_rounded, size: 35),
           ),
           Expanded(
@@ -24,14 +23,14 @@ class ExitStation extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       "Exit Station",
                       style:
                           TextStyle(fontSize: 18, fontFamily: "UberMoveBold"),
                     ),
                     Text(
                       "To $direction",
-                      style: TextStyle(
+                      style: const TextStyle(
                           fontSize: 14,
                           fontFamily: "UberMoveMedium",
                           color: darkGrey),

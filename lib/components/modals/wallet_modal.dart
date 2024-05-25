@@ -1,23 +1,13 @@
-import 'package:application/components/active_train_ticket.dart';
-import 'package:application/components/buy_pass.dart';
 import 'package:application/components/modals/buy_pass.dart';
 import 'package:application/components/passes/active_pass.dart';
 import 'package:application/components/passes/disabled_pass.dart';
-import 'package:application/components/profile_button.dart';
-import 'package:application/components/shorthand.dart';
 
-import 'package:application/pages/train_ticket/buy_train_ticket.dart';
 import 'package:application/providers/tickets_provider.dart';
 import 'package:application/providers/account_provider.dart';
 
 import 'package:application/utils/animated_text.dart';
 
-import 'package:flutter/cupertino.dart';
-
-import 'package:application/utils/vars.dart';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 
 class WalletModal {
@@ -57,9 +47,9 @@ class WalletModal {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => BuyPassPage()));
+                                    builder: (context) => const BuyPassPage()));
                           },
-                          child: Text(
+                          child: const Text(
                             "Wallet",
                             style: TextStyle(
                                 fontSize: 32,
@@ -69,7 +59,7 @@ class WalletModal {
                         )
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Padding(
@@ -77,7 +67,7 @@ class WalletModal {
                         child: tickets.show
                             ? ActivePass(ticket: tickets.last)
                             : const DisabledPass()),
-                    SizedBox(
+                    const SizedBox(
                       height: 40,
                     ),
                     if (tickets.show)
@@ -85,10 +75,10 @@ class WalletModal {
                         "assets/images/animation.gif",
                         height: 80,
                       ),
-                    SizedBox(
+                    const SizedBox(
                       height: 15,
                     ),
-                    if (tickets.show) AnimatedText()
+                    if (tickets.show) const AnimatedText()
                   ],
                 )),
           );

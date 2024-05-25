@@ -1,5 +1,4 @@
 import 'package:application/pages/splashscreen.dart';
-import 'package:application/pages/temp_splashscreen.dart';
 import 'package:application/providers/route_provider.dart';
 
 import 'package:flutter/material.dart';
@@ -38,7 +37,7 @@ class MyApp extends StatelessWidget {
             child: MaterialApp(
                 theme: ThemeData(
                     scaffoldBackgroundColor: const Color(0xFFF8F8F8),
-                    bottomSheetTheme: BottomSheetThemeData(
+                    bottomSheetTheme: const BottomSheetThemeData(
                       surfaceTintColor: Colors.white,
                     )),
                 debugShowCheckedModeBanner: false,

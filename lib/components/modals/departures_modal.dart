@@ -3,7 +3,6 @@ import 'package:application/components/shorthand.dart';
 import 'package:application/models/route.dart';
 import 'package:application/utils/vars.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:timelines_plus/timelines_plus.dart';
 
 class DeparturesModal {
@@ -23,7 +22,7 @@ class DeparturesModal {
 
         return Padding(
           padding: const EdgeInsets.all(15.0),
-          child: Container(
+          child: SizedBox(
               height: 500,
               child: Column(
                 children: [
@@ -36,8 +35,8 @@ class DeparturesModal {
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(7),
                                 color: Colors.amber),
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
+                            child: const Padding(
+                              padding: EdgeInsets.symmetric(
                                   vertical: 5, horizontal: 12),
                               child: Text(
                                 "M1",
@@ -48,10 +47,10 @@ class DeparturesModal {
                               ),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
-                          Column(
+                          const Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
@@ -90,10 +89,10 @@ class DeparturesModal {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
-                  Row(
+                  const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
@@ -112,14 +111,14 @@ class DeparturesModal {
                       )
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
-                  Container(
+                  SizedBox(
                     height: 65,
                     child: ListView(
                       scrollDirection: Axis.horizontal,
-                      children: [
+                      children: const [
                         EtaElement(),
                         EtaElement(),
                         EtaElement(),
@@ -130,10 +129,10 @@ class DeparturesModal {
                       ],
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
-                  Row(
+                  const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
@@ -145,7 +144,7 @@ class DeparturesModal {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Container(
@@ -158,9 +157,9 @@ class DeparturesModal {
                       child: FixedTimeline.tileBuilder(
                         theme: TimelineThemeData(
                             nodePosition: 0,
-                            indicatorTheme: IndicatorThemeData(
+                            indicatorTheme: const IndicatorThemeData(
                                 size: 20, color: Colors.black),
-                            connectorTheme: ConnectorThemeData(thickness: 2)),
+                            connectorTheme: const ConnectorThemeData(thickness: 2)),
                         builder: TimelineTileBuilder.connected(
                           connectionDirection: ConnectionDirection.before,
                           contentsAlign: ContentsAlign.basic,
@@ -186,7 +185,7 @@ class DeparturesModal {
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(
+                                    const Text(
                                       "Piata Victoriei",
                                       style: TextStyle(
                                           fontSize: 16,
@@ -205,7 +204,7 @@ class DeparturesModal {
                                     )
                                   ],
                                 ),
-                                Text(
+                                const Text(
                                   "23:23",
                                   style: TextStyle(
                                       fontSize: 16,

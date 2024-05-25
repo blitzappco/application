@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class ProfileButton extends StatelessWidget {
-  final String ButtonText;
-  final IconData ButtonIcon;
+  final String buttonText;
+  final IconData buttonIcon;
   const ProfileButton(
-      {required this.ButtonIcon, required this.ButtonText, super.key});
+      {required this.buttonIcon, required this.buttonText, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,15 +22,15 @@ class ProfileButton extends StatelessWidget {
           child: Row(
             children: [
               Icon(
-                ButtonIcon,
+                buttonIcon,
                 size: 18,
               ),
-              SizedBox(
+              const SizedBox(
                 width: 5,
               ),
               Text(
-                ButtonText,
-                style: TextStyle(fontSize: 14),
+                buttonText,
+                style: const TextStyle(fontSize: 14),
               )
             ],
           ),

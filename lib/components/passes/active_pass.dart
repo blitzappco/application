@@ -14,7 +14,7 @@ class _ActivePassState extends State<ActivePass> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        image: DecorationImage(
+        image: const DecorationImage(
           image: AssetImage('assets/images/card.png'),
           fit: BoxFit.fill,
         ),
@@ -24,7 +24,7 @@ class _ActivePassState extends State<ActivePass> {
             color: Colors.grey.withOpacity(0.5),
             spreadRadius: 1,
             blurRadius: 4,
-            offset: Offset(0, 3), // changes position of shadow
+            offset: const Offset(0, 3), // changes position of shadow
           ),
         ],
       ),

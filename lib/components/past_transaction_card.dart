@@ -1,6 +1,5 @@
 import 'package:application/models/ticket.dart';
 import 'package:application/utils/normalize.dart';
-import 'package:application/utils/process_ticket_types.dart';
 import 'package:application/utils/shorten.dart';
 import 'package:application/utils/vars.dart';
 import 'package:flutter/cupertino.dart';
@@ -22,28 +21,28 @@ class PastTransactionCard extends StatelessWidget {
             children: [
               Text(
                 shorten(ticket.name ?? '', 20),
-                style: TextStyle(
+                style: const TextStyle(
                   fontFamily: "UberMoveBold",
                   fontSize: 19,
                 ),
               ),
               Text(
                 "RON ${ticket.fare! / 100}",
-                style: TextStyle(
+                style: const TextStyle(
                   fontFamily: "UberMoveMedium",
                   fontSize: 19,
                 ),
               )
             ],
           ),
-          Text(
+          const Text(
             "STB Bucuresti",
             style: TextStyle(
                 fontFamily: "UberMoveMedium", fontSize: 16, color: darkGrey),
           ),
           Text(
-            "${formatDate(ticket.createdAt ?? DateTime.now())}",
-            style: TextStyle(
+            formatDate(ticket.createdAt ?? DateTime.now()),
+            style: const TextStyle(
                 fontFamily: "UberMoveMedium", fontSize: 16, color: darkGrey),
           )
         ],

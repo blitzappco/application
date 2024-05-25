@@ -1,4 +1,3 @@
-import 'package:application/utils/types.dart';
 import 'package:application/utils/vars.dart';
 import 'package:flutter/material.dart';
 
@@ -35,7 +34,7 @@ class PlaceCard extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 15,
           ),
           Column(
@@ -43,11 +42,11 @@ class PlaceCard extends StatelessWidget {
             children: [
               Text(
                 mainText,
-                style: TextStyle(fontSize: 16, fontFamily: 'UberMoveBold'),
+                style: const TextStyle(fontSize: 16, fontFamily: 'UberMoveBold'),
               ),
               Text(
                 secondaryText,
-                style: TextStyle(fontSize: 14, fontFamily: 'UberMoveMedium'),
+                style: const TextStyle(fontSize: 14, fontFamily: 'UberMoveMedium'),
               )
             ],
           )

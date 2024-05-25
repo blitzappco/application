@@ -1,6 +1,5 @@
 import 'package:application/components/place_card.dart';
 import 'package:application/models/place.dart';
-import 'package:application/pages/homescreen.dart';
 import 'package:application/providers/account_provider.dart';
 import 'package:application/providers/route_provider.dart';
 import 'package:application/utils/types.dart';

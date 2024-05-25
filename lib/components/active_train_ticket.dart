@@ -1,7 +1,5 @@
 import 'package:application/utils/vars.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class ActiveTrainTicket extends StatefulWidget {
   final int minutes = 78;
@@ -26,7 +24,7 @@ class _ActiveTrainTicketState extends State<ActiveTrainTicket> {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Column(
+        const Column(
           children: [
             Text(
               "1h",
@@ -49,7 +47,7 @@ class _ActiveTrainTicketState extends State<ActiveTrainTicket> {
             )
           ],
         ),
-        SizedBox(
+        const SizedBox(
           width: 15,
         ),
         Expanded(
@@ -59,7 +57,7 @@ class _ActiveTrainTicketState extends State<ActiveTrainTicket> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Row(
+                  const Row(
                     children: [
                       Icon(
                         Icons.train,
@@ -79,14 +77,14 @@ class _ActiveTrainTicketState extends State<ActiveTrainTicket> {
                   ),
                   Row(
                     children: [
-                      Text(
+                      const Text(
                         "Departs",
                         style: TextStyle(
                             fontFamily: "UberMoveMedium",
                             fontSize: 14,
                             color: darkGrey),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 5,
                       ),
                       Text(
@@ -100,10 +98,10 @@ class _ActiveTrainTicketState extends State<ActiveTrainTicket> {
                   )
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 5,
               ),
-              Row(
+              const Row(
                 children: [
                   Text(
                     "Bucuresti Nord ",
@@ -122,7 +120,7 @@ class _ActiveTrainTicketState extends State<ActiveTrainTicket> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 5,
               ),
               Row(
@@ -135,7 +133,7 @@ class _ActiveTrainTicketState extends State<ActiveTrainTicket> {
                             Icons.arrow_circle_right_rounded,
                             color: Colors.green[600],
                           )),
-                      SizedBox(
+                      const SizedBox(
                         width: 5,
                       ),
                       Text(
@@ -147,7 +145,7 @@ class _ActiveTrainTicketState extends State<ActiveTrainTicket> {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   Row(
@@ -158,7 +156,7 @@ class _ActiveTrainTicketState extends State<ActiveTrainTicket> {
                             Icons.arrow_circle_right_rounded,
                             color: Colors.green[600],
                           )),
-                      SizedBox(
+                      const SizedBox(
                         width: 5,
                       ),
                       Text(

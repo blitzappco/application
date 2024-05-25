@@ -19,7 +19,7 @@ class LineCard extends StatelessWidget {
           const SizedBox(
             width: 20,
           ),
-          Expanded(
+          const Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

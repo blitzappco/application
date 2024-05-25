@@ -41,7 +41,7 @@ class SearchModal {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
+                        const Text(
                           "Search",
                           style: TextStyle(
                             fontFamily: "UberMoveBold",
@@ -66,7 +66,7 @@ class SearchModal {
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Row(
@@ -127,27 +127,27 @@ class SearchModal {
                         // ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     if (controller.text.isEmpty)
-                      Container(
+                      SizedBox(
                         height: 80,
                         child: ListView(
                           scrollDirection: Axis.horizontal,
-                          children: [
-                            const SuggestionsIcon(type: 'bar', name: "Drinks"),
-                            const SuggestionsIcon(
+                          children: const [
+                            SuggestionsIcon(type: 'bar', name: "Drinks"),
+                            SuggestionsIcon(
                                 type: 'shopping_mall', name: "Malls"),
-                            const SuggestionsIcon(
+                            SuggestionsIcon(
                                 type: 'restaurant', name: "Restaurants"),
-                            const SuggestionsIcon(
+                            SuggestionsIcon(
                                 type: 'university', name: "Universities"),
-                            const SuggestionsIcon(type: 'park', name: "Parks"),
-                            const SuggestionsIcon(type: 'cafe', name: "Cafes"),
-                            const SuggestionsIcon(
+                            SuggestionsIcon(type: 'park', name: "Parks"),
+                            SuggestionsIcon(type: 'cafe', name: "Cafes"),
+                            SuggestionsIcon(
                                 type: 'pharmacy', name: "Pharmacies"),
-                            const SuggestionsIcon(type: 'bank', name: "Banks"),
+                            SuggestionsIcon(type: 'bank', name: "Banks"),
                           ],
                         ),
                       ),
