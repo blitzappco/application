@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:application/models/tickety_type.dart';
+import 'package:application/utils/process_ticket_types.dart';
 import 'package:flutter/material.dart';
 import '../utils/url.dart';
 import 'package:http/http.dart' as http;
@@ -8,23 +10,22 @@ import '../models/ticket.dart';
 
 class TicketsProvider with ChangeNotifier {
   List<Ticket> list = [];
+  Map<String, List<TicketType>> typesMap = {};
 
   Ticket purchased = Ticket();
 
   late Ticket last;
-  late bool show;
+  late bool show = false;
 
   bool loading = false;
   String errorMessage = '';
 
-  double fare = 0.0;
+  int fare = 0;
   String ticketID = '';
   bool confirmed = true;
 
-  bool disabled = true;
-
-  setDisabled(bool value) {
-    disabled = value;
+  setConfirmed(bool value) {
+    confirmed = value;
     notifyListeners();
   }
 
@@ -42,13 +43,10 @@ class TicketsProvider with ChangeNotifier {
 
     dynamic json = jsonDecode(response.body);
     if (response.statusCode == 200) {
-      List<Ticket> ticketsList =
-          List<Ticket>.from(json.map((x) => Ticket.fromJSON(x)));
+      List<TicketType> ticketTypesList =
+          List<TicketType>.from(json.map((x) => TicketType.fromJSON(x)));
 
-      ticketsList.sort(
-          (b, a) => a.expiresAt.toString().compareTo(b.expiresAt.toString()));
-
-      list = ticketsList;
+      typesMap = processTicketTypes(ticketTypesList);
       notifyListeners();
     } else {
       errorMessage = 'Nu s-au putut gasi tipurile de bilete';
@@ -98,7 +96,7 @@ class TicketsProvider with ChangeNotifier {
     dynamic json = jsonDecode(response.body);
     if (response.statusCode == 200) {
       show = json['show'];
-      last = json['ticket'];
+      last = Ticket.fromJSON(json['ticket']);
 
       notifyListeners();
     } else {
@@ -112,7 +110,7 @@ class TicketsProvider with ChangeNotifier {
     notifyListeners();
 
     final response = await http.post(
-        Uri.parse('${AppURL.baseURL}/accounts/tickets/purchase-intent'
+        Uri.parse('${AppURL.baseURL}/tickets/purchase-intent'
             '?typeID=$typeID'),
         headers: authHeader(token));
 
@@ -134,20 +132,19 @@ class TicketsProvider with ChangeNotifier {
     loading = true;
     notifyListeners();
 
-    final response = await http.post(
-        Uri.parse('${AppURL.baseURL}/accounts/tickets/purchase-intent'),
-        headers: authHeader(token),
-        body: jsonEncode(<String, String>{
-          "paymentIntent": paymentIntent,
-          "ticketID": ticketID,
-        }));
+    final response =
+        await http.post(Uri.parse('${AppURL.baseURL}/tickets/purchase-attach'),
+            headers: authHeader(token),
+            body: jsonEncode(<String, String>{
+              "paymentIntent": paymentIntent,
+              "ticketID": ticketID,
+            }));
     loading = false;
     notifyListeners();
 
     final json = jsonDecode(utf8.decode(response.bodyBytes));
     if (response.statusCode == 200) {
       purchased = Ticket.fromJSON(json);
-      confirmed = false;
       notifyListeners();
     } else {
       errorMessage = json['message'];
@@ -160,7 +157,7 @@ class TicketsProvider with ChangeNotifier {
     notifyListeners();
 
     final response = await http.get(
-      Uri.parse('${AppURL.baseURL}/accounts/tickets/ticket'
+      Uri.parse('${AppURL.baseURL}/tickets/ticket'
           '?ticketID=$ticketID'),
       headers: authHeader(token),
     );
@@ -174,9 +171,10 @@ class TicketsProvider with ChangeNotifier {
       if (tempTicket.confirmed == true) {
         purchased = Ticket();
         ticketID = '';
-        fare = 0.0;
+        fare = 0;
         last = tempTicket;
         list.add(tempTicket);
+        show = true;
         confirmed = true;
       }
       notifyListeners();

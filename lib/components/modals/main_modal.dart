@@ -1,6 +1,5 @@
 import 'package:application/components/active_train_ticket.dart';
 import 'package:application/components/modals/departures_modal.dart';
-import 'package:application/components/modals/add_payment_method_modal.dart';
 import 'package:application/components/modals/profile_modal.dart';
 import 'package:application/components/modals/wallet_modal.dart';
 import 'package:application/components/nearby_stations.dart';

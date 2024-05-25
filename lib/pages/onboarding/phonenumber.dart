@@ -120,17 +120,22 @@ class _PhoneNumberState extends State<PhoneNumber> {
                       padding: const EdgeInsets.only(top: 15, bottom: 15),
                       child: Center(
                         child: !auth.loading
-                            ? const Text('Continua',
-                                style: TextStyle(
+                            ? const SizedBox(
+                                height: 30,
+                                child: Text('Continua',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'UberMoveBold',
+                                    )))
+                            : const SizedBox(
+                                width: 30,
+                                height: 30,
+                                child: CircularProgressIndicator(
                                   color: Colors.white,
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'UberMoveBold',
-                                ))
-                            : const CircularProgressIndicator(
-                                color: Colors.white,
-                                strokeWidth: 2,
-                              ),
+                                  strokeWidth: 2,
+                                )),
                       ),
                     ),
                   ),

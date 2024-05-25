@@ -20,6 +20,7 @@ class AccountProvider with ChangeNotifier {
 
   Account account = Account();
 
+  int selectedPM = 0;
   String clientSecret = '';
   String paymentIntent = '';
   bool setupConfirmed = true;
@@ -32,6 +33,11 @@ class AccountProvider with ChangeNotifier {
 
   setError(String message) {
     errorMessage = message;
+    notifyListeners();
+  }
+
+  setSelectedPM(int index) {
+    selectedPM = index;
     notifyListeners();
   }
 
@@ -245,13 +251,17 @@ class AccountProvider with ChangeNotifier {
     }
   }
 
-  createPaymentIntent() async {
+  createPaymentIntent(int amount) async {
     loading = true;
     notifyListeners();
 
     final response = await http.post(
         Uri.parse('${AppURL.baseURL}/accounts/payments/payment-intent'),
-        headers: authHeader(token));
+        headers: authHeader(token),
+        body: jsonEncode(<String, int>{
+          'amount': amount,
+          'paymentMethod': selectedPM,
+        }));
 
     loading = false;
     notifyListeners();

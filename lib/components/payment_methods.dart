@@ -1,11 +1,6 @@
+import 'package:application/providers/account_provider.dart';
 import 'package:flutter/material.dart';
-
-class PaymentMethod {
-  final String cardNumber;
-  final String cardType;
-
-  PaymentMethod({required this.cardNumber, required this.cardType});
-}
+import 'package:provider/provider.dart';
 
 class PaymentMethods extends StatefulWidget {
   const PaymentMethods({super.key});
@@ -15,47 +10,39 @@ class PaymentMethods extends StatefulWidget {
 }
 
 class _PaymentMethodsState extends State<PaymentMethods> {
-  String? _selectedCard;
-
-  final List<PaymentMethod> _paymentMethods = [
-    PaymentMethod(cardNumber: '**** **** **** 1234', cardType: 'Visa'),
-    PaymentMethod(cardNumber: '**** **** **** 5678', cardType: 'Mastercard'),
-    PaymentMethod(cardNumber: '**** **** **** 9012', cardType: 'Visa'),
-  ];
-
-  Widget _getCardLogo(String cardType) {
+  Widget getCardLogo(String cardType) {
     switch (cardType) {
-      case 'Visa':
+      case 'visa':
         return Image.asset('assets/images/visa.png', width: 50, height: 50);
-      case 'Mastercard':
+      case 'mastercard':
         return Image.asset('assets/images/mastercard.png',
             width: 50, height: 50);
       default:
-        return Container(
+        return const SizedBox(
             width: 50, height: 50); // Placeholder for unknown types
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: _paymentMethods.length,
-      itemBuilder: (context, index) {
-        final method = _paymentMethods[index];
-        return ListTile(
-          leading: Radio<String>(
-            value: method.cardNumber,
-            groupValue: _selectedCard,
-            onChanged: (String? value) {
-              setState(() {
-                _selectedCard = value;
-              });
-            },
-          ),
-          title: Text(method.cardNumber),
-          trailing: _getCardLogo(method.cardType),
-        );
-      },
-    );
+    return Consumer<AccountProvider>(builder: (context, account, _) {
+      return ListView.builder(
+        itemCount: account.account.paymentMethods?.length ?? 0,
+        itemBuilder: (context, index) {
+          return ListTile(
+            leading: Radio<int>(
+              value: index,
+              groupValue: account.selectedPM,
+              onChanged: (int? value) {
+                account.setSelectedPM(value ?? 0);
+              },
+            ),
+            title: Text(account.account.paymentMethods?[index].title ?? ''),
+            trailing:
+                getCardLogo(account.account.paymentMethods?[index].icon ?? ''),
+          );
+        },
+      );
+    });
   }
 }

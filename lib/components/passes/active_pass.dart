@@ -1,7 +1,9 @@
+import 'package:application/models/ticket.dart';
 import 'package:flutter/material.dart';
 
 class ActivePass extends StatefulWidget {
-  const ActivePass({super.key});
+  final Ticket ticket;
+  const ActivePass({super.key, required this.ticket});
 
   @override
   State<ActivePass> createState() => _ActivePassState();

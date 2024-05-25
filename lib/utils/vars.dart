@@ -11,6 +11,8 @@ const Color darkGrey = Color(0XFF6E6E6E);
 const Color blitzPurple = Color(0xFF5100CC);
 const Color accentBlue = Colors.blue;
 
+const bool jury = true;
+
 //Variables
 
 String homeAddress = 'Strada Dealu cu Piatra 2';
