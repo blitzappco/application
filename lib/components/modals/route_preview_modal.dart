@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'package:application/components/route_preview_card.dart';
-import 'package:application/providers/route_provider.dart';
-import 'package:application/utils/shorten.dart';
+import 'package:blitz/components/route_preview_card.dart';
+import 'package:blitz/providers/route_provider.dart';
+import 'package:blitz/utils/shorten.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';

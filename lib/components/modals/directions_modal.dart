@@ -1,6 +1,6 @@
-import 'package:application/components/modals/wallet_modal.dart';
-import 'package:application/providers/route_provider.dart';
-import 'package:application/utils/normalize.dart';
+import 'package:blitz/components/modals/wallet_modal.dart';
+import 'package:blitz/providers/route_provider.dart';
+import 'package:blitz/utils/normalize.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';

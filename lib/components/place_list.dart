@@ -1,8 +1,8 @@
-import 'package:application/components/place_card.dart';
-import 'package:application/models/place.dart';
-import 'package:application/providers/account_provider.dart';
-import 'package:application/providers/route_provider.dart';
-import 'package:application/utils/types.dart';
+import 'package:blitz/components/place_card.dart';
+import 'package:blitz/models/place.dart';
+import 'package:blitz/providers/account_provider.dart';
+import 'package:blitz/providers/route_provider.dart';
+import 'package:blitz/utils/types.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../utils/shorten.dart';

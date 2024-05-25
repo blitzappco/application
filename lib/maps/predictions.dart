@@ -1,4 +1,4 @@
-import 'package:application/models/place.dart';
+import 'package:blitz/models/place.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import '../utils/env.dart';

@@ -1,5 +1,5 @@
-import 'package:application/components/past_transaction_card.dart';
-import 'package:application/utils/vars.dart';
+import 'package:blitz/components/past_transaction_card.dart';
+import 'package:blitz/utils/vars.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import '../../providers/account_provider.dart';

@@ -1,12 +1,12 @@
-import 'package:application/components/step_card_types/step_card.dart';
-import 'package:application/maps/geocode.dart';
-import 'package:application/maps/predictions.dart';
-import 'package:application/maps/routes.dart';
-import 'package:application/models/place.dart';
-import 'package:application/models/route.dart' as route;
-import 'package:application/utils/get_location.dart';
-import 'package:application/utils/polyline.dart';
-import 'package:application/utils/steps.dart';
+import 'package:blitz/components/step_card_types/step_card.dart';
+import 'package:blitz/maps/geocode.dart';
+import 'package:blitz/maps/predictions.dart';
+import 'package:blitz/maps/routes.dart';
+import 'package:blitz/models/place.dart';
+import 'package:blitz/models/route.dart' as route;
+import 'package:blitz/utils/get_location.dart';
+import 'package:blitz/utils/polyline.dart';
+import 'package:blitz/utils/steps.dart';
 
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';

@@ -1,8 +1,8 @@
-import 'package:application/components/shorthand.dart';
-import 'package:application/models/route.dart';
-import 'package:application/utils/normalize.dart';
-import 'package:application/utils/polyline.dart';
-import 'package:application/utils/vars.dart';
+import 'package:blitz/components/shorthand.dart';
+import 'package:blitz/models/route.dart';
+import 'package:blitz/utils/normalize.dart';
+import 'package:blitz/utils/polyline.dart';
+import 'package:blitz/utils/vars.dart';
 import 'package:flutter/material.dart';
 import 'package:timelines_plus/timelines_plus.dart';
 
@@ -55,8 +55,8 @@ class _TransitCardState extends State<TransitCard> {
                     Text(
                       "Take the ${widget.transitDetails?.line.name ?? ''}"
                       " ${widget.transitDetails?.line.vehicleType.toLowerCase()}",
-                      style:
-                          const TextStyle(fontFamily: "UberMoveBold", fontSize: 20),
+                      style: const TextStyle(
+                          fontFamily: "UberMoveBold", fontSize: 20),
                     ),
                     Text(
                       normalizeTime(

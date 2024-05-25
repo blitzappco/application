@@ -1,7 +1,7 @@
-import 'package:application/components/modals/nearby_stations_modal.dart';
-import 'package:application/components/shorthand.dart';
-import 'package:application/models/route.dart';
-import 'package:application/utils/vars.dart';
+import 'package:blitz/components/modals/nearby_stations_modal.dart';
+import 'package:blitz/components/shorthand.dart';
+import 'package:blitz/models/route.dart';
+import 'package:blitz/utils/vars.dart';
 import 'package:flutter/material.dart';
 
 class StationCard extends StatelessWidget {
@@ -39,8 +39,8 @@ class StationCard extends StatelessWidget {
                     children: [
                       Text(
                         name,
-                        style:
-                            const TextStyle(fontSize: 16, fontFamily: 'UberMoveBold'),
+                        style: const TextStyle(
+                            fontSize: 16, fontFamily: 'UberMoveBold'),
                       ),
                       Text(
                         distance,

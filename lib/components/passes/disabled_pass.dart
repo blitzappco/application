@@ -1,5 +1,5 @@
-import 'package:application/components/modals/buy_pass.dart';
-import 'package:application/utils/vars.dart';
+import 'package:blitz/components/modals/buy_pass.dart';
+import 'package:blitz/utils/vars.dart';
 import 'package:flutter/material.dart';
 
 class DisabledPass extends StatefulWidget {

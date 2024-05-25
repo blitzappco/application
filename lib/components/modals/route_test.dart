@@ -1,6 +1,6 @@
-import 'package:application/pages/indoor_nav.dart';
-import 'package:application/providers/route_provider.dart';
-import 'package:application/utils/vars.dart';
+import 'package:blitz/pages/indoor_nav.dart';
+import 'package:blitz/providers/route_provider.dart';
+import 'package:blitz/utils/vars.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';

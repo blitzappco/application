@@ -1,4 +1,4 @@
-import 'package:application/components/modals/search_modal.dart';
+import 'package:blitz/components/modals/search_modal.dart';
 import 'package:flutter/material.dart';
 import '../utils/vars.dart';
 // import 'modals/search_modal.dart';

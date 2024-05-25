@@ -1,4 +1,4 @@
-import 'package:application/pages/train_ticket/choose_line.dart';
+import 'package:blitz/pages/train_ticket/choose_line.dart';
 import 'package:flutter/material.dart';
 
 class BuyTrainTicket extends StatefulWidget {

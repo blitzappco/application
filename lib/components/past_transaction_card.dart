@@ -1,7 +1,7 @@
-import 'package:application/models/ticket.dart';
-import 'package:application/utils/normalize.dart';
-import 'package:application/utils/shorten.dart';
-import 'package:application/utils/vars.dart';
+import 'package:blitz/models/ticket.dart';
+import 'package:blitz/utils/normalize.dart';
+import 'package:blitz/utils/shorten.dart';
+import 'package:blitz/utils/vars.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

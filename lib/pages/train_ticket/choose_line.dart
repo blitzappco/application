@@ -1,5 +1,5 @@
-import 'package:application/components/active_train_ticket.dart';
-import 'package:application/utils/vars.dart';
+import 'package:blitz/components/active_train_ticket.dart';
+import 'package:blitz/utils/vars.dart';
 import 'package:flutter/material.dart';
 
 class ChooseLinePage extends StatefulWidget {

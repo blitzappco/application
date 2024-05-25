@@ -1,7 +1,7 @@
-import 'package:application/components/line_card.dart';
-import 'package:application/components/shorthand.dart';
-import 'package:application/models/route.dart';
-import 'package:application/utils/vars.dart';
+import 'package:blitz/components/line_card.dart';
+import 'package:blitz/components/shorthand.dart';
+import 'package:blitz/models/route.dart';
+import 'package:blitz/utils/vars.dart';
 import 'package:flutter/material.dart';
 
 class NearbyStationModal {

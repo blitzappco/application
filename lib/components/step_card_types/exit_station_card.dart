@@ -1,4 +1,4 @@
-import 'package:application/utils/vars.dart';
+import 'package:blitz/utils/vars.dart';
 import 'package:flutter/material.dart';
 
 class ExitStation extends StatelessWidget {

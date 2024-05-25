@@ -1,7 +1,7 @@
-import 'package:application/components/eta_element.dart';
-import 'package:application/components/shorthand.dart';
-import 'package:application/models/route.dart';
-import 'package:application/utils/vars.dart';
+import 'package:blitz/components/eta_element.dart';
+import 'package:blitz/components/shorthand.dart';
+import 'package:blitz/models/route.dart';
+import 'package:blitz/utils/vars.dart';
 import 'package:flutter/material.dart';
 import 'package:timelines_plus/timelines_plus.dart';
 
@@ -159,7 +159,8 @@ class DeparturesModal {
                             nodePosition: 0,
                             indicatorTheme: const IndicatorThemeData(
                                 size: 20, color: Colors.black),
-                            connectorTheme: const ConnectorThemeData(thickness: 2)),
+                            connectorTheme:
+                                const ConnectorThemeData(thickness: 2)),
                         builder: TimelineTileBuilder.connected(
                           connectionDirection: ConnectionDirection.before,
                           contentsAlign: ContentsAlign.basic,

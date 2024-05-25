@@ -1,4 +1,4 @@
-import 'package:application/providers/account_provider.dart';
+import 'package:blitz/providers/account_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

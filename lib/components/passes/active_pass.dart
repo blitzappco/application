@@ -1,4 +1,4 @@
-import 'package:application/models/ticket.dart';
+import 'package:blitz/models/ticket.dart';
 import 'package:flutter/material.dart';
 
 class ActivePass extends StatefulWidget {

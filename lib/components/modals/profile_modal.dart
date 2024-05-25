@@ -1,10 +1,10 @@
-import 'package:application/components/modals/tickets_modal.dart';
-import 'package:application/components/past_transaction_card.dart';
-import 'package:application/components/payment_methods.dart';
-import 'package:application/pages/onboarding/onboarding.dart';
-import 'package:application/providers/account_provider.dart';
-import 'package:application/providers/tickets_provider.dart';
-import 'package:application/utils/vars.dart';
+import 'package:blitz/components/modals/tickets_modal.dart';
+import 'package:blitz/components/past_transaction_card.dart';
+import 'package:blitz/components/payment_methods.dart';
+import 'package:blitz/pages/onboarding/onboarding.dart';
+import 'package:blitz/providers/account_provider.dart';
+import 'package:blitz/providers/tickets_provider.dart';
+import 'package:blitz/utils/vars.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:application/models/place.dart';
-import 'package:application/utils/types.dart';
+import 'package:blitz/models/place.dart';
+import 'package:blitz/utils/types.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 

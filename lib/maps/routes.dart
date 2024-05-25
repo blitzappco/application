@@ -1,4 +1,4 @@
-import 'package:application/models/route.dart';
+import 'package:blitz/models/route.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import '../utils/env.dart';

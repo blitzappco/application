@@ -1,11 +1,11 @@
-import 'package:application/components/modals/buy_pass.dart';
-import 'package:application/components/passes/active_pass.dart';
-import 'package:application/components/passes/disabled_pass.dart';
+import 'package:blitz/components/modals/buy_pass.dart';
+import 'package:blitz/components/passes/active_pass.dart';
+import 'package:blitz/components/passes/disabled_pass.dart';
 
-import 'package:application/providers/tickets_provider.dart';
-import 'package:application/providers/account_provider.dart';
+import 'package:blitz/providers/tickets_provider.dart';
+import 'package:blitz/providers/account_provider.dart';
 
-import 'package:application/utils/animated_text.dart';
+import 'package:blitz/utils/animated_text.dart';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

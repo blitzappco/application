@@ -1,8 +1,8 @@
-import 'package:application/components/payment_methods.dart';
-import 'package:application/models/tickety_type.dart';
-import 'package:application/providers/account_provider.dart';
-import 'package:application/providers/tickets_provider.dart';
-import 'package:application/utils/process_ticket_types.dart';
+import 'package:blitz/components/payment_methods.dart';
+import 'package:blitz/models/tickety_type.dart';
+import 'package:blitz/providers/account_provider.dart';
+import 'package:blitz/providers/tickets_provider.dart';
+import 'package:blitz/utils/process_ticket_types.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:provider/provider.dart';

@@ -1,4 +1,4 @@
-import 'package:application/models/route.dart';
+import 'package:blitz/models/route.dart';
 import 'package:flutter/material.dart';
 
 import '../components/shorthand.dart';
