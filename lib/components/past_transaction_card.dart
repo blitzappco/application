@@ -1,9 +1,14 @@
+import 'package:application/models/ticket.dart';
+import 'package:application/utils/normalize.dart';
+import 'package:application/utils/process_ticket_types.dart';
+import 'package:application/utils/shorten.dart';
 import 'package:application/utils/vars.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class PastTransactionCard extends StatelessWidget {
-  const PastTransactionCard({super.key});
+  final Ticket ticket;
+  const PastTransactionCard({super.key, required this.ticket});
 
   @override
   Widget build(BuildContext context) {
@@ -16,14 +21,14 @@ class PastTransactionCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "Day Pass",
+                shorten(ticket.name ?? '', 20),
                 style: TextStyle(
                   fontFamily: "UberMoveBold",
                   fontSize: 19,
                 ),
               ),
               Text(
-                "RON 8.00",
+                "RON ${ticket.fare! / 100}",
                 style: TextStyle(
                   fontFamily: "UberMoveMedium",
                   fontSize: 19,
@@ -37,7 +42,7 @@ class PastTransactionCard extends StatelessWidget {
                 fontFamily: "UberMoveMedium", fontSize: 16, color: darkGrey),
           ),
           Text(
-            "Yesterday",
+            "${formatDate(ticket.createdAt ?? DateTime.now())}",
             style: TextStyle(
                 fontFamily: "UberMoveMedium", fontSize: 16, color: darkGrey),
           )

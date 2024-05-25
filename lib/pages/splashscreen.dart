@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:application/pages/train_ticket/buy_train_ticket.dart';
+import 'package:application/providers/tickets_provider.dart';
 import 'package:application/utils/normalize.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -36,17 +37,43 @@ class _SplashScreenState extends State<SplashScreen> {
       });
       WidgetsBinding.instance.addPostFrameCallback((_) async {
         final account = Provider.of<AccountProvider>(context, listen: false);
+        final tickets = Provider.of<TicketsProvider>(context, listen: false);
 
         await account.loadAccount();
 
         if (account.token == '' || account.account.id == '') {
-          Timer(
-              const Duration(milliseconds: 100),
-              () => Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const Onboarding())));
+          if (jury) {
+            await account.onboarding("+40712345678");
+            await account.verifyCode("0000");
+
+            await account.getTrips();
+            await account.getPaymentMethods();
+
+            await tickets.getTicketTypes(account.token, "bucuresti");
+            await tickets.getLastTicket(account.token, "bucuresti");
+
+            Timer(
+                const Duration(milliseconds: 500),
+                () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const Homescreen())));
+          } else {
+            Timer(
+                const Duration(milliseconds: 100),
+                () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const Onboarding())));
+          }
         } else {
           await account.getTrips();
           await account.getPaymentMethods();
+
+          await tickets.getTicketTypes(account.token, "bucuresti");
+
+          await tickets.getLastTicket(account.token, "bucuresti");
+
           Timer(const Duration(milliseconds: 100), () {
             Navigator.push(
               context,

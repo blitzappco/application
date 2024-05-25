@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 String normalizeDuration(int value) {
   String result = '';
 
@@ -64,4 +66,21 @@ String normalizeDistance(int value) {
   }
 
   return result;
+}
+
+String formatDate(DateTime ticketDate) {
+  DateTime now = DateTime.now().toLocal();
+  DateTime today = DateTime(now.year, now.month, now.day);
+  DateTime yesterday = today.subtract(const Duration(days: 1));
+
+  if (ticketDate.isAfter(today)) {
+    // Ticket bought today, show HH:MM
+    return 'Today, ${DateFormat.Hm().format(ticketDate)}';
+  } else if (ticketDate.isAfter(yesterday)) {
+    // Ticket bought yesterday, show yesterday
+    return 'Yesterday, ${DateFormat.Hm().format(ticketDate)}';
+  } else {
+    // Ticket bought earlier than yesterday, show DD MMM YY
+    return DateFormat('dd MMMM').format(ticketDate);
+  }
 }

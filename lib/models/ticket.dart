@@ -1,12 +1,11 @@
-import 'dart:ffi';
-
 class Ticket {
   String? id;
   String? accountID;
   String? city;
+  String? name;
 
   String? mode;
-  Double? fare;
+  int? fare;
   int? trips;
   String? expiry;
 
@@ -20,6 +19,7 @@ class Ticket {
     this.id,
     this.accountID,
     this.city,
+    this.name,
     this.mode,
     this.fare,
     this.trips,
@@ -35,14 +35,15 @@ class Ticket {
       id: json['id'],
       accountID: json['accountID'],
       city: json['city'],
+      name: json['name'],
       mode: json['mode'],
       fare: json['fare'],
       trips: json['trips'],
       expiry: json['expiry'],
       paymentIntent: json['paymentIntent'],
       confirmed: json['confirmed'],
-      expiresAt: json['expiresAt'],
-      createdAt: json['createdAt'],
+      expiresAt: DateTime.parse(json['expiresAt']),
+      createdAt: DateTime.parse(json['createdAt']),
     );
   }
 

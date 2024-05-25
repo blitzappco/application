@@ -8,6 +8,8 @@ import 'package:application/components/shorthand.dart';
 
 import 'package:application/pages/train_ticket/buy_train_ticket.dart';
 import 'package:application/providers/tickets_provider.dart';
+import 'package:application/providers/account_provider.dart';
+
 import 'package:application/utils/animated_text.dart';
 
 import 'package:flutter/cupertino.dart';
@@ -20,6 +22,11 @@ import 'package:provider/provider.dart';
 
 class WalletModal {
   static void show(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      final account = Provider.of<AccountProvider>(context, listen: false);
+      final tickets = Provider.of<TicketsProvider>(context, listen: false);
+      await tickets.getLastTicket(account.token, "bucuresti");
+    });
     showModalBottomSheet(
       isScrollControlled: true,
       context: context,
@@ -30,9 +37,12 @@ class WalletModal {
         ),
       ),
       builder: (BuildContext context) {
-        // Schedule the focus request after the bottom sheet is built
-
         return Consumer<TicketsProvider>(builder: (context, tickets, _) {
+          if (!tickets.confirmed) {
+            final account =
+                Provider.of<AccountProvider>(context, listen: false);
+            tickets.confirmPurchase(account.token);
+          }
           return Padding(
             padding: const EdgeInsets.all(20.0),
             child: Container(
@@ -64,12 +74,13 @@ class WalletModal {
                     ),
                     Padding(
                         padding: const EdgeInsets.symmetric(horizontal: .0),
-                        child:
-                            tickets.disabled ? DisabledPass() : ActivePass()),
+                        child: tickets.show
+                            ? ActivePass(ticket: tickets.last)
+                            : const DisabledPass()),
                     SizedBox(
                       height: 40,
                     ),
-                    if (!tickets.disabled)
+                    if (tickets.show)
                       Image.asset(
                         "assets/images/animation.gif",
                         height: 80,
@@ -77,7 +88,7 @@ class WalletModal {
                     SizedBox(
                       height: 15,
                     ),
-                    if (!tickets.disabled) AnimatedText()
+                    if (tickets.show) AnimatedText()
                   ],
                 )),
           );

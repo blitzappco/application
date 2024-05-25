@@ -1,14 +1,24 @@
+import 'package:application/components/modals/tickets_modal.dart';
 import 'package:application/components/past_transaction_card.dart';
+import 'package:application/components/payment_methods.dart';
 import 'package:application/components/profile_button.dart';
 import 'package:application/components/shorthand.dart';
 import 'package:application/pages/onboarding/onboarding.dart';
 import 'package:application/providers/account_provider.dart';
+import 'package:application/providers/tickets_provider.dart';
 import 'package:application/utils/vars.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class ProfileModal {
   static void show(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      final account = Provider.of<AccountProvider>(context, listen: false);
+      final tickets = Provider.of<TicketsProvider>(context, listen: false);
+
+      await tickets.getTickets(account.token);
+      await account.getPaymentMethods();
+    });
     showModalBottomSheet(
       backgroundColor: Color.fromARGB(255, 250, 250, 250),
       isScrollControlled: true,
@@ -22,136 +32,157 @@ class ProfileModal {
       builder: (BuildContext context) {
         // Schedule the focus request after the bottom sheet is built
 
-        return Consumer<AccountProvider>(builder: (context, account, _) {
-          return Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: Container(
-                color: Colors.transparent,
-                height: 500,
-                child: Column(
-                  children: [
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            GestureDetector(
-                              onTap: () {
-                                account.logout();
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const Onboarding()));
-                              },
-                              child: Container(
-                                decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      image:
-                                          AssetImage('assets/images/moaca.png'),
-                                      fit: BoxFit.fill,
-                                    ),
-                                    shape: BoxShape.circle,
-                                    color: Colors.blue),
-                                width: 42,
-                                height: 42,
-                              ),
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Popescu Andrei",
-                                  style: TextStyle(
-                                    fontFamily: "UberMoveBold",
-                                    fontSize: 22,
-                                  ),
-                                ),
-                                Text(
-                                  "+40712345678",
-                                  style: TextStyle(
-                                    fontFamily: "UberMoveMedium",
-                                    color: darkGrey,
-                                    fontSize: 14,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 5.0),
-                          child: Container(
-                            decoration: const BoxDecoration(
-                                shape: BoxShape.circle, color: lightGrey),
-                            child: GestureDetector(
-                              onTap: () {
-                                Navigator.pop(context);
-                              },
-                              child: const Padding(
-                                padding: EdgeInsets.all(3.0),
-                                child: Icon(
-                                  Icons.close,
-                                  color: darkGrey,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Past transactions",
-                          style: TextStyle(fontFamily: "UberMoveMedium"),
-                        ),
-                        Text(
-                          "More",
-                          style: TextStyle(
-                              fontFamily: "UberMoveMedium", color: Colors.blue),
-                        )
-                      ],
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(15)),
-                      child: Column(
+        return Consumer<TicketsProvider>(builder: (context, tickets, _) {
+          return Consumer<AccountProvider>(builder: (context, account, _) {
+            return Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Container(
+                  color: Colors.transparent,
+                  height: 550,
+                  child: Column(
+                    children: [
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          PastTransactionCard(),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              GestureDetector(
+                                onTap: () {
+                                  account.logout();
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const Onboarding()));
+                                },
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                        image: AssetImage(
+                                            'assets/images/moaca.png'),
+                                        fit: BoxFit.fill,
+                                      ),
+                                      shape: BoxShape.circle,
+                                      color: Colors.blue),
+                                  width: 42,
+                                  height: 42,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "${account.account.lastName} ${account.account.firstName}",
+                                    style: TextStyle(
+                                      fontFamily: "UberMoveBold",
+                                      fontSize: 22,
+                                    ),
+                                  ),
+                                  Text(
+                                    account.account.phone ?? '+40712345678',
+                                    style: TextStyle(
+                                      fontFamily: "UberMoveMedium",
+                                      color: darkGrey,
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
                           Padding(
-                            padding: const EdgeInsets.only(left: 15.0),
-                            child: Divider(
-                              color: lightGrey,
+                            padding: const EdgeInsets.only(top: 5.0),
+                            child: Container(
+                              decoration: const BoxDecoration(
+                                  shape: BoxShape.circle, color: lightGrey),
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.pop(context);
+                                },
+                                child: const Padding(
+                                  padding: EdgeInsets.all(3.0),
+                                  child: Icon(
+                                    Icons.close,
+                                    color: darkGrey,
+                                  ),
+                                ),
+                              ),
                             ),
                           ),
-                          PastTransactionCard(),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15.0),
-                            child: Divider(
-                              color: lightGrey,
-                            ),
-                          ),
-                          PastTransactionCard(),
                         ],
                       ),
-                    )
-                  ],
-                )),
-          );
+                      SizedBox(
+                        height: 20,
+                      ),
+                      const Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Payment methods",
+                            style: TextStyle(fontFamily: "UberMoveMedium"),
+                          ),
+                        ],
+                      ),
+                      Container(
+                        height: 120,
+                        child: PaymentMethods(),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            "Past transactions",
+                            style: TextStyle(fontFamily: "UberMoveMedium"),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              TicketsModal.show(context);
+                            },
+                            child: const Text(
+                              "More",
+                              style: TextStyle(
+                                  fontFamily: "UberMoveMedium",
+                                  color: Colors.blue),
+                            ),
+                          )
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Expanded(
+                        child: Container(
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(15)),
+                            child: ListView.separated(
+                              itemCount: tickets.list.length <= 3
+                                  ? tickets.list.length
+                                  : 3,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemBuilder: (context, index) {
+                                return PastTransactionCard(
+                                    ticket: tickets.list[index]);
+                              },
+                              separatorBuilder: (context, index) {
+                                return const Padding(
+                                  padding: EdgeInsets.only(left: 15.0),
+                                  child: Divider(
+                                    color: lightGrey,
+                                  ),
+                                );
+                              },
+                            )),
+                      ),
+                    ],
+                  )),
+            );
+          });
         });
       },
     );
