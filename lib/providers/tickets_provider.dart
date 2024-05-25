@@ -105,14 +105,17 @@ class TicketsProvider with ChangeNotifier {
     }
   }
 
-  createPurchaseIntent(String token, String typeID) async {
+  createPurchaseIntent(String token, String typeID, String name) async {
     loading = true;
     notifyListeners();
 
     final response = await http.post(
         Uri.parse('${AppURL.baseURL}/tickets/purchase-intent'
             '?typeID=$typeID'),
-        headers: authHeader(token));
+        headers: authHeader(token),
+        body: jsonEncode(<String, String>{
+          "name": name,
+        }));
 
     loading = false;
     notifyListeners();
@@ -182,5 +185,14 @@ class TicketsProvider with ChangeNotifier {
       errorMessage = json['message'];
       notifyListeners();
     }
+  }
+
+  cancelPurchase() {
+    purchased = Ticket();
+    ticketID = '';
+    fare = 0;
+    show = true;
+    confirmed = true;
+    notifyListeners();
   }
 }

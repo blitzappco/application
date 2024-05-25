@@ -2,6 +2,7 @@ class Ticket {
   String? id;
   String? accountID;
   String? city;
+  String? name;
 
   String? mode;
   int? fare;
@@ -18,6 +19,7 @@ class Ticket {
     this.id,
     this.accountID,
     this.city,
+    this.name,
     this.mode,
     this.fare,
     this.trips,
@@ -33,6 +35,7 @@ class Ticket {
       id: json['id'],
       accountID: json['accountID'],
       city: json['city'],
+      name: json['name'],
       mode: json['mode'],
       fare: json['fare'],
       trips: json['trips'],

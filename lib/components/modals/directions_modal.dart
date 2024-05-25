@@ -43,40 +43,6 @@ class DirectionsModal extends StatelessWidget {
               controller: scrollController,
               slivers: [
                 SliverToBoxAdapter(
-                  // child: Padding(
-                  //   padding: const EdgeInsets.only(
-                  //       left: 20, right: 20, top: 15, bottom: 5),
-                  //   child: Row(
-                  //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  //     children: [
-                  //       Text(
-                  //         '${route.routes[route.routeIndex].leg.duration.text} • Arrival time: ${route.routes[route.routeIndex].leg.arrivalTime.text}',
-                  //         style: const TextStyle(
-                  //           fontSize: 20,
-                  //           fontFamily: "UberMoveMedium",
-                  //         ),
-                  //       ),
-                  //       Container(
-                  //         decoration: const BoxDecoration(
-                  //           shape: BoxShape.circle,
-                  //           color: lightGrey,
-                  //         ),
-                  //         child: GestureDetector(
-                  //           onTap: () {
-                  //             route.changePage('preview');
-                  //           },
-                  //           child: const Padding(
-                  //             padding: EdgeInsets.all(3.0),
-                  //             child: Icon(
-                  //               Icons.close,
-                  //               color: darkGrey,
-                  //             ),
-                  //           ),
-                  //         ),
-                  //       ),
-                  //     ],
-                  //   ),
-                  // ),
                   child: Padding(
                     padding: const EdgeInsets.only(
                         left: 20, right: 20, top: 13, bottom: 5),

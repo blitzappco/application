@@ -1,3 +1,4 @@
+import 'package:application/components/modals/tickets_modal.dart';
 import 'package:application/components/past_transaction_card.dart';
 import 'package:application/components/payment_methods.dart';
 import 'package:application/components/profile_button.dart';
@@ -37,7 +38,7 @@ class ProfileModal {
               padding: const EdgeInsets.all(15.0),
               child: Container(
                   color: Colors.transparent,
-                  height: 500,
+                  height: 550,
                   child: Column(
                     children: [
                       Row(
@@ -118,50 +119,66 @@ class ProfileModal {
                       SizedBox(
                         height: 20,
                       ),
-                      Expanded(
+                      const Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Payment methods",
+                            style: TextStyle(fontFamily: "UberMoveMedium"),
+                          ),
+                        ],
+                      ),
+                      Container(
+                        height: 120,
                         child: PaymentMethods(),
                       ),
-                      if (tickets.list.isNotEmpty)
-                        Column(children: [
-                          const Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                "Past transactions",
-                                style: TextStyle(fontFamily: "UberMoveMedium"),
-                              ),
-                              Text(
-                                "More",
-                                style: TextStyle(
-                                    fontFamily: "UberMoveMedium",
-                                    color: Colors.blue),
-                              )
-                            ],
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            "Past transactions",
+                            style: TextStyle(fontFamily: "UberMoveMedium"),
                           ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Container(
+                          GestureDetector(
+                            onTap: () {
+                              TicketsModal.show(context);
+                            },
+                            child: const Text(
+                              "More",
+                              style: TextStyle(
+                                  fontFamily: "UberMoveMedium",
+                                  color: Colors.blue),
+                            ),
+                          )
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Expanded(
+                        child: Container(
                             decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(15)),
                             child: ListView.separated(
-                              itemCount: tickets.list.length,
+                              itemCount: tickets.list.length <= 3
+                                  ? tickets.list.length
+                                  : 3,
+                              physics: const NeverScrollableScrollPhysics(),
                               itemBuilder: (context, index) {
                                 return PastTransactionCard(
                                     ticket: tickets.list[index]);
                               },
                               separatorBuilder: (context, index) {
                                 return const Padding(
-                                  padding: const EdgeInsets.only(left: 15.0),
+                                  padding: EdgeInsets.only(left: 15.0),
                                   child: Divider(
                                     color: lightGrey,
                                   ),
                                 );
                               },
-                            ),
-                          ),
-                        ])
+                            )),
+                      ),
                     ],
                   )),
             );

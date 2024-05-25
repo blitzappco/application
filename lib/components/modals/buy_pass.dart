@@ -19,17 +19,7 @@ class _BuyPassPageState extends State<BuyPassPage> {
   String selectedCategory = 'Ticket';
   String selectedTypeID = '1';
   int price = 300;
-
-  // @override
-  // void initState() {
-  //   WidgetsBinding.instance.addPostFrameCallback((_) async {
-  //     final tickets = Provider.of<TicketsProvider>(context, listen: false);
-  //     final account = Provider.of<AccountProvider>(context, listen: false);
-
-  //     await tickets.getTicketTypes(account.token, "bucuresti");
-  //   });
-  //   super.initState();
-  // }
+  String name = 'Ticket for 1 trip';
 
   @override
   Widget build(BuildContext context) {
@@ -105,6 +95,10 @@ class _BuyPassPageState extends State<BuyPassPage> {
                               price =
                                   tickets.typesMap[selectedCategory]?[0].fare ??
                                       0;
+
+                              name = processTypeTitle(
+                                  tickets.typesMap[selectedCategory]?[0] ??
+                                      TicketType());
                             });
                           },
                         ),
@@ -140,6 +134,9 @@ class _BuyPassPageState extends State<BuyPassPage> {
                                   price = tickets.typesMap[selectedCategory]?[i]
                                           .fare ??
                                       0;
+                                  name = processTypeTitle(
+                                      tickets.typesMap[selectedCategory]?[i] ??
+                                          TicketType());
                                 }
                               }
                             });
@@ -180,10 +177,10 @@ class _BuyPassPageState extends State<BuyPassPage> {
                       ),
                       GestureDetector(
                         onTap: () async {
-                          tickets.setConfirmed(false);
+                          await tickets.setConfirmed(false);
                           // creating the purchase intent
                           await tickets.createPurchaseIntent(
-                              account.token, selectedTypeID);
+                              account.token, selectedTypeID, name);
 
                           // creating the payment intent
                           await account.createPaymentIntent(tickets.fare);
@@ -193,10 +190,15 @@ class _BuyPassPageState extends State<BuyPassPage> {
                               account.token, account.paymentIntent);
 
                           // confirm the payment
-                          await Stripe.instance.confirmPayment(
+                          final pi = await Stripe.instance.confirmPayment(
                               paymentIntentClientSecret: account.clientSecret);
 
-                          Navigator.pop(context);
+                          if (pi.status != PaymentIntentsStatus.Succeeded) {
+                            await tickets.setConfirmed(true);
+                            await tickets.cancelPurchase();
+                          } else {
+                            Navigator.pop(context);
+                          }
                         },
                         child: Container(
                             decoration: BoxDecoration(

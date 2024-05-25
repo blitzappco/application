@@ -21,6 +21,7 @@ class TransitCard extends StatefulWidget {
 
 class _TransitCardState extends State<TransitCard> {
   bool showStations = false;
+  bool featureFlag = false;
 
   void toggleStations() {
     setState(() {
@@ -150,17 +151,18 @@ class _TransitCardState extends State<TransitCard> {
                                         fontSize: 16,
                                         color: Colors.blue),
                                   ),
-                                  Icon(
-                                    showStations
-                                        ? Icons.expand_less
-                                        : Icons.expand_more,
-                                    color: Colors.blue,
-                                  )
+                                  if (featureFlag)
+                                    Icon(
+                                      showStations
+                                          ? Icons.expand_less
+                                          : Icons.expand_more,
+                                      color: Colors.blue,
+                                    )
                                 ],
                               ),
                             ),
                           ),
-                          if (showStations)
+                          if (showStations && featureFlag)
                             FixedTimeline.tileBuilder(
                               theme: TimelineThemeData(
                                 nodePosition: 0,

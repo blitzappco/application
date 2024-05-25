@@ -1,6 +1,7 @@
 import 'package:application/models/ticket.dart';
 import 'package:application/utils/normalize.dart';
 import 'package:application/utils/process_ticket_types.dart';
+import 'package:application/utils/shorten.dart';
 import 'package:application/utils/vars.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -20,14 +21,14 @@ class PastTransactionCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                processTicketTitle(ticket),
+                shorten(ticket.name ?? '', 20),
                 style: TextStyle(
                   fontFamily: "UberMoveBold",
                   fontSize: 19,
                 ),
               ),
               Text(
-                "RON ${ticket.fare}",
+                "RON ${ticket.fare! / 100}",
                 style: TextStyle(
                   fontFamily: "UberMoveMedium",
                   fontSize: 19,
