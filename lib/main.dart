@@ -1,5 +1,6 @@
 import 'package:blitz/pages/splashscreen.dart';
 import 'package:blitz/providers/route_provider.dart';
+import 'package:blitz/utils/normalize.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

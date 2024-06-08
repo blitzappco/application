@@ -33,13 +33,8 @@ class _HomescreenState extends State<Homescreen> {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       final route = Provider.of<RouteProvider>(context, listen: false);
 
-      final from = await fetchPlaceFromAddress("gara de nord");
+      final from = await fetchPlaceFromAddress("politehnica");
       route.setFrom(from);
-
-      // final to = await fetchPlaceFromAddress("universitatea din bucuresti");
-      // route.setTo(to);
-
-      // route.getRoutes();
     });
   }
 
@@ -75,7 +70,7 @@ class _HomescreenState extends State<Homescreen> {
                   mapToolbarEnabled: false,
                   padding: EdgeInsets.only(bottom: route.mapPadding),
                   initialCameraPosition: const CameraPosition(
-                    target: LatLng(44.4464189, 26.0694408),
+                    target: LatLng(44.43856037994135, 26.049492497879125),
                     zoom: 14.0,
                   ),
                   onMapCreated: (GoogleMapController controller) async {
