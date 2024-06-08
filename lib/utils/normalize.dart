@@ -38,7 +38,7 @@ String normalizeTime(String raw) {
 
   String hour = tokens[0];
   String minutes = tokens[1].substring(0, 2);
-  String meridian = tokens[1].substring(2);
+  String meridian = tokens[1].substring(3);
 
   if (meridian == "AM") {
     if (hour == '12') {
