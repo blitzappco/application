@@ -40,30 +40,10 @@ class _SplashScreenState extends State<SplashScreen> {
         await account.loadAccount();
 
         if (account.token == '' || account.account.id == '') {
-          if (jury) {
-            await account.onboarding("+40712345678");
-            await account.verifyCode("0000");
-
-            await account.getTrips();
-            await account.getPaymentMethods();
-
-            await tickets.getTicketTypes(account.token, "bucuresti");
-            await tickets.getLastTicket(account.token, "bucuresti");
-
-            Timer(
-                const Duration(milliseconds: 500),
-                () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const Homescreen())));
-          } else {
-            Timer(
-                const Duration(milliseconds: 100),
-                () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const Onboarding())));
-          }
+          Timer(
+              const Duration(milliseconds: 100),
+              () => Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const Onboarding())));
         } else {
           await account.getTrips();
           await account.getPaymentMethods();
