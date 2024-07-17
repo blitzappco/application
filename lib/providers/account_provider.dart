@@ -10,16 +10,19 @@ import '../utils/url.dart';
 import '../utils/preferences.dart';
 
 class AccountProvider with ChangeNotifier {
+  // used for onboarding
   String phoneNumber = '';
   String token = '';
-
   bool newClient = false;
 
+  // geneeral signals
   bool loading = false;
   String errorMessage = '';
 
+  // actual account instance
   Account account = Account();
 
+  // used for payment
   int selectedPM = 0;
   String clientSecret = '';
   String paymentIntent = '';
@@ -68,6 +71,9 @@ class AccountProvider with ChangeNotifier {
   }
 
   verifyCode(String code) async {
+    loading = true;
+    notifyListeners();
+
     final response = await http.post(
         Uri.parse('${AppURL.baseURL}/accounts/onboarding/verify-code'),
         headers: authHeader(token),
@@ -75,6 +81,9 @@ class AccountProvider with ChangeNotifier {
           'phone': phoneNumber,
           'code': code,
         }));
+
+    loading = false;
+    notifyListeners();
 
     final json = jsonDecode(utf8.decode(response.bodyBytes));
     if (response.statusCode == 200) {

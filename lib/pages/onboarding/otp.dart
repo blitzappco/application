@@ -92,6 +92,8 @@ class _OTPPageState extends State<OTPPage> {
                           onCompleted: (code) async {
                             await auth.verifyCode(code);
 
+                            otpText.clear();
+
                             if (auth.errorMessage == '') {
                               if (auth.newClient) {
                                 Navigator.push(
@@ -107,8 +109,6 @@ class _OTPPageState extends State<OTPPage> {
                                 );
                               }
                             }
-
-                            otpText.clear();
                           },
                         ),
                       ),
@@ -122,6 +122,14 @@ class _OTPPageState extends State<OTPPage> {
                               fontFamily: 'UberMoveMedium'),
                         ),
                       ),
+                      if (auth.loading)
+                        const Padding(
+                            padding: EdgeInsets.symmetric(),
+                            child: SizedBox(
+                                width: 30,
+                                height: 30,
+                                child: CircularProgressIndicator(
+                                    color: Color(0XFF2E01C8), strokeWidth: 2)))
                     ],
                   ),
                 ),

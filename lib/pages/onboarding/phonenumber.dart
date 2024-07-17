@@ -97,7 +97,7 @@ class _PhoneNumberState extends State<PhoneNumber> {
                     String phoneNumber = "+4${phoneNumberController.text}";
 
                     if (phoneNumberController.text.length != 10) {
-                      auth.setError("Număr de telefon incorect.");
+                      await auth.setError("Număr de telefon incorect.");
                     } else {
                       await auth.onboarding(phoneNumber);
 
