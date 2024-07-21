@@ -10,6 +10,7 @@ const Color lightGrey = Color(0xFFE8E8E8);
 const Color darkGrey = Color(0XFF6E6E6E);
 const Color blitzPurple = Color(0xFF5100CC);
 const Color accentBlue = Colors.blue;
+const Color accentPurple = Color(0xFF6C69FF);
 
 //Variables
 

@@ -5,10 +5,12 @@ import 'package:blitz/components/nearby_stations.dart';
 import 'package:blitz/components/place_list.dart';
 import 'package:blitz/components/static_searchbar.dart';
 import 'package:blitz/models/place.dart';
+import 'package:blitz/pages/ticket_flow/buy_ticket_page.dart';
 import 'package:blitz/providers/account_provider.dart';
 import 'package:blitz/providers/route_provider.dart';
 import 'package:blitz/utils/vars.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 
@@ -54,12 +56,17 @@ class MainModal extends StatelessWidget {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                const Text(
-                                  'Home',
-                                  style: TextStyle(
-                                      fontSize: 32,
-                                      fontFamily: 'UberMoveBold',
-                                      fontWeight: FontWeight.bold),
+                                GestureDetector(
+                                  onLongPress: () {
+                                    BuyTicketModal.show(context);
+                                  },
+                                  child: const Text(
+                                    'Home',
+                                    style: TextStyle(
+                                        fontSize: 32,
+                                        fontFamily: 'UberMoveBold',
+                                        fontWeight: FontWeight.bold),
+                                  ),
                                 ),
                                 Row(
                                   children: [
