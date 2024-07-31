@@ -1,9 +1,11 @@
+import 'package:blitz/components/address_label.dart';
 import 'package:blitz/components/place_list.dart';
 import 'package:blitz/components/suggestions_icon.dart';
 import 'package:blitz/models/place.dart';
 import 'package:blitz/providers/account_provider.dart';
 import 'package:blitz/providers/route_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 
 import '../../utils/vars.dart';
@@ -130,56 +132,87 @@ class SearchModal {
                     const SizedBox(
                       height: 20,
                     ),
-                    if (controller.text.isEmpty)
-                      SizedBox(
-                        height: 80,
+                    Container(
+                      height: 70,
+                      child: Container(
                         child: ListView(
                           scrollDirection: Axis.horizontal,
-                          children: const [
-                            SuggestionsIcon(type: 'bar', name: "Drinks"),
-                            SuggestionsIcon(
-                                type: 'shopping_mall', name: "Malls"),
-                            SuggestionsIcon(
-                                type: 'restaurant', name: "Restaurants"),
-                            SuggestionsIcon(
-                                type: 'university', name: "Universities"),
-                            SuggestionsIcon(type: 'park', name: "Parks"),
-                            SuggestionsIcon(type: 'cafe', name: "Cafes"),
-                            SuggestionsIcon(
-                                type: 'pharmacy', name: "Pharmacies"),
-                            SuggestionsIcon(type: 'bank', name: "Banks"),
+                          children: [
+                            AddressLabel(
+                              label: "Acasa",
+                              address: "Seteaza",
+                            ),
+                            SizedBox(width: 10),
+                            AddressLabel(label: "Serviciu", address: "Seteaza"),
+                            SizedBox(width: 17),
+                            Container(
+                              decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color:
+                                      const Color.fromARGB(255, 209, 234, 255)),
+                              child: Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Icon(
+                                  Icons.edit_outlined,
+                                  color: Colors.blue[800],
+                                  size: 20,
+                                ),
+                              ),
+                            ),
                           ],
                         ),
                       ),
-                    const SizedBox(height: 7),
-                    if (controller.text.isEmpty && type == "to")
-                      PlaceList(
-                        places: account.account.trips ?? [],
-                        set: route.setTo,
-                        trip: (Place p) async {},
-                        callback: () {
-                          Navigator.pop(context);
-                        },
-                      ),
+                    ),
+                    // if (controller.text.isEmpty)
+                    //   SizedBox(
+                    //     height: 80,
+                    //     child: ListView(
+                    //       scrollDirection: Axis.horizontal,
+                    //       children: const [
+                    //         SuggestionsIcon(type: 'bar', name: "Drinks"),
+                    //         SuggestionsIcon(
+                    //             type: 'shopping_mall', name: "Malls"),
+                    //         SuggestionsIcon(
+                    //             type: 'restaurant', name: "Restaurants"),
+                    //         SuggestionsIcon(
+                    //             type: 'university', name: "Universities"),
+                    //         SuggestionsIcon(type: 'park', name: "Parks"),
+                    //         SuggestionsIcon(type: 'cafe', name: "Cafes"),
+                    //         SuggestionsIcon(
+                    //             type: 'pharmacy', name: "Pharmacies"),
+                    //         SuggestionsIcon(type: 'bank', name: "Banks"),
+                    //       ],
+                    //     ),
+                    //   ),
+                    // const SizedBox(height: 7),
+                    // if (controller.text.isEmpty && type == "to")
+                    //   PlaceList(
+                    //     places: account.account.trips ?? [],
+                    //     set: route.setTo,
+                    //     trip: (Place p) async {},
+                    //     callback: () {
+                    //       Navigator.pop(context);
+                    //     },
+                    //   ),
 
-                    if (controller.text.isEmpty && type == "from")
-                      PlaceList(
-                        places: account.account.trips ?? [],
-                        set: route.setFrom,
-                        trip: (Place p) async {},
-                        callback: () {
-                          Navigator.pop(context);
-                        },
-                      ),
-                    if (controller.text.isNotEmpty && type == "to")
-                      if (type == "to")
-                        PlaceList(
-                            places: route.predictions,
-                            set: route.setTo,
-                            trip: account.addTrip,
-                            callback: () {
-                              Navigator.pop(context);
-                            }),
+                    // if (controller.text.isEmpty && type == "from")
+                    //   PlaceList(
+                    //     places: account.account.trips ?? [],
+                    //     set: route.setFrom,
+                    //     trip: (Place p) async {},
+                    //     callback: () {
+                    //       Navigator.pop(context);
+                    //     },
+                    //   ),
+                    // if (controller.text.isNotEmpty && type == "to")
+                    //   if (type == "to")
+                    //     PlaceList(
+                    //         places: route.predictions,
+                    //         set: route.setTo,
+                    //         trip: account.addTrip,
+                    //         callback: () {
+                    //           Navigator.pop(context);
+                    //         }),
                     if (controller.text.isNotEmpty && type == "from")
                       PlaceList(
                           places: route.predictions,
