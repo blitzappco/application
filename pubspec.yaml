@@ -50,6 +50,57 @@ flutter:
     - family: UberMoveBold
       fonts:
         - asset: fonts/UberMoveBold.otf
+    - family: SFProDisplay
+      fonts:
+        - asset: fonts/SF-Pro-Display-Black.otf
+        - asset: fonts/SF-Pro-Display-BlackItalic.otf
+        - asset: fonts/SF-Pro-Display-Bold.otf
+        - asset: fonts/SF-Pro-Display-BoldItalic.otf
+        - asset: fonts/SF-Pro-Display-Heavy.otf
+        - asset: fonts/SF-Pro-Display-HeavyItalic.otf
+        - asset: fonts/SF-Pro-Display-Light.otf
+        - asset: fonts/SF-Pro-Display-LightItalic.otf
+        - asset: fonts/SF-Pro-Display-Medium.otf
+        - asset: fonts/SF-Pro-Display-MediumItalic.otf
+        - asset: fonts/SF-Pro-Display-Regular.otf
+        - asset: fonts/SF-Pro-Display-RegularItalic.otf
+        - asset: fonts/SF-Pro-Display-Semibold.otf
+        - asset: fonts/SF-Pro-Display-SemiboldItalic.otf
+        - asset: fonts/SF-Pro-Display-Thin.otf
+        - asset: fonts/SF-Pro-Display-ThinItalic.otf
+        - asset: fonts/SF-Pro-Display-Ultralight.otf
+        - asset: fonts/SF-Pro-Display-UltralightItalic.otf
+    - family: SFProRounded
+      fonts:
+        - asset: fonts/SF-Pro-Rounded-Black.otf
+        - asset: fonts/SF-Pro-Rounded-Bold.otf
+        - asset: fonts/SF-Pro-Rounded-Heavy.otf
+        - asset: fonts/SF-Pro-Rounded-Light.otf
+        - asset: fonts/SF-Pro-Rounded-Medium.otf
+        - asset: fonts/SF-Pro-Rounded-Regular.otf
+        - asset: fonts/SF-Pro-Rounded-Semibold.otf
+        - asset: fonts/SF-Pro-Rounded-Thin.otf
+        - asset: fonts/SF-Pro-Rounded-Ultralight.otf
+    - family: SFProText
+      fonts:
+        - asset: fonts/SF-Pro-Text-Black.otf
+        - asset: fonts/SF-Pro-Text-BlackItalic.otf
+        - asset: fonts/SF-Pro-Text-Bold.otf
+        - asset: fonts/SF-Pro-Text-BoldItalic.otf
+        - asset: fonts/SF-Pro-Text-Heavy.otf
+        - asset: fonts/SF-Pro-Text-HeavyItalic.otf
+        - asset: fonts/SF-Pro-Text-Light.otf
+        - asset: fonts/SF-Pro-Text-LightItalic.otf
+        - asset: fonts/SF-Pro-Text-Medium.otf
+        - asset: fonts/SF-Pro-Text-MediumItalic.otf
+        - asset: fonts/SF-Pro-Text-Regular.otf
+        - asset: fonts/SF-Pro-Text-RegularItalic.otf
+        - asset: fonts/SF-Pro-Text-Semibold.otf
+        - asset: fonts/SF-Pro-Text-SemiboldItalic.otf
+        - asset: fonts/SF-Pro-Text-Thin.otf
+        - asset: fonts/SF-Pro-Text-ThinItalic.otf
+        - asset: fonts/SF-Pro-Text-Ultralight.otf
+        - asset: fonts/SF-Pro-Text-UltralightItalic.otf
 
   assets:
     - assets/images/logo.png
@@ -59,3 +110,8 @@ flutter:
     - assets/images/visa.png
     - assets/images/mastercard.png
     - assets/images/tce.png
+    - assets/images/ApplePay.png
+    - assets/images/PayWAP.png
+    - assets/images/visa-color_large.png
+    - assets/images/mastercard-color_large.png
+

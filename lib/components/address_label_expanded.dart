@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-class AddressLabel extends StatelessWidget {
+class AddressLabelExpanded extends StatelessWidget {
   final String label;
   final String address;
-
-  const AddressLabel({
+  const AddressLabelExpanded({
     required this.label,
     required this.address,
     super.key,
   });
 
+  //Gets the icon type
   IconData getIcon(String label) {
     switch (label.toLowerCase()) {
       case 'acasa':
@@ -34,10 +34,7 @@ class AddressLabel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double screenWidth = MediaQuery.of(context).size.width;
-
     return Container(
-      width: screenWidth * 0.37,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(15),

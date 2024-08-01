@@ -2,8 +2,10 @@ import 'package:blitz/components/address_label.dart';
 import 'package:blitz/components/place_list.dart';
 import 'package:blitz/components/suggestions_icon.dart';
 import 'package:blitz/models/place.dart';
+import 'package:blitz/pages/manage_address.dart';
 import 'package:blitz/providers/account_provider.dart';
 import 'package:blitz/providers/route_provider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
@@ -14,6 +16,8 @@ class SearchModal {
   static void show(BuildContext context, String type) {
     TextEditingController controller = TextEditingController();
     FocusNode focusNode = FocusNode();
+
+    bool unfocused = true;
 
     showModalBottomSheet(
       backgroundColor: Colors.white,
@@ -28,7 +32,8 @@ class SearchModal {
       builder: (BuildContext context) {
         // Schedule the focus request after the bottom sheet is built
         WidgetsBinding.instance.addPostFrameCallback((_) {
-          FocusScope.of(context).requestFocus(focusNode);
+          if (unfocused) FocusScope.of(context).requestFocus(focusNode);
+          unfocused = false;
         });
 
         return Consumer<AccountProvider>(builder: (context, account, _) {
@@ -44,7 +49,7 @@ class SearchModal {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         const Text(
-                          "Search",
+                          "Cauta",
                           style: TextStyle(
                             fontFamily: "UberMoveBold",
                             fontSize: 26,
@@ -145,17 +150,26 @@ class SearchModal {
                             SizedBox(width: 10),
                             AddressLabel(label: "Serviciu", address: "Seteaza"),
                             SizedBox(width: 17),
-                            Container(
-                              decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color:
-                                      const Color.fromARGB(255, 209, 234, 255)),
-                              child: Padding(
-                                padding: const EdgeInsets.all(10.0),
-                                child: Icon(
-                                  Icons.edit_outlined,
-                                  color: Colors.blue[800],
-                                  size: 20,
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const ManageAddress()));
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: const Color.fromARGB(
+                                        255, 209, 234, 255)),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: Icon(
+                                    Icons.edit_outlined,
+                                    color: Colors.blue[800],
+                                    size: 20,
+                                  ),
                                 ),
                               ),
                             ),
