@@ -92,6 +92,10 @@ class AddressLabelExpanded extends StatelessWidget {
                 ],
               ),
             ),
+            Icon(
+              Icons.delete,
+              color: Colors.red,
+            ),
           ],
         ),
       ),

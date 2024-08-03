@@ -1,4 +1,5 @@
 import 'package:blitz/components/address_label_expanded.dart';
+import 'package:blitz/pages/search_address_label.dart';
 import 'package:blitz/utils/vars.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -41,8 +42,16 @@ class _ManageAddressState extends State<ManageAddress> {
             SizedBox(
               height: 20,
             ),
-            AddressLabelExpanded(
-                label: 'Acasa', address: "Dealu cu Piatra 2, Bl. 30, Sc. C"),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const SearchAddressLabel()));
+              },
+              child: AddressLabelExpanded(
+                  label: 'Acasa', address: "Dealu cu Piatra 2, Bl. 30, Sc. C"),
+            ),
             SizedBox(
               height: 10,
             ),
