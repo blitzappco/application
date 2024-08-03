@@ -1,6 +1,7 @@
 import 'package:blitz/components/active_train_ticket.dart';
 import 'package:blitz/components/buy_ticket_prompt.dart';
 import 'package:blitz/components/modals/profile_modal.dart';
+import 'package:blitz/components/modals/ticket_details_modal.dart';
 import 'package:blitz/components/modals/wallet_modal.dart';
 import 'package:blitz/components/nearby_stations.dart';
 import 'package:blitz/components/place_list.dart';
@@ -81,13 +82,18 @@ class MainModal extends StatelessWidget {
                               height: 10,
                             ),
 
+                            // GestureDetector(
+                            //   onTap: () {
+                            //     BuyTicketModal.show(context);
+                            //   },
+                            //   child: const BuyTicketPrompt(),
+                            // ),
                             GestureDetector(
                               onTap: () {
-                                BuyTicketModal.show(context);
+                                TicketDetailsModal.show(context);
                               },
-                              child: const BuyTicketPrompt(),
+                              child: const TicketPreview(),
                             ),
-                            // const TicketPreview(),
 
                             const SizedBox(
                               height: 20,
