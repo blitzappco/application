@@ -1,5 +1,5 @@
 import 'package:blitz/components/payment_methods.dart';
-import 'package:blitz/models/tickety_type.dart';
+import 'package:blitz/models/ticket_type.dart';
 import 'package:blitz/providers/account_provider.dart';
 import 'package:blitz/providers/tickets_provider.dart';
 import 'package:blitz/utils/process_ticket_types.dart';

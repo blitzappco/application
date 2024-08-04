@@ -57,6 +57,7 @@ class _HomescreenState extends State<Homescreen> {
         return PopScope(
           canPop: false,
           child: Scaffold(
+            resizeToAvoidBottomInset: false,
             body: Stack(
               children: [
                 GoogleMap(

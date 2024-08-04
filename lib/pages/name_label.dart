@@ -72,7 +72,7 @@ class _NameLabelState extends State<NameLabel> {
                         controller: controller,
                         focusNode: focusNode,
                         decoration: InputDecoration.collapsed(
-                          hintText: 'Cauta o locatie',
+                          hintText: 'Scrie numele locatiei',
                           hintStyle: const TextStyle(
                             fontSize: 19,
                             fontFamily: 'UberMoveMedium',
@@ -95,6 +95,37 @@ class _NameLabelState extends State<NameLabel> {
           ],
         ),
       )),
+      bottomNavigationBar: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+          child: GestureDetector(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(9),
+                  color: Color.fromARGB(255, 94, 8, 199)),
+              child: Padding(
+                padding: const EdgeInsets.all(13.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Salveaza locatie",
+                      style: TextStyle(
+                          fontFamily: "SFProRounded",
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

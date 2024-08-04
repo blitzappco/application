@@ -70,7 +70,8 @@ class _RoutePreviewModalState extends State<RoutePreviewModal> {
                             const Text(
                               "Routes",
                               style: TextStyle(
-                                fontFamily: "UberMoveBold",
+                                fontFamily: "SFProRounded",
+                                fontWeight: FontWeight.w700,
                                 fontSize: 28,
                               ),
                             ),

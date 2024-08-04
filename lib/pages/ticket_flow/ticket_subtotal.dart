@@ -2,6 +2,7 @@ import 'package:blitz/components/modals/tickets_modal.dart';
 import 'package:blitz/components/past_transaction_card.dart';
 import 'package:blitz/components/payment_methods.dart';
 import 'package:blitz/pages/onboarding/onboarding.dart';
+import 'package:blitz/pages/successful.dart';
 import 'package:blitz/pages/ticket_flow/select_method.dart';
 import 'package:blitz/providers/account_provider.dart';
 import 'package:blitz/providers/tickets_provider.dart';
@@ -117,12 +118,23 @@ class SubtotalModal {
                   SizedBox(
                     height: 30,
                   ),
-                  Container(
-                    height: 60,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage("assets/images/PayWAP.png"))),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Successful(
+                                    item: "Abonament zilnic",
+                                    amount: 6.00,
+                                  )));
+                    },
+                    child: Container(
+                      height: 60,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                              image: AssetImage("assets/images/PayWAP.png"))),
+                    ),
                   ),
                 ],
               )),

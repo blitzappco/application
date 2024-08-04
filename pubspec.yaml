@@ -15,7 +15,6 @@ dependencies:
   cupertino_icons: ^1.0.6
   google_maps_flutter: ^2.6.1
   geolocator: ^11.0.0
-  lottie: ^3.1.1
   timelines_plus: ^1.0.2
   http: ^1.2.1
   flutter_polyline_points: ^2.0.0
@@ -30,6 +29,7 @@ dependencies:
   pretty_qr_code: ^3.3.0
   screen_brightness: ^1.0.1
   flutter_dotenv: ^5.1.0
+  lottie: ^3.1.2
 
 dev_dependencies:
   flutter_test:
@@ -117,4 +117,5 @@ flutter:
     - assets/images/PayWAP.png
     - assets/images/visa-color_large.png
     - assets/images/mastercard-color_large.png
+    - assets/tick.json
     - .env

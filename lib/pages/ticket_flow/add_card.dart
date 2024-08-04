@@ -191,7 +191,8 @@ class _AddCardPageState extends State<AddCardPage> with WidgetsBindingObserver {
             },
             child: Container(
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(9), color: Colors.purple),
+                  borderRadius: BorderRadius.circular(9),
+                  color: Color.fromARGB(255, 94, 8, 199)),
               child: Padding(
                 padding: const EdgeInsets.all(13.0),
                 child: Row(

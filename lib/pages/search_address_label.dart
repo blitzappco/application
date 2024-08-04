@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class SearchAddressLabel extends StatefulWidget {
-  const SearchAddressLabel({super.key});
+  final bool edit;
+  const SearchAddressLabel({required this.edit, super.key});
 
   @override
   State<SearchAddressLabel> createState() => _SearchAddressLabelState();
@@ -40,7 +41,7 @@ class _SearchAddressLabelState extends State<SearchAddressLabel> {
                   ),
                 ),
                 Text(
-                  "Editeaza adresa",
+                  widget.edit ? "Editeaza adresa" : "Adauga adresa",
                   style: TextStyle(fontFamily: "UberMoveBold", fontSize: 24),
                 ),
                 SizedBox(

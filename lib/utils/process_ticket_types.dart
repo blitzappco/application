@@ -1,5 +1,5 @@
 import 'package:blitz/models/ticket.dart';
-import 'package:blitz/models/tickety_type.dart';
+import 'package:blitz/models/ticket_type.dart';
 
 Map<String, String> expiries = {
   '1.5h': "90 minutes",
