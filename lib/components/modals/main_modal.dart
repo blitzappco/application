@@ -50,29 +50,36 @@ class MainModal extends StatelessWidget {
                           ),
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 20.0, vertical: 15),
+                          padding: const EdgeInsets.symmetric(vertical: 15),
                           child: Column(
                             children: [
                               const SizedBox(
                                 height: 10,
                               ),
-                              const StaticSearchbar(),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 20.0),
+                                child: const StaticSearchbar(),
+                              ),
                               const SizedBox(
                                 height: 20,
                               ),
 
                               // const ActiveTrainTicket(),
-                              Row(
-                                children: [
-                                  Text(
-                                    "Bilete",
-                                    style: TextStyle(
-                                        color: darkGrey,
-                                        fontSize: 14,
-                                        fontFamily: 'UberMoveMedium'),
-                                  ),
-                                ],
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 20.0),
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      "Bilete",
+                                      style: TextStyle(
+                                          color: darkGrey,
+                                          fontSize: 14,
+                                          fontFamily: 'UberMoveMedium'),
+                                    ),
+                                  ],
+                                ),
                               ),
 
                               SizedBox(
@@ -80,28 +87,43 @@ class MainModal extends StatelessWidget {
                               ),
 
                               tickets.show
-                                  ? TicketPreview(activeTicket: false)
-                                  : BuyTicketPrompt(),
+                                  ? Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 20.0),
+                                      child: TicketPreview(activeTicket: false),
+                                    )
+                                  : Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 20.0),
+                                      child: BuyTicketPrompt(),
+                                    ),
 
                               const SizedBox(
                                 height: 20,
                               ),
                               // Nearby stations
-                              const Row(
-                                children: [
-                                  Text(
-                                    "Statii in apropiere",
-                                    style: TextStyle(
-                                        color: darkGrey,
-                                        fontSize: 14,
-                                        fontFamily: 'UberMoveMedium'),
-                                  )
-                                ],
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 20.0),
+                                child: const Row(
+                                  children: [
+                                    Text(
+                                      "Statii in apropiere",
+                                      style: TextStyle(
+                                          color: darkGrey,
+                                          fontSize: 14,
+                                          fontFamily: 'UberMoveMedium'),
+                                    )
+                                  ],
+                                ),
                               ),
                               const SizedBox(
                                 height: 10,
                               ),
-                              const NearbyStations(),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 20.0),
+                                child: const NearbyStations(),
+                              ),
                               //Recents
                               const SizedBox(
                                 height: 15,
@@ -109,41 +131,47 @@ class MainModal extends StatelessWidget {
                               // Nearby stations
                               account.account.trips != null &&
                                       account.account.trips!.isNotEmpty
-                                  ? Column(
-                                      children: [
-                                        const Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Text(
-                                              "Recente",
-                                              style: TextStyle(
-                                                  color: darkGrey,
-                                                  fontSize: 14,
-                                                  fontFamily: 'UberMoveMedium'),
-                                            ),
-                                          ],
-                                        ),
-                                        const SizedBox(
-                                          height: 10,
-                                        ),
-                                        Container(
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(20),
-                                                color: Colors.white),
-                                            child: Padding(
-                                              padding:
-                                                  const EdgeInsets.all(15.0),
-                                              child: PlaceList(
-                                                places:
-                                                    account.account.trips ?? [],
-                                                set: route.setTo,
-                                                trip: (Place p) async {},
-                                                callback: () {},
+                                  ? Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 20.0),
+                                      child: Column(
+                                        children: [
+                                          const Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(
+                                                "Recente",
+                                                style: TextStyle(
+                                                    color: darkGrey,
+                                                    fontSize: 14,
+                                                    fontFamily:
+                                                        'UberMoveMedium'),
                                               ),
-                                            )),
-                                      ],
+                                            ],
+                                          ),
+                                          const SizedBox(
+                                            height: 10,
+                                          ),
+                                          Container(
+                                              decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(20),
+                                                  color: Colors.white),
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.all(15.0),
+                                                child: PlaceList(
+                                                  places:
+                                                      account.account.trips ??
+                                                          [],
+                                                  set: route.setTo,
+                                                  trip: (Place p) async {},
+                                                  callback: () {},
+                                                ),
+                                              )),
+                                        ],
+                                      ),
                                     )
                                   : SizedBox.shrink(),
                             ],
