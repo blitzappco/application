@@ -6,13 +6,32 @@ import 'package:flutter/services.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-
+import 'package:sentry_flutter/sentry_flutter.dart';
 import './providers/account_provider.dart';
 import './providers/tickets_provider.dart';
 
 Future main() async {
   await dotenv.load(fileName: ".env");
-  runApp(const MyApp());
+  await SentryFlutter.init(
+    (options) {
+      options.dsn =
+          'https://66aeb5f396b5cc7ab47ef1b9721736d8@o4507232887898112.ingest.de.sentry.io/4507724333318224';
+      // Set tracesSampleRate to 1.0 to capture 100% of transactions for performance monitoring.
+      // We recommend adjusting this value in production.
+      options.tracesSampleRate = 1.0;
+      // The sampling rate for profiling is relative to tracesSampleRate
+      // Setting to 1.0 will profile 100% of sampled transactions:
+      options.profilesSampleRate = 1.0;
+      (options) => options.autoSessionTrackingInterval =
+          const Duration(milliseconds: 60000);
+    },
+    appRunner: () => runApp(
+      DefaultAssetBundle(
+        bundle: SentryAssetBundle(),
+        child: MyApp(),
+      ),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -34,6 +53,9 @@ class MyApp extends StatelessWidget {
               ChangeNotifierProvider(create: (_) => RouteProvider()),
             ],
             child: MaterialApp(
+                navigatorObservers: [
+                  SentryNavigatorObserver(),
+                ],
                 theme: ThemeData(
                     scaffoldBackgroundColor: const Color(0xFFF8F8F8),
                     bottomSheetTheme: const BottomSheetThemeData(

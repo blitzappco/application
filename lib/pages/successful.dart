@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'dart:async'; // Import the async package
-
+import 'package:sentry/sentry.dart';
 import 'package:blitz/utils/vars.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 class Successful extends StatefulWidget {
   final String item; // The item bought
