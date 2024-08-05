@@ -146,8 +146,10 @@ class _AddCardPageState extends State<AddCardPage> with WidgetsBindingObserver {
                               ),
                               const SizedBox(width: 10),
                               Expanded(
-                                child: _buildTextField('CVV',
-                                    keyboardType: TextInputType.number),
+                                child: _buildTextField(
+                                  'CVV',
+                                  keyboardType: TextInputType.number,
+                                ),
                               ),
                             ],
                           ),

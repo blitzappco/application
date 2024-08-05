@@ -40,6 +40,6 @@ class MyApp extends StatelessWidget {
                       surfaceTintColor: Colors.white,
                     )),
                 debugShowCheckedModeBanner: false,
-                home: const SplashScreen())));
+                home: SplashScreen())));
   }
 }

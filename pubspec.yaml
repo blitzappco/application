@@ -30,6 +30,7 @@ dependencies:
   screen_brightness: ^1.0.1
   flutter_dotenv: ^5.1.0
   lottie: ^3.1.2
+  flutter_svg: ^2.0.10+1
 
 dev_dependencies:
   flutter_test:
@@ -118,4 +119,7 @@ flutter:
     - assets/images/visa-color_large.png
     - assets/images/mastercard-color_large.png
     - assets/tick.json
+    - assets/images/googlelogo.svg
+    - assets/images/applelogo.svg
+    - assets/images/blitzminimal.svg
     - .env

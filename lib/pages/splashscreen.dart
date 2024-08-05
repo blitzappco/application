@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:blitz/pages/new_onboarding/get_started.dart';
 import 'package:blitz/providers/tickets_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -43,7 +44,7 @@ class _SplashScreenState extends State<SplashScreen> {
           Timer(
               const Duration(milliseconds: 100),
               () => Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const Onboarding())));
+                  MaterialPageRoute(builder: (context) => const GetStarted())));
         } else {
           await account.getTrips();
           await account.getPaymentMethods();
