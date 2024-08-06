@@ -1,5 +1,5 @@
 import 'package:blitz/components/shorthand.dart';
-import 'package:blitz/models/route.dart';
+import 'package:blitz/bifrost/core/models/route.dart';
 import 'package:blitz/utils/vars.dart';
 import 'package:flutter/material.dart';
 

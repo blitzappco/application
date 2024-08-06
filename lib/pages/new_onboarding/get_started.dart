@@ -12,7 +12,7 @@ class _GetStartedState extends State<GetStarted> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
+      body: const SafeArea(
         child: Column(
           children: [],
         ),
@@ -27,9 +27,9 @@ class _GetStartedState extends State<GetStarted> {
             child: Container(
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(9),
-                  color: Color.fromARGB(255, 94, 8, 199)),
-              child: Padding(
-                padding: const EdgeInsets.all(13.0),
+                  color: const Color.fromARGB(255, 94, 8, 199)),
+              child: const Padding(
+                padding: EdgeInsets.all(13.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

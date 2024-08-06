@@ -1,8 +1,8 @@
-import 'package:blitz/models/route.dart';
+import 'package:blitz/bifrost/core/models/route.dart';
 import 'package:flutter/material.dart';
 
 import '../components/shorthand.dart';
-import '../models/route.dart' as r;
+import 'package:blitz/bifrost/core/models/route.dart' as r;
 
 List<Widget> processShorthands(List<r.Step> steps) {
   List<Widget> result = [];

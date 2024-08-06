@@ -1,5 +1,5 @@
 import 'package:blitz/components/place_card.dart';
-import 'package:blitz/models/place.dart';
+import 'package:blitz/bifrost/core/models/place.dart';
 import 'package:blitz/providers/account_provider.dart';
 import 'package:blitz/providers/route_provider.dart';
 import 'package:blitz/utils/types.dart';

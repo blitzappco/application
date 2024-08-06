@@ -6,7 +6,6 @@ import 'package:provider/provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 import 'homescreen.dart';
-import '../pages/onboarding/onboarding.dart';
 
 import '../providers/account_provider.dart';
 

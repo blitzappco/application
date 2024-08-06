@@ -1,15 +1,15 @@
 import 'package:blitz/components/step_card_types/step_card.dart';
-import 'package:blitz/maps/geocode.dart';
-import 'package:blitz/maps/predictions.dart';
-import 'package:blitz/maps/routes.dart';
-import 'package:blitz/models/place.dart';
-import 'package:blitz/models/route.dart' as route;
 import 'package:blitz/utils/get_location.dart';
 import 'package:blitz/utils/polyline.dart';
 import 'package:blitz/utils/steps.dart';
 
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+
+// bifrost
+import 'package:blitz/bifrost/core/endpoints.dart';
+import 'package:blitz/bifrost/core/models/place.dart';
+import 'package:blitz/bifrost/core/models/route.dart' as route;
 
 class RouteProvider with ChangeNotifier {
   int routeIndex = 0;
@@ -47,7 +47,7 @@ class RouteProvider with ChangeNotifier {
   List<StepCard> stepCards = [];
 
   getPredictions(String input) async {
-    predictions = await fetchPredictions(input);
+    predictions = await getSearch(input);
     notifyListeners();
   }
 
@@ -57,7 +57,7 @@ class RouteProvider with ChangeNotifier {
 
     final position = await getCurrentLocation();
 
-    final place = await fetchPlaceFromLatLng(
+    final place = await geocodeFromLatLng(
         position?.latitude ?? 0.0, position?.longitude ?? 0.0);
 
     await setFrom(place);
@@ -85,8 +85,8 @@ class RouteProvider with ChangeNotifier {
 
     await changeLoading(true);
 
-    routes =
-        await fetchRoutes('place_id:${from.placeID}', 'place_id:${to.placeID}');
+    routes = await getItineraries(
+        'place_id:${from.placeID}', 'place_id:${to.placeID}');
     notifyListeners();
 
     await processRoute();
@@ -101,7 +101,7 @@ class RouteProvider with ChangeNotifier {
       types: ['shopping_mall'],
     );
 
-    routes = await fetchRoutes('place_id:ChIJSXffqfwBskARd6UO_FI4HH8',
+    routes = await getItineraries('place_id:ChIJSXffqfwBskARd6UO_FI4HH8',
         'place_id:ChIJP_VpOEf_sUARUsGG16TtYu4');
     notifyListeners();
 

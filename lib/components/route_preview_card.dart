@@ -4,7 +4,7 @@ import 'package:blitz/utils/normalize.dart';
 import 'package:blitz/utils/shorthand.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import '../models/route.dart' as r;
+import 'package:blitz/bifrost/core/models/route.dart' as r;
 
 class RoutePreviewCard extends StatelessWidget {
   final Future<void> Function() tap;

@@ -1,24 +1,10 @@
-import 'package:blitz/components/modals/tickets_modal.dart';
-import 'package:blitz/components/past_transaction_card.dart';
-import 'package:blitz/components/payment_methods.dart';
-import 'package:blitz/pages/new_onboarding/phone.dart';
-import 'package:blitz/pages/onboarding/onboarding.dart';
-import 'package:blitz/pages/successful.dart';
-import 'package:blitz/pages/ticket_flow/select_method.dart';
-import 'package:blitz/providers/account_provider.dart';
-import 'package:blitz/providers/tickets_provider.dart';
+import 'package:blitz/pages/new_onboarding/onboarding_phone.dart';
 import 'package:blitz/utils/vars.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:provider/provider.dart';
 
 class OnboardingModal {
   static void show(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback((_) async {
-      final account = Provider.of<AccountProvider>(context, listen: false);
-    });
     showModalBottomSheet(
       backgroundColor: Colors.white,
       isScrollControlled: true,
@@ -34,7 +20,7 @@ class OnboardingModal {
           padding:
               const EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 30),
           child: Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(9),
@@ -49,7 +35,7 @@ class OnboardingModal {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           shape: BoxShape.circle, color: lightGrey),
                       child: Padding(
                         padding: const EdgeInsets.all(10.0),
@@ -75,8 +61,8 @@ class OnboardingModal {
                     ),
                   ],
                 ), // Adjust as per your icon
-                SizedBox(height: 20),
-                Row(
+                const SizedBox(height: 20),
+                const Row(
                   children: [
                     Text(
                       'Get Started',
@@ -88,8 +74,8 @@ class OnboardingModal {
                     ),
                   ],
                 ),
-                SizedBox(height: 10),
-                Text(
+                const SizedBox(height: 10),
+                const Text(
                   'Welcome to Blitz, your ultimate transportation co-pilot! Register to effortlessly navigate, buy tickets, and explore local hotspots.',
                   style: TextStyle(
                     fontSize: 15,
@@ -98,22 +84,22 @@ class OnboardingModal {
                   ),
                   textAlign: TextAlign.start,
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 GestureDetector(
                   onTap: () {
                     // Handle phone login
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const PhonePage()),
+                          builder: (context) => const OnboardingPhone()),
                     );
                   },
                   child: Container(
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(11),
                           color: Colors.black),
-                      child: Padding(
-                        padding: const EdgeInsets.all(15.0),
+                      child: const Padding(
+                        padding: EdgeInsets.all(15.0),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -129,7 +115,7 @@ class OnboardingModal {
                         ),
                       )),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -147,7 +133,7 @@ class OnboardingModal {
                             ),
                           )),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     ),
                     Expanded(
@@ -166,8 +152,8 @@ class OnboardingModal {
                     ),
                   ],
                 ),
-                SizedBox(height: 20),
-                Text(
+                const SizedBox(height: 20),
+                const Text(
                   'By continuing, you agree to Blitz’s Terms of Use.',
                   style: TextStyle(fontSize: 12),
                 ),

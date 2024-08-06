@@ -5,8 +5,8 @@ import 'package:blitz/components/step_card_types/go_station_card.dart';
 import 'package:blitz/components/step_card_types/transit_card.dart';
 import 'package:blitz/components/step_card_types/walk_destination_card.dart';
 import 'package:blitz/components/step_card_types/walk_station_card.dart';
-import 'package:blitz/models/place.dart';
-import 'package:blitz/models/route.dart';
+import 'package:blitz/bifrost/core/models/place.dart';
+import 'package:blitz/bifrost/core/models/route.dart';
 import 'package:flutter/material.dart';
 
 class StepCard extends StatelessWidget {

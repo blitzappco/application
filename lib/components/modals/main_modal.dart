@@ -1,16 +1,15 @@
 import 'package:blitz/components/buy_ticket_prompt.dart';
+import 'package:blitz/components/modals/profile_modal.dart';
 import 'package:blitz/components/nearby_stations.dart';
 import 'package:blitz/components/place_list.dart';
 import 'package:blitz/components/static_searchbar.dart';
 import 'package:blitz/components/ticket_preview.dart';
-import 'package:blitz/models/place.dart';
+import 'package:blitz/bifrost/core/models/place.dart';
 import 'package:blitz/providers/account_provider.dart';
 import 'package:blitz/providers/route_provider.dart';
 import 'package:blitz/providers/tickets_provider.dart';
 import 'package:blitz/utils/vars.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 
@@ -66,19 +65,24 @@ class MainModal extends StatelessWidget {
                               ),
 
                               // const ActiveTrainTicket(),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 20.0),
-                                child: Row(
-                                  children: [
-                                    Text(
-                                      "Bilete",
-                                      style: TextStyle(
-                                          color: darkGrey,
-                                          fontSize: 14,
-                                          fontFamily: 'UberMoveMedium'),
-                                    ),
-                                  ],
+                              GestureDetector(
+                                onTap: () {
+                                  ProfileModal.show(context);
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 20.0),
+                                  child: Row(
+                                    children: [
+                                      Text(
+                                        "Bilete",
+                                        style: TextStyle(
+                                            color: darkGrey,
+                                            fontSize: 14,
+                                            fontFamily: 'UberMoveMedium'),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
 

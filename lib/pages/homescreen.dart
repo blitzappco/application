@@ -1,11 +1,11 @@
 import 'dart:async';
 
+import 'package:blitz/bifrost/core/endpoints.dart';
 import 'package:blitz/components/modals/loading.dart';
 import 'package:blitz/components/modals/directions_modal.dart';
 import 'package:blitz/components/modals/main_modal.dart';
 import 'package:blitz/components/modals/route_preview_modal.dart';
 import 'package:blitz/components/modals/route_test.dart';
-import 'package:blitz/maps/geocode.dart';
 import 'package:blitz/providers/account_provider.dart';
 import 'package:blitz/providers/route_provider.dart';
 import 'package:blitz/utils/get_location.dart';
@@ -33,7 +33,7 @@ class _HomescreenState extends State<Homescreen> {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       final route = Provider.of<RouteProvider>(context, listen: false);
 
-      final from = await fetchPlaceFromAddress("politehnica");
+      final from = await geocodeFromAddress("politehnica");
       route.setFrom(from);
     });
   }

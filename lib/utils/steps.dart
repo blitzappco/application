@@ -1,6 +1,6 @@
 import 'package:blitz/components/step_card_types/step_card.dart';
-import 'package:blitz/models/place.dart';
-import 'package:blitz/models/route.dart' as route;
+import 'package:blitz/bifrost/core/models/place.dart';
+import 'package:blitz/bifrost/core/models/route.dart' as route;
 
 List<StepCard> processSteps(List<route.Step> steps, Place destination) {
   List<StepCard> result = [];
