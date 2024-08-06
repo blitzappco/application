@@ -22,7 +22,7 @@ class _BuyPassPageState extends State<BuyPassPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<AccountProvider>(builder: (context, account, _) {
+    return Consumer<AccountProvider>(builder: (context, auth, _) {
       return Consumer<TicketsProvider>(builder: (context, tickets, _) {
         return Scaffold(
           body: SafeArea(
@@ -179,18 +179,18 @@ class _BuyPassPageState extends State<BuyPassPage> {
                           await tickets.setConfirmed(false);
                           // creating the purchase intent
                           await tickets.createPurchaseIntent(
-                              account.token, selectedTypeID, name);
+                              auth.token, selectedTypeID, name);
 
                           // creating the payment intent
-                          await account.createPaymentIntent(tickets.fare);
+                          await auth.createPaymentIntent(tickets.fare);
 
                           // attaching the payment to the purchase
                           await tickets.attachPurchasePayment(
-                              account.token, account.paymentIntent);
+                              auth.token, auth.paymentIntent);
 
                           // confirm the payment
                           final pi = await Stripe.instance.confirmPayment(
-                              paymentIntentClientSecret: account.clientSecret);
+                              paymentIntentClientSecret: auth.clientSecret);
 
                           if (pi.status != PaymentIntentsStatus.Succeeded) {
                             await tickets.setConfirmed(true);

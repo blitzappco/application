@@ -25,21 +25,21 @@ class _PaymentMethodsState extends State<PaymentMethods> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<AccountProvider>(builder: (context, account, _) {
+    return Consumer<AccountProvider>(builder: (context, auth, _) {
       return ListView.builder(
-        itemCount: account.account.paymentMethods?.length ?? 0,
+        itemCount: auth.account.paymentMethods?.length ?? 0,
         itemBuilder: (context, index) {
           return ListTile(
             leading: Radio<int>(
               value: index,
-              groupValue: account.selectedPM,
+              groupValue: auth.selectedPM,
               onChanged: (int? value) {
-                account.setSelectedPM(value ?? 0);
+                auth.setSelectedPM(value ?? 0);
               },
             ),
-            title: Text(account.account.paymentMethods?[index].title ?? ''),
+            title: Text(auth.account.paymentMethods?[index].title ?? ''),
             trailing:
-                getCardLogo(account.account.paymentMethods?[index].icon ?? ''),
+                getCardLogo(auth.account.paymentMethods?[index].icon ?? ''),
           );
         },
       );

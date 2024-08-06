@@ -198,7 +198,7 @@ class _BuyTicketModalState extends State<BuyTicketModal> {
     return Consumer<TicketsProvider>(
       builder: (context, tickets, _) {
         return Consumer<AccountProvider>(
-          builder: (context, account, _) {
+          builder: (context, auth, _) {
             return Padding(
               padding: const EdgeInsets.all(15.0),
               child: Container(

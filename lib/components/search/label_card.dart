@@ -1,34 +1,54 @@
+import 'package:blitz/utils/vars.dart';
 import 'package:flutter/material.dart';
+import 'package:blitz/bifrost/mantle/models/account.dart';
 
-class AddressLabel extends StatelessWidget {
-  final String label;
-  final String address;
+class LabelCard extends StatelessWidget {
+  final Label label;
 
-  const AddressLabel({
+  const LabelCard({
     required this.label,
-    required this.address,
     super.key,
   });
 
-  IconData getIcon(String label) {
-    switch (label.toLowerCase()) {
-      case 'acasa':
-        return Icons.home;
-      case 'serviciu':
-        return Icons.work;
+  String getAddress(Label label) {
+    if (label.name == 'home' || label.name == 'work') {
+      if (label.address == "") {
+        return 'Seteaza';
+      }
+    }
+    return label.address ?? 'Seteaza';
+  }
+
+  String getName(Label label) {
+    switch (label.name) {
+      case 'home':
+        return 'Acasa';
+      case 'work':
+        return 'Serviciu';
       default:
-        return Icons.flag;
+        return label.name ?? "";
     }
   }
 
-  Color getColor(String label) {
-    switch (label.toLowerCase()) {
-      case 'acasa':
+  IconData getIcon(Label label) {
+    switch (label.name) {
+      case 'home':
+        return Icons.home;
+      case 'work':
+        return Icons.work;
+      default:
+        return placeIcons[label.type ?? 'general'] ?? Icons.flag;
+    }
+  }
+
+  Color getColor(Label label) {
+    switch (label.name) {
+      case 'home':
         return Colors.blue;
-      case 'serviciu':
+      case 'work':
         return Colors.orange;
       default:
-        return Colors.purple;
+        return placeColors[label.type ?? 'general'] ?? blitzPurple;
     }
   }
 
@@ -43,10 +63,10 @@ class AddressLabel extends StatelessWidget {
         borderRadius: BorderRadius.circular(15),
         boxShadow: [
           BoxShadow(
-            color: Color.fromARGB(255, 209, 209, 209).withOpacity(0.5),
+            color: const Color.fromARGB(255, 209, 209, 209).withOpacity(0.5),
             spreadRadius: -1,
             blurRadius: 9,
-            offset: Offset(0, 1), // changes position of shadow
+            offset: const Offset(0, 1), // changes position of shadow
           ),
         ],
       ),
@@ -69,7 +89,7 @@ class AddressLabel extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               width: 10,
             ),
             Expanded(
@@ -79,11 +99,12 @@ class AddressLabel extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
-                    label,
-                    style: TextStyle(fontSize: 16, fontFamily: "UberMoveBold"),
+                    getName(label),
+                    style: const TextStyle(
+                        fontSize: 16, fontFamily: "UberMoveBold"),
                   ),
                   Text(
-                    address,
+                    getAddress(label),
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                     style: TextStyle(

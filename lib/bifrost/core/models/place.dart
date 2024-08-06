@@ -1,4 +1,5 @@
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:blitz/bifrost/mantle/models/account.dart';
 
 class Place {
   String placeID;
@@ -53,6 +54,14 @@ class Place {
         mainText: json['mainText'],
         secondaryText: json['secondaryText'],
         types: [json['type']]);
+  }
+
+  factory Place.fromLabel(Label label) {
+    return Place(
+        placeID: label.placeID ?? '',
+        mainText: label.address ?? '',
+        secondaryText: label.name ?? '',
+        types: [label.type ?? '']);
   }
 
   Map<String, dynamic> toJSON() {

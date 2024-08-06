@@ -1,8 +1,9 @@
 import 'dart:convert';
 
 import 'package:blitz/bifrost/core/models/place.dart';
-import 'package:blitz/bifrost/mantle/endpoints.dart';
-import 'package:blitz/utils/types.dart';
+import 'package:blitz/bifrost/mantle/onboarding.dart';
+import 'package:blitz/bifrost/mantle/trips.dart';
+import 'package:blitz/bifrost/mantle/labels.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -80,6 +81,7 @@ class AccountProvider with ChangeNotifier {
       notifyListeners();
 
       account = Account.fromJSON(body['account']);
+      account.trips = account.trips?.reversed.toList();
       setAccount(account);
 
       await setError('');
@@ -115,24 +117,21 @@ class AccountProvider with ChangeNotifier {
     loading = true;
     notifyListeners();
 
-    final response = await http.get(
-        Uri.parse('${AppURL.baseURL}/accounts/trips'),
-        headers: authHeader(token));
+    final body = await fetchTrips(token);
 
     loading = false;
     notifyListeners();
 
-    final json = jsonDecode(utf8.decode(response.bodyBytes));
-    if (response.statusCode == 200) {
-      List<Place> tempTrips = [];
-      for (int i = json.length - 1; i >= 0; i--) {
-        tempTrips.add(Place.fromTrip(json[i]));
+    if (body['statusCode'] == 200) {
+      account.trips = [];
+      for (int i = 0; i < body['trips'].length; i++) {
+        account.trips?.add(Place.fromTrip(body['trips'][i]));
       }
+      account.trips = account.trips?.reversed.toList();
 
-      account.trips = tempTrips;
       notifyListeners();
     } else {
-      errorMessage = json['message'];
+      setError(body["message"]);
     }
   }
 
@@ -140,31 +139,105 @@ class AccountProvider with ChangeNotifier {
     loading = true;
     notifyListeners();
 
-    final response =
-        await http.put(Uri.parse('${AppURL.baseURL}/accounts/trips'),
-            headers: authHeader(token),
-            body: jsonEncode(<String, String>{
-              'placeID': p.placeID,
-              'mainText': p.mainText,
-              'secondaryText': p.secondaryText ?? '',
-              'type': processTypes(p.types),
-            }));
+    final body = await postTrip(token, p);
 
     loading = false;
     notifyListeners();
 
-    final json = jsonDecode(utf8.decode(response.bodyBytes));
-    if (response.statusCode == 200) {
-      List<Place> tempTrips = [];
-
-      for (int i = json.length - 1; i > 0; i--) {
-        tempTrips.add(Place.fromTrip(json[i]));
+    if (body["statusCode"] == 200) {
+      account.trips = [];
+      for (int i = 0; i < body['trips'].length; i++) {
+        account.trips?.add(Place.fromTrip(body['trips'][i]));
       }
 
-      account.trips = tempTrips;
+      account.trips = account.trips?.reversed.toList();
       notifyListeners();
     } else {
-      errorMessage = json['message'];
+      setError(body["message"]);
+    }
+  }
+
+  getLabels() async {
+    loading = true;
+    notifyListeners();
+
+    final body = await fetchLabels(token);
+
+    loading = false;
+    notifyListeners();
+
+    if (body['statusCode'] == 200) {
+      account.labels = [];
+      for (int i = 0; i < body['labels'].length; i++) {
+        account.labels?.add(Label.fromJSON(body['labels'][i]));
+      }
+
+      notifyListeners();
+    } else {
+      setError(body["message"]);
+    }
+  }
+
+  addLabel(Label l) async {
+    loading = true;
+    notifyListeners();
+
+    final body = await postLabel(token, l);
+
+    loading = false;
+    notifyListeners();
+
+    if (body["statusCode"] == 200) {
+      account.labels = [];
+      for (int i = 0; i < body['labels'].length; i++) {
+        account.labels?.add(Label.fromJSON(body['labels'][i]));
+      }
+
+      notifyListeners();
+    } else {
+      setError(body["message"]);
+    }
+  }
+
+  removeLabel(int index) async {
+    loading = true;
+    notifyListeners();
+
+    final body = await deleteLabel(token, index);
+
+    loading = false;
+    notifyListeners();
+
+    if (body["statusCode"] == 200) {
+      account.labels = [];
+      for (int i = 0; i < body['trips'].length; i++) {
+        account.labels?.add(Label.fromJSON(body['labels'][i]));
+      }
+
+      notifyListeners();
+    } else {
+      setError(body["message"]);
+    }
+  }
+
+  changeLabel(int index, Label l) async {
+    loading = true;
+    notifyListeners();
+
+    final body = await patchLabel(token, index, l);
+
+    loading = false;
+    notifyListeners();
+
+    if (body["statusCode"] == 200) {
+      account.labels = [];
+      for (int i = 0; i < body['trips'].length; i++) {
+        account.labels?.add(Label.fromJSON(body['labels'][i]));
+      }
+
+      notifyListeners();
+    } else {
+      setError(body["message"]);
     }
   }
 

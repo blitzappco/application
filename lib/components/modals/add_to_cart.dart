@@ -47,7 +47,7 @@ class _AddToCartState extends State<AddToCart> {
   @override
   Widget build(BuildContext context) {
     return Consumer<TicketsProvider>(builder: (context, tickets, _) {
-      return Consumer<AccountProvider>(builder: (context, account, _) {
+      return Consumer<AccountProvider>(builder: (context, auth, _) {
         return Padding(
           padding: const EdgeInsets.all(15.0),
           child: Container(

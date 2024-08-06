@@ -1,11 +1,11 @@
-import 'package:blitz/components/place_card.dart';
+import 'package:blitz/components/search/place_card.dart';
 import 'package:blitz/bifrost/core/models/place.dart';
 import 'package:blitz/providers/account_provider.dart';
 import 'package:blitz/providers/route_provider.dart';
 import 'package:blitz/utils/types.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../utils/shorten.dart';
+import '../../utils/shorten.dart';
 
 class PlaceList extends StatelessWidget {
   final List<Place> places;
@@ -22,7 +22,7 @@ class PlaceList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<AccountProvider>(builder: (context, account, _) {
+    return Consumer<AccountProvider>(builder: (context, auth, _) {
       return Consumer<RouteProvider>(builder: (context, route, _) {
         return SizedBox(
           height: 185,
