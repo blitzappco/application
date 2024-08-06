@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:blitz/pages/onboarding/ask_location.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../providers/account_provider.dart';
@@ -54,7 +55,7 @@ class _OnboardingNameState extends State<OnboardingName> {
         Timer(const Duration(milliseconds: 200), () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const Homescreen()),
+            MaterialPageRoute(builder: (context) => const AskLocation()),
           );
         });
       }

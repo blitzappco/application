@@ -125,6 +125,7 @@ flutter:
     - assets/images/visa-color_large.png
     - assets/images/mastercard-color_large.png
     - assets/tick.json
+    - assets/tickw.json
     - assets/images/googlelogo.svg
     - assets/images/applelogo.svg
     - assets/images/blitzminimal.svg
