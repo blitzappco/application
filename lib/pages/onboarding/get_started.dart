@@ -1,8 +1,10 @@
 import 'package:blitz/pages/onboarding/onboarding_modal.dart';
+
 import 'package:blitz/utils/vars.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:video_player/video_player.dart';
+
 
 class GetStarted extends StatefulWidget {
   const GetStarted({super.key});

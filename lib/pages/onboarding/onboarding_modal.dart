@@ -1,4 +1,5 @@
 import 'package:blitz/pages/onboarding/onboarding_phone.dart';
+
 import 'package:blitz/pages/onboarding/webview_modal.dart';
 import 'package:blitz/utils/vars.dart';
 import 'package:flutter/material.dart';
@@ -106,6 +107,7 @@ class OnboardingModal {
                           children: [
                             Text(
                               'Continua cu telefonul',
+
                               style: TextStyle(
                                   color: Colors.white,
                                   fontFamily: "SFProRounded",

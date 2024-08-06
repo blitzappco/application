@@ -74,6 +74,7 @@ class Account {
   String? firstName;
   String? lastName;
   String? stripeCustomerID;
+
   List<PaymentMethod>? paymentMethods;
   List<Place>? trips;
   List<Label>? labels;
@@ -85,25 +86,75 @@ class Account {
     this.lastName,
     this.stripeCustomerID,
     this.paymentMethods,
+    this.trips,
+    this.labels,
   });
 
   factory Account.fromJSON(Map<String, dynamic> json) {
+    List<PaymentMethod> pmList = [];
+    for (int i = 0; i < json["paymentMethods"].length; i++) {
+      pmList.add(PaymentMethod.fromJSON(json["paymentMethods"][i]));
+    }
+
+    List<Place> tripList = [];
+    for (int i = 0; i < json["trips"].length; i++) {
+      tripList.add(Place.fromTrip(json["trips"][i]));
+    }
+
+    List<Label> labelList = [];
+    for (int i = 0; i < json["labels"].length; i++) {
+      labelList.add(Label.fromJSON(json["labels"][i]));
+    }
     return Account(
-      id: json['id'],
-      phone: json['phone'],
-      firstName: json['firstName'],
-      lastName: json['lastName'],
-      stripeCustomerID: json['stripeCustomerID'],
-    );
+        id: json['id'],
+        phone: json['phone'],
+        firstName: json['firstName'],
+        lastName: json['lastName'],
+        stripeCustomerID: json['stripeCustomerID'],
+        paymentMethods: pmList,
+        trips: tripList,
+        labels: labelList);
+  }
+
+  factory Account.fromEmpty() {
+    return Account(
+        id: '',
+        phone: '',
+        firstName: '',
+        lastName: '',
+        stripeCustomerID: '',
+        paymentMethods: [],
+        trips: [],
+        labels: []);
   }
 
   Map<String, dynamic> toJSON() {
+    List<dynamic> pmList = [];
+    int pmLength = paymentMethods?.length ?? 0;
+    for (int i = 0; i < pmLength; i++) {
+      pmList.add(paymentMethods?[i].toJSON());
+    }
+
+    List<dynamic> tripList = [];
+    int tripLength = trips?.length ?? 0;
+    for (int i = 0; i < tripLength; i++) {
+      tripList.add(trips?[i].toJSON());
+    }
+
+    List<dynamic> labelList = [];
+    int labelLength = labels?.length ?? 0;
+    for (int i = 0; i < labelLength; i++) {
+      labelList.add(labels?[i].toJSON());
+    }
     Map<String, dynamic> accountJSON = <String, dynamic>{
       'id': id,
       'phone': phone,
       'firstName': firstName,
       'lastName': lastName,
       'stripeCustomerID': stripeCustomerID,
+      'paymentMethods': pmList,
+      'trips': tripList,
+      'labels': labelList,
     };
 
     return accountJSON;
