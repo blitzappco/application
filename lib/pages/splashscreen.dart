@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:blitz/pages/onboarding/get_started.dart';
 import 'package:blitz/providers/tickets_provider.dart';
-import 'package:blitz/utils/preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -48,8 +47,8 @@ class _SplashScreenState extends State<SplashScreen> {
               () => Navigator.push(context,
                   MaterialPageRoute(builder: (context) => const GetStarted())));
         } else {
-          await account.getTrips();
-          await account.getPaymentMethods();
+          // await account.getTrips();
+          // await account.getPaymentMethods();
 
           await tickets.getTicketTypes(account.token, "bucuresti");
 
