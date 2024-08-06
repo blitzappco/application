@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:blitz/bifrost/mantle/models/account.dart';
 
@@ -8,13 +10,15 @@ Future<String> getToken() async {
 
 Future<Account> getAccount() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
-  return Account(
-    id: prefs.getString('account.id'),
-    phone: prefs.getString('account.phone'),
-    firstName: prefs.getString('account.firstName'),
-    lastName: prefs.getString('account.lastName'),
-    stripeCustomerID: prefs.getString('account.stripeCustomerID'),
-  );
+
+  final accountString = prefs.getString("account") ?? '';
+  print("ACCOUNTPREF: $accountString");
+
+  if (accountString == '') {
+    return Account.fromEmpty();
+  } else {
+    return Account.fromJSON(jsonDecode(accountString));
+  }
 }
 
 void setToken(String token) async {
@@ -24,12 +28,8 @@ void setToken(String token) async {
 
 void setAccount(Account account) async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
-  await prefs.setString('account.id', account.id.toString());
-  await prefs.setString('account.phone', account.phone.toString());
-  await prefs.setString('account.firstName', account.firstName.toString());
-  await prefs.setString('account.lastName', account.lastName.toString());
-  await prefs.setString(
-      'account.stripeCustomerID', account.stripeCustomerID.toString());
+
+  await prefs.setString("account", jsonEncode(account.toJSON()));
 }
 
 void removeToken() async {
@@ -39,11 +39,7 @@ void removeToken() async {
 
 void removeAccount() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
-  await prefs.remove('account.id');
-  await prefs.remove('account.phone');
-  await prefs.remove('account.firstName');
-  await prefs.remove('account.lastName');
-  await prefs.remove('account.stripeCustomerID');
+  await prefs.remove("account");
 }
 
 void removePrefs() async {

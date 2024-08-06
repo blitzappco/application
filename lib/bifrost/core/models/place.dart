@@ -54,4 +54,15 @@ class Place {
         secondaryText: json['secondaryText'],
         types: [json['type']]);
   }
+
+  Map<String, dynamic> toJSON() {
+    Map<String, dynamic> accountJSON = <String, dynamic>{
+      'placeID': placeID,
+      'type': types[0],
+      'mainText': mainText,
+      'secondaryText': secondaryText,
+    };
+
+    return accountJSON;
+  }
 }

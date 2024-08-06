@@ -1,6 +1,7 @@
 import 'dart:async';
-import 'package:blitz/pages/new_onboarding/get_started.dart';
+import 'package:blitz/pages/onboarding/get_started.dart';
 import 'package:blitz/providers/tickets_provider.dart';
+import 'package:blitz/utils/preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -28,6 +29,8 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     requestLocationPermissions();
+    // removeAccount();
+    // removeToken();
 
     Timer(const Duration(milliseconds: 1500), () {
       setState(() {
