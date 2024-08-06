@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:blitz/pages/new_onboarding/get_started.dart';
+import 'package:blitz/pages/onboarding/get_started.dart';
 import 'package:blitz/providers/tickets_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

@@ -31,7 +31,7 @@ class PlaceList extends StatelessWidget {
             removeTop: true,
             removeBottom: true,
             child: ListView.separated(
-              physics: const FixedExtentScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               itemCount: places.length,
               itemBuilder: (context, index) {
                 return PlaceCard(

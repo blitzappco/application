@@ -1,14 +1,9 @@
-import 'package:blitz/components/modals/tickets_modal.dart';
-import 'package:blitz/components/past_transaction_card.dart';
-import 'package:blitz/components/payment_methods.dart';
 import 'package:blitz/pages/successful.dart';
 import 'package:blitz/pages/ticket_flow/select_method.dart';
 import 'package:blitz/providers/account_provider.dart';
 import 'package:blitz/providers/tickets_provider.dart';
 import 'package:blitz/utils/vars.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 
 class SubtotalModal {

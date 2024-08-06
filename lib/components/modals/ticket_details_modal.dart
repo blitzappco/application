@@ -54,10 +54,10 @@ class TicketDetailsModal {
                     ],
                   ),
                 ),
-                const SizedBox(height: 15),
-                const Center(
+                const SizedBox(height: 10),
+                Center(
                   child: Text(
-                    "Abonament Lunar",
+                    tickets.last.name ?? "Not Available",
                     style: TextStyle(
                       fontFamily: "SFProRounded",
                       fontSize: 32,
@@ -153,7 +153,7 @@ class TicketDetailsModal {
                           fontWeight: FontWeight.w500,
                         ),
                       ),
-                      SizedBox(height: 10),
+                      SizedBox(height: 15),
                     ],
                   ),
                 ),
@@ -177,11 +177,11 @@ String calculateExpiry(DateTime expiryDate) {
   if (difference.isNegative) {
     return "Expirat";
   } else if (difference.inDays >= 1) {
-    return '${difference.inDays} dazileys';
+    return '${difference.inDays} zile';
   } else if (difference.inHours >= 1) {
-    return '${difference.inHours} ore si ${difference.inMinutes % 60} minute';
+    return '${difference.inHours} h ${difference.inMinutes % 60} m';
   } else if (difference.inMinutes >= 1) {
-    return '${difference.inMinutes} minute si ${difference.inSeconds % 60} secunde';
+    return '${difference.inMinutes} m ${difference.inSeconds % 60} s';
   } else {
     return '${difference.inSeconds} secunde';
   }
