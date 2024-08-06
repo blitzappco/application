@@ -1,6 +1,3 @@
-import 'package:blitz/components/ticket_selection.dart';
-import 'package:blitz/components/ticket_selection_compact.dart';
-import 'package:blitz/pages/onboarding/onboarding.dart';
 import 'package:blitz/providers/account_provider.dart';
 import 'package:blitz/providers/tickets_provider.dart';
 import 'package:blitz/utils/vars.dart';

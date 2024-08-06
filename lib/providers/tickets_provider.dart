@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:blitz/models/tickety_type.dart';
+import 'package:blitz/models/ticket_type.dart';
 import 'package:blitz/utils/process_ticket_types.dart';
 import 'package:flutter/material.dart';
 import '../utils/url.dart';

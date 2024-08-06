@@ -1,4 +1,6 @@
 import 'package:blitz/components/address_label_expanded.dart';
+import 'package:blitz/pages/name_label.dart';
+import 'package:blitz/pages/search_address_label.dart';
 import 'package:blitz/utils/vars.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -51,21 +53,31 @@ class _ManageAddressState extends State<ManageAddress> {
             SizedBox(
               height: 15,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.add,
-                  color: darkGrey,
-                ),
-                Text(
-                  "Adauga o adresa",
-                  style: TextStyle(
-                      fontFamily: "UberMoveMedium",
-                      color: darkGrey,
-                      fontSize: 18),
-                )
-              ],
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => SearchAddressLabel(
+                              edit: false,
+                            )));
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.add,
+                    color: darkGrey,
+                  ),
+                  Text(
+                    "Adauga o adresa",
+                    style: TextStyle(
+                        fontFamily: "UberMoveMedium",
+                        color: darkGrey,
+                        fontSize: 18),
+                  )
+                ],
+              ),
             )
           ],
         ),

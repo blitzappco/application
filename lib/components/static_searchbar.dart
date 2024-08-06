@@ -35,7 +35,7 @@ class _StaticSearchbarState extends State<StaticSearchbar> {
                 width: 10,
               ),
               Text(
-                'Where are we going?',
+                'Unde mergem?',
                 style: TextStyle(
                     fontSize: 15,
                     fontFamily: 'UberMoveMedium',

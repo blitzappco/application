@@ -1,13 +1,14 @@
 import 'package:blitz/models/route.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import '../utils/env.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 Future<List<Route>> fetchRoutes(String from, String to) async {
+  String? mapsKey = dotenv.env['MAPS_KEY'];
   final url = 'https://maps.googleapis.com/maps/api/directions/json'
       '?language=en'
       '&mode=transit&alternatives=true'
-      '&origin=$from&destination=$to&key=$mapKey';
+      '&origin=$from&destination=$to&key=$mapsKey';
 
   final response = await http.get(Uri.parse(url));
 

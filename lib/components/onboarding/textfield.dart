@@ -21,12 +21,6 @@ class _TextFieldBoxState extends State<TextFieldBox> {
           cursorColor: Colors.black,
           style: const TextStyle(fontSize: 22, fontFamily: 'UberMoveMedium'),
           decoration: InputDecoration(
-            prefixIcon: const Padding(
-                padding: EdgeInsets.all(15),
-                child: Text(
-                  '+4',
-                  style: TextStyle(fontSize: 22, fontFamily: 'UberMoveMedium'),
-                )),
             border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
                 borderSide: BorderSide.none),

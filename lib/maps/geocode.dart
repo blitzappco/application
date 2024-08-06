@@ -1,14 +1,15 @@
 import 'package:blitz/models/place.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import '../utils/env.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 Future<Place> fetchAddressFromPlace(String placeID) async {
+  String? mapsKey = dotenv.env['MAPS_KEY'];
   final url = 'https://maps.googleapis.com/maps/api/geocode/json'
       '?language=en'
       '&place_id=$placeID'
       // '&locationbias'
-      '&key=$mapKey';
+      '&key=$mapsKey';
 
   final response = await http.get(Uri.parse(url));
 
@@ -24,11 +25,12 @@ Future<Place> fetchAddressFromPlace(String placeID) async {
 }
 
 Future<Place> fetchPlaceFromLatLng(double lat, double lng) async {
+  String? mapsKey = dotenv.env['MAPS_KEY'];
   final url = 'https://maps.googleapis.com/maps/api/geocode/json'
       '?language=en'
       '&latlng=$lat,$lng'
       // '&locationbias'
-      '&key=$mapKey';
+      '&key=$mapsKey';
 
   final response = await http.get(Uri.parse(url));
 
@@ -44,11 +46,12 @@ Future<Place> fetchPlaceFromLatLng(double lat, double lng) async {
 }
 
 Future<Place> fetchPlaceFromAddress(String address) async {
+  String? mapsKey = dotenv.env['MAPS_KEY'];
   final url = 'https://maps.googleapis.com/maps/api/geocode/json'
       '?language=en'
       '&address=$address'
       // '&locationbias'
-      '&key=$mapKey';
+      '&key=$mapsKey';
 
   final response = await http.get(Uri.parse(url));
 
