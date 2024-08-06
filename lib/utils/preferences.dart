@@ -12,13 +12,14 @@ Future<Account> getAccount() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
 
   final accountString = prefs.getString("account") ?? '';
-  print("ACCOUNTPREF: $accountString");
+  var account = Account.fromEmpty();
 
-  if (accountString == '') {
-    return Account.fromEmpty();
-  } else {
-    return Account.fromJSON(jsonDecode(accountString));
+  if (accountString != '') {
+    account = Account.fromJSON(jsonDecode(accountString));
+    account.trips = account.trips?.reversed.toList();
   }
+
+  return account;
 }
 
 void setToken(String token) async {
