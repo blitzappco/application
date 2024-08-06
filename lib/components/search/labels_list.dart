@@ -19,7 +19,8 @@ class LabelsList extends StatelessWidget {
             itemBuilder: (context, index) => (index !=
                     auth.account.labels?.length)
                 ? LabelCard(
-                    label: auth.account.labels?[index] ?? Label(name: "home"))
+                    label: auth.account.labels?[index] ?? Label(name: "home"),
+                    index: index)
                 : GestureDetector(
                     onTap: () {
                       Navigator.push(

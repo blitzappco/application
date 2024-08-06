@@ -168,7 +168,11 @@ class MainModal extends StatelessWidget {
                                                       auth.account.trips ?? [],
                                                   set: route.setTo,
                                                   trip: (Place p) async {},
-                                                  callback: () {},
+                                                  callback: () async {
+                                                    await route
+                                                        .changePage("preview");
+                                                    await route.getRoutes();
+                                                  },
                                                 ),
                                               )),
                                         ],

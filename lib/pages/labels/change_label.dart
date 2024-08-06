@@ -30,12 +30,13 @@ class _ChangeLabelState extends State<ChangeLabel> {
       }
       unfocused = false;
 
-      final auth = Provider.of<AccountProvider>(context, listen: false);
+      if (widget.index > 0) {
+        final auth = Provider.of<AccountProvider>(context, listen: false);
+        controller.text = auth.account.labels?[widget.index].name ?? '';
 
-      controller.text = auth.account.labels?[widget.index].name ?? '';
-
-      await auth.setLabelPlace(Place.fromLabel(
-          auth.account.labels?[widget.index] ?? Label(name: "home")));
+        await auth.setLabelPlace(Place.fromLabel(
+            auth.account.labels?[widget.index] ?? Label(name: "home")));
+      }
     });
 
     return Consumer<AccountProvider>(builder: (context, auth, _) {
