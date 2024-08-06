@@ -25,7 +25,7 @@ Map<String, IconData> lineIcons = {
   "SUBWAY": Icons.subway_rounded,
 };
 
-Map<String, IconData> mapPlaceIcons = {
+Map<String, IconData> placeIcons = {
   "restaurant": Icons.restaurant_rounded,
   "cafe": Icons.local_cafe_rounded,
   "bar": Icons.local_bar_rounded,
@@ -52,7 +52,7 @@ Map<String, IconData> mapPlaceIcons = {
   "general": Icons.location_city_rounded,
 };
 
-Map<String, Color> mapPlaceColors = {
+Map<String, Color> placeColors = {
   "restaurant": const Color(0xFFF44336), // Red
   "cafe": const Color(0xFF795548), // Brown
   "bar": const Color(0xFF9C27B0), // Purple

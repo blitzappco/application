@@ -1,13 +1,8 @@
-import 'package:blitz/components/modals/tickets_modal.dart';
-import 'package:blitz/components/past_transaction_card.dart';
-import 'package:blitz/components/payment_methods.dart';
 import 'package:blitz/pages/ticket_flow/add_card.dart';
 import 'package:blitz/providers/account_provider.dart';
 import 'package:blitz/providers/tickets_provider.dart';
 import 'package:blitz/utils/vars.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 
 class SelectMethodModal {
@@ -39,7 +34,7 @@ class SelectMethodModal {
               height: 240,
               child: Column(
                 children: [
-                  Row(
+                  const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
@@ -49,8 +44,8 @@ class SelectMethodModal {
                       ),
                     ],
                   ),
-                  Divider(),
-                  SizedBox(
+                  const Divider(),
+                  const SizedBox(
                     height: 10,
                   ),
                   GestureDetector(
@@ -63,15 +58,15 @@ class SelectMethodModal {
                             Container(
                               height: 30,
                               width: 50,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                   image: DecorationImage(
                                       image: AssetImage(
                                           "assets/images/ApplePay.png"))),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 10,
                             ),
-                            Text(
+                            const Text(
                               "Apple Pay",
                               style: TextStyle(
                                 fontFamily: "UberMoveMedium",
@@ -80,7 +75,7 @@ class SelectMethodModal {
                             ),
                           ],
                         ),
-                        Icon(
+                        const Icon(
                           Icons.arrow_forward_ios,
                           size: 15,
                           color: darkGrey,
@@ -88,7 +83,7 @@ class SelectMethodModal {
                       ],
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   GestureDetector(
@@ -109,15 +104,15 @@ class SelectMethodModal {
                               decoration: BoxDecoration(
                                   border: Border.all(color: darkGrey),
                                   borderRadius: BorderRadius.circular(4)),
-                              child: Icon(
+                              child: const Icon(
                                 Icons.add,
                                 color: darkGrey,
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 10,
                             ),
-                            Text(
+                            const Text(
                               "Adauga un card",
                               style: TextStyle(
                                 fontFamily: "UberMoveMedium",
@@ -126,7 +121,7 @@ class SelectMethodModal {
                             ),
                           ],
                         ),
-                        Icon(
+                        const Icon(
                           Icons.arrow_forward_ios,
                           size: 15,
                           color: darkGrey,

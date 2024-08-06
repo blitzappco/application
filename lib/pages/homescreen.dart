@@ -32,6 +32,9 @@ class _HomescreenState extends State<Homescreen> {
 
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       final route = Provider.of<RouteProvider>(context, listen: false);
+      final auth = Provider.of<AccountProvider>(context, listen: false);
+
+      await auth.getLabels();
 
       final from = await geocodeFromAddress("politehnica");
       route.setFrom(from);
@@ -53,7 +56,7 @@ class _HomescreenState extends State<Homescreen> {
   @override
   Widget build(BuildContext context) {
     return Consumer<RouteProvider>(builder: (context, route, _) {
-      return Consumer<AccountProvider>(builder: (context, account, _) {
+      return Consumer<AccountProvider>(builder: (context, auth, _) {
         return PopScope(
           canPop: false,
           child: Scaffold(

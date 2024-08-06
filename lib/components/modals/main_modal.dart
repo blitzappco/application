@@ -1,7 +1,7 @@
 import 'package:blitz/components/buy_ticket_prompt.dart';
 import 'package:blitz/components/modals/profile_modal.dart';
 import 'package:blitz/components/nearby_stations.dart';
-import 'package:blitz/components/place_list.dart';
+import 'package:blitz/components/search/place_list.dart';
 import 'package:blitz/components/static_searchbar.dart';
 import 'package:blitz/components/ticket_preview.dart';
 import 'package:blitz/bifrost/core/models/place.dart';
@@ -20,7 +20,7 @@ class MainModal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = DraggableScrollableController();
-    return Consumer<AccountProvider>(builder: (context, account, _) {
+    return Consumer<AccountProvider>(builder: (context, auth, _) {
       return Consumer<RouteProvider>(builder: (context, route, _) {
         return Consumer<TicketsProvider>(builder: (context, tickets, _) {
           return DraggableScrollableSheet(
@@ -55,10 +55,9 @@ class MainModal extends StatelessWidget {
                               const SizedBox(
                                 height: 10,
                               ),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 20.0),
-                                child: const StaticSearchbar(),
+                              const Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 20.0),
+                                child: StaticSearchbar(),
                               ),
                               const SizedBox(
                                 height: 20,
@@ -69,7 +68,7 @@ class MainModal extends StatelessWidget {
                                 onTap: () {
                                   ProfileModal.show(context);
                                 },
-                                child: Padding(
+                                child: const Padding(
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 20.0),
                                   child: Row(
@@ -86,18 +85,18 @@ class MainModal extends StatelessWidget {
                                 ),
                               ),
 
-                              SizedBox(
+                              const SizedBox(
                                 height: 10,
                               ),
 
                               tickets.show
-                                  ? Padding(
-                                      padding: const EdgeInsets.symmetric(
+                                  ? const Padding(
+                                      padding: EdgeInsets.symmetric(
                                           horizontal: 20.0),
                                       child: TicketPreview(activeTicket: true),
                                     )
-                                  : Padding(
-                                      padding: const EdgeInsets.symmetric(
+                                  : const Padding(
+                                      padding: EdgeInsets.symmetric(
                                           horizontal: 20.0),
                                       child: BuyTicketPrompt(),
                                     ),
@@ -106,10 +105,9 @@ class MainModal extends StatelessWidget {
                                 height: 20,
                               ),
                               // Nearby stations
-                              Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 20.0),
-                                child: const Row(
+                              const Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 20.0),
+                                child: Row(
                                   children: [
                                     Text(
                                       "Statii in apropiere",
@@ -124,17 +122,17 @@ class MainModal extends StatelessWidget {
                               const SizedBox(
                                 height: 10,
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 20.0),
-                                child: const NearbyStations(),
+                              const Padding(
+                                padding: EdgeInsets.only(left: 20.0),
+                                child: NearbyStations(),
                               ),
                               //Recents
                               const SizedBox(
                                 height: 15,
                               ),
                               // Nearby stations
-                              account.account.trips != null &&
-                                      account.account.trips!.isNotEmpty
+                              auth.account.trips != null &&
+                                      auth.account.trips!.isNotEmpty
                                   ? Padding(
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 20.0),
@@ -167,8 +165,7 @@ class MainModal extends StatelessWidget {
                                                     const EdgeInsets.all(15.0),
                                                 child: PlaceList(
                                                   places:
-                                                      account.account.trips ??
-                                                          [],
+                                                      auth.account.trips ?? [],
                                                   set: route.setTo,
                                                   trip: (Place p) async {},
                                                   callback: () {},
@@ -177,7 +174,7 @@ class MainModal extends StatelessWidget {
                                         ],
                                       ),
                                     )
-                                  : SizedBox.shrink(),
+                                  : const SizedBox.shrink(),
                             ],
                           ),
                         ),

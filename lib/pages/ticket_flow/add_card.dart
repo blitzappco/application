@@ -33,11 +33,11 @@ class _AddCardPageState extends State<AddCardPage> with WidgetsBindingObserver {
 
   Widget _buildTextField(String labelText, {TextInputType? keyboardType}) {
     return TextFormField(
-      style: TextStyle(fontFamily: "SFProRounded", fontSize: 18),
+      style: const TextStyle(fontFamily: "SFProRounded", fontSize: 18),
       decoration: InputDecoration(
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
-          borderSide: BorderSide(
+          borderSide: const BorderSide(
             width: 0,
             style: BorderStyle.none,
           ),
@@ -45,7 +45,7 @@ class _AddCardPageState extends State<AddCardPage> with WidgetsBindingObserver {
         filled: true,
         fillColor: Colors.grey[300], // Change to the appropriate color
         labelText: labelText,
-        labelStyle: TextStyle(
+        labelStyle: const TextStyle(
           fontFamily: "SFProRounded",
           fontWeight: FontWeight.w500,
         ),
@@ -76,7 +76,7 @@ class _AddCardPageState extends State<AddCardPage> with WidgetsBindingObserver {
                               Navigator.pop(context);
                             },
                             child: Padding(
-                              padding: EdgeInsets.all(3.0),
+                              padding: const EdgeInsets.all(3.0),
                               child: Icon(
                                 Icons.close,
                                 color: Colors.grey[800],
@@ -194,9 +194,9 @@ class _AddCardPageState extends State<AddCardPage> with WidgetsBindingObserver {
             child: Container(
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(9),
-                  color: Color.fromARGB(255, 94, 8, 199)),
-              child: Padding(
-                padding: const EdgeInsets.all(13.0),
+                  color: const Color.fromARGB(255, 94, 8, 199)),
+              child: const Padding(
+                padding: EdgeInsets.all(13.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

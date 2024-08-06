@@ -1,7 +1,6 @@
-import 'package:blitz/components/address_label.dart';
-import 'package:blitz/components/place_list.dart';
+import 'package:blitz/components/search/labels_list.dart';
+import 'package:blitz/components/search/place_list.dart';
 import 'package:blitz/bifrost/core/models/place.dart';
-import 'package:blitz/pages/manage_address.dart';
 import 'package:blitz/providers/account_provider.dart';
 import 'package:blitz/providers/route_provider.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +32,7 @@ class SearchModal {
           unfocused = false;
         });
 
-        return Consumer<AccountProvider>(builder: (context, account, _) {
+        return Consumer<AccountProvider>(builder: (context, auth, _) {
           return Consumer<RouteProvider>(builder: (context, route, _) {
             return Padding(
               padding: const EdgeInsets.all(15.0),
@@ -113,180 +112,46 @@ class SearchModal {
                             ),
                           ),
                         ),
-                        // Padding(
-                        //   padding: const EdgeInsets.only(left: 10.0),
-                        //   child: GestureDetector(
-                        //     onTap: () {
-                        //       Navigator.pop(context);
-                        //     },
-                        //     child: const Text(
-                        //       'Cancel',
-                        //       style: TextStyle(
-                        //         fontSize: 15,
-                        //         fontFamily: 'UberMoveMedium',
-                        //         color: Colors.blue,
-                        //       ),
-                        //     ),
-                        //   ),
-                        // ),
                       ],
                     ),
                     const SizedBox(
                       height: 20,
                     ),
-                    Container(
-                      height: 70,
-                      child: Container(
-                        child: ListView(
-                          scrollDirection: Axis.horizontal,
-                          children: [
-                            AddressLabel(
-                              label: "Acasa",
-                              address: "Seteaza",
-                            ),
-                            SizedBox(width: 10),
-                            AddressLabel(label: "Serviciu", address: "Seteaza"),
-                            SizedBox(width: 17),
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => ManageAddress()));
-                              },
-                              child: Container(
-                                decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: const Color.fromARGB(
-                                        255, 209, 234, 255)),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(10.0),
-                                  child: Icon(
-                                    Icons.edit_outlined,
-                                    color: Colors.blue[800],
-                                    size: 20,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    SizedBox(
+                    const LabelsList(),
+                    const SizedBox(
                       height: 20,
                     ),
-                    if (controller.text.isEmpty && type == "to")
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Color.fromARGB(255, 209, 209, 209)
-                                  .withOpacity(0.5),
-                              spreadRadius: -1,
-                              blurRadius: 9,
-                              offset:
-                                  Offset(0, 1), // changes position of shadow
-                            ),
-                          ],
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(15.0),
-                          child: PlaceList(
-                            places: account.account.trips ?? [],
-                            set: route.setTo,
-                            trip: (Place p) async {},
-                            callback: () {
-                              Navigator.pop(context);
-                            },
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            color: const Color.fromARGB(255, 209, 209, 209)
+                                .withOpacity(0.5),
+                            spreadRadius: -1,
+                            blurRadius: 9,
+                            offset: const Offset(
+                                0, 1), // changes position of shadow
                           ),
+                        ],
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: PlaceList(
+                          places: controller.text.isEmpty
+                              ? (auth.account.trips ?? [])
+                              : (route.predictions),
+                          set: type == "to" ? route.setTo : route.setFrom,
+                          trip: controller.text.isEmpty
+                              ? (Place p) async {}
+                              : auth.addTrip,
+                          callback: () {
+                            Navigator.pop(context);
+                          },
                         ),
                       ),
-                    if (controller.text.isEmpty && type == "from")
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Color.fromARGB(255, 209, 209, 209)
-                                  .withOpacity(0.5),
-                              spreadRadius: -1,
-                              blurRadius: 9,
-                              offset:
-                                  Offset(0, 1), // changes position of shadow
-                            ),
-                          ],
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(15.0),
-                          child: PlaceList(
-                            places: account.account.trips ?? [],
-                            set: route.setFrom,
-                            trip: (Place p) async {},
-                            callback: () {
-                              Navigator.pop(context);
-                            },
-                          ),
-                        ),
-                      ),
-                    if (controller.text.isNotEmpty && type == "to")
-                      if (type == "to")
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                color: Color.fromARGB(255, 209, 209, 209)
-                                    .withOpacity(0.5),
-                                spreadRadius: -1,
-                                blurRadius: 9,
-                                offset:
-                                    Offset(0, 1), // changes position of shadow
-                              ),
-                            ],
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(15.0),
-                            child: PlaceList(
-                                places: route.predictions,
-                                set: route.setTo,
-                                trip: account.addTrip,
-                                callback: () {
-                                  Navigator.pop(context);
-                                }),
-                          ),
-                        ),
-                    if (controller.text.isNotEmpty && type == "from")
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Color.fromARGB(255, 209, 209, 209)
-                                  .withOpacity(0.5),
-                              spreadRadius: -1,
-                              blurRadius: 9,
-                              offset:
-                                  Offset(0, 1), // changes position of shadow
-                            ),
-                          ],
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(15.0),
-                          child: PlaceList(
-                              places: route.predictions,
-                              set: route.setFrom,
-                              trip: account.addTrip,
-                              callback: () {
-                                Navigator.pop(context);
-                              }),
-                        ),
-                      ),
+                    ),
                   ],
                 ),
               ),

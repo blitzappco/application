@@ -31,7 +31,7 @@ class ProfileModal {
         // Schedule the focus request after the bottom sheet is built
 
         return Consumer<TicketsProvider>(builder: (context, tickets, _) {
-          return Consumer<AccountProvider>(builder: (context, account, _) {
+          return Consumer<AccountProvider>(builder: (context, auth, _) {
             return Padding(
               padding: const EdgeInsets.all(15.0),
               child: Container(
@@ -48,7 +48,7 @@ class ProfileModal {
                             children: [
                               GestureDetector(
                                 onTap: () {
-                                  account.logout();
+                                  auth.logout();
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
@@ -75,14 +75,14 @@ class ProfileModal {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    "${account.account.lastName} ${account.account.firstName}",
+                                    "${auth.account.lastName} ${auth.account.firstName}",
                                     style: const TextStyle(
                                       fontFamily: "UberMoveBold",
                                       fontSize: 22,
                                     ),
                                   ),
                                   Text(
-                                    account.account.phone ?? '+40712345678',
+                                    auth.account.phone ?? '+40712345678',
                                     style: const TextStyle(
                                       fontFamily: "UberMoveMedium",
                                       color: darkGrey,

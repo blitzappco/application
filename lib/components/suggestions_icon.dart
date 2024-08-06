@@ -13,12 +13,12 @@ class SuggestionsIcon extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            decoration: BoxDecoration(
-                shape: BoxShape.circle, color: mapPlaceColors[type]),
+            decoration:
+                BoxDecoration(shape: BoxShape.circle, color: placeColors[type]),
             child: Padding(
               padding: const EdgeInsets.all(15.0),
               child: Icon(
-                mapPlaceIcons[type],
+                placeIcons[type],
                 color: Colors.white,
               ),
             ),
