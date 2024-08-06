@@ -34,6 +34,8 @@ dependencies:
   sentry_flutter: ^8.6.0
   webview_flutter: ^4.8.0
   sign_in_with_apple: ^6.1.1
+  glass: ^2.0.0+1
+
 
   
 dev_dependencies:

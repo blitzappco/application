@@ -15,6 +15,7 @@ class LabelsList extends StatelessWidget {
       return SizedBox(
           height: 70,
           child: ListView.separated(
+            clipBehavior: Clip.none,
             scrollDirection: Axis.horizontal,
             itemCount: auth.account.labels!.length + 1,
             itemBuilder: (context, index) => (index !=

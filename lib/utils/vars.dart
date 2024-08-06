@@ -78,3 +78,7 @@ Map<String, Color> placeColors = {
   "university": const Color(0xFF3F51B5),
   "general": const Color(0xFF2196F3),
 };
+
+//Developer Mode
+
+bool DEV = true;
