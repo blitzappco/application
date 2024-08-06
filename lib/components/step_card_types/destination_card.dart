@@ -1,4 +1,4 @@
-import 'package:blitz/models/place.dart';
+import 'package:blitz/bifrost/core/models/place.dart';
 import 'package:blitz/utils/shorten.dart';
 import 'package:blitz/utils/vars.dart';
 import 'package:flutter/material.dart';

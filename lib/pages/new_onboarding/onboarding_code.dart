@@ -1,63 +1,64 @@
-import 'package:blitz/pages/new_onboarding/otppage.dart';
-import 'package:blitz/pages/onboarding/otp.dart';
-import 'package:blitz/utils/vars.dart';
+import 'dart:async';
+
+import 'package:blitz/pages/new_onboarding/onboarding_name.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import '../../pages/onboarding/onboarding.dart';
-import '../../components/onboarding/textfield.dart';
 import '../../providers/account_provider.dart';
+import '../../utils/vars.dart';
+import '../../pages/onboarding/phonenumber.dart';
+import '../homescreen.dart';
 
-class PhonePage extends StatefulWidget {
-  const PhonePage({super.key});
+class OnboardingCode extends StatefulWidget {
+  const OnboardingCode({super.key});
 
   @override
-  State<PhonePage> createState() => _PhonePageState();
+  State<OnboardingCode> createState() => _OnboardingCodeState();
 }
 
-class _PhonePageState extends State<PhonePage> {
-  TextEditingController phoneNumberController = TextEditingController();
+class _OnboardingCodeState extends State<OnboardingCode> {
+  TextEditingController otpController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
-    phoneNumberController.addListener(_onPhoneNumberChanged);
+    otpController.addListener(_onOtpChanged);
   }
 
   @override
   void dispose() {
-    phoneNumberController.removeListener(_onPhoneNumberChanged);
-    phoneNumberController.dispose();
+    otpController.removeListener(_onOtpChanged);
+    otpController.dispose();
     super.dispose();
   }
 
-  void _onPhoneNumberChanged() {
-    final phoneNumber = phoneNumberController.text;
-    final auth = Provider.of<AccountProvider>(context, listen: false);
+  void _onOtpChanged() async {
+    final otp = otpController.text;
+    if (otp.length == 4) {
+      final auth = Provider.of<AccountProvider>(context, listen: false);
+      await auth.verifyCode(otp);
 
-    if (phoneNumber.length == 10) {
-      _continueWithPhoneNumber();
-    } else if (auth.errorMessage.isNotEmpty) {
-      auth.setError('');
+      if (auth.errorMessage.isEmpty) {
+        if (auth.newClient) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const OnboardingName()),
+          );
+        } else {
+          Timer(const Duration(milliseconds: 200), () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const Homescreen()),
+            );
+          });
+        }
+      }
     }
   }
 
-  Future<void> _continueWithPhoneNumber() async {
-    final auth = Provider.of<AccountProvider>(context, listen: false);
-    String phoneNumber = "+4${phoneNumberController.text}";
-
-    if (phoneNumberController.text.length != 10) {
-      await auth.setError("Număr de telefon incorect.");
-    } else {
-      await auth.onboarding(phoneNumber);
-
-      if (auth.errorMessage == '') {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const OtpPage()),
-        );
-      }
-    }
+  void _continueWithCode() {
+    // Add the logic for the button tap here, if any.
+    // For now, we can just call _onOtpChanged to mimic entering the OTP automatically.
+    _onOtpChanged();
   }
 
   @override
@@ -79,8 +80,7 @@ class _PhonePageState extends State<PhonePage> {
                           Navigator.pop(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const Onboarding(),
-                            ),
+                                builder: (context) => const PhoneNumber()),
                           );
                         },
                         child: const Icon(Icons.arrow_back_ios_new),
@@ -89,36 +89,32 @@ class _PhonePageState extends State<PhonePage> {
                   ),
                 ),
                 Container(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     shape: BoxShape.circle,
                     color: lightGrey,
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(15.0),
+                  child: const Padding(
+                    padding: EdgeInsets.all(15.0),
                     child: Icon(
-                      Icons.sms_rounded,
+                      Icons.pin_rounded,
                       size: 30,
                       color: darkGrey,
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: 15,
-                ),
-                Text(
-                  "Continua cu numarul de telefon",
-                  style: const TextStyle(
+                const SizedBox(height: 15),
+                const Text(
+                  "Introdu codul primit",
+                  style: TextStyle(
                     fontSize: 22,
                     fontFamily: 'SFProRounded',
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-                SizedBox(
-                  height: 5,
-                ),
-                Text(
-                  "Logheaza-te sau inregistreaza-te cu numarul de telefon",
-                  style: const TextStyle(
+                const SizedBox(height: 5),
+                const Text(
+                  "Ti-am trimis un cod de verificare prin SMS",
+                  style: TextStyle(
                     fontSize: 15,
                     fontFamily: 'SFProRounded',
                     fontWeight: FontWeight.w400,
@@ -126,29 +122,25 @@ class _PhonePageState extends State<PhonePage> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 10, top: 25),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      TextField(
-                        keyboardType: TextInputType.phone,
-                        autofillHints: [AutofillHints.telephoneNumberNational],
-                        controller: phoneNumberController,
-                        textInputAction: TextInputAction.done,
-                        cursorColor: Colors.black,
-                        style: const TextStyle(
-                          fontSize: 22,
-                          fontFamily: 'UberMoveMedium',
-                        ),
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12),
-                            borderSide: BorderSide.none,
-                          ),
-                          fillColor: const Color(0xFFE8E8E8),
-                          filled: true,
-                        ),
-                      ),
-                    ],
+                  child: TextField(
+                    controller: otpController,
+                    keyboardType: TextInputType.number,
+                    autofillHints: const [AutofillHints.oneTimeCode],
+                    maxLength: 4,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          borderSide: BorderSide.none),
+                      filled: true,
+                      fillColor: const Color(0xFFE8E8E8),
+                      hintText: 'Cod OTP',
+                      counterText: '',
+                    ),
+                    style: const TextStyle(
+                      fontSize: 17,
+                      fontFamily: 'SFProRounded',
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
                 Row(
@@ -176,7 +168,7 @@ class _PhonePageState extends State<PhonePage> {
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
             child: GestureDetector(
-              onTap: _continueWithPhoneNumber,
+              onTap: _continueWithCode,
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(9),
@@ -188,7 +180,7 @@ class _PhonePageState extends State<PhonePage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       !auth.loading
-                          ? Text(
+                          ? const Text(
                               'Continua',
                               style: TextStyle(
                                 color: Colors.white,

@@ -1,19 +1,20 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../pages/onboarding/otp.dart';
-import '../../components/onboarding/textfieldotp.dart';
 import '../../providers/account_provider.dart';
 import '../../utils/vars.dart';
 import '../homescreen.dart';
 
-class NameOnboarding extends StatefulWidget {
-  const NameOnboarding({super.key});
+class OnboardingName extends StatefulWidget {
+  const OnboardingName({super.key});
 
   @override
-  State<NameOnboarding> createState() => _NameOnboardingState();
+  State<OnboardingName> createState() => _OnboardingNameState();
 }
 
-class _NameOnboardingState extends State<NameOnboarding> {
+class _OnboardingNameState extends State<OnboardingName> {
   TextEditingController firstNameController = TextEditingController();
   TextEditingController lastNameController = TextEditingController();
 
@@ -51,10 +52,12 @@ class _NameOnboardingState extends State<NameOnboarding> {
       await auth.addName(firstNameController.text, lastNameController.text);
 
       if (auth.errorMessage.isEmpty) {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const Homescreen()),
-        );
+        Timer(const Duration(milliseconds: 200), () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const Homescreen()),
+          );
+        });
       }
     }
   }
@@ -88,12 +91,12 @@ class _NameOnboardingState extends State<NameOnboarding> {
                   ),
                 ),
                 Container(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     shape: BoxShape.circle,
                     color: lightGrey,
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(15.0),
+                  child: const Padding(
+                    padding: EdgeInsets.all(15.0),
                     child: Icon(
                       Icons.person_rounded,
                       size: 30,
@@ -101,28 +104,28 @@ class _NameOnboardingState extends State<NameOnboarding> {
                     ),
                   ),
                 ),
-                SizedBox(height: 15),
-                Text(
+                const SizedBox(height: 15),
+                const Text(
                   "Introdu numele și prenumele",
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 22,
                     fontFamily: 'SFProRounded',
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-                SizedBox(height: 5),
-                Text(
+                const SizedBox(height: 5),
+                const Text(
                   "Hai sa ne cunoastem mai bine!",
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 15,
                     fontFamily: 'SFProRounded',
                     fontWeight: FontWeight.w400,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
-                Text(
+                const Text(
                   "Nume",
                   style: TextStyle(
                       fontFamily: "SFProRounded",
@@ -136,7 +139,7 @@ class _NameOnboardingState extends State<NameOnboarding> {
                     children: [
                       TextField(
                         keyboardType: TextInputType.name,
-                        autofillHints: [AutofillHints.familyName],
+                        autofillHints: const [AutofillHints.familyName],
                         controller: lastNameController,
                         textInputAction: TextInputAction.done,
                         cursorColor: Colors.black,
@@ -156,7 +159,7 @@ class _NameOnboardingState extends State<NameOnboarding> {
                     ],
                   ),
                 ),
-                Text(
+                const Text(
                   "Prenume",
                   style: TextStyle(
                       fontFamily: "SFProRounded",
@@ -170,7 +173,7 @@ class _NameOnboardingState extends State<NameOnboarding> {
                     children: [
                       TextField(
                         keyboardType: TextInputType.name,
-                        autofillHints: [AutofillHints.givenName],
+                        autofillHints: const [AutofillHints.givenName],
                         controller: firstNameController,
                         textInputAction: TextInputAction.done,
                         cursorColor: Colors.black,

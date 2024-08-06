@@ -1,11 +1,12 @@
 import 'dart:convert';
 
-import 'package:blitz/models/place.dart';
+import 'package:blitz/bifrost/core/models/place.dart';
+import 'package:blitz/bifrost/mantle/endpoints.dart';
 import 'package:blitz/utils/types.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-import '../models/account.dart';
+import 'package:blitz/bifrost/mantle/models/account.dart';
 import '../utils/url.dart';
 import '../utils/preferences.dart';
 
@@ -49,24 +50,18 @@ class AccountProvider with ChangeNotifier {
     loading = true;
     notifyListeners();
 
-    final response =
-        await http.post(Uri.parse('${AppURL.baseURL}/accounts/onboarding'),
-            headers: basicHeader,
-            body: jsonEncode(<String, String>{
-              'phone': phone,
-            }));
+    final body = await postOnboarding(phone);
 
     loading = false;
     notifyListeners();
 
-    final body = json.decode(utf8.decode(response.bodyBytes));
-    if (response.statusCode == 200) {
+    if (body["statusCode"] == 200) {
       newClient = body['newClient'];
       token = body['token'];
 
-      errorMessage = '';
-
-      notifyListeners();
+      await setError('');
+    } else {
+      await setError(body["message"]);
     }
   }
 
@@ -74,32 +69,22 @@ class AccountProvider with ChangeNotifier {
     loading = true;
     notifyListeners();
 
-    final response = await http.post(
-        Uri.parse('${AppURL.baseURL}/accounts/onboarding/verify-code'),
-        headers: authHeader(token),
-        body: jsonEncode(<String, String>{
-          'phone': phoneNumber,
-          'code': code,
-        }));
+    final body = await postOnboardingCode(token, code, newClient);
 
     loading = false;
     notifyListeners();
 
-    final json = jsonDecode(utf8.decode(response.bodyBytes));
-    if (response.statusCode == 200) {
-      token = json['token'];
+    if (body["statusCode"] == 200) {
+      token = body['token'];
       setToken(token);
       notifyListeners();
 
-      account = Account.fromJSON(json['account']);
+      account = Account.fromJSON(body['account']);
       setAccount(account);
 
-      errorMessage = '';
-
-      notifyListeners();
+      await setError('');
     } else {
-      errorMessage = json['message'];
-      notifyListeners();
+      await setError(body["message"]);
     }
   }
 
@@ -107,27 +92,22 @@ class AccountProvider with ChangeNotifier {
     loading = true;
     notifyListeners();
 
-    final response =
-        await http.post(Uri.parse('${AppURL.baseURL}/accounts/onboarding/name'),
-            headers: authHeader(token),
-            body: jsonEncode(<String, String>{
-              "firstName": firstName,
-              "lastName": lastName,
-            }));
+    final body = await postOnboardingName(token, firstName, lastName);
 
     loading = false;
     notifyListeners();
 
-    final json = jsonDecode(utf8.decode(response.bodyBytes));
-    if (response.statusCode == 200) {
-      token = json['token'];
+    if (body["statusCode"] == 200) {
+      token = body['token'];
       setToken(token);
       notifyListeners();
 
-      account = Account.fromJSON(json['account']);
+      account = Account.fromJSON(body['account']);
       setAccount(account);
+
+      setError('');
     } else {
-      errorMessage = json['message'];
+      setError(body['message']);
     }
   }
 

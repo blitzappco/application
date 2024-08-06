@@ -1,5 +1,5 @@
 import 'package:shared_preferences/shared_preferences.dart';
-import '../models/account.dart';
+import 'package:blitz/bifrost/mantle/models/account.dart';
 
 Future<String> getToken() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();

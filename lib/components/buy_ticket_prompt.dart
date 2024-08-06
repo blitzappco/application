@@ -1,4 +1,3 @@
-import 'package:blitz/pages/successful.dart';
 import 'package:blitz/pages/ticket_flow/buy_ticket_page.dart';
 import 'package:blitz/utils/vars.dart';
 import 'package:flutter/material.dart';

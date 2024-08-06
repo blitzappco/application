@@ -1,4 +1,4 @@
-import 'package:blitz/models/route.dart';
+import 'package:blitz/bifrost/core/models/route.dart';
 import 'package:blitz/utils/polyline.dart';
 import 'package:flutter/material.dart';
 import '../utils/vars.dart';

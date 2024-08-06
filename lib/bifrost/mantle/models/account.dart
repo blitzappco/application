@@ -1,4 +1,38 @@
-import 'package:blitz/models/place.dart';
+import 'package:blitz/bifrost/core/models/place.dart';
+
+class Label {
+  String? placeID;
+  String? name;
+  String? address;
+  String? type;
+
+  Label({
+    this.placeID,
+    this.name,
+    this.address,
+    this.type,
+  });
+
+  factory Label.fromJSON(Map<String, dynamic> json) {
+    return Label(
+      placeID: json['placeID'],
+      name: json['name'],
+      address: json['address'],
+      type: json['type'],
+    );
+  }
+
+  Map<String, dynamic> toJSON() {
+    Map<String, dynamic> accountJSON = <String, dynamic>{
+      'placeID': placeID,
+      'type': type,
+      'name': name,
+      'address': address,
+    };
+
+    return accountJSON;
+  }
+}
 
 class PaymentMethod {
   String? id;
@@ -42,6 +76,7 @@ class Account {
   String? stripeCustomerID;
   List<PaymentMethod>? paymentMethods;
   List<Place>? trips;
+  List<Label>? labels;
 
   Account({
     this.id,

@@ -1,13 +1,10 @@
 import 'package:blitz/components/address_label.dart';
 import 'package:blitz/components/place_list.dart';
-import 'package:blitz/components/suggestions_icon.dart';
-import 'package:blitz/models/place.dart';
+import 'package:blitz/bifrost/core/models/place.dart';
 import 'package:blitz/pages/manage_address.dart';
 import 'package:blitz/providers/account_provider.dart';
 import 'package:blitz/providers/route_provider.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 
 import '../../utils/vars.dart';
