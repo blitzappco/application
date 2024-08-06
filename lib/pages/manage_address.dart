@@ -1,5 +1,4 @@
 import 'package:blitz/components/address_label_expanded.dart';
-import 'package:blitz/pages/name_label.dart';
 import 'package:blitz/pages/search_address_label.dart';
 import 'package:blitz/utils/vars.dart';
 import 'package:flutter/material.dart';

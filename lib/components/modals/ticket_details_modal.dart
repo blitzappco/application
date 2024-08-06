@@ -4,8 +4,6 @@ import 'package:screen_brightness/screen_brightness.dart';
 import '../../providers/tickets_provider.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';
 import 'package:blitz/utils/vars.dart';
-import 'package:blitz/models/ticket.dart';
-import 'package:blitz/models/ticket_type.dart';
 import 'package:intl/intl.dart'; // Import for date formatting
 
 class TicketDetailsModal {
@@ -94,7 +92,7 @@ class TicketDetailsModal {
                           children: [
                             PrettyQrView.data(
                               data: tickets.last.id ?? 'blitzapp.ro',
-                              decoration: PrettyQrDecoration(
+                              decoration: const PrettyQrDecoration(
                                 shape: PrettyQrSmoothSymbol(
                                   roundFactor: 0.5,
                                 ),

@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../pages/onboarding/otp.dart';
 import '../../providers/account_provider.dart';
 import '../../utils/vars.dart';
 import '../homescreen.dart';
@@ -80,9 +79,6 @@ class _OnboardingNameState extends State<OnboardingName> {
                         onTap: () {
                           Navigator.pop(
                             context,
-                            MaterialPageRoute(
-                              builder: (context) => const OTPPage(),
-                            ),
                           );
                         },
                         child: const Icon(Icons.arrow_back_ios_new),

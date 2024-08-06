@@ -1,4 +1,3 @@
-import 'package:blitz/components/modals/add_to_cart.dart';
 import 'package:blitz/components/ticket_selection.dart' as full;
 import 'package:blitz/components/ticket_selection_compact.dart' as compact;
 import 'package:blitz/pages/ticket_flow/ticket_subtotal.dart';

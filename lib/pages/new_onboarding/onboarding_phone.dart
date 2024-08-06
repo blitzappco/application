@@ -3,7 +3,6 @@ import 'package:blitz/utils/vars.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../pages/onboarding/onboarding.dart';
 import '../../providers/account_provider.dart';
 
 class OnboardingPhone extends StatefulWidget {
@@ -76,9 +75,6 @@ class _OnboardingPhoneState extends State<OnboardingPhone> {
                         onTap: () {
                           Navigator.pop(
                             context,
-                            MaterialPageRoute(
-                              builder: (context) => const Onboarding(),
-                            ),
                           );
                         },
                         child: const Icon(Icons.arrow_back_ios_new),

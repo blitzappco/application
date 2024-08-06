@@ -1,4 +1,3 @@
-import 'package:blitz/components/address_label_expanded.dart';
 import 'package:blitz/utils/vars.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';

@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../providers/account_provider.dart';
 import '../../utils/vars.dart';
-import '../../pages/onboarding/phonenumber.dart';
 import '../homescreen.dart';
 
 class OnboardingCode extends StatefulWidget {
@@ -79,8 +78,6 @@ class _OnboardingCodeState extends State<OnboardingCode> {
                         onTap: () {
                           Navigator.pop(
                             context,
-                            MaterialPageRoute(
-                                builder: (context) => const PhoneNumber()),
                           );
                         },
                         child: const Icon(Icons.arrow_back_ios_new),

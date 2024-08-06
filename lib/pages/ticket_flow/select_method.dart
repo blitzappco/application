@@ -1,7 +1,6 @@
 import 'package:blitz/components/modals/tickets_modal.dart';
 import 'package:blitz/components/past_transaction_card.dart';
 import 'package:blitz/components/payment_methods.dart';
-import 'package:blitz/pages/onboarding/onboarding.dart';
 import 'package:blitz/pages/ticket_flow/add_card.dart';
 import 'package:blitz/providers/account_provider.dart';
 import 'package:blitz/providers/tickets_provider.dart';
