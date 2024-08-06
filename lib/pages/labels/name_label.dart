@@ -83,13 +83,6 @@ class _NameLabelState extends State<NameLabel> {
                 ),
               ),
             ),
-            // Placelist(
-            //     places: route.predictions,
-            //     set: route.setFrom,
-            //     trip: account.addTrip,
-            //     callback: () {
-            //       Navigator.pop(context);
-            //     }),
           ],
         ),
       )),

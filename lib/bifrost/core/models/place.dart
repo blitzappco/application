@@ -64,6 +64,10 @@ class Place {
         types: [label.type ?? '']);
   }
 
+  factory Place.fromEmpty() {
+    return Place(placeID: '', mainText: '', secondaryText: '', types: []);
+  }
+
   Map<String, dynamic> toJSON() {
     Map<String, dynamic> accountJSON = <String, dynamic>{
       'placeID': placeID,

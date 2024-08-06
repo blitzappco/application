@@ -35,6 +35,7 @@ class _HomescreenState extends State<Homescreen> {
       final auth = Provider.of<AccountProvider>(context, listen: false);
 
       await auth.getLabels();
+      await auth.getTrips();
 
       final from = await geocodeFromAddress("politehnica");
       route.setFrom(from);

@@ -11,7 +11,6 @@ class LabelsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<AccountProvider>(builder: (context, auth, _) {
-      print("LABELS: ${auth.account.labels}");
       return SizedBox(
           height: 70,
           child: ListView.separated(

@@ -85,13 +85,6 @@ class _AddressLabelState extends State<AddressLabel> {
                 ),
               ),
             ),
-            // Placelist(
-            //     places: route.predictions,
-            //     set: route.setFrom,
-            //     trip: account.addTrip,
-            //     callback: () {
-            //       Navigator.pop(context);
-            //     }),
           ],
         ),
       )),

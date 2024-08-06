@@ -45,13 +45,6 @@ class _ManageLabelsState extends State<ManageLabels> {
               const SizedBox(
                 height: 30,
               ),
-              // // this is where the list view  should start
-              // LabelCardManage(label: Label(name: "home")),
-              // const SizedBox(
-              //   height: 10,
-              // ),
-              // LabelCardManage(label: Label(name: "work")),
-
               Expanded(
                 child: ListView.separated(
                   scrollDirection: Axis.vertical,
@@ -72,6 +65,7 @@ class _ManageLabelsState extends State<ManageLabels> {
                                     MaterialPageRoute(
                                         builder: (context) => const ChangeLabel(
                                               edit: false,
+                                              index: -1,
                                             )));
                               },
                               child: const Row(
@@ -101,32 +95,6 @@ class _ManageLabelsState extends State<ManageLabels> {
               const SizedBox(
                 height: 15,
               ),
-              // GestureDetector(
-              //   onTap: () {
-              //     Navigator.push(
-              //         context,
-              //         MaterialPageRoute(
-              //             builder: (context) => const ChangeLabel(
-              //                   edit: false,
-              //                 )));
-              //   },
-              //   child: const Row(
-              //     mainAxisAlignment: MainAxisAlignment.center,
-              //     children: [
-              //       Icon(
-              //         Icons.add,
-              //         color: darkGrey,
-              //       ),
-              //       Text(
-              //         "Adauga o adresa",
-              //         style: TextStyle(
-              //             fontFamily: "UberMoveMedium",
-              //             color: darkGrey,
-              //             fontSize: 18),
-              //       )
-              //     ],
-              //   ),
-              // )
             ],
           ),
         )),

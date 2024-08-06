@@ -1,3 +1,4 @@
+import 'package:blitz/utils/shorten.dart';
 import 'package:blitz/utils/vars.dart';
 import 'package:flutter/material.dart';
 
@@ -41,12 +42,12 @@ class PlaceCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                mainText,
+                shorten(mainText, 40),
                 style:
                     const TextStyle(fontSize: 16, fontFamily: 'UberMoveBold'),
               ),
               Text(
-                secondaryText,
+                shorten(secondaryText, 40),
                 style:
                     const TextStyle(fontSize: 14, fontFamily: 'UberMoveMedium'),
               )

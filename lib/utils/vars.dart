@@ -13,6 +13,8 @@ const Color blitzPurple = Color(0xFF3834FC);
 const Color accentBlue = Colors.blue;
 const Color accentPurple = Color(0xFF6C69FF);
 
+const bool DEV = true;
+
 //Variables
 
 String homeAddress = 'Strada Dealu cu Piatra 2';
