@@ -4,6 +4,7 @@ import 'package:blitz/pages/onboarding/webview_modal.dart';
 import 'package:blitz/utils/vars.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 class OnboardingModal {
   static void show(BuildContext context) {
@@ -107,7 +108,6 @@ class OnboardingModal {
                           children: [
                             Text(
                               'Continua cu telefonul',
-
                               style: TextStyle(
                                   color: Colors.white,
                                   fontFamily: "SFProRounded",
@@ -123,18 +123,34 @@ class OnboardingModal {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Expanded(
-                      child: Container(
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(11),
-                              color: lightGrey),
-                          child: Padding(
-                            padding: const EdgeInsets.all(15.0),
-                            child: SvgPicture.asset(
-                              'assets/images/applelogo.svg',
-                              width: 18,
-                              height: 18,
-                            ),
-                          )),
+                      child: GestureDetector(
+                        onTap: () async {
+                          final credential =
+                              await SignInWithApple.getAppleIDCredential(
+                            scopes: [
+                              AppleIDAuthorizationScopes.email,
+                              AppleIDAuthorizationScopes.fullName,
+                            ],
+                          );
+
+                          print(credential);
+
+                          // Now send the credential (especially `credential.authorizationCode`) to your server to create a session
+                          // after they have been validated with Apple (see `Integration` section for more information on how to do this)
+                        },
+                        child: Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(11),
+                                color: lightGrey),
+                            child: Padding(
+                              padding: const EdgeInsets.all(15.0),
+                              child: SvgPicture.asset(
+                                'assets/images/applelogo.svg',
+                                width: 18,
+                                height: 18,
+                              ),
+                            )),
+                      ),
                     ),
                     const SizedBox(
                       width: 10,

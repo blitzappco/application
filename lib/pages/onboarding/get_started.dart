@@ -3,8 +3,6 @@ import 'package:blitz/pages/onboarding/onboarding_modal.dart';
 import 'package:blitz/utils/vars.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:video_player/video_player.dart';
-
 
 class GetStarted extends StatefulWidget {
   const GetStarted({super.key});
@@ -21,15 +19,63 @@ class _GetStartedState extends State<GetStarted> {
       extendBodyBehindAppBar: true,
       body: Stack(
         children: [
-          VideoPlayerContainer(videoPath: 'assets/onboarding.mp4'),
+          Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(
+                  "assets/images/stock1.jpg",
+                ),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(
+                  "assets/images/stock1.jpg",
+                ),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              gradient: const LinearGradient(
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft,
+                colors: [
+                  Color.fromARGB(0, 0, 0, 0),
+                  Color.fromARGB(217, 0, 0, 0),
+                ],
+              ),
+            ),
+          ),
           SafeArea(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+            child: Column(
               children: [
-                SvgPicture.asset(
-                  "assets/images/blitzminimal.svg",
-                  height: 50,
-                  color: Colors.white,
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.58,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: 300,
+                      child: Text(
+                        "Navighează rapid și inteligent.",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontFamily: "SFProRounded",
+                          fontWeight: FontWeight.w700,
+                          fontSize: 50,
+                          height: 1,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -66,59 +112,6 @@ class _GetStartedState extends State<GetStarted> {
           ),
         ),
       ),
-    );
-  }
-}
-
-class VideoPlayerContainer extends StatefulWidget {
-  final String videoPath; // Path to the video asset or URL
-
-  VideoPlayerContainer({required this.videoPath});
-
-  @override
-  _VideoPlayerContainerState createState() => _VideoPlayerContainerState();
-}
-
-class _VideoPlayerContainerState extends State<VideoPlayerContainer> {
-  late VideoPlayerController _controller;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = VideoPlayerController.asset(widget.videoPath)
-      ..initialize().then((_) {
-        setState(() {}); // Refresh UI when the video is initialized
-        _controller.play(); // Autoplay the video
-        _controller.setLooping(true); // Loop the video
-      }).catchError((error) {
-        // Handle initialization error
-        print("Video initialization error: $error");
-      });
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      constraints: BoxConstraints
-          .expand(), // Make the container fill the available space
-      child: _controller.value.isInitialized
-          ? FittedBox(
-              fit: BoxFit.cover, // Ensure the video covers the entire container
-              child: SizedBox(
-                width: _controller.value.size.width,
-                height: _controller.value.size.height,
-                child: VideoPlayer(_controller),
-              ),
-            )
-          : Center(
-              child:
-                  CircularProgressIndicator()), // Loader while video is initializing
     );
   }
 }

@@ -33,7 +33,8 @@ dependencies:
   flutter_svg: ^2.0.10+1
   sentry_flutter: ^8.6.0
   webview_flutter: ^4.8.0
-  video_player: ^2.9.1
+  sign_in_with_apple: ^6.1.1
+
   
 dev_dependencies:
   flutter_test:
@@ -126,4 +127,6 @@ flutter:
     - assets/images/applelogo.svg
     - assets/images/blitzminimal.svg
     - assets/onboarding.mp4
+    - assets/images/stock1.jpg
+    - assets/images/stock2.jpg
     - .env
