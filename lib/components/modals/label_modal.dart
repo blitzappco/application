@@ -1,4 +1,3 @@
-import 'package:blitz/components/search/labels_list.dart';
 import 'package:blitz/components/search/place_list.dart';
 import 'package:blitz/bifrost/core/models/place.dart';
 import 'package:blitz/providers/account_provider.dart';
@@ -8,7 +7,7 @@ import 'package:provider/provider.dart';
 
 import '../../utils/vars.dart';
 
-class SearchModal {
+class LabelModal {
   static void show(BuildContext context, String type) {
     TextEditingController controller = TextEditingController();
     FocusNode focusNode = FocusNode();
@@ -57,6 +56,7 @@ class SearchModal {
                           child: GestureDetector(
                             onTap: () {
                               Navigator.pop(context);
+                              route.clearPredictions();
                             },
                             child: const Padding(
                               padding: EdgeInsets.all(3.0),
@@ -95,11 +95,10 @@ class SearchModal {
                                       },
                                       controller: controller,
                                       focusNode: focusNode,
-                                      decoration: InputDecoration.collapsed(
-                                        hintText: type == 'to'
-                                            ? 'Cauta o destinatie'
-                                            : 'Cauta o locatie',
-                                        hintStyle: const TextStyle(
+                                      decoration:
+                                          const InputDecoration.collapsed(
+                                        hintText: "Cauta o locatie",
+                                        hintStyle: TextStyle(
                                           fontSize: 19,
                                           fontFamily: 'UberMoveMedium',
                                           color: darkGrey,
@@ -117,43 +116,38 @@ class SearchModal {
                     const SizedBox(
                       height: 20,
                     ),
-                    const LabelsList(),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.white,
-                        boxShadow: [
-                          BoxShadow(
-                            color: const Color.fromARGB(255, 209, 209, 209)
-                                .withOpacity(0.5),
-                            spreadRadius: -1,
-                            blurRadius: 9,
-                            offset: const Offset(
-                                0, 1), // changes position of shadow
+                    if (route.predictions.isNotEmpty)
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              color: const Color.fromARGB(255, 209, 209, 209)
+                                  .withOpacity(0.5),
+                              spreadRadius: -1,
+                              blurRadius: 9,
+                              offset: const Offset(
+                                  0, 1), // changes position of shadow
+                            ),
+                          ],
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(15.0),
+                          child: PlaceList(
+                            places: (route.predictions),
+                            set: (Place p) async {
+                              await auth.setLabelPlace(p);
+                            },
+                            trip: (Place p) async {
+                              route.clearPredictions();
+                            },
+                            callback: () {
+                              Navigator.pop(context);
+                            },
                           ),
-                        ],
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: PlaceList(
-                          places: controller.text.isEmpty
-                              ? (auth.account.trips ?? [])
-                              : (route.predictions),
-                          set: type == "to" ? route.setTo : route.setFrom,
-                          trip: controller.text.isEmpty
-                              ? (Place p) async {}
-                              : auth.addTrip,
-                          callback: () async {
-                            Navigator.pop(context);
-                            await route.changePage("preview");
-                            await route.getRoutes();
-                          },
                         ),
                       ),
-                    ),
                   ],
                 ),
               ),

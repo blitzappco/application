@@ -69,8 +69,8 @@ class MainModal extends StatelessWidget {
                                   ProfileModal.show(context);
                                 },
                                 child: const Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 20.0),
+                                  padding:
+                                      EdgeInsets.symmetric(horizontal: 20.0),
                                   child: Row(
                                     children: [
                                       Text(
