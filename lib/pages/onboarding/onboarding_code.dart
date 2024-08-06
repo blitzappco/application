@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:blitz/pages/new_onboarding/onboarding_name.dart';
+import 'package:blitz/pages/onboarding/onboarding_name.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../providers/account_provider.dart';

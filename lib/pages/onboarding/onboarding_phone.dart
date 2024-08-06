@@ -1,4 +1,4 @@
-import 'package:blitz/pages/new_onboarding/onboarding_code.dart';
+import 'package:blitz/pages/onboarding/onboarding_code.dart';
 import 'package:blitz/utils/vars.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

@@ -1,4 +1,4 @@
-import 'package:blitz/pages/new_onboarding/onboarding_modal.dart';
+import 'package:blitz/pages/onboarding/onboarding_modal.dart';
 import 'package:flutter/material.dart';
 
 class GetStarted extends StatefulWidget {
