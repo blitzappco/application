@@ -1,4 +1,6 @@
 import 'package:blitz/pages/onboarding/onboarding_phone.dart';
+
+import 'package:blitz/pages/onboarding/webview_modal.dart';
 import 'package:blitz/utils/vars.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -65,7 +67,7 @@ class OnboardingModal {
                 const Row(
                   children: [
                     Text(
-                      'Get Started',
+                      'Incepe acum',
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.w700,
@@ -76,7 +78,7 @@ class OnboardingModal {
                 ),
                 const SizedBox(height: 10),
                 const Text(
-                  'Welcome to Blitz, your ultimate transportation co-pilot! Register to effortlessly navigate, buy tickets, and explore local hotspots.',
+                  'Bun venit la Blitz, copilotul tău suprem pentru transport! Înregistrează-te pentru a naviga fără efort, a cumpăra bilete și a explora locurile de interes locale.',
                   style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.w500,
@@ -104,7 +106,8 @@ class OnboardingModal {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              'Continue with Phone',
+                              'Continua cu telefonul',
+
                               style: TextStyle(
                                   color: Colors.white,
                                   fontFamily: "SFProRounded",
@@ -153,9 +156,23 @@ class OnboardingModal {
                   ],
                 ),
                 const SizedBox(height: 20),
-                const Text(
-                  'By continuing, you agree to Blitz’s Terms of Use.',
-                  style: TextStyle(fontSize: 12),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Prin continuare, esti de acord cu ',
+                      style: TextStyle(fontSize: 11),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        TermsOfUse.show(context);
+                      },
+                      child: Text(
+                        'Termenii si Conditiile.',
+                        style: TextStyle(fontSize: 11, color: blitzPurple),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),

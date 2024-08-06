@@ -6,6 +6,12 @@
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>NSAppTransportSecurity</key>
+<dict>
+  <key>NSAllowsArbitraryLoads</key>
+  <true/>
+</dict>
+
 	<key>CFBundleDisplayName</key>
 	<string>blitz</string>
 	<key>CFBundleExecutable</key>

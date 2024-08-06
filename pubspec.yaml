@@ -32,7 +32,9 @@ dependencies:
   lottie: ^3.1.2
   flutter_svg: ^2.0.10+1
   sentry_flutter: ^8.6.0
-
+  webview_flutter: ^4.8.0
+  video_player: ^2.9.1
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -123,4 +125,5 @@ flutter:
     - assets/images/googlelogo.svg
     - assets/images/applelogo.svg
     - assets/images/blitzminimal.svg
+    - assets/onboarding.mp4
     - .env

@@ -51,7 +51,7 @@ class _TicketPreviewState extends State<TicketPreview> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Abonament saptamanal",
+                          tickets.last.name ?? "Not Available",
                           style: TextStyle(
                               fontFamily: "UberMoveBold", fontSize: 16),
                         ),
