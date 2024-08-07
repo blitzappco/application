@@ -15,9 +15,64 @@ class AskLocation extends StatefulWidget {
   State<AskLocation> createState() => _AskLocationState();
 }
 
+locationDisabled(BuildContext context) {
+  AlertBox.show(
+    context,
+    title: "Servicii de localizare dezactivate",
+    content: "Te rugam sa activezi serviciile de localizare.",
+    accept: "Permite",
+    decline: "Refuza",
+    acceptColor: Colors.blue,
+    acceptCallback: () async {
+      Geolocator.openLocationSettings();
+      Navigator.pop(context);
+    },
+    declineCallback: () async {
+      Navigator.pop(context);
+    },
+  );
+}
+
+permissionDenied(BuildContext context) {
+  AlertBox.show(
+    context,
+    title: "Permisiunea nu a fost acordata",
+    content:
+        "Te rugam sa accepti permisiunile, pentru a putea folosi aplicatia.",
+    accept: "Permite",
+    decline: "Refuza",
+    acceptColor: Colors.blue,
+    acceptCallback: () async {
+      Geolocator.openAppSettings();
+      Navigator.pop(context);
+    },
+    declineCallback: () async {
+      Navigator.pop(context);
+    },
+  );
+}
+
+permissionDeniedForever(BuildContext context) {
+  AlertBox.show(
+    context,
+    title: "Permisiunea este dezactivata permanent",
+    content: "Te rugam sa activezi permisiunile din setarile aplicatiei.",
+    accept: "Permite",
+    decline: "Refuza",
+    acceptColor: Colors.blue,
+    acceptCallback: () async {
+      Geolocator.openAppSettings();
+      Navigator.pop(context);
+    },
+    declineCallback: () async {
+      Navigator.pop(context);
+    },
+  );
+}
+
 class _AskLocationState extends State<AskLocation> {
   bool _showTick = false;
-  bool denied = false;
+  var permissionState = '';
 
   Future<void> _handlePermission() async {
     setState(() {
@@ -30,69 +85,27 @@ class _AskLocationState extends State<AskLocation> {
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     //Need to only make an alert box with an aknowledge button. this checks for the location settings turned off systemwide
     if (!serviceEnabled) {
-      AlertBox.show(
-        context,
-        title: "Servicii de localizare dezactivate",
-        content: "Te rugam sa activezi serviciile de localizare.",
-        accept: "Permite",
-        decline: "Refuza",
-        acceptColor: Colors.blue,
-        acceptCallback: () async {
-          Geolocator.openLocationSettings();
-          Navigator.pop(context);
-        },
-        declineCallback: () async {
-          Navigator.pop(context);
-        },
-      );
+      permissionState = "locationDisabled";
       return;
     }
 
     permission = await Geolocator.checkPermission();
+
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
-        AlertBox.show(
-          context,
-          title: "Permisiunea nu a fost acordata",
-          content:
-              "Te rugam sa accepti permisiunile, pentru a putea folosi aplicatia.",
-          accept: "Permite",
-          decline: "Refuza",
-          acceptColor: Colors.blue,
-          acceptCallback: () async {
-            Geolocator.openAppSettings();
-            Navigator.pop(context);
-          },
-          declineCallback: () async {
-            Navigator.pop(context);
-          },
-        );
+        permissionState = "permissionDenied";
         return;
       }
     }
 
     if (permission == LocationPermission.deniedForever) {
-      AlertBox.show(
-        context,
-        title: "Permisiunea este dezactivata permanent",
-        content: "Te rugam sa activezi permisiunile din setarile aplicatiei.",
-        accept: "Permite",
-        decline: "Refuza",
-        acceptColor: Colors.blue,
-        acceptCallback: () async {
-          Geolocator.openAppSettings();
-          Navigator.pop(context);
-        },
-        declineCallback: () async {
-          Navigator.pop(context);
-        },
-      );
+      permissionState = "permissionDeniedForever";
       return;
     }
 
     // If we can preload the map this will help us
-    Position position = await Geolocator.getCurrentPosition();
+    // Position position = await Geolocator.getCurrentPosition();
 
     setState(() {
       _showTick = true;
@@ -207,7 +220,17 @@ class _AskLocationState extends State<AskLocation> {
                   ),
                   const SizedBox(height: 20),
                   GestureDetector(
-                    onTap: _handlePermission,
+                    onTap: () {
+                      _handlePermission();
+                      switch (permissionState) {
+                        case "locationDisabled":
+                          locationDisabled(context);
+                        case "permissionDenied":
+                          permissionDenied(context);
+                        case "permissionDeniedForever":
+                          permissionDeniedForever(context);
+                      }
+                    },
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(9),
