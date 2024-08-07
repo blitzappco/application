@@ -17,6 +17,7 @@ class AskLocation extends StatefulWidget {
 
 class _AskLocationState extends State<AskLocation> {
   bool _showTick = false;
+  bool denied = false;
 
   Future<void> _handlePermission() async {
     setState(() {
