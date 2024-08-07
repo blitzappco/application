@@ -30,6 +30,9 @@ class AccountProvider with ChangeNotifier {
   String paymentIntent = '';
   bool setupConfirmed = true;
 
+  // for labels
+  Place labelPlace = Place.fromEmpty();
+
   loadAccount() async {
     token = await getToken();
     account = await getAccount();
@@ -129,6 +132,8 @@ class AccountProvider with ChangeNotifier {
       }
       account.trips = account.trips?.reversed.toList();
 
+      setAccount(account);
+
       notifyListeners();
     } else {
       setError(body["message"]);
@@ -149,6 +154,10 @@ class AccountProvider with ChangeNotifier {
       for (int i = 0; i < body['trips'].length; i++) {
         account.trips?.add(Place.fromTrip(body['trips'][i]));
       }
+
+      token = body["token"];
+      setToken(token);
+      setAccount(account);
 
       account.trips = account.trips?.reversed.toList();
       notifyListeners();
@@ -172,6 +181,8 @@ class AccountProvider with ChangeNotifier {
         account.labels?.add(Label.fromJSON(body['labels'][i]));
       }
 
+      setAccount(account);
+
       notifyListeners();
     } else {
       setError(body["message"]);
@@ -193,26 +204,9 @@ class AccountProvider with ChangeNotifier {
         account.labels?.add(Label.fromJSON(body['labels'][i]));
       }
 
-      notifyListeners();
-    } else {
-      setError(body["message"]);
-    }
-  }
-
-  removeLabel(int index) async {
-    loading = true;
-    notifyListeners();
-
-    final body = await deleteLabel(token, index);
-
-    loading = false;
-    notifyListeners();
-
-    if (body["statusCode"] == 200) {
-      account.labels = [];
-      for (int i = 0; i < body['trips'].length; i++) {
-        account.labels?.add(Label.fromJSON(body['labels'][i]));
-      }
+      token = body["token"];
+      setToken(token);
+      setAccount(account);
 
       notifyListeners();
     } else {
@@ -231,9 +225,48 @@ class AccountProvider with ChangeNotifier {
 
     if (body["statusCode"] == 200) {
       account.labels = [];
-      for (int i = 0; i < body['trips'].length; i++) {
+      for (int i = 0; i < body['labels'].length; i++) {
         account.labels?.add(Label.fromJSON(body['labels'][i]));
       }
+
+      token = body["token"];
+      setToken(token);
+      setAccount(account);
+
+      notifyListeners();
+    } else {
+      setError(body["message"]);
+    }
+  }
+
+  setLabelPlace(Place p) async {
+    labelPlace = p;
+    notifyListeners();
+  }
+
+  clearLabelPlace() {
+    labelPlace.placeID = '';
+    notifyListeners();
+  }
+
+  removeLabel(int index) async {
+    loading = true;
+    notifyListeners();
+
+    final body = await deleteLabel(token, index);
+
+    loading = false;
+    notifyListeners();
+
+    if (body["statusCode"] == 200) {
+      account.labels = [];
+      for (int i = 0; i < body['labels'].length; i++) {
+        account.labels?.add(Label.fromJSON(body['labels'][i]));
+      }
+
+      token = body["token"];
+      setToken(token);
+      setAccount(account);
 
       notifyListeners();
     } else {

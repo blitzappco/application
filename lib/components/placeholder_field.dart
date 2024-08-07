@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class TextField extends StatelessWidget {
+class PlaceholderField extends StatelessWidget {
   final String text;
   final TextInputType type;
   final TextEditingController controller;
-  const TextField(
+  const PlaceholderField(
       {required this.text,
       required this.type,
       required this.controller,

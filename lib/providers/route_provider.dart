@@ -51,6 +51,11 @@ class RouteProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  clearPredictions() {
+    predictions = [];
+    notifyListeners();
+  }
+
   setFromCurrentLocation() async {
     // loading = true;
     // notifyListeners();

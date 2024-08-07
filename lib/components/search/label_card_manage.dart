@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 class LabelCardManage extends StatelessWidget {
   final Label label;
   final int index;
+
   const LabelCardManage({
     required this.label,
     required this.index,
@@ -64,7 +65,7 @@ class LabelCardManage extends StatelessWidget {
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => const ChangeLabel(edit: true)));
+                  builder: (context) => ChangeLabel(edit: true, index: index)));
         },
         child: Container(
           decoration: BoxDecoration(
@@ -129,8 +130,7 @@ class LabelCardManage extends StatelessWidget {
                 if (label.name != 'home' && label.name != 'work')
                   GestureDetector(
                     onTap: () async {
-                      // await auth.removeLabel(index);
-                      print("DELETING");
+                      await auth.removeLabel(index);
                     },
                     child: Row(
                       children: [

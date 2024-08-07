@@ -11,7 +11,6 @@ class LabelsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<AccountProvider>(builder: (context, auth, _) {
-      print("LABELS: ${auth.account.labels}");
       return SizedBox(
           height: 70,
           child: ListView.separated(
@@ -21,7 +20,8 @@ class LabelsList extends StatelessWidget {
             itemBuilder: (context, index) => (index !=
                     auth.account.labels?.length)
                 ? LabelCard(
-                    label: auth.account.labels?[index] ?? Label(name: "home"))
+                    label: auth.account.labels?[index] ?? Label(name: "home"),
+                    index: index)
                 : GestureDetector(
                     onTap: () {
                       Navigator.push(

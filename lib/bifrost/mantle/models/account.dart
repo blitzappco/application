@@ -1,4 +1,5 @@
 import 'package:blitz/bifrost/core/models/place.dart';
+import 'package:blitz/utils/types.dart';
 
 class Label {
   String? placeID;
@@ -19,6 +20,15 @@ class Label {
       name: json['name'],
       address: json['address'],
       type: json['type'],
+    );
+  }
+
+  factory Label.fromPlace(Place p, String name) {
+    return Label(
+      placeID: p.placeID,
+      name: name,
+      address: p.mainText,
+      type: processTypes(p.types),
     );
   }
 
