@@ -1,5 +1,5 @@
 import 'package:blitz/components/payment_methods.dart';
-import 'package:blitz/models/ticket_type.dart';
+import 'package:blitz/bifrost/mercury/models/ticket_type.dart';
 import 'package:blitz/providers/account_provider.dart';
 import 'package:blitz/providers/tickets_provider.dart';
 import 'package:blitz/utils/process_ticket_types.dart';
@@ -178,23 +178,22 @@ class _BuyPassPageState extends State<BuyPassPage> {
                         onTap: () async {
                           await tickets.setConfirmed(false);
                           // creating the purchase intent
-                          await tickets.createPurchaseIntent(
+                          await tickets.createPurchase(
                               auth.token, selectedTypeID, name);
 
                           // creating the payment intent
-                          await auth.createPaymentIntent(tickets.fare);
+                          await tickets.createPayment(
+                              auth.token, auth.selectedPM, tickets.fare);
 
                           // attaching the payment to the purchase
-                          await tickets.attachPurchasePayment(
-                              auth.token, auth.paymentIntent);
+                          await tickets.attachPurchasePayment(auth.token);
 
                           // confirm the payment
                           final pi = await Stripe.instance.confirmPayment(
                               paymentIntentClientSecret: auth.clientSecret);
 
                           if (pi.status != PaymentIntentsStatus.Succeeded) {
-                            await tickets.setConfirmed(true);
-                            await tickets.cancelPurchase();
+                            await tickets.disposePurchase();
                           } else {
                             Navigator.pop(context);
                           }
