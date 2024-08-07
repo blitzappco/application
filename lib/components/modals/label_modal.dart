@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 import '../../utils/vars.dart';
 
 class LabelModal {
-  static void show(BuildContext context, String type) {
+  static void show(BuildContext context) {
     TextEditingController controller = TextEditingController();
     FocusNode focusNode = FocusNode();
 

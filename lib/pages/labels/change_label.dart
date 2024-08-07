@@ -8,6 +8,17 @@ import 'package:blitz/utils/vars.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+String translate(String name) {
+  switch (name) {
+    case 'home':
+      return "Acasa";
+    case 'work':
+      return "Work";
+    default:
+      return name;
+  }
+}
+
 class ChangeLabel extends StatefulWidget {
   final bool edit;
   final int index;
@@ -30,7 +41,7 @@ class _ChangeLabelState extends State<ChangeLabel> {
       }
       unfocused = false;
 
-      if (widget.index > 0) {
+      if (widget.edit) {
         final auth = Provider.of<AccountProvider>(context, listen: false);
         controller.text = auth.account.labels?[widget.index].name ?? '';
 
@@ -60,7 +71,13 @@ class _ChangeLabelState extends State<ChangeLabel> {
                     ),
                   ),
                   Text(
-                    widget.edit ? "Editeaza adresa" : "Adauga adresa",
+                    widget.edit
+                        ? ((auth.account.labels?[widget.index].name == 'home' ||
+                                auth.account.labels?[widget.index].name ==
+                                    'work')
+                            ? "Editeaza ${translate(auth.account.labels?[widget.index].name ?? '')}"
+                            : "Editeaza adresa")
+                        : "Adauga adresa",
                     style: const TextStyle(
                         fontFamily: "UberMoveBold", fontSize: 24),
                   ),
@@ -72,44 +89,48 @@ class _ChangeLabelState extends State<ChangeLabel> {
               const SizedBox(
                 height: 20,
               ),
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(9),
-                  color: lightGrey,
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 13.0,
-                    horizontal: 10,
+              if ((widget.edit &&
+                      auth.account.labels?[widget.index].name != 'home' &&
+                      auth.account.labels?[widget.index].name != 'work') ||
+                  !widget.edit)
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(9),
+                    color: lightGrey,
                   ),
-                  child: Row(
-                    children: [
-                      const SizedBox(width: 10),
-                      Expanded(
-                        child: TextField(
-                          onChanged: (input) async {
-                            // await route.getPredictions(input);
-                          },
-                          controller: controller,
-                          focusNode: focusNode,
-                          decoration: const InputDecoration.collapsed(
-                            hintText: 'Scrie numele locatiei',
-                            hintStyle: TextStyle(
-                              fontSize: 19,
-                              fontFamily: 'UberMoveMedium',
-                              color: darkGrey,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 13.0,
+                      horizontal: 10,
+                    ),
+                    child: Row(
+                      children: [
+                        const SizedBox(width: 10),
+                        Expanded(
+                          child: TextField(
+                            onChanged: (input) async {
+                              // await route.getPredictions(input);
+                            },
+                            controller: controller,
+                            focusNode: focusNode,
+                            decoration: const InputDecoration.collapsed(
+                              hintText: 'Scrie numele locatiei',
+                              hintStyle: TextStyle(
+                                fontSize: 19,
+                                fontFamily: 'UberMoveMedium',
+                                color: darkGrey,
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
-              ),
               const SizedBox(height: 30),
               GestureDetector(
                 onTap: () {
-                  LabelModal.show(context, "to");
+                  LabelModal.show(context);
                 },
                 child: Container(
                   height: 50,
@@ -156,7 +177,6 @@ class _ChangeLabelState extends State<ChangeLabel> {
             padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
             child: GestureDetector(
               onTap: () async {
-                Navigator.pop(context);
                 final label = Label.fromPlace(auth.labelPlace, controller.text);
 
                 if (widget.edit) {
@@ -165,24 +185,35 @@ class _ChangeLabelState extends State<ChangeLabel> {
                   await auth.addLabel(label);
                 }
                 auth.clearLabelPlace();
+
+                Navigator.pop(context);
               },
               child: Container(
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(9),
                     color: const Color.fromARGB(255, 94, 8, 199)),
-                child: const Padding(
-                  padding: EdgeInsets.all(13.0),
+                child: Padding(
+                  padding: const EdgeInsets.all(13.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
-                        "Salveaza eticheta",
-                        style: TextStyle(
-                            fontFamily: "SFProRounded",
-                            color: Colors.white,
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600),
-                      ),
+                      !auth.loading
+                          ? const Text(
+                              "Salveaza eticheta",
+                              style: TextStyle(
+                                  fontFamily: "SFProRounded",
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w600),
+                            )
+                          : const SizedBox(
+                              width: 30,
+                              height: 30,
+                              child: CircularProgressIndicator(
+                                color: Colors.white,
+                                strokeWidth: 2,
+                              ),
+                            ),
                     ],
                   ),
                 ),
