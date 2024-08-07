@@ -2,7 +2,6 @@ import 'package:blitz/pages/onboarding/onboarding_modal.dart';
 
 import 'package:blitz/utils/vars.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class GetStarted extends StatefulWidget {
   const GetStarted({super.key});
@@ -20,7 +19,7 @@ class _GetStartedState extends State<GetStarted> {
       body: Stack(
         children: [
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage(
                   "assets/images/stock1.jpg",
@@ -30,7 +29,7 @@ class _GetStartedState extends State<GetStarted> {
             ),
           ),
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage(
                   "assets/images/stock1.jpg",
@@ -58,10 +57,10 @@ class _GetStartedState extends State<GetStarted> {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.58,
                 ),
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Container(
+                    SizedBox(
                       width: 300,
                       child: Text(
                         "Navighează rapid și inteligent.",

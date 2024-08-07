@@ -32,9 +32,9 @@ class _OnboardingPhoneState extends State<OnboardingPhone> {
     final phoneNumber = phoneNumberController.text;
     final auth = Provider.of<AccountProvider>(context, listen: false);
 
-    if (phoneNumber.length == 10) {
-      _continueWithPhoneNumber();
-    } else if (auth.errorMessage.isNotEmpty) {
+    if (phoneNumber.length != 10 && phoneNumber.isNotEmpty) {
+      auth.setError("Numarul de telefon incorect.");
+    } else {
       auth.setError('');
     }
   }

@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../providers/account_provider.dart';
 import '../../utils/vars.dart';
-import '../homescreen.dart';
 
 class OnboardingCode extends StatefulWidget {
   const OnboardingCode({super.key});
@@ -33,8 +32,9 @@ class _OnboardingCodeState extends State<OnboardingCode> {
 
   void _onOtpChanged() async {
     final otp = otpController.text;
+
+    final auth = Provider.of<AccountProvider>(context, listen: false);
     if (otp.length == 4) {
-      final auth = Provider.of<AccountProvider>(context, listen: false);
       await auth.verifyCode(otp);
 
       if (auth.errorMessage.isEmpty) {
@@ -52,6 +52,8 @@ class _OnboardingCodeState extends State<OnboardingCode> {
           });
         }
       }
+    } else {
+      await auth.setError('');
     }
   }
 

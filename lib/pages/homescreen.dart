@@ -55,6 +55,12 @@ class _HomescreenState extends State<Homescreen> {
   }
 
   @override
+  void dispose() {
+    mapController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Consumer<RouteProvider>(builder: (context, route, _) {
       return Consumer<AccountProvider>(builder: (context, auth, _) {
@@ -81,6 +87,7 @@ class _HomescreenState extends State<Homescreen> {
                   onMapCreated: (GoogleMapController controller) async {
                     _controller.complete(controller);
                     mapController = controller;
+                    print("MAPSINIT");
                     await route.initMap();
                     // setCameraLocation(mapController);
                   },

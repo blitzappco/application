@@ -13,7 +13,7 @@ const Color blitzPurple = Color(0xFF3834FC);
 const Color accentBlue = Colors.blue;
 const Color accentPurple = Color(0xFF6C69FF);
 
-const bool DEV = true;
+const bool dev = true;
 
 //Variables
 
@@ -80,7 +80,3 @@ Map<String, Color> placeColors = {
   "university": const Color(0xFF3F51B5),
   "general": const Color(0xFF2196F3),
 };
-
-//Developer Mode
-
-bool DEV = true;
