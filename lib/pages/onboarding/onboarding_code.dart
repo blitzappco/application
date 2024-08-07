@@ -1,8 +1,8 @@
-import 'dart:async';
-
+import 'package:blitz/pages/homescreen.dart';
 import 'package:blitz/pages/onboarding/ask_location.dart';
 import 'package:blitz/pages/onboarding/onboarding_name.dart';
 import 'package:flutter/material.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 import '../../providers/account_provider.dart';
 import '../../utils/vars.dart';
@@ -35,23 +35,30 @@ class _OnboardingCodeState extends State<OnboardingCode> {
 
     final auth = Provider.of<AccountProvider>(context, listen: false);
     if (otp.length == 4) {
-      await auth.verifyCode(otp);
-
-      if (auth.errorMessage.isEmpty) {
-        if (auth.newClient) {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const OnboardingName()),
-          );
-        } else {
-          Timer(const Duration(milliseconds: 200), () {
+      auth.verifyCode(otp).then((_) {
+        if (auth.errorMessage.isEmpty) {
+          if (auth.newClient) {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const AskLocation()),
+              MaterialPageRoute(builder: (context) => const OnboardingName()),
             );
-          });
+          } else {
+            Permission.location.status.then((status) {
+              if (status.isDenied || status.isPermanentlyDenied) {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const AskLocation()),
+                );
+              } else {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Homescreen()),
+                );
+              }
+            });
+          }
         }
-      }
+      });
     } else {
       await auth.setError('');
     }

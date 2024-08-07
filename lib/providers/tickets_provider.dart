@@ -1,13 +1,9 @@
-import 'dart:convert';
-
 import 'package:blitz/bifrost/mercury/models/ticket_type.dart';
 import 'package:blitz/bifrost/mercury/models/ticket.dart';
 import 'package:blitz/bifrost/mercury/purchase.dart';
 import 'package:blitz/bifrost/mercury/tickets.dart';
 import 'package:blitz/utils/process_ticket_types.dart';
 import 'package:flutter/material.dart';
-import '../utils/url.dart';
-import 'package:http/http.dart' as http;
 
 class TicketsProvider with ChangeNotifier {
   List<Ticket> list = [];
@@ -35,6 +31,11 @@ class TicketsProvider with ChangeNotifier {
 
   setError(String message) {
     errorMessage = message;
+    notifyListeners();
+  }
+
+  setTicketID(String value) {
+    ticketID = value;
     notifyListeners();
   }
 
@@ -86,17 +87,14 @@ class TicketsProvider with ChangeNotifier {
     loading = true;
     notifyListeners();
 
-    final response = await http.get(
-        Uri.parse('${AppURL.baseURL}/tickets/last?city=$city'),
-        headers: authHeader(token));
+    final body = await fetchLastTicket(token, city);
 
     loading = false;
     notifyListeners();
 
-    dynamic json = jsonDecode(response.body);
-    if (response.statusCode == 200) {
-      show = json['show'];
-      last = Ticket.fromJSON(json['ticket']);
+    if (body["statusCode"] == 200) {
+      show = body['show'];
+      last = Ticket.fromJSON(body['ticket']);
 
       notifyListeners();
     } else {
@@ -113,7 +111,7 @@ class TicketsProvider with ChangeNotifier {
     loading = false;
     notifyListeners();
 
-    if (body["responseCode"] == 200) {
+    if (body["statusCode"] == 200) {
       ticketID = body['ticketID'];
       fare = body['fare'];
 
@@ -123,11 +121,11 @@ class TicketsProvider with ChangeNotifier {
     }
   }
 
-  createPayment(String token, int paymentMethod, int amount) async {
+  createPayment(String token, int paymentMethod) async {
     loading = true;
     notifyListeners();
 
-    final body = await postPurchasePayment(token, paymentMethod, amount);
+    final body = await postPurchasePayment(token, paymentMethod, fare);
 
     loading = false;
     notifyListeners();
@@ -150,7 +148,7 @@ class TicketsProvider with ChangeNotifier {
     loading = false;
     notifyListeners();
 
-    if (body["responseCode"] == 200) {
+    if (body["statusCode"] == 200) {
       purchased = Ticket.fromJSON(body["ticket"]);
 
       notifyListeners();
@@ -181,11 +179,26 @@ class TicketsProvider with ChangeNotifier {
     }
   }
 
+  cancelPurchase(String token) async {
+    loading = true;
+    notifyListeners();
+
+    final body = await deletePurchase(token, ticketID);
+
+    loading = false;
+    notifyListeners();
+
+    if (body["statusCode"] == 200) {
+    } else {
+      setError(body['message']);
+    }
+  }
+
   disposePurchase() {
     purchased = Ticket();
     ticketID = '';
     fare = 0;
-    show = true;
+    show = false;
     confirmed = true;
     notifyListeners();
   }

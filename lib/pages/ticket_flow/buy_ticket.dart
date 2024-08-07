@@ -1,8 +1,9 @@
 import 'package:blitz/components/ticket_selection.dart' as full;
 import 'package:blitz/components/ticket_selection_compact.dart' as compact;
-import 'package:blitz/pages/ticket_flow/ticket_subtotal.dart';
+import 'package:blitz/pages/ticket_flow/subtotal_ticket.dart';
 import 'package:blitz/providers/account_provider.dart';
 import 'package:blitz/providers/tickets_provider.dart';
+import 'package:blitz/utils/payments.dart';
 import 'package:blitz/utils/vars.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -36,6 +37,8 @@ class _BuyTicketState extends State<BuyTicket> {
   String? selectedDuration;
   String? typeID;
   String? name;
+
+  bool subtotalOpen = false;
 
   void startEditingTicketType() {
     setState(() {
@@ -74,8 +77,8 @@ class _BuyTicketState extends State<BuyTicket> {
         children: [
           const SizedBox(height: 5),
           full.TicketSelection(
-            Title: "Bilet",
-            Description:
+            title: "Bilet",
+            description:
                 "Valabil pentru o singura calatorie. Biletul va fi afisat timp de 90 de minute.",
             onTap: () {
               selectTicketType("Bilet");
@@ -85,8 +88,8 @@ class _BuyTicketState extends State<BuyTicket> {
           ),
           const Divider(color: lightGrey),
           full.TicketSelection(
-            Title: "Abonament",
-            Description:
+            title: "Abonament",
+            description:
                 "Valabil pentru un numar nelimitat de calatorii pe intreaga durata a abonamentului.",
             onTap: () {
               selectTicketType("Abonament");
@@ -126,8 +129,8 @@ class _BuyTicketState extends State<BuyTicket> {
             children: [
               const SizedBox(height: 5),
               full.TicketSelection(
-                Title: "Zilnic",
-                Description:
+                title: "Zilnic",
+                description:
                     "Valabil pentru orice mijloc de transport. Biletul va fi afisat timp de 24 de ore de la activare.",
                 onTap: () {
                   selectDuration("Zilnic");
@@ -137,8 +140,8 @@ class _BuyTicketState extends State<BuyTicket> {
               ),
               const Divider(color: lightGrey),
               full.TicketSelection(
-                Title: "Saptamanal",
-                Description:
+                title: "Saptamanal",
+                description:
                     "Valabil pentru orice mijloc de transport. Biletul va fi afisat timp de 7 zile de la activare.",
                 onTap: () {
                   selectDuration("Saptamanal");
@@ -148,8 +151,8 @@ class _BuyTicketState extends State<BuyTicket> {
               ),
               const Divider(color: lightGrey),
               full.TicketSelection(
-                Title: "Lunar",
-                Description:
+                title: "Lunar",
+                description:
                     "Valabil pentru orice mijloc de transport. Biletul va fi afisat timp de 31 de zile de la activare.",
                 onTap: () {
                   selectDuration("Lunar");
@@ -166,71 +169,98 @@ class _BuyTicketState extends State<BuyTicket> {
   }
 
   Widget buildSelectedTicketInfo() {
-    return Consumer<TicketsProvider>(builder: (context, tickets, _) {
-      return Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(15),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(15.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "$selectedTicketType - $selectedDuration",
-                style:
-                    const TextStyle(fontFamily: "UberMoveBold", fontSize: 16),
-              ),
-              const SizedBox(height: 10),
-              const Text(
-                "Valabil pentru orice mijloc de transport. Biletul va fi afisat in aplicatie pe intreaga durata de valabilitate.",
-                style: TextStyle(
-                    fontFamily: "UberMoveMedium",
-                    fontSize: 14,
-                    color: darkGrey),
-              ),
-              const SizedBox(height: 10),
-              Text(
-                "${(tickets.ticketTypesMap[typeID ?? '']!.fare ?? 0) / 100} RON",
-                style:
-                    const TextStyle(fontFamily: "UberMoveMedium", fontSize: 16),
-              ),
-              const SizedBox(height: 20),
-              GestureDetector(
-                onTap: () {},
-                child: GestureDetector(
-                  onTap: () {
-                    SubtotalModal.show(context);
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: accentPurple,
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    child: const Padding(
-                      padding: EdgeInsets.all(10.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Cumpara acum",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontFamily: "UberMoveBold",
-                                fontSize: 16),
-                          ),
-                        ],
+    return Consumer<AccountProvider>(builder: (context, auth, _) {
+      return Consumer<TicketsProvider>(builder: (context, tickets, _) {
+        return Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(15),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "$selectedTicketType - $selectedDuration",
+                  style:
+                      const TextStyle(fontFamily: "UberMoveBold", fontSize: 16),
+                ),
+                const SizedBox(height: 10),
+                const Text(
+                  "Valabil pentru orice mijloc de transport. Biletul va fi afisat in aplicatie pe intreaga durata de valabilitate.",
+                  style: TextStyle(
+                      fontFamily: "UberMoveMedium",
+                      fontSize: 14,
+                      color: darkGrey),
+                ),
+                const SizedBox(height: 10),
+                Text(
+                  "RON ${getFareText(tickets.ticketTypesMap[typeID ?? '']!.fare ?? 0)}",
+                  style: const TextStyle(
+                      fontFamily: "UberMoveMedium", fontSize: 16),
+                ),
+                const SizedBox(height: 20),
+                GestureDetector(
+                  onTap: () {},
+                  child: GestureDetector(
+                    onTap: () async {
+                      SubtotalTicket.show(context,
+                          tickets.ticketTypesMap[typeID ?? '']!.fare ?? 0,
+                          () async {
+                        await tickets.cancelPurchase(auth.token);
+                        await tickets.disposePurchase();
+                      });
+
+                      // will pre-load the ticket, payment intent
+                      // and will attach those two together
+                      await tickets.setConfirmed(false);
+
+                      // creating the purchase intent (the ticket)
+                      // this function will return
+                      // ticketID and fare
+                      await tickets.createPurchase(
+                          auth.token, typeID ?? '1234', name ?? 'fu');
+
+                      // creating the payment intent (stripe)
+                      // this function will return
+                      // clientSecret and paymentIntent
+                      // and it uses fare
+                      await tickets.createPayment(auth.token, auth.selectedPM);
+
+                      // attaching the payment to the purchase
+                      // this function uses ticketID and paymentIntent
+                      await tickets.attachPurchasePayment(auth.token);
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: accentPurple,
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      child: const Padding(
+                        padding: EdgeInsets.all(10.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Cumpara acum",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontFamily: "UberMoveBold",
+                                  fontSize: 16),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-              const SizedBox(height: 5),
-            ],
+                const SizedBox(height: 5),
+              ],
+            ),
           ),
-        ),
-      );
+        );
+      });
     });
   }
 
@@ -317,8 +347,8 @@ class _BuyTicketState extends State<BuyTicket> {
                       GestureDetector(
                         onTap: startEditingTicketType,
                         child: compact.TicketSelectionCompact(
-                          Selection: selectedTicketType!,
-                          Title: "Tip",
+                          title: selectedTicketType!,
+                          selection: "Tip",
                         ),
                       ),
                     const SizedBox(height: 20),
@@ -330,8 +360,8 @@ class _BuyTicketState extends State<BuyTicket> {
                         GestureDetector(
                           onTap: startEditingDuration,
                           child: compact.TicketSelectionCompact(
-                            Selection: selectedDuration!,
-                            Title: "Durata",
+                            selection: selectedDuration!,
+                            title: "Durata",
                           ),
                         ),
                     const SizedBox(height: 20),

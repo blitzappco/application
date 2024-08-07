@@ -43,17 +43,17 @@ class _OnboardingPhoneState extends State<OnboardingPhone> {
     final auth = Provider.of<AccountProvider>(context, listen: false);
     String phoneNumber = "+4${phoneNumberController.text}";
 
-    if (phoneNumberController.text.length != 10) {
-      await auth.setError("Număr de telefon incorect.");
+    if (phoneNumberController.text.length == 10) {
+      auth.onboarding(phoneNumber).then((_) {
+        if (auth.errorMessage == '') {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const OnboardingCode()),
+          );
+        }
+      });
     } else {
-      await auth.onboarding(phoneNumber);
-
-      if (auth.errorMessage == '') {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const OnboardingCode()),
-        );
-      }
+      await auth.setError("Număr de telefon incorect.");
     }
   }
 

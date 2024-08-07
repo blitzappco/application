@@ -53,18 +53,21 @@ Future<dynamic> postPurchaseAttach(
   return body;
 }
 
-Future<dynamic> postPurchaseConfirm(
-    String token, String paymentIntent, String ticketID) async {
+Future<dynamic> deletePurchase(String token, String ticketID) async {
   final response =
-      await http.post(Uri.parse('$mercuryURL/$mercuryVersion/purchase/attach'),
+      await http.delete(Uri.parse('$mercuryURL/$mercuryVersion/purchase'),
           headers: authHeader(token),
           body: jsonEncode(<String, String>{
-            "paymentIntent": paymentIntent,
             "ticketID": ticketID,
           }));
 
-  final body = jsonDecode(utf8.decode(response.bodyBytes));
-  body["statusCode"] = response.statusCode;
+  dynamic body;
+
+  if (response.statusCode != 200) {
+    body = jsonDecode(utf8.decode(response.bodyBytes));
+  } else {
+    body["statusCode"] = response.statusCode;
+  }
 
   return body;
 }

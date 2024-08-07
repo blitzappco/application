@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:blitz/pages/onboarding/onboarding_phone.dart';
 
 import 'package:blitz/pages/onboarding/webview_modal.dart';
@@ -133,7 +135,7 @@ class OnboardingModal {
                             ],
                           );
 
-                          print(credential);
+                          inspect(credential);
 
                           // Now send the credential (especially `credential.authorizationCode`) to your server to create a session
                           // after they have been validated with Apple (see `Integration` section for more information on how to do this)
@@ -175,7 +177,7 @@ class OnboardingModal {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
+                    const Text(
                       'Prin continuare, esti de acord cu ',
                       style: TextStyle(fontSize: 11),
                     ),
@@ -183,7 +185,7 @@ class OnboardingModal {
                       onTap: () {
                         TermsOfUse.show(context);
                       },
-                      child: Text(
+                      child: const Text(
                         'Termenii si Conditiile.',
                         style: TextStyle(fontSize: 11, color: blitzPurple),
                       ),
