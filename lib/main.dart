@@ -12,7 +12,7 @@ import './providers/tickets_provider.dart';
 Future main() async {
   await dotenv.load(fileName: ".env");
 
-  if (DEV) {
+  if (dev) {
     runApp(const MyApp());
   } else {
     await SentryFlutter.init(

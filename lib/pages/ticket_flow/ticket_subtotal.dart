@@ -35,7 +35,7 @@ class SubtotalModal {
               height: 240,
               child: Column(
                 children: [
-                  Row(
+                  const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
@@ -50,11 +50,11 @@ class SubtotalModal {
                       ),
                     ],
                   ),
-                  Divider(),
-                  SizedBox(
+                  const Divider(),
+                  const SizedBox(
                     height: 5,
                   ),
-                  Row(
+                  const Row(
                     children: [
                       Text(
                         "Metoda de plata",
@@ -65,7 +65,7 @@ class SubtotalModal {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   GestureDetector(
@@ -80,15 +80,15 @@ class SubtotalModal {
                             Container(
                               height: 30,
                               width: 50,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                   image: DecorationImage(
                                       image: AssetImage(
                                           "assets/images/ApplePay.png"))),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 10,
                             ),
-                            Text(
+                            const Text(
                               "Apple Pay",
                               style: TextStyle(
                                 fontFamily: "UberMoveMedium",
@@ -97,7 +97,7 @@ class SubtotalModal {
                             ),
                           ],
                         ),
-                        Icon(
+                        const Icon(
                           Icons.arrow_forward_ios,
                           size: 15,
                           color: darkGrey,
@@ -105,11 +105,11 @@ class SubtotalModal {
                       ],
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
-                  Divider(),
-                  SizedBox(
+                  const Divider(),
+                  const SizedBox(
                     height: 30,
                   ),
                   GestureDetector(
@@ -117,7 +117,7 @@ class SubtotalModal {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => Successful(
+                              builder: (context) => const Successful(
                                     item: "Abonament zilnic",
                                     amount: 6.00,
                                   )));
@@ -125,7 +125,7 @@ class SubtotalModal {
                     child: Container(
                       height: 60,
                       width: double.infinity,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           image: DecorationImage(
                               image: AssetImage("assets/images/PayWAP.png"))),
                     ),

@@ -5,7 +5,6 @@ import 'package:blitz/components/search/place_list.dart';
 import 'package:blitz/components/static_searchbar.dart';
 import 'package:blitz/components/ticket_preview.dart';
 import 'package:blitz/bifrost/core/models/place.dart';
-import 'package:blitz/pages/onboarding/ask_location.dart';
 import 'package:blitz/providers/account_provider.dart';
 import 'package:blitz/providers/route_provider.dart';
 import 'package:blitz/providers/tickets_provider.dart';

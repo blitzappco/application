@@ -7,9 +7,11 @@ import 'package:blitz/utils/vars.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class BuyTicketModal extends StatefulWidget {
+class BuyTicket extends StatefulWidget {
+  const BuyTicket({super.key});
+
   @override
-  _BuyTicketModalState createState() => _BuyTicketModalState();
+  State<BuyTicket> createState() => _BuyTicketState();
 
   static void show(BuildContext context) {
     showModalBottomSheet(
@@ -23,15 +25,28 @@ class BuyTicketModal extends StatefulWidget {
         ),
       ),
       builder: (BuildContext context) {
-        return BuyTicketModal();
+        return const BuyTicket();
       },
     );
   }
 }
 
-class _BuyTicketModalState extends State<BuyTicketModal> {
+class _BuyTicketState extends State<BuyTicket> {
   String? selectedTicketType;
   String? selectedDuration;
+
+  void startEditingTicketType() {
+    setState(() {
+      selectedTicketType = null;
+      selectedDuration = null;
+    });
+  }
+
+  void startEditingDuration() {
+    setState(() {
+      selectedDuration = null;
+    });
+  }
 
   void selectTicketType(String type) {
     setState(() {
@@ -55,21 +70,21 @@ class _BuyTicketModalState extends State<BuyTicketModal> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          SizedBox(height: 5),
+          const SizedBox(height: 5),
           full.TicketSelection(
             Title: "Bilet",
             Description:
                 "Valabil pentru o singura calatorie. Biletul va fi afisat timp de 30 de minute.",
             onTap: () => selectTicketType("Bilet"),
           ),
-          Divider(color: lightGrey),
+          const Divider(color: lightGrey),
           full.TicketSelection(
             Title: "Abonament",
             Description:
                 "Valabil pentru un numar nelimitat de calatorii pe intreaga durata a abonamentului.",
             onTap: () => selectTicketType("Abonament"),
           ),
-          SizedBox(height: 5),
+          const SizedBox(height: 5),
         ],
       ),
     );
@@ -92,7 +107,7 @@ class _BuyTicketModalState extends State<BuyTicketModal> {
             ),
           ],
         ),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         Container(
           decoration: BoxDecoration(
             color: Colors.white,
@@ -101,28 +116,28 @@ class _BuyTicketModalState extends State<BuyTicketModal> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              SizedBox(height: 5),
+              const SizedBox(height: 5),
               full.TicketSelection(
                 Title: "Zilnic",
                 Description:
                     "Valabil pentru orice mijloc de transport. Biletul va fi afisat timp de 24 de ore de la activare.",
                 onTap: () => selectDuration("Zilnic"),
               ),
-              Divider(color: lightGrey),
+              const Divider(color: lightGrey),
               full.TicketSelection(
                 Title: "Saptamanal",
                 Description:
                     "Valabil pentru orice mijloc de transport. Biletul va fi afisat timp de 7 zile de la activare.",
                 onTap: () => selectDuration("Saptamanal"),
               ),
-              Divider(color: lightGrey),
+              const Divider(color: lightGrey),
               full.TicketSelection(
                 Title: "Lunar",
                 Description:
                     "Valabil pentru orice mijloc de transport. Biletul va fi afisat timp de 31 de zile de la activare.",
                 onTap: () => selectDuration("Lunar"),
               ),
-              SizedBox(height: 5),
+              const SizedBox(height: 5),
             ],
           ),
         ),
@@ -143,20 +158,20 @@ class _BuyTicketModalState extends State<BuyTicketModal> {
           children: [
             Text(
               "$selectedTicketType - $selectedDuration",
-              style: TextStyle(fontFamily: "UberMoveBold", fontSize: 16),
+              style: const TextStyle(fontFamily: "UberMoveBold", fontSize: 16),
             ),
-            SizedBox(height: 10),
-            Text(
+            const SizedBox(height: 10),
+            const Text(
               "Valabil pentru orice mijloc de transport. Biletul va fi afisat in aplicatie pe intreaga durata de valabilitate.",
               style: TextStyle(
                   fontFamily: "UberMoveMedium", fontSize: 14, color: darkGrey),
             ),
-            SizedBox(height: 10),
-            Text(
+            const SizedBox(height: 10),
+            const Text(
               "6 RON",
               style: TextStyle(fontFamily: "UberMoveMedium", fontSize: 16),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             GestureDetector(
               onTap: () {},
               child: GestureDetector(
@@ -168,8 +183,8 @@ class _BuyTicketModalState extends State<BuyTicketModal> {
                     color: accentPurple,
                     borderRadius: BorderRadius.circular(5),
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
+                  child: const Padding(
+                    padding: EdgeInsets.all(10.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -186,7 +201,7 @@ class _BuyTicketModalState extends State<BuyTicketModal> {
                 ),
               ),
             ),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
           ],
         ),
       ),
@@ -213,15 +228,15 @@ class _BuyTicketModalState extends State<BuyTicketModal> {
                           onTap: () {
                             Navigator.pop(context);
                           },
-                          child: Text(
+                          child: const Text(
                             "Inchide",
                             style: TextStyle(fontSize: 16, color: accentPurple),
                           ),
                         ),
-                        SizedBox(),
+                        const SizedBox(),
                       ],
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -245,19 +260,19 @@ class _BuyTicketModalState extends State<BuyTicketModal> {
                               ),
                             ),
                             const SizedBox(width: 10),
-                            Column(
+                            const Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
                                   "TCE Calatori",
-                                  style: const TextStyle(
+                                  style: TextStyle(
                                     fontFamily: "UberMoveBold",
                                     fontSize: 22,
                                   ),
                                 ),
                                 Text(
                                   "Ploiesti, PH",
-                                  style: const TextStyle(
+                                  style: TextStyle(
                                     fontFamily: "UberMoveMedium",
                                     color: darkGrey,
                                     fontSize: 14,
@@ -304,18 +319,5 @@ class _BuyTicketModalState extends State<BuyTicketModal> {
         );
       },
     );
-  }
-
-  void startEditingTicketType() {
-    setState(() {
-      selectedTicketType = null;
-      selectedDuration = null;
-    });
-  }
-
-  void startEditingDuration() {
-    setState(() {
-      selectedDuration = null;
-    });
   }
 }

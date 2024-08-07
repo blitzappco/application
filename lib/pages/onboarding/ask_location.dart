@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:blitz/pages/homescreen.dart';
 import 'package:blitz/utils/get_location.dart';
 import 'package:blitz/utils/vars.dart';
@@ -27,14 +29,15 @@ class _AskLocationState extends State<AskLocation> {
         _showTick = true;
       });
       // Show the Lottie animation for a short period
-      await Future.delayed(Duration(milliseconds: 500));
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => const Homescreen()));
+      Timer(const Duration(milliseconds: 500), () {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const Homescreen()));
+      });
     } else {
       // Show a message or handle permission denial
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text("Location permission denied or not granted"),
+        const SnackBar(
+          content: Text("Permisiunea nu a fost acordata"),
         ),
       );
     }
@@ -52,20 +55,16 @@ class _AskLocationState extends State<AskLocation> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pop(context); // Go back
-                    },
-                    child: Icon(
-                      Icons.arrow_back_ios_new,
-                      size: 25,
-                    ),
+                  Expanded(
+                    child: Center(
+                        child:
+                            Image.asset("assets/images/logo.png", height: 75)),
                   ),
                 ],
               ),
-              Column(
+              const Column(
                 children: [
-                  Container(
+                  SizedBox(
                     height: 100,
                     width: 100,
                     child: Stack(
@@ -129,7 +128,7 @@ class _AskLocationState extends State<AskLocation> {
               ),
               Column(
                 children: [
-                  Text(
+                  const Text(
                     "Ești tot timpul în control",
                     textAlign: TextAlign.center,
                     style: TextStyle(
@@ -138,7 +137,7 @@ class _AskLocationState extends State<AskLocation> {
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  Text(
+                  const Text(
                     "Poți schimba permisiunile oricand în setările dispozitivului tău",
                     textAlign: TextAlign.center,
                     style: TextStyle(
@@ -148,16 +147,16 @@ class _AskLocationState extends State<AskLocation> {
                       color: darkGrey,
                     ),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   GestureDetector(
                     onTap: _handlePermission,
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(9),
-                        color: Color.fromARGB(255, 110, 11, 231),
+                        color: const Color.fromARGB(255, 110, 11, 231),
                       ),
                       child: Padding(
-                        padding: EdgeInsets.all(12.0),
+                        padding: const EdgeInsets.all(12.0),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -171,7 +170,7 @@ class _AskLocationState extends State<AskLocation> {
                                       repeat: false,
                                     ),
                                   )
-                                : Text(
+                                : const Text(
                                     "Permite",
                                     style: TextStyle(
                                       fontFamily: "SFProRounded",
@@ -196,12 +195,12 @@ class _AskLocationState extends State<AskLocation> {
 }
 
 class RadiantGradientMask extends StatelessWidget {
-  RadiantGradientMask({required this.child});
+  const RadiantGradientMask({required this.child, super.key});
   final Widget child;
   @override
   Widget build(BuildContext context) {
     return ShaderMask(
-      shaderCallback: (bounds) => RadialGradient(
+      shaderCallback: (bounds) => const RadialGradient(
         center: Alignment.center,
         radius: 0.5,
         colors: [Colors.purple, Colors.blue],

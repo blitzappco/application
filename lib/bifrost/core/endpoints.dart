@@ -10,8 +10,6 @@ Future<List<Route>> getItineraries(String from, String to) async {
   final url = '$coreURL/$coreVersion/itineraries'
       '?from=$from&to=$to&time=${(DateTime.now().millisecondsSinceEpoch / 1000).round()}';
 
-  // print("TIMESTAMP: ${DateTime.now().millisecondsSinceEpoch / 1000}");
-
   final response = await http.get(Uri.parse(url));
 
   if (response.statusCode == 200) {

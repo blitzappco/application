@@ -1,14 +1,14 @@
 import 'package:blitz/providers/account_provider.dart';
 import 'package:blitz/providers/tickets_provider.dart';
 import 'package:blitz/utils/vars.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 
 class AddToCart extends StatefulWidget {
+  const AddToCart({super.key});
+
   @override
-  _AddToCartState createState() => _AddToCartState();
+  State<AddToCart> createState() => _AddToCartState();
 
   static void show(BuildContext context) {
     showModalBottomSheet(
@@ -22,7 +22,7 @@ class AddToCart extends StatefulWidget {
         ),
       ),
       builder: (BuildContext context) {
-        return AddToCart();
+        return const AddToCart();
       },
     );
   }
@@ -58,7 +58,7 @@ class _AddToCartState extends State<AddToCart> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
+                    const Text(
                       "Abonament Zilnic",
                       style:
                           TextStyle(fontFamily: "UberMoveBold", fontSize: 16),
@@ -90,17 +90,17 @@ class _AddToCartState extends State<AddToCart> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
-                Divider(),
-                SizedBox(
+                const Divider(),
+                const SizedBox(
                   height: 15,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Column(
+                    const Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
@@ -121,9 +121,9 @@ class _AddToCartState extends State<AddToCart> {
                       decoration: BoxDecoration(
                           color: lightGrey,
                           borderRadius: BorderRadius.circular(5)),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 10, vertical: 2),
+                      child: const Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 10, vertical: 2),
                         child: Row(
                           children: [
                             Text(
@@ -153,7 +153,7 @@ class _AddToCartState extends State<AddToCart> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 GestureDetector(
@@ -162,8 +162,8 @@ class _AddToCartState extends State<AddToCart> {
                     decoration: BoxDecoration(
                         color: const Color.fromARGB(255, 108, 105, 255),
                         borderRadius: BorderRadius.circular(5)),
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
+                    child: const Padding(
+                      padding: EdgeInsets.all(10.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -179,22 +179,22 @@ class _AddToCartState extends State<AddToCart> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 GestureDetector(
                   onTap: () {
                     AddToCart.show(context);
                   },
-                  child: Text(
+                  child: const Text(
                     "Adauga si continua cumparaturilez",
                     style: TextStyle(
-                        color: const Color.fromARGB(255, 108, 105, 255),
+                        color: Color.fromARGB(255, 108, 105, 255),
                         fontFamily: "UberMoveBold",
                         fontSize: 16),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
               ],
@@ -207,13 +207,13 @@ class _AddToCartState extends State<AddToCart> {
 }
 
 class TicketSelection extends StatelessWidget {
-  final String Title;
-  final String Description;
+  final String title;
+  final String description;
   final VoidCallback onTap;
 
-  TicketSelection({
-    required this.Title,
-    required this.Description,
+  const TicketSelection({
+    required this.title,
+    required this.description,
     required this.onTap,
     super.key,
   });
@@ -228,12 +228,12 @@ class TicketSelection extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              Title,
-              style: TextStyle(fontFamily: "UberMoveBold", fontSize: 16),
+              title,
+              style: const TextStyle(fontFamily: "UberMoveBold", fontSize: 16),
             ),
             Text(
-              Description,
-              style: TextStyle(
+              description,
+              style: const TextStyle(
                   fontFamily: "UberMoveMedium", fontSize: 13, color: darkGrey),
             ),
           ],

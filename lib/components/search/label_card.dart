@@ -1,4 +1,5 @@
 import 'package:blitz/bifrost/core/models/place.dart';
+import 'package:blitz/pages/labels/change_label.dart';
 import 'package:blitz/providers/route_provider.dart';
 import 'package:blitz/utils/vars.dart';
 import 'package:flutter/material.dart';
@@ -68,10 +69,16 @@ class LabelCard extends StatelessWidget {
             await route.setTo(Place.fromLabel(label));
             await route.changePage("preview");
             await route.getRoutes();
+          } else {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ChangeLabel(edit: true, index: index),
+                ));
           }
         },
         child: Container(
-          width: screenWidth * 0.37,
+          width: screenWidth * 0.45,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(15),
@@ -115,6 +122,7 @@ class LabelCard extends StatelessWidget {
                     children: [
                       Text(
                         getName(label),
+                        overflow: TextOverflow.ellipsis,
                         style: const TextStyle(
                             fontSize: 16, fontFamily: "UberMoveBold"),
                       ),

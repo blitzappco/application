@@ -150,8 +150,13 @@ class RouteProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  initMap() async {
+  initMap() {
     map = true;
+    notifyListeners();
+  }
+
+  disposeMap() async {
+    map = false;
     notifyListeners();
   }
 }

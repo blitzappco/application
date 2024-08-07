@@ -1,4 +1,5 @@
 import 'package:blitz/bifrost/mantle/models/account.dart';
+import 'package:blitz/components/alert_box.dart';
 import 'package:blitz/pages/labels/change_label.dart';
 import 'package:blitz/providers/account_provider.dart';
 import 'package:blitz/utils/vars.dart';
@@ -130,7 +131,19 @@ class LabelCardManage extends StatelessWidget {
                 if (label.name != 'home' && label.name != 'work')
                   GestureDetector(
                     onTap: () async {
-                      await auth.removeLabel(index);
+                      AlertBox.show(context,
+                          title: "Sterge",
+                          content:
+                              "Esti sigur ca vrei sa stergi eticheta \"${label.name}\"?",
+                          accept: "Sterge",
+                          decline: "Anuleaza",
+                          acceptColor: Colors.red, declineCallback: () async {
+                        Navigator.pop(context);
+                      }, acceptCallback: () async {
+                        await auth.removeLabel(index);
+
+                        Navigator.pop(context);
+                      });
                     },
                     child: Row(
                       children: [
