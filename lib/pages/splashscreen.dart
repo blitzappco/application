@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:blitz/pages/onboarding/ask_location.dart';
 import 'package:blitz/pages/onboarding/get_started.dart';
-import 'package:blitz/providers/tickets_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
@@ -28,23 +27,16 @@ class _SplashScreenState extends State<SplashScreen> {
     // removeToken();
 
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      final account = Provider.of<AccountProvider>(context, listen: false);
-      final tickets = Provider.of<TicketsProvider>(context, listen: false);
+      final auth = Provider.of<AccountProvider>(context, listen: false);
 
-      await account.loadAccount();
+      await auth.loadAccount();
 
-      if (account.token == '' || account.account.id == '') {
+      if (auth.token == '' || auth.account.id == '') {
         Timer(
             const Duration(milliseconds: 500),
             () => Navigator.push(context,
                 MaterialPageRoute(builder: (context) => const GetStarted())));
       } else {
-        // await account.getTrips();
-        // await account.getPaymentMethods();
-
-        await tickets.getTicketTypes(account.token, "ploiesti");
-        await tickets.getLastTicket(account.token, "ploiesti");
-
         Timer(const Duration(milliseconds: 500), () async {
           // Position? pos = await getCurrentLocation();
           Permission.location.status.then((status) {
