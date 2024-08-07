@@ -37,7 +37,7 @@ class _AskLocationState extends State<AskLocation> {
       // Show a message or handle permission denial
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text("Location permission denied or not granted"),
+          content: Text("Permisiunea nu a fost acordata"),
         ),
       );
     }
@@ -55,14 +55,10 @@ class _AskLocationState extends State<AskLocation> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pop(context); // Go back
-                    },
-                    child: const Icon(
-                      Icons.arrow_back_ios_new,
-                      size: 25,
-                    ),
+                  Expanded(
+                    child: Center(
+                        child:
+                            Image.asset("assets/images/logo.png", height: 75)),
                   ),
                 ],
               ),

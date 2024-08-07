@@ -1,9 +1,10 @@
 import 'dart:async';
+import 'package:blitz/pages/onboarding/ask_location.dart';
 import 'package:blitz/pages/onboarding/get_started.dart';
 import 'package:blitz/providers/tickets_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:provider/provider.dart';
 
 import 'homescreen.dart';
 
@@ -21,13 +22,8 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   // bool _showImage = true;
 
-  Future<void> requestLocationPermissions() async {
-    await Permission.location.request();
-  }
-
   @override
   void initState() {
-    requestLocationPermissions();
     // removeAccount();
     // removeToken();
 
@@ -49,11 +45,21 @@ class _SplashScreenState extends State<SplashScreen> {
         await tickets.getTicketTypes(account.token, "bucuresti");
         await tickets.getLastTicket(account.token, "bucuresti");
 
-        Timer(const Duration(milliseconds: 500), () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const Homescreen()),
-          );
+        Timer(const Duration(milliseconds: 500), () async {
+          // Position? pos = await getCurrentLocation();
+          final status = await Permission.location.status;
+
+          if (status.isDenied || status.isPermanentlyDenied) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const AskLocation()),
+            );
+          } else {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const Homescreen()),
+            );
+          }
         });
       }
     });

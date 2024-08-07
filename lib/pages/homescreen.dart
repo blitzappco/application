@@ -87,7 +87,6 @@ class _HomescreenState extends State<Homescreen> {
                   onMapCreated: (GoogleMapController controller) async {
                     _controller.complete(controller);
                     mapController = controller;
-                    print("MAPSINIT");
                     await route.initMap();
                     // setCameraLocation(mapController);
                   },

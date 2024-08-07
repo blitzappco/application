@@ -78,7 +78,7 @@ class LabelCard extends StatelessWidget {
           }
         },
         child: Container(
-          width: screenWidth * 0.37,
+          width: screenWidth * 0.45,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(15),
@@ -122,6 +122,7 @@ class LabelCard extends StatelessWidget {
                     children: [
                       Text(
                         getName(label),
+                        overflow: TextOverflow.ellipsis,
                         style: const TextStyle(
                             fontSize: 16, fontFamily: "UberMoveBold"),
                       ),
