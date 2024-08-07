@@ -8,6 +8,7 @@ import 'package:blitz/components/modals/route_preview_modal.dart';
 import 'package:blitz/components/modals/route_test.dart';
 import 'package:blitz/providers/account_provider.dart';
 import 'package:blitz/providers/route_provider.dart';
+import 'package:blitz/providers/tickets_provider.dart';
 import 'package:blitz/utils/get_location.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -32,9 +33,16 @@ class _HomescreenState extends State<Homescreen> {
 
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       final route = Provider.of<RouteProvider>(context, listen: false);
-      // final auth = Provider.of<AccountProvider>(context, listen: false);
+      final auth = Provider.of<AccountProvider>(context, listen: false);
 
+      // await auth.getTrips();
+      // await auth.getLabels();
       // await auth.getPaymentMethods();
+
+      final tickets = Provider.of<TicketsProvider>(context, listen: false);
+
+      await tickets.getTicketTypes(auth.token, "ploiesti");
+      await tickets.getLastTicket(auth.token, "ploiesti");
 
       final from = await geocodeFromAddress("politehnica");
       route.setFrom(from);
