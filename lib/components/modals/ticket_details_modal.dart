@@ -7,12 +7,11 @@ import 'package:blitz/utils/vars.dart';
 import 'package:intl/intl.dart'; // Import for date formatting
 
 class TicketDetailsModal {
-  static void show(BuildContext context) async {
+  static void show(BuildContext context, Future<double> prevBrightness) {
     // Store the previous brightness level
-    double previousBrightness = await ScreenBrightness().current;
+    // double previousBrightness = await ScreenBrightness().current;
 
     // Set the brightness to 100%
-    await ScreenBrightness().setScreenBrightness(1.0);
 
     // Show the modal
     showModalBottomSheet(
@@ -27,6 +26,9 @@ class TicketDetailsModal {
       ),
       builder: (BuildContext context) {
         double screenW = MediaQuery.of(context).size.width;
+        WidgetsBinding.instance.addPostFrameCallback((_) async {
+          await ScreenBrightness().setScreenBrightness(1.0);
+        });
         return Consumer<TicketsProvider>(builder: (context, tickets, _) {
           // Calculate expiry
           String expiryText = calculateExpiry(tickets.last.expiresAt!);
@@ -39,9 +41,6 @@ class TicketDetailsModal {
               children: [
                 GestureDetector(
                   onTap: () async {
-                    // Restore the previous brightness level
-                    await ScreenBrightness()
-                        .setScreenBrightness(previousBrightness);
                     Navigator.pop(context);
                   },
                   child: const Row(
@@ -58,7 +57,7 @@ class TicketDetailsModal {
                 Center(
                   child: Text(
                     tickets.last.name ?? "Not Available",
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontFamily: "SFProRounded",
                       fontSize: 32,
                       fontWeight: FontWeight.w700,
@@ -101,7 +100,7 @@ class TicketDetailsModal {
                             const SizedBox(height: 15),
                             Text(
                               tickets.last.id ?? "f",
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontFamily: "SFProRounded",
                                 fontSize: 16,
                                 fontWeight: FontWeight.w500,
@@ -122,8 +121,8 @@ class TicketDetailsModal {
                   ),
                   child: Column(
                     children: [
-                      SizedBox(height: 15),
-                      Text(
+                      const SizedBox(height: 15),
+                      const Text(
                         "Valabilitate",
                         style: TextStyle(
                           fontFamily: "SFProRounded",
@@ -136,24 +135,24 @@ class TicketDetailsModal {
                         style: TextStyle(
                           color: expiryText == "Expirat"
                               ? Colors.red
-                              : Color.fromARGB(255, 114, 145, 255),
+                              : const Color.fromARGB(255, 114, 145, 255),
                           fontFamily: "SFProRounded",
                           fontSize: 32,
                           fontWeight: FontWeight.w700,
                           height: 1.1,
                         ),
                       ),
-                      SizedBox(height: 5),
-                      Divider(),
+                      const SizedBox(height: 5),
+                      const Divider(),
                       Text(
                         "Cumparat la: ${DateFormat('dd MMM yyyy').format(tickets.last.createdAt!)}",
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontFamily: "SFProRounded",
                           fontSize: 16,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
-                      SizedBox(height: 15),
+                      const SizedBox(height: 15),
                     ],
                   ),
                 ),
@@ -162,9 +161,9 @@ class TicketDetailsModal {
           );
         });
       },
-    ).whenComplete(() async {
+    ).then((_) async {
       // Restore the previous brightness level when the modal is dismissed
-      await ScreenBrightness().setScreenBrightness(previousBrightness);
+      await ScreenBrightness().setScreenBrightness(await prevBrightness);
     });
   }
 }

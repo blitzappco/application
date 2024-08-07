@@ -3,6 +3,7 @@ import 'package:blitz/providers/tickets_provider.dart';
 import 'package:blitz/utils/vars.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:screen_brightness/screen_brightness.dart';
 
 class TicketPreview extends StatefulWidget {
   final bool activeTicket;
@@ -18,9 +19,9 @@ class _TicketPreviewState extends State<TicketPreview> {
     return Consumer<TicketsProvider>(builder: (context, tickets, _) {
       String expiryText = calculateExpiry(tickets.last.expiresAt!);
       return GestureDetector(
-        onTap: () {
+        onTap: () async {
           if (widget.activeTicket) {
-            TicketDetailsModal.show(context);
+            TicketDetailsModal.show(context, ScreenBrightness().current);
           }
         },
         child: Container(
@@ -34,17 +35,17 @@ class _TicketPreviewState extends State<TicketPreview> {
                 Row(
                   children: [
                     Container(
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                             shape: BoxShape.circle, color: Colors.blue),
-                        child: Padding(
-                          padding: const EdgeInsets.all(6.0),
+                        child: const Padding(
+                          padding: EdgeInsets.all(6.0),
                           child: Icon(
                             Icons.confirmation_num_rounded,
                             size: 16,
                             color: Colors.white,
                           ),
                         )),
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     ),
                     Column(
@@ -52,12 +53,12 @@ class _TicketPreviewState extends State<TicketPreview> {
                       children: [
                         Text(
                           tickets.last.name ?? "Not Available",
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontFamily: "UberMoveBold", fontSize: 16),
                         ),
                         Text(
                           expiryText,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontFamily: "UberMoveMedium",
                               fontSize: 14,
                               color: darkGrey),
@@ -67,7 +68,7 @@ class _TicketPreviewState extends State<TicketPreview> {
                   ],
                 ),
                 widget.activeTicket
-                    ? Icon(
+                    ? const Icon(
                         Icons.arrow_forward_ios,
                         color: darkGrey,
                         size: 18,
@@ -80,8 +81,8 @@ class _TicketPreviewState extends State<TicketPreview> {
                             decoration: BoxDecoration(
                                 color: Colors.blue,
                                 borderRadius: BorderRadius.circular(5)),
-                            child: Padding(
-                              padding: const EdgeInsets.all(5.0),
+                            child: const Padding(
+                              padding: EdgeInsets.all(5.0),
                               child: Text(
                                 "Activeaza",
                                 style: TextStyle(

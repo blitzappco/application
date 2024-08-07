@@ -140,9 +140,9 @@ class LabelCardManage extends StatelessWidget {
                           acceptColor: Colors.red, declineCallback: () async {
                         Navigator.pop(context);
                       }, acceptCallback: () async {
-                        await auth.removeLabel(index);
-
-                        Navigator.pop(context);
+                        auth
+                            .removeLabel(index)
+                            .then((_) => Navigator.pop(context));
                       });
                     },
                     child: Row(

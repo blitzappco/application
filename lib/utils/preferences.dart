@@ -17,6 +17,7 @@ Future<Account> getAccount() async {
   if (accountString != '') {
     account = Account.fromJSON(jsonDecode(accountString));
     account.trips = account.trips?.reversed.toList();
+    // account.paymentMethods = [];
   }
 
   return account;

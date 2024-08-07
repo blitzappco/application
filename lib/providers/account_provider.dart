@@ -50,7 +50,7 @@ class AccountProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  onboarding(String phone) async {
+  Future<void> onboarding(String phone) async {
     phoneNumber = phone;
     loading = true;
     notifyListeners();
@@ -70,7 +70,7 @@ class AccountProvider with ChangeNotifier {
     }
   }
 
-  verifyCode(String code) async {
+  Future<void> verifyCode(String code) async {
     loading = true;
     notifyListeners();
 
@@ -245,12 +245,12 @@ class AccountProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  clearLabelPlace() {
+  Future<void> clearLabelPlace() async {
     labelPlace.placeID = '';
     notifyListeners();
   }
 
-  removeLabel(int index) async {
+  Future<void> removeLabel(int index) async {
     loading = true;
     notifyListeners();
 
