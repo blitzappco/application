@@ -1,7 +1,7 @@
 import 'dart:async';
 
+import 'package:blitz/components/alert_box.dart';
 import 'package:blitz/pages/homescreen.dart';
-import 'package:blitz/utils/get_location.dart';
 import 'package:blitz/utils/vars.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:flutter/cupertino.dart';
@@ -20,27 +20,89 @@ class _AskLocationState extends State<AskLocation> {
 
   Future<void> _handlePermission() async {
     setState(() {
-      _showTick = false; // Hide tick animation initially
+      _showTick = false;
     });
 
-    Position? position = await getCurrentLocation();
-    if (position != null) {
-      setState(() {
-        _showTick = true;
-      });
-      // Show the Lottie animation for a short period
-      Timer(const Duration(milliseconds: 500), () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const Homescreen()));
-      });
-    } else {
-      // Show a message or handle permission denial
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text("Permisiunea nu a fost acordata"),
-        ),
+    bool serviceEnabled;
+    LocationPermission permission;
+
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    //Need to only make an alert box with an aknowledge button. this checks for the location settings turned off systemwide
+    if (!serviceEnabled) {
+      AlertBox.show(
+        context,
+        title: "Servicii de localizare dezactivate",
+        content: "Te rugam sa activezi serviciile de localizare.",
+        accept: "Permite",
+        decline: "Refuza",
+        acceptColor: Colors.blue,
+        acceptCallback: () async {
+          Geolocator.openLocationSettings();
+          Navigator.pop(context);
+        },
+        declineCallback: () async {
+          Navigator.pop(context);
+        },
       );
+      return;
     }
+
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        AlertBox.show(
+          context,
+          title: "Permisiunea nu a fost acordata",
+          content:
+              "Te rugam sa accepti permisiunile, pentru a putea folosi aplicatia.",
+          accept: "Permite",
+          decline: "Refuza",
+          acceptColor: Colors.blue,
+          acceptCallback: () async {
+            Geolocator.openAppSettings();
+            Navigator.pop(context);
+          },
+          declineCallback: () async {
+            Navigator.pop(context);
+          },
+        );
+        return;
+      }
+    }
+
+    if (permission == LocationPermission.deniedForever) {
+      AlertBox.show(
+        context,
+        title: "Permisiunea este dezactivata permanent",
+        content: "Te rugam sa activezi permisiunile din setarile aplicatiei.",
+        accept: "Permite",
+        decline: "Refuza",
+        acceptColor: Colors.blue,
+        acceptCallback: () async {
+          Geolocator.openAppSettings();
+          Navigator.pop(context);
+        },
+        declineCallback: () async {
+          Navigator.pop(context);
+        },
+      );
+      return;
+    }
+
+    // If we can preload the map this will help us
+    Position position = await Geolocator.getCurrentPosition();
+
+    setState(() {
+      _showTick = true;
+    });
+
+    Timer(const Duration(milliseconds: 500), () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const Homescreen()),
+      );
+    });
   }
 
   @override
@@ -57,9 +119,10 @@ class _AskLocationState extends State<AskLocation> {
                 children: [
                   Expanded(
                     child: Center(
-                        child:
-                            Image.asset("assets/images/logo.png", height: 75)),
+                      child: Image.asset("assets/images/logo.png", height: 65),
+                    ),
                   ),
+                  const SizedBox(),
                 ],
               ),
               const Column(
@@ -70,16 +133,13 @@ class _AskLocationState extends State<AskLocation> {
                     child: Stack(
                       alignment: Alignment.center,
                       children: [
-                        // Location Icon
                         Icon(
                           CupertinoIcons.location_fill,
                           size: 50,
                         ),
-                        // Sparkles Icon to the top-left
                         Positioned(
-                          top: 15, // Adjust based on how high you want the icon
-                          left:
-                              15, // Adjust based on how far left you want the icon
+                          top: 15,
+                          left: 15,
                           child: RadiantGradientMask(
                             child: Icon(
                               CupertinoIcons.sparkles,
@@ -88,12 +148,9 @@ class _AskLocationState extends State<AskLocation> {
                             ),
                           ),
                         ),
-                        // Sparkles Icon to the bottom-right
                         Positioned(
-                          bottom:
-                              15, // Adjust based on how far down you want the icon
-                          right:
-                              15, // Adjust based on how far right you want the icon
+                          bottom: 15,
+                          right: 15,
                           child: RadiantGradientMask(
                             child: Icon(
                               CupertinoIcons.sparkles,
