@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:blitz/bifrost/core/models/place.dart';
 import 'package:blitz/bifrost/mantle/onboarding.dart';
+import 'package:blitz/bifrost/mantle/payment_methods.dart';
 import 'package:blitz/bifrost/mantle/trips.dart';
 import 'package:blitz/bifrost/mantle/labels.dart';
 import 'package:flutter/material.dart';
@@ -278,24 +279,21 @@ class AccountProvider with ChangeNotifier {
     loading = true;
     notifyListeners();
 
-    final response = await http.get(
-        Uri.parse('${AppURL.baseURL}/accounts/payments/methods'),
-        headers: authHeader(token));
+    final body = await fetchPaymentMethods(token);
 
     loading = false;
     notifyListeners();
 
-    final json = jsonDecode(utf8.decode(response.bodyBytes));
-    if (response.statusCode == 200) {
+    if (body["statusCode"] == 200) {
       List<PaymentMethod> pmList = [];
-      for (int i = 0; i < json.length; i++) {
-        pmList.add(PaymentMethod.fromJSON(json[i]));
+      for (int i = 0; i < body["paymentMethods"].length; i++) {
+        pmList.add(PaymentMethod.fromJSON(body["paymentMethods"][i]));
       }
 
       account.paymentMethods = pmList;
       notifyListeners();
     } else {
-      errorMessage = json['message'];
+      setError(body['message']);
     }
   }
 
@@ -343,32 +341,6 @@ class AccountProvider with ChangeNotifier {
       notifyListeners();
     } else {
       errorMessage = json['message'];
-    }
-  }
-
-  createPayment(int amount) async {
-    loading = true;
-    notifyListeners();
-
-    final response = await http.post(
-        Uri.parse('${AppURL.baseURL}/accounts/payments/payment-intent'),
-        headers: authHeader(token),
-        body: jsonEncode(<String, int>{
-          'amount': amount,
-          'paymentMethod': selectedPM,
-        }));
-
-    loading = false;
-    notifyListeners();
-
-    final json = jsonDecode(utf8.decode(response.bodyBytes));
-    if (response.statusCode == 200) {
-      clientSecret = json['clientSecret'];
-      paymentIntent = json['paymentIntent'];
-      notifyListeners();
-    } else {
-      errorMessage = json['message'];
-      notifyListeners();
     }
   }
 

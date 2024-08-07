@@ -38,6 +38,8 @@ class _BuyTicketState extends State<BuyTicket> {
   String? typeID;
   String? name;
 
+  bool subtotalOpen = false;
+
   void startEditingTicketType() {
     setState(() {
       selectedTicketType = null;
@@ -167,81 +169,128 @@ class _BuyTicketState extends State<BuyTicket> {
   }
 
   Widget buildSelectedTicketInfo() {
-    return Consumer<TicketsProvider>(builder: (context, tickets, _) {
-      return Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(15),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(15.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "$selectedTicketType - $selectedDuration",
-                style:
-                    const TextStyle(fontFamily: "UberMoveBold", fontSize: 16),
-              ),
-              const SizedBox(height: 10),
-              const Text(
-                "Valabil pentru orice mijloc de transport. Biletul va fi afisat in aplicatie pe intreaga durata de valabilitate.",
-                style: TextStyle(
-                    fontFamily: "UberMoveMedium",
-                    fontSize: 14,
-                    color: darkGrey),
-              ),
-              const SizedBox(height: 10),
-              Text(
-                "RON ${getFareText(tickets.ticketTypesMap[typeID ?? '']!.fare ?? 0)}",
-                style:
-                    const TextStyle(fontFamily: "UberMoveMedium", fontSize: 16),
-              ),
-              const SizedBox(height: 20),
-              GestureDetector(
-                onTap: () {},
-                child: GestureDetector(
-                  onTap: () {
-                    SubtotalTicket.show(context,
-                        tickets.ticketTypesMap[typeID ?? '']!.fare ?? 0);
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: accentPurple,
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    child: const Padding(
-                      padding: EdgeInsets.all(10.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Cumpara acum",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontFamily: "UberMoveBold",
-                                fontSize: 16),
-                          ),
-                        ],
+    return Consumer<AccountProvider>(builder: (context, auth, _) {
+      return Consumer<TicketsProvider>(builder: (context, tickets, _) {
+        return Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(15),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "$selectedTicketType - $selectedDuration",
+                  style:
+                      const TextStyle(fontFamily: "UberMoveBold", fontSize: 16),
+                ),
+                const SizedBox(height: 10),
+                const Text(
+                  "Valabil pentru orice mijloc de transport. Biletul va fi afisat in aplicatie pe intreaga durata de valabilitate.",
+                  style: TextStyle(
+                      fontFamily: "UberMoveMedium",
+                      fontSize: 14,
+                      color: darkGrey),
+                ),
+                const SizedBox(height: 10),
+                Text(
+                  "RON ${getFareText(tickets.ticketTypesMap[typeID ?? '']!.fare ?? 0)}",
+                  style: const TextStyle(
+                      fontFamily: "UberMoveMedium", fontSize: 16),
+                ),
+                const SizedBox(height: 20),
+                GestureDetector(
+                  onTap: () {},
+                  child: GestureDetector(
+                    onTap: () async {
+                      // tickets.setTicketID("1234");
+                      // print("CREATE PURCHASE: ${tickets.ticketID}");
+
+                      SubtotalTicket.show(context,
+                          tickets.ticketTypesMap[typeID ?? '']!.fare ?? 0,
+                          () async {
+                        await tickets.cancelPurchase(auth.token);
+                        await tickets.disposePurchase();
+                        // print("DELETE PURCHASE");
+                      });
+
+                      // will pre-load the ticket, payment intent
+                      // and will attach those two together
+                      await tickets.setConfirmed(false);
+
+                      // creating the purchase intent (the ticket)
+                      // this function will return
+                      // ticketID and fare
+                      await tickets.createPurchase(
+                          auth.token, typeID ?? '1234', name ?? 'fu');
+
+                      // creating the payment intent (stripe)
+                      // this function will return
+                      // clientSecret and paymentIntent
+                      // and it uses fare
+                      await tickets.createPayment(auth.token, auth.selectedPM);
+
+                      // attaching the payment to the purchase
+                      // this function uses ticketID and paymentIntent
+                      await tickets.attachPurchasePayment(auth.token);
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: accentPurple,
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      child: const Padding(
+                        padding: EdgeInsets.all(10.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Cumpara acum",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontFamily: "UberMoveBold",
+                                  fontSize: 16),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-              const SizedBox(height: 5),
-            ],
+                const SizedBox(height: 5),
+              ],
+            ),
           ),
-        ),
-      );
+        );
+      });
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    // WidgetsBinding.instance.addPostFrameCallback((_) {
+    //   setState(() {
+    //     subtotalOpen = false;
+    //   });
+    // });
     return Consumer<TicketsProvider>(
       builder: (context, tickets, _) {
         return Consumer<AccountProvider>(
           builder: (context, auth, _) {
+            // WidgetsBinding.instance.addPostFrameCallback((_) async {
+            //   print(subtotalOpen);
+            //   if (!subtotalOpen) {
+            //     // final tickets = Provider.of<TicketsProvider>(context, listen: true);
+            //     // final auth = Provider.of<AccountProvider>(context, listen: false);
+            //     if (tickets.ticketID != "") {
+            //       // await tickets.cancelPurchase(auth.token);
+            //       await tickets.disposePurchase();
+            //       print("DELETE PURCHASE");
+            //     }
+            //   }
+            // });
             return Padding(
               padding: const EdgeInsets.all(15.0),
               child: Container(

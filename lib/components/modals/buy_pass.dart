@@ -183,7 +183,7 @@ class _BuyPassPageState extends State<BuyPassPage> {
 
                           // creating the payment intent
                           await tickets.createPayment(
-                              auth.token, auth.selectedPM, tickets.fare);
+                              auth.token, auth.selectedPM);
 
                           // attaching the payment to the purchase
                           await tickets.attachPurchasePayment(auth.token);

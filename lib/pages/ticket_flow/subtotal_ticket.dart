@@ -7,7 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class SubtotalTicket {
-  static void show(BuildContext context, int fare) {
+  static void show(
+      BuildContext context, int fare, Future<void> Function() onClose) {
     showModalBottomSheet(
       backgroundColor: const Color.fromARGB(255, 250, 250, 250),
       isScrollControlled: true,
@@ -129,6 +130,8 @@ class SubtotalTicket {
           );
         });
       },
-    );
+    ).then((void _) {
+      onClose();
+    });
   }
 }
