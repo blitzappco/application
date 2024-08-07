@@ -14,7 +14,7 @@ class Successful extends StatefulWidget {
   });
 
   @override
-  _SuccessfulState createState() => _SuccessfulState();
+  State<Successful> createState() => _SuccessfulState();
 }
 
 class _SuccessfulState extends State<Successful> {
@@ -149,12 +149,12 @@ class _SuccessfulState extends State<Successful> {
                           color: darkGrey,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 5,
                       ),
                       Text(
                         widget.item,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontFamily: "SFProRounded",
                           fontWeight: FontWeight.w700,
                           fontSize: 23,
@@ -165,7 +165,7 @@ class _SuccessfulState extends State<Successful> {
                   ),
                 ],
               ),
-              Spacer(),
+              const Spacer(),
               Column(
                 children: [
                   GestureDetector(
@@ -178,9 +178,9 @@ class _SuccessfulState extends State<Successful> {
                     child: Container(
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(9),
-                          color: Color.fromARGB(255, 94, 8, 199)),
-                      child: Padding(
-                        padding: const EdgeInsets.all(13.0),
+                          color: const Color.fromARGB(255, 94, 8, 199)),
+                      child: const Padding(
+                        padding: EdgeInsets.all(13.0),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -197,7 +197,7 @@ class _SuccessfulState extends State<Successful> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 8,
                   ),
                   GestureDetector(
@@ -210,8 +210,8 @@ class _SuccessfulState extends State<Successful> {
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(9),
                           color: const Color.fromARGB(255, 79, 79, 79)),
-                      child: Padding(
-                        padding: const EdgeInsets.all(13.0),
+                      child: const Padding(
+                        padding: EdgeInsets.all(13.0),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -230,7 +230,7 @@ class _SuccessfulState extends State<Successful> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
             ],

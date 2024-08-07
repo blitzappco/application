@@ -13,11 +13,11 @@ class TermsOfUse {
       builder: (builder) {
         return Container(
           height: MediaQuery.of(context).size.height * 0.85,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.only(
-                  topLeft: const Radius.circular(20.0),
-                  topRight: const Radius.circular(20.0))),
+                  topLeft: Radius.circular(20.0),
+                  topRight: Radius.circular(20.0))),
           child: WebViewWidget(
             controller: WebViewController()
               ..loadRequest(

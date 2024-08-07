@@ -100,7 +100,7 @@ class SelectMethodModal {
                                     ),
                                   )
                                 : GestureDetector(
-                                    // it is the last element
+                                    // the element to add other payment methods
                                     onTap: () {
                                       Navigator.push(
                                           context,

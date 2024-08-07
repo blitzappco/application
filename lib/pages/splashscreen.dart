@@ -47,19 +47,19 @@ class _SplashScreenState extends State<SplashScreen> {
 
         Timer(const Duration(milliseconds: 500), () async {
           // Position? pos = await getCurrentLocation();
-          final status = await Permission.location.status;
-
-          if (status.isDenied || status.isPermanentlyDenied) {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const AskLocation()),
-            );
-          } else {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const Homescreen()),
-            );
-          }
+          Permission.location.status.then((status) {
+            if (status.isDenied || status.isPermanentlyDenied) {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const AskLocation()),
+              );
+            } else {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const Homescreen()),
+              );
+            }
+          });
         });
       }
     });

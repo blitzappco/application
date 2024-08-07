@@ -184,9 +184,7 @@ class _ChangeLabelState extends State<ChangeLabel> {
                 } else {
                   await auth.addLabel(label);
                 }
-                auth.clearLabelPlace();
-
-                Navigator.pop(context);
+                auth.clearLabelPlace().then((_) => Navigator.pop(context));
               },
               child: Container(
                 decoration: BoxDecoration(

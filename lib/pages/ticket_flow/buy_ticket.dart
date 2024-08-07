@@ -77,8 +77,8 @@ class _BuyTicketState extends State<BuyTicket> {
         children: [
           const SizedBox(height: 5),
           full.TicketSelection(
-            Title: "Bilet",
-            Description:
+            title: "Bilet",
+            description:
                 "Valabil pentru o singura calatorie. Biletul va fi afisat timp de 90 de minute.",
             onTap: () {
               selectTicketType("Bilet");
@@ -88,8 +88,8 @@ class _BuyTicketState extends State<BuyTicket> {
           ),
           const Divider(color: lightGrey),
           full.TicketSelection(
-            Title: "Abonament",
-            Description:
+            title: "Abonament",
+            description:
                 "Valabil pentru un numar nelimitat de calatorii pe intreaga durata a abonamentului.",
             onTap: () {
               selectTicketType("Abonament");
@@ -129,8 +129,8 @@ class _BuyTicketState extends State<BuyTicket> {
             children: [
               const SizedBox(height: 5),
               full.TicketSelection(
-                Title: "Zilnic",
-                Description:
+                title: "Zilnic",
+                description:
                     "Valabil pentru orice mijloc de transport. Biletul va fi afisat timp de 24 de ore de la activare.",
                 onTap: () {
                   selectDuration("Zilnic");
@@ -140,8 +140,8 @@ class _BuyTicketState extends State<BuyTicket> {
               ),
               const Divider(color: lightGrey),
               full.TicketSelection(
-                Title: "Saptamanal",
-                Description:
+                title: "Saptamanal",
+                description:
                     "Valabil pentru orice mijloc de transport. Biletul va fi afisat timp de 7 zile de la activare.",
                 onTap: () {
                   selectDuration("Saptamanal");
@@ -151,8 +151,8 @@ class _BuyTicketState extends State<BuyTicket> {
               ),
               const Divider(color: lightGrey),
               full.TicketSelection(
-                Title: "Lunar",
-                Description:
+                title: "Lunar",
+                description:
                     "Valabil pentru orice mijloc de transport. Biletul va fi afisat timp de 31 de zile de la activare.",
                 onTap: () {
                   selectDuration("Lunar");
@@ -205,15 +205,11 @@ class _BuyTicketState extends State<BuyTicket> {
                   onTap: () {},
                   child: GestureDetector(
                     onTap: () async {
-                      // tickets.setTicketID("1234");
-                      // print("CREATE PURCHASE: ${tickets.ticketID}");
-
                       SubtotalTicket.show(context,
                           tickets.ticketTypesMap[typeID ?? '']!.fare ?? 0,
                           () async {
                         await tickets.cancelPurchase(auth.token);
                         await tickets.disposePurchase();
-                        // print("DELETE PURCHASE");
                       });
 
                       // will pre-load the ticket, payment intent
@@ -270,27 +266,10 @@ class _BuyTicketState extends State<BuyTicket> {
 
   @override
   Widget build(BuildContext context) {
-    // WidgetsBinding.instance.addPostFrameCallback((_) {
-    //   setState(() {
-    //     subtotalOpen = false;
-    //   });
-    // });
     return Consumer<TicketsProvider>(
       builder: (context, tickets, _) {
         return Consumer<AccountProvider>(
           builder: (context, auth, _) {
-            // WidgetsBinding.instance.addPostFrameCallback((_) async {
-            //   print(subtotalOpen);
-            //   if (!subtotalOpen) {
-            //     // final tickets = Provider.of<TicketsProvider>(context, listen: true);
-            //     // final auth = Provider.of<AccountProvider>(context, listen: false);
-            //     if (tickets.ticketID != "") {
-            //       // await tickets.cancelPurchase(auth.token);
-            //       await tickets.disposePurchase();
-            //       print("DELETE PURCHASE");
-            //     }
-            //   }
-            // });
             return Padding(
               padding: const EdgeInsets.all(15.0),
               child: Container(
@@ -368,8 +347,8 @@ class _BuyTicketState extends State<BuyTicket> {
                       GestureDetector(
                         onTap: startEditingTicketType,
                         child: compact.TicketSelectionCompact(
-                          Selection: selectedTicketType!,
-                          Title: "Tip",
+                          title: selectedTicketType!,
+                          selection: "Tip",
                         ),
                       ),
                     const SizedBox(height: 20),
@@ -381,8 +360,8 @@ class _BuyTicketState extends State<BuyTicket> {
                         GestureDetector(
                           onTap: startEditingDuration,
                           child: compact.TicketSelectionCompact(
-                            Selection: selectedDuration!,
-                            Title: "Durata",
+                            selection: selectedDuration!,
+                            title: "Durata",
                           ),
                         ),
                     const SizedBox(height: 20),

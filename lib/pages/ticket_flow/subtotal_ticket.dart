@@ -1,4 +1,5 @@
 import 'package:blitz/pages/successful.dart';
+import 'package:blitz/pages/ticket_flow/add_card.dart';
 import 'package:blitz/pages/ticket_flow/select_method.dart';
 import 'package:blitz/providers/account_provider.dart';
 import 'package:blitz/utils/payments.dart';
@@ -61,45 +62,92 @@ class SubtotalTicket {
                     const SizedBox(
                       height: 10,
                     ),
-                    GestureDetector(
-                      onTap: () {
-                        SelectMethodModal.show(context);
-                      },
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            children: [
-                              Container(
-                                height: 30,
-                                width: 50,
-                                decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                        image: AssetImage(getPMIcon(
-                                            auth.account.paymentMethods?[
-                                                auth.selectedPM])))),
-                              ),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              Text(
-                                getPMTitle(auth
-                                    .account.paymentMethods?[auth.selectedPM]),
-                                style: const TextStyle(
-                                  fontFamily: "UberMoveMedium",
-                                  fontSize: 16,
+                    auth.account.paymentMethods!.isNotEmpty
+                        ? GestureDetector(
+                            onTap: () {
+                              SelectMethodModal.show(context);
+                            },
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  children: [
+                                    Container(
+                                      height: 30,
+                                      width: 50,
+                                      decoration: BoxDecoration(
+                                          image: DecorationImage(
+                                              image: AssetImage(getPMIcon(
+                                                  auth.account.paymentMethods?[
+                                                      auth.selectedPM])))),
+                                    ),
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    Text(
+                                      getPMTitle(auth.account
+                                          .paymentMethods?[auth.selectedPM]),
+                                      style: const TextStyle(
+                                        fontFamily: "UberMoveMedium",
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                              ),
-                            ],
+                                const Icon(
+                                  Icons.arrow_forward_ios,
+                                  size: 15,
+                                  color: darkGrey,
+                                ),
+                              ],
+                            ),
+                          )
+                        : GestureDetector(
+                            // the element to add other payment methods
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const AddCardPage()));
+                            },
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  children: [
+                                    Container(
+                                      height: 30,
+                                      width: 50,
+                                      decoration: BoxDecoration(
+                                          border: Border.all(color: darkGrey),
+                                          borderRadius:
+                                              BorderRadius.circular(4)),
+                                      child: const Icon(
+                                        Icons.add,
+                                        color: darkGrey,
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    const Text(
+                                      "Adauga un card",
+                                      style: TextStyle(
+                                        fontFamily: "UberMoveMedium",
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                const Icon(
+                                  Icons.arrow_forward_ios,
+                                  size: 15,
+                                  color: darkGrey,
+                                ),
+                              ],
+                            ),
                           ),
-                          const Icon(
-                            Icons.arrow_forward_ios,
-                            size: 15,
-                            color: darkGrey,
-                          ),
-                        ],
-                      ),
-                    ),
                     const SizedBox(
                       height: 10,
                     ),
