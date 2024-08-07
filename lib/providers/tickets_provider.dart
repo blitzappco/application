@@ -12,6 +12,7 @@ import 'package:http/http.dart' as http;
 class TicketsProvider with ChangeNotifier {
   List<Ticket> list = [];
   Map<String, List<TicketType>> typesMap = {};
+  Map<String, TicketType> ticketTypesMap = {};
 
   Ticket purchased = Ticket();
 
@@ -52,6 +53,7 @@ class TicketsProvider with ChangeNotifier {
           body["ticketTypes"].map((x) => TicketType.fromJSON(x)));
 
       typesMap = processTicketTypes(ticketTypesList);
+      ticketTypesMap = typesToMap(ticketTypesList);
       notifyListeners();
     } else {
       setError('Nu s-au putut gasi tipurile de bilete');

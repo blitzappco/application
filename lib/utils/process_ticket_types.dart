@@ -1,6 +1,14 @@
 import 'package:blitz/bifrost/mercury/models/ticket.dart';
 import 'package:blitz/bifrost/mercury/models/ticket_type.dart';
 
+Map<String, TicketType> typesToMap(List<TicketType> list) {
+  Map<String, TicketType> map = {};
+  for (int i = 0; i < list.length; i++) {
+    map[list[i].id ?? ''] = list[i];
+  }
+  return map;
+}
+
 Map<String, String> expiries = {
   '1.5h': "90 minutes",
   '2h': "120 minutes",
