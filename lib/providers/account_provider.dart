@@ -346,7 +346,7 @@ class AccountProvider with ChangeNotifier {
     }
   }
 
-  createPaymentIntent(int amount) async {
+  createPayment(int amount) async {
     loading = true;
     notifyListeners();
 

@@ -1,4 +1,4 @@
-import 'package:blitz/models/ticket.dart';
+import 'package:blitz/bifrost/mercury/models/ticket.dart';
 import 'package:blitz/utils/normalize.dart';
 import 'package:blitz/utils/shorten.dart';
 import 'package:blitz/utils/vars.dart';

@@ -42,8 +42,8 @@ class _SplashScreenState extends State<SplashScreen> {
         // await account.getTrips();
         // await account.getPaymentMethods();
 
-        await tickets.getTicketTypes(account.token, "bucuresti");
-        await tickets.getLastTicket(account.token, "bucuresti");
+        await tickets.getTicketTypes(account.token, "ploiesti");
+        await tickets.getLastTicket(account.token, "ploiesti");
 
         Timer(const Duration(milliseconds: 500), () async {
           // Position? pos = await getCurrentLocation();
