@@ -1,8 +1,9 @@
 import 'package:blitz/components/ticket_selection.dart' as full;
 import 'package:blitz/components/ticket_selection_compact.dart' as compact;
-import 'package:blitz/pages/ticket_flow/ticket_subtotal.dart';
+import 'package:blitz/pages/ticket_flow/subtotal_ticket.dart';
 import 'package:blitz/providers/account_provider.dart';
 import 'package:blitz/providers/tickets_provider.dart';
+import 'package:blitz/utils/payments.dart';
 import 'package:blitz/utils/vars.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -192,7 +193,7 @@ class _BuyTicketState extends State<BuyTicket> {
               ),
               const SizedBox(height: 10),
               Text(
-                "${(tickets.ticketTypesMap[typeID ?? '']!.fare ?? 0) / 100} RON",
+                "RON ${getFareText(tickets.ticketTypesMap[typeID ?? '']!.fare ?? 0)}",
                 style:
                     const TextStyle(fontFamily: "UberMoveMedium", fontSize: 16),
               ),
@@ -201,7 +202,8 @@ class _BuyTicketState extends State<BuyTicket> {
                 onTap: () {},
                 child: GestureDetector(
                   onTap: () {
-                    SubtotalModal.show(context);
+                    SubtotalTicket.show(context,
+                        tickets.ticketTypesMap[typeID ?? '']!.fare ?? 0);
                   },
                   child: Container(
                     decoration: BoxDecoration(
