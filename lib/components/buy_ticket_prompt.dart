@@ -1,4 +1,4 @@
-import 'package:blitz/pages/ticket_flow/buy_ticket_page.dart';
+import 'package:blitz/pages/ticket_flow/buy_ticket.dart';
 import 'package:blitz/utils/vars.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +14,7 @@ class _BuyTicketPromptState extends State<BuyTicketPrompt> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        BuyTicketModal.show(context);
+        BuyTicket.show(context);
       },
       child: Container(
         decoration: BoxDecoration(
@@ -24,20 +24,20 @@ class _BuyTicketPromptState extends State<BuyTicketPrompt> {
           child: Row(
             children: [
               Container(
-                  decoration:
-                      BoxDecoration(shape: BoxShape.circle, color: Colors.blue),
-                  child: Padding(
-                    padding: const EdgeInsets.all(4.0),
+                  decoration: const BoxDecoration(
+                      shape: BoxShape.circle, color: Colors.blue),
+                  child: const Padding(
+                    padding: EdgeInsets.all(4.0),
                     child: Icon(
                       Icons.add,
                       size: 20,
                       color: Colors.white,
                     ),
                   )),
-              SizedBox(
+              const SizedBox(
                 width: 10,
               ),
-              Column(
+              const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
