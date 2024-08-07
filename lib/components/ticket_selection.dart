@@ -2,13 +2,13 @@ import 'package:blitz/utils/vars.dart';
 import 'package:flutter/material.dart';
 
 class TicketSelection extends StatelessWidget {
-  final String Title;
-  final String Description;
+  final String title;
+  final String description;
   final VoidCallback onTap;
 
-  TicketSelection({
-    required this.Title,
-    required this.Description,
+  const TicketSelection({
+    required this.title,
+    required this.description,
     required this.onTap,
     super.key,
   });
@@ -23,12 +23,12 @@ class TicketSelection extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              Title,
-              style: TextStyle(fontFamily: "UberMoveBold", fontSize: 16),
+              title,
+              style: const TextStyle(fontFamily: "UberMoveBold", fontSize: 16),
             ),
             Text(
-              Description,
-              style: TextStyle(
+              description,
+              style: const TextStyle(
                   fontFamily: "UberMoveMedium", fontSize: 13, color: darkGrey),
             ),
           ],

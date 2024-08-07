@@ -189,14 +189,16 @@ class _BuyPassPageState extends State<BuyPassPage> {
                           await tickets.attachPurchasePayment(auth.token);
 
                           // confirm the payment
-                          final pi = await Stripe.instance.confirmPayment(
-                              paymentIntentClientSecret: auth.clientSecret);
-
-                          if (pi.status != PaymentIntentsStatus.Succeeded) {
-                            await tickets.disposePurchase();
-                          } else {
-                            Navigator.pop(context);
-                          }
+                          Stripe.instance
+                              .confirmPayment(
+                                  paymentIntentClientSecret: auth.clientSecret)
+                              .then((pi) async {
+                            if (pi.status != PaymentIntentsStatus.Succeeded) {
+                              await tickets.disposePurchase();
+                            } else {
+                              Navigator.pop(context);
+                            }
+                          });
                         },
                         child: Container(
                             decoration: BoxDecoration(
