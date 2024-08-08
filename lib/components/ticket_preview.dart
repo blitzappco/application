@@ -1,9 +1,12 @@
+import 'dart:async';
+
 import 'package:blitz/components/modals/ticket_details_modal.dart';
 import 'package:blitz/providers/tickets_provider.dart';
 import 'package:blitz/utils/vars.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:screen_brightness/screen_brightness.dart';
+import 'package:blitz/utils/normalize.dart';
 
 class TicketPreview extends StatefulWidget {
   final bool activeTicket;
@@ -14,10 +17,39 @@ class TicketPreview extends StatefulWidget {
 }
 
 class _TicketPreviewState extends State<TicketPreview> {
+  Timer? _timer;
+  String expiry = '';
+  DateTime expiresAt = DateTime.now();
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final tickets = Provider.of<TicketsProvider>(context, listen: false);
+      setState(() {
+        expiresAt = tickets.last.expiresAt!;
+      });
+    });
+    startTimer();
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
+  }
+
+  void startTimer() {
+    _timer = Timer.periodic(
+        const Duration(seconds: 1),
+        (Timer timer) => setState(() {
+              expiry = calculateExpiry(expiresAt, DateTime.now());
+            }));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Consumer<TicketsProvider>(builder: (context, tickets, _) {
-      String expiryText = calculateExpiry(tickets.last.expiresAt!);
       return GestureDetector(
         onTap: () async {
           if (widget.activeTicket) {
@@ -52,12 +84,16 @@ class _TicketPreviewState extends State<TicketPreview> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          tickets.last.name ?? "Not Available",
+                          tickets.last.name ?? "Bilet",
                           style: const TextStyle(
                               fontFamily: "UberMoveBold", fontSize: 16),
                         ),
                         Text(
-                          expiryText,
+                          expiry != ""
+                              ? (expiry != "exp"
+                                  ? 'Valabil $expiry'
+                                  : "Expirat")
+                              : "Se calculeaza...",
                           style: const TextStyle(
                               fontFamily: "UberMoveMedium",
                               fontSize: 14,
@@ -101,19 +137,20 @@ class _TicketPreviewState extends State<TicketPreview> {
   }
 }
 
-String calculateExpiry(DateTime expiryDate) {
-  final now = DateTime.now();
-  final difference = expiryDate.difference(now);
+/* 
+23h 54min
+1d 24h
 
-  if (difference.isNegative) {
-    return 'Expirat';
-  } else if (difference.inDays >= 1) {
-    return '${difference.inDays} zile';
-  } else if (difference.inHours >= 1) {
-    return '${difference.inHours} ore';
-  } else if (difference.inMinutes >= 1) {
-    return '${difference.inMinutes} minute';
-  } else {
-    return 'Mai putin de un minut';
-  }
-}
+20 de zile
+
+23 de ore si 54 de minute
+
+2d 13h
+
+2 zile 13 ore
+1 zi 13 ore
+13 ore 25 minute
+25 minute
+ */
+
+
