@@ -93,7 +93,7 @@ class _TicketPreviewState extends State<TicketPreview> {
                               ? (expiry != "exp"
                                   ? 'Valabil $expiry'
                                   : "Expirat")
-                              : "Se calculeaza...",
+                              : "Hmmm",
                           style: const TextStyle(
                               fontFamily: "UberMoveMedium",
                               fontSize: 14,
