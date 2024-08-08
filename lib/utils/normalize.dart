@@ -84,3 +84,89 @@ String formatDate(DateTime ticketDate) {
     return DateFormat('dd MMMM').format(ticketDate);
   }
 }
+
+String getRomanianPlurals(int value, String singular, String plural) {
+  String ret = "$value ";
+  if (value == 1) {
+    ret += singular;
+  } else if (value >= 20) {
+    ret += 'de $plural';
+  } else {
+    ret += plural;
+  }
+  return ret;
+}
+
+// String calculateRomanianExpiry(DateTime expiryDate, DateTime now) {
+//   // final now = DateTime.now();
+//   final difference = expiryDate.difference(now);
+
+//   int rawDays = difference.inDays;
+//   int rawHours = difference.inHours - difference.inDays * 24;
+//   int rawMinutes = difference.inMinutes - difference.inHours * 60;
+//   int rawSeconds = difference.inSeconds - difference.inMinutes * 60;
+
+//   String ret = '';
+
+//   if (difference.isNegative) {
+//     return 'exp';
+//   }
+
+//   // ret += 'Valabil ';
+//   String days = getRomanianPlurals(rawDays, "zi", "zile");
+//   String hours = getRomanianPlurals(rawHours, "ora", "ore");
+//   String minutes = getRomanianPlurals(rawMinutes, "minut", "minute");
+//   String seconds = getRomanianPlurals(rawSeconds, "secunda", "secunde");
+
+//   if (difference.inDays >= 1) {
+//     ret += '$days si';
+//     if (difference.inHours >= 1) ret += ' $hours';
+//   } else if (difference.inHours >= 1) {
+//     ret += '$hours si';
+//     if (difference.inMinutes >= 1) ret += ' $minutes';
+//   } else if (difference.inMinutes >= 1) {
+//     ret += '$minutes si';
+//     if (difference.inSeconds >= 1) ret += ' $seconds';
+//   } else {
+//     ret += seconds;
+//   }
+
+//   return ret;
+// }
+
+String calculateExpiry(DateTime expiryDate, DateTime now) {
+  // final now = DateTime.now();
+  final difference = expiryDate.difference(now);
+
+  int rawDays = difference.inDays;
+  int rawHours = difference.inHours - difference.inDays * 24;
+  int rawMinutes = difference.inMinutes - difference.inHours * 60;
+  int rawSeconds = difference.inSeconds - difference.inMinutes * 60;
+
+  String ret = '';
+
+  if (difference.isNegative) {
+    return 'exp';
+  }
+
+  // ret += 'Valabil ';
+  String days = '${rawDays}d';
+  String hours = '${rawHours}h';
+  String minutes = '${rawMinutes}m';
+  String seconds = '${rawSeconds}s';
+
+  if (difference.inDays >= 1) {
+    ret += days;
+    if (difference.inHours >= 1) ret += ' $hours';
+  } else if (difference.inHours >= 1) {
+    ret += hours;
+    if (difference.inMinutes >= 1) ret += ' $minutes';
+  } else if (difference.inMinutes >= 1) {
+    ret += minutes;
+    if (difference.inSeconds >= 1) ret += ' $seconds';
+  } else {
+    ret += seconds;
+  }
+
+  return ret;
+}
