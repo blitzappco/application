@@ -91,7 +91,7 @@ class _SuccessfulState extends State<Successful> {
                           height: 50,
                           width: 50,
                           child: Lottie.asset(
-                            'assets/tick.json', // Your Lottie animation file
+                            'assets/lottie/tick.json', // Your Lottie animation file
                             fit: BoxFit.fill,
                             repeat: false, // Ensure animation plays only once
                           ),

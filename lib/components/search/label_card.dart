@@ -78,7 +78,7 @@ class LabelCard extends StatelessWidget {
           }
         },
         child: Container(
-          width: screenWidth * 0.45,
+          width: screenWidth * 0.40,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(15),

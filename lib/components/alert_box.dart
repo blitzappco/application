@@ -20,6 +20,7 @@ class AlertBox {
       context: context,
       builder: (BuildContext context) {
         return SimpleDialog(
+          backgroundColor: Colors.white.withOpacity(0),
           insetPadding: EdgeInsets.zero,
           titlePadding: EdgeInsets.zero,
           contentPadding: EdgeInsets.zero,
@@ -137,6 +138,7 @@ class AlertBox {
               ).asGlass(
                 clipBorderRadius: BorderRadius.circular(40.0),
                 enabled: true,
+                frosted: true,
               ),
             ),
           ],

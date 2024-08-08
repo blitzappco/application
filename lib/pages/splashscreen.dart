@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:blitz/pages/onboarding/ask_location.dart';
 import 'package:blitz/pages/onboarding/get_started.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 
@@ -20,7 +21,8 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   // bool _showImage = true;
-
+  LocationPermission? permission;
+  var permissionState = '';
   @override
   void initState() {
     // removeAccount();
@@ -39,19 +41,20 @@ class _SplashScreenState extends State<SplashScreen> {
       } else {
         Timer(const Duration(milliseconds: 500), () async {
           // Position? pos = await getCurrentLocation();
-          Permission.location.status.then((status) {
-            if (status.isDenied || status.isPermanentlyDenied) {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const AskLocation()),
-              );
-            } else {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const Homescreen()),
-              );
-            }
-          });
+          permission = await Geolocator.checkPermission();
+          print(permission);
+          if (permission == LocationPermission.denied ||
+              permission == LocationPermission.deniedForever) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const AskLocation()),
+            );
+          } else {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const Homescreen()),
+            );
+          }
         });
       }
     });

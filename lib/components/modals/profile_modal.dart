@@ -62,7 +62,7 @@ class ProfileModal {
                                     decoration: const BoxDecoration(
                                         image: DecorationImage(
                                           image: AssetImage(
-                                              'assets/images/moaca.png'),
+                                              'assets/images/logo.png'),
                                           fit: BoxFit.fill,
                                         ),
                                         shape: BoxShape.circle,

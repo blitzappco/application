@@ -244,7 +244,7 @@ class _AskLocationState extends State<AskLocation> {
                             _showTick
                                 ? Center(
                                     child: Lottie.asset(
-                                      'assets/tickw.json',
+                                      'assets/lottie/tickw.json',
                                       width: 25,
                                       height: 25,
                                       fit: BoxFit.fill,

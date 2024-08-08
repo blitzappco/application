@@ -35,6 +35,7 @@ dependencies:
   webview_flutter: ^4.8.0
   sign_in_with_apple: ^6.1.1
   glass: ^2.0.0+1
+  flutter_launcher_icons: ^0.13.1
 
 
   
@@ -91,45 +92,27 @@ flutter:
         - asset: fonts/SF-Pro-Rounded-Semibold.otf
         - asset: fonts/SF-Pro-Rounded-Thin.otf
         - asset: fonts/SF-Pro-Rounded-Ultralight.otf
-    - family: SFProText
-      fonts:
-        - asset: fonts/SF-Pro-Text-Black.otf
-        - asset: fonts/SF-Pro-Text-BlackItalic.otf
-        - asset: fonts/SF-Pro-Text-Bold.otf
-        - asset: fonts/SF-Pro-Text-BoldItalic.otf
-        - asset: fonts/SF-Pro-Text-Heavy.otf
-        - asset: fonts/SF-Pro-Text-HeavyItalic.otf
-        - asset: fonts/SF-Pro-Text-Light.otf
-        - asset: fonts/SF-Pro-Text-LightItalic.otf
-        - asset: fonts/SF-Pro-Text-Medium.otf
-        - asset: fonts/SF-Pro-Text-MediumItalic.otf
-        - asset: fonts/SF-Pro-Text-Regular.otf
-        - asset: fonts/SF-Pro-Text-RegularItalic.otf
-        - asset: fonts/SF-Pro-Text-Semibold.otf
-        - asset: fonts/SF-Pro-Text-SemiboldItalic.otf
-        - asset: fonts/SF-Pro-Text-Thin.otf
-        - asset: fonts/SF-Pro-Text-ThinItalic.otf
-        - asset: fonts/SF-Pro-Text-Ultralight.otf
-        - asset: fonts/SF-Pro-Text-UltralightItalic.otf
+    
 
   assets:
     - assets/images/logo.png
-    - assets/images/card.png
-    - assets/images/animation.gif
-    - assets/images/moaca.png
-    - assets/images/visa.png
-    - assets/images/mastercard.png
     - assets/images/tce.png
     - assets/images/ApplePay.png
     - assets/images/PayWAP.png
     - assets/images/visa-color_large.png
     - assets/images/mastercard-color_large.png
-    - assets/tick.json
-    - assets/tickw.json
+    - assets/lottie/tick.json
+    - assets/lottie/tickw.json
     - assets/images/googlelogo.svg
     - assets/images/applelogo.svg
     - assets/images/blitzminimal.svg
-    - assets/onboarding.mp4
     - assets/images/stock1.jpg
-    - assets/images/stock2.jpg
+    - assets/icons/logo.png
     - .env
+
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  image_path: "assets/icon.png"
+  min_sdk_android: 21 
+ 
