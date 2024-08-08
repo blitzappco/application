@@ -26,9 +26,9 @@ class MainModal extends StatelessWidget {
           return DraggableScrollableSheet(
             initialChildSize: 0.5,
             maxChildSize: 0.9,
-            minChildSize: 0.19,
+            minChildSize: 0.25,
             snap: true,
-            snapSizes: const [0.19, 0.48, 0.9],
+            snapSizes: const [0.25, 0.48, 0.9],
             controller: controller,
             builder: (BuildContext context, ScrollController scrollController) {
               return SingleChildScrollView(

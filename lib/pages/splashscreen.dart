@@ -3,7 +3,6 @@ import 'package:blitz/pages/onboarding/ask_location.dart';
 import 'package:blitz/pages/onboarding/get_started.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 
 import 'homescreen.dart';
@@ -42,7 +41,7 @@ class _SplashScreenState extends State<SplashScreen> {
         Timer(const Duration(milliseconds: 500), () async {
           // Position? pos = await getCurrentLocation();
           permission = await Geolocator.checkPermission();
-          print(permission);
+
           if (permission == LocationPermission.denied ||
               permission == LocationPermission.deniedForever) {
             Navigator.push(
