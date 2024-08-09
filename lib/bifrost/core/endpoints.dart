@@ -24,16 +24,11 @@ Future<List<Route>> getItineraries(String from, String to) async {
     }
 
     for (int i = 0; i < data['routes'].length; i++) {
-      // if (data['routes'][i]['legs'][0]['steps'].length != 1) {
-
-      // final route = Route.fromJSON(data['routes'][i]);
-      // // inspect(route);
-      // if (route.leg.travelMode == "TRANSIT") {
-      //   routes.add(route);
-      // }
-
-      routes.add(Route.fromJSON(data['routes'][i]));
-      // }
+      final route = Route.fromJSON(data['routes'][i]);
+      // inspect(route);
+      if (route.leg.travelMode == "TRANSIT") {
+        routes.add(route);
+      }
     }
 
     return routes;

@@ -24,33 +24,34 @@ class _RoutePreviewModalState extends State<RoutePreviewModal> {
   @override
   void initState() {
     super.initState();
-
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       final route = Provider.of<RouteProvider>(context, listen: false);
+      if (route.routes.isNotEmpty) {
+        final bounds = route.routes[route.routeIndex].bounds;
 
-      final bounds = route.routes[route.routeIndex].bounds;
+        final startLocation = route.routes[0].leg.startLocation;
+        final endLocation = route.routes[0].leg.endLocation;
 
-      final startLocation = route.routes[0].leg.startLocation;
-      final endLocation = route.routes[0].leg.endLocation;
+        final startMarker = Marker(
+          markerId: const MarkerId('start'),
+          position: LatLng(startLocation.latitude, startLocation.longitude),
+          infoWindow: const InfoWindow(title: "Start Location"),
+        );
 
-      final startMarker = Marker(
-        markerId: const MarkerId('start'),
-        position: LatLng(startLocation.latitude!, startLocation.longitude!),
-        infoWindow: const InfoWindow(title: "Start Location"),
-      );
+        final endMarker = Marker(
+          markerId: const MarkerId('end'),
+          position: LatLng(endLocation.latitude, endLocation.longitude),
+          infoWindow: const InfoWindow(title: "End Location"),
+        );
 
-      final endMarker = Marker(
-        markerId: const MarkerId('end'),
-        position: LatLng(endLocation.latitude!, endLocation.longitude!),
-        infoWindow: const InfoWindow(title: "End Location"),
-      );
+        route.setMarkers({startMarker, endMarker});
 
-      route.setMarkers({startMarker, endMarker});
-
-      await setCameraBounds(
-        widget.mapController,
-        LatLngBounds(northeast: bounds.northEast, southwest: bounds.southWest),
-      );
+        await setCameraBounds(
+          widget.mapController,
+          LatLngBounds(
+              northeast: bounds.northEast, southwest: bounds.southWest),
+        );
+      }
     });
   }
 
@@ -209,64 +210,74 @@ class _RoutePreviewModalState extends State<RoutePreviewModal> {
                         const SizedBox(
                           height: 20,
                         ),
-                        Container(
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(9)),
-                          child: Padding(
-                            padding: const EdgeInsets.all(20.0),
-                            child: MediaQuery.removePadding(
-                              removeBottom: true,
-                              removeTop: true,
-                              context: context,
-                              child: ListView.separated(
-                                itemCount: route.routes.length,
-                                separatorBuilder: (context, index) {
-                                  return const Padding(
-                                    padding: EdgeInsets.symmetric(vertical: 10),
-                                    child: Divider(
-                                      color: Color.fromARGB(255, 235, 235, 235),
-                                    ),
-                                  );
-                                },
-                                physics: const ClampingScrollPhysics(),
-                                shrinkWrap: true,
-                                itemBuilder: (context, index) {
-                                  return RoutePreviewCard(
-                                      route: route.routes[index],
-                                      tap: () async {
-                                        draggableController.animateTo(0.4,
-                                            duration: const Duration(
-                                                milliseconds: 500),
-                                            curve: Curves.easeOutExpo);
-                                        scrollController.animateTo(0,
-                                            duration: const Duration(
-                                                milliseconds: 500),
-                                            curve: Curves.easeOutExpo);
-
-                                        await route.changeRouteIndex(index);
-
-                                        final bounds = route
-                                            .routes[route.routeIndex].bounds;
-
-                                        await setCameraBounds(
-                                          widget.mapController,
-                                          LatLngBounds(
-                                              northeast: bounds.northEast,
-                                              southwest: bounds.southWest),
+                        (route.routes.isNotEmpty)
+                            ? Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(9)),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(20.0),
+                                  child: MediaQuery.removePadding(
+                                    removeBottom: true,
+                                    removeTop: true,
+                                    context: context,
+                                    child: ListView.separated(
+                                      itemCount: route.routes.length,
+                                      separatorBuilder: (context, index) {
+                                        return const Padding(
+                                          padding: EdgeInsets.symmetric(
+                                              vertical: 10),
+                                          child: Divider(
+                                            color: Color.fromARGB(
+                                                255, 235, 235, 235),
+                                          ),
                                         );
                                       },
-                                      go: () async {
-                                        Timer(const Duration(milliseconds: 350),
-                                            () async {
-                                          await route.changePage("directions");
-                                        });
-                                      });
-                                },
-                              ),
-                            ),
-                          ),
-                        ),
+                                      physics: const ClampingScrollPhysics(),
+                                      shrinkWrap: true,
+                                      itemBuilder: (context, index) {
+                                        return RoutePreviewCard(
+                                            route: route.routes[index],
+                                            tap: () async {
+                                              draggableController.animateTo(0.4,
+                                                  duration: const Duration(
+                                                      milliseconds: 500),
+                                                  curve: Curves.easeOutExpo);
+                                              scrollController.animateTo(0,
+                                                  duration: const Duration(
+                                                      milliseconds: 500),
+                                                  curve: Curves.easeOutExpo);
+
+                                              await route
+                                                  .changeRouteIndex(index);
+
+                                              final bounds = route
+                                                  .routes[route.routeIndex]
+                                                  .bounds;
+
+                                              await setCameraBounds(
+                                                widget.mapController,
+                                                LatLngBounds(
+                                                    northeast: bounds.northEast,
+                                                    southwest:
+                                                        bounds.southWest),
+                                              );
+                                            },
+                                            go: () async {
+                                              Timer(
+                                                  const Duration(
+                                                      milliseconds: 350),
+                                                  () async {
+                                                await route
+                                                    .changePage("directions");
+                                              });
+                                            });
+                                      },
+                                    ),
+                                  ),
+                                ),
+                              )
+                            : const Center(child: Text("Te pup jos serifule")),
                       ]),
                 ),
               ),
