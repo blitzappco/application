@@ -30,6 +30,23 @@ class _RoutePreviewModalState extends State<RoutePreviewModal> {
 
       final bounds = route.routes[route.routeIndex].bounds;
 
+      final startLocation = route.routes[0].leg.startLocation;
+      final endLocation = route.routes[0].leg.endLocation;
+
+      final startMarker = Marker(
+        markerId: const MarkerId('start'),
+        position: LatLng(startLocation.latitude!, startLocation.longitude!),
+        infoWindow: const InfoWindow(title: "Start Location"),
+      );
+
+      final endMarker = Marker(
+        markerId: const MarkerId('end'),
+        position: LatLng(endLocation.latitude!, endLocation.longitude!),
+        infoWindow: const InfoWindow(title: "End Location"),
+      );
+
+      route.setMarkers({startMarker, endMarker});
+
       await setCameraBounds(
         widget.mapController,
         LatLngBounds(northeast: bounds.northEast, southwest: bounds.southWest),

@@ -1,5 +1,6 @@
 import 'package:blitz/providers/account_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
 class PaymentMethods extends StatefulWidget {
@@ -17,6 +18,12 @@ class _PaymentMethodsState extends State<PaymentMethods> {
       case 'mastercard':
         return Image.asset('assets/images/mastercard.png',
             width: 50, height: 50);
+      case 'googlepay':
+        return SvgPicture.asset(
+          'assets/images/gpay.png',
+          height: 50,
+          width: 50,
+        );
       default:
         return const SizedBox(
             width: 50, height: 50); // Placeholder for unknown types

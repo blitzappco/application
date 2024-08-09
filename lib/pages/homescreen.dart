@@ -97,6 +97,7 @@ class _HomescreenState extends State<Homescreen> {
                     await route.initMap();
                     // setCameraLocation(mapController);
                   },
+                  markers: route.markersSet,
                 ),
                 if (route.loading) const Loading(),
                 if (route.page == 'home' && !route.loading && route.map)
