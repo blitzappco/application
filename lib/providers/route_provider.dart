@@ -121,10 +121,12 @@ class RouteProvider with ChangeNotifier {
   }
 
   processRoute() async {
-    stepCards = processSteps(routes[routeIndex].leg.steps, to);
-    polylines = processPolylines(routes[routeIndex].leg.steps);
+    if (routes.isNotEmpty) {
+      stepCards = processSteps(routes[routeIndex].leg.steps, to);
+      polylines = processPolylines(routes[routeIndex].leg.steps);
 
-    polylinesSet = Set<Polyline>.of(polylines);
+      polylinesSet = Set<Polyline>.of(polylines);
+    }
 
     routeIndex = 0;
 

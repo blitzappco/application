@@ -4,9 +4,11 @@ import 'package:blitz/components/step_card_types/exit_station_card.dart';
 import 'package:blitz/components/step_card_types/go_station_card.dart';
 import 'package:blitz/components/step_card_types/transit_card.dart';
 import 'package:blitz/components/step_card_types/walk_destination_card.dart';
+import 'package:blitz/components/step_card_types/walk_directions_card.dart';
 import 'package:blitz/components/step_card_types/walk_station_card.dart';
 import 'package:blitz/bifrost/core/models/place.dart';
 import 'package:blitz/bifrost/core/models/route.dart';
+import 'package:blitz/utils/normalize.dart';
 import 'package:flutter/material.dart';
 
 class StepCard extends StatelessWidget {
@@ -20,6 +22,7 @@ class StepCard extends StatelessWidget {
   final int duration;
 
   final Place? destination;
+  final String? instructions;
 
   const StepCard({
     required this.type,
@@ -28,6 +31,7 @@ class StepCard extends StatelessWidget {
     required this.distance,
     required this.duration,
     this.destination,
+    this.instructions,
     super.key,
   });
 
@@ -67,6 +71,11 @@ class StepCard extends StatelessWidget {
           transitDetails: transitDetails,
           duration: duration,
         );
+      case 'walk_directions':
+        return WalkDirectionsCard(
+            duration: duration,
+            distance: distance,
+            instructions: normalizeInstructions(instructions ?? ''));
       default:
         return GoStationCard(
           line: transitDetails?.line ?? Line.fromEmpty(),

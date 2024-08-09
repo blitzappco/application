@@ -1,5 +1,9 @@
 import 'package:intl/intl.dart';
 
+String normalizeInstructions(String instructions) {
+  return instructions;
+}
+
 String normalizeDuration(int value) {
   String result = '';
 
