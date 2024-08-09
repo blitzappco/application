@@ -17,6 +17,8 @@ class RouteProvider with ChangeNotifier {
   String page = 'home';
   bool map = false;
 
+  Set<Marker> markersSet = {};
+
   double mapPadding = 0;
 
   bool loading = false;
@@ -45,6 +47,11 @@ class RouteProvider with ChangeNotifier {
   };
 
   List<StepCard> stepCards = [];
+
+  void setMarkers(Set<Marker> markers) {
+    markersSet = markers;
+    notifyListeners();
+  }
 
   getPredictions(String input) async {
     predictions = await getSearch(input);

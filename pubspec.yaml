@@ -36,6 +36,7 @@ dependencies:
   sign_in_with_apple: ^6.1.1
   glass: ^2.0.0+1
   flutter_launcher_icons: ^0.13.1
+  widget_to_marker: ^1.0.6
 
 
   
@@ -108,6 +109,10 @@ flutter:
     - assets/images/blitzminimal.svg
     - assets/images/stock1.jpg
     - assets/icons/logo.png
+    - assets/images/mastercard.svg
+    - assets/images/gpay.svg
+    - assets/images/applepay.svg
+    - assets/images/visa.svg
     - .env
 
 
