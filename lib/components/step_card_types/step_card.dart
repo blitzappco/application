@@ -36,7 +36,7 @@ class StepCard extends StatelessWidget {
     switch (type) {
       case 'go_station':
         return GoStationCard(
-          line: transitDetails?.line ?? Line.empty(),
+          line: transitDetails?.line ?? Line.fromEmpty(),
           headsign: transitDetails?.headsign ?? '',
         );
       case 'exit_station':
@@ -45,7 +45,7 @@ class StepCard extends StatelessWidget {
         );
       case 'change_platform':
         return ChangePlatform(
-          line: transitDetails?.line ?? Line.empty(),
+          line: transitDetails?.line ?? Line.fromEmpty(),
           headsign: transitDetails?.headsign ?? '',
         );
       case 'walk_destination':
@@ -69,7 +69,7 @@ class StepCard extends StatelessWidget {
         );
       default:
         return GoStationCard(
-          line: transitDetails?.line ?? Line.empty(),
+          line: transitDetails?.line ?? Line.fromEmpty(),
           headsign: transitDetails?.headsign ?? '',
         );
     }

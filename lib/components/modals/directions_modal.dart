@@ -53,7 +53,7 @@ class DirectionsModal extends StatelessWidget {
                                     fontSize: 24, fontFamily: "UberMoveBold"),
                               ),
                               Text(
-                                'Arrival time: ${normalizeTime(route.routes[route.routeIndex].leg.arrivalTime.text)}',
+                                'Arrival time: ${normalizeTime(route.routes[route.routeIndex].leg.arrivalTime!.text)}',
                                 style: const TextStyle(
                                     fontSize: 16, fontFamily: "UberMoveMedium"),
                               ),

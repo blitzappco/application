@@ -42,7 +42,7 @@ class PlaceCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                shorten(mainText, 40),
+                shorten(mainText, 30),
                 style:
                     const TextStyle(fontSize: 16, fontFamily: 'UberMoveBold'),
               ),

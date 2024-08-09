@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'dart:developer';
+// import 'dart:developer';
 
 import 'package:blitz/bifrost/core/models/route.dart';
 import 'package:blitz/bifrost/core/models/place.dart';
@@ -15,7 +15,7 @@ Future<List<Route>> getItineraries(String from, String to) async {
   if (response.statusCode == 200) {
     final data = jsonDecode(utf8.decode(response.bodyBytes));
 
-    inspect(data);
+    // inspect(data);
 
     List<Route> routes = [];
 
@@ -24,9 +24,16 @@ Future<List<Route>> getItineraries(String from, String to) async {
     }
 
     for (int i = 0; i < data['routes'].length; i++) {
-      if (data['routes'][i]['legs'][0]['steps'].length != 1) {
-        routes.add(Route.fromJSON(data['routes'][i]));
-      }
+      // if (data['routes'][i]['legs'][0]['steps'].length != 1) {
+
+      // final route = Route.fromJSON(data['routes'][i]);
+      // // inspect(route);
+      // if (route.leg.travelMode == "TRANSIT") {
+      //   routes.add(route);
+      // }
+
+      routes.add(Route.fromJSON(data['routes'][i]));
+      // }
     }
 
     return routes;
