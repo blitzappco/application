@@ -1,5 +1,5 @@
 const dev = false;
-const devCore = false;
+const devCore = true;
 const devMantle = false;
 const devMercury = false;
 
