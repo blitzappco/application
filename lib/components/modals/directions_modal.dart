@@ -78,12 +78,12 @@ class DirectionsModal extends StatelessWidget {
                                     : BuyTicket.show(context);
                               },
                               child: Padding(
-                                padding: EdgeInsets.symmetric(
+                                padding: const EdgeInsets.symmetric(
                                     vertical: 10, horizontal: 15),
                                 child: Row(
                                   children: [
                                     tickets.show
-                                        ? Row(
+                                        ? const Row(
                                             children: [
                                               Icon(
                                                 Icons.confirmation_num_rounded,
@@ -94,10 +94,10 @@ class DirectionsModal extends StatelessWidget {
                                               ),
                                             ],
                                           )
-                                        : SizedBox(),
+                                        : const SizedBox(),
                                     Text(
                                       tickets.show ? "Ticket" : "Buy ticket",
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           fontSize: 16,
                                           fontFamily: "UberMoveMedium",
                                           color: Colors.white),
