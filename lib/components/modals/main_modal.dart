@@ -11,11 +11,14 @@ import 'package:blitz/providers/tickets_provider.dart';
 import 'package:blitz/utils/vars.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:provider/provider.dart';
 
 class MainModal extends StatelessWidget {
   final GoogleMapController mapController;
-  const MainModal({super.key, required this.mapController});
+  final PackageInfo packageInfo;
+  const MainModal(
+      {super.key, required this.mapController, required this.packageInfo});
 
   @override
   Widget build(BuildContext context) {
@@ -179,6 +182,17 @@ class MainModal extends StatelessWidget {
                                       ),
                                     )
                                   : const SizedBox.shrink(),
+                              const Spacer(),
+                              Text(
+                                "Version ${packageInfo.version} Build ${packageInfo.buildNumber}",
+                                style: const TextStyle(
+                                  fontFamily: "SFProRounded",
+                                  fontSize: 14,
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
                             ],
                           ),
                         ),

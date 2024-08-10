@@ -4,6 +4,7 @@ import 'package:blitz/components/route_preview_card.dart';
 import 'package:blitz/providers/route_provider.dart';
 import 'package:blitz/utils/shorten.dart';
 import 'package:blitz/utils/station_marker.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
@@ -34,19 +35,17 @@ class _RoutePreviewModalState extends State<RoutePreviewModal> {
         final startLocation = route.routes[0].leg.startLocation;
         final endLocation = route.routes[0].leg.endLocation;
 
+        final startMarker = Marker(
+          markerId: const MarkerId('start'),
+          position: LatLng(startLocation.latitude, startLocation.longitude),
+          infoWindow: const InfoWindow(title: "Start Location"),
+        );
 
-      final startMarker = Marker(
-        markerId: const MarkerId('start'),
-        position: LatLng(startLocation.latitude, startLocation.longitude),
-        infoWindow: const InfoWindow(title: "Start Location"),
-      );
-
-      final endMarker = Marker(
-        markerId: const MarkerId('end'),
-        position: LatLng(endLocation.latitude, endLocation.longitude),
-        infoWindow: const InfoWindow(title: "End Location"),
-      );
-
+        final endMarker = Marker(
+          markerId: const MarkerId('end'),
+          position: LatLng(endLocation.latitude, endLocation.longitude),
+          infoWindow: const InfoWindow(title: "End Location"),
+        );
 
         route.setMarkers({startMarker, endMarker});
 
@@ -282,7 +281,30 @@ class _RoutePreviewModalState extends State<RoutePreviewModal> {
                                   ),
                                 ),
                               )
-                            : const Center(child: Text("Te pup jos serifule")),
+                            : Center(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    SizedBox(
+                                      height: 20,
+                                    ),
+                                    Icon(
+                                      CupertinoIcons
+                                          .exclamationmark_circle_fill,
+                                      color: darkGrey,
+                                      size: 30,
+                                    ),
+                                    Text(
+                                      "Nu exista rute ce contin mijloace de transport",
+                                      style: TextStyle(
+                                          fontFamily: "SFProRounded",
+                                          fontSize: 16,
+                                          color: darkGrey,
+                                          fontWeight: FontWeight.w600),
+                                    ),
+                                  ],
+                                ),
+                              ),
                       ]),
                 ),
               ),

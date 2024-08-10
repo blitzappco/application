@@ -13,6 +13,7 @@ import 'package:blitz/providers/tickets_provider.dart';
 import 'package:blitz/utils/get_location.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:provider/provider.dart';
 
 class Homescreen extends StatefulWidget {
@@ -27,6 +28,14 @@ class _HomescreenState extends State<Homescreen> {
       Completer<GoogleMapController>();
 
   late GoogleMapController mapController;
+  PackageInfo _packageInfo = PackageInfo(
+    appName: 'Unknown',
+    packageName: 'Unknown',
+    version: 'Unknown',
+    buildNumber: 'Unknown',
+    buildSignature: 'Unknown',
+    installerStore: 'Unknown',
+  );
 
   @override
   void initState() {
@@ -49,6 +58,14 @@ class _HomescreenState extends State<Homescreen> {
 
       final from = await geocodeFromAddress("politehnica");
       route.setFrom(from);
+      _initPackageInfo();
+    });
+  }
+
+  Future<void> _initPackageInfo() async {
+    final info = await PackageInfo.fromPlatform();
+    setState(() {
+      _packageInfo = info;
     });
   }
 
@@ -106,6 +123,7 @@ class _HomescreenState extends State<Homescreen> {
                 if (route.page == 'home' && !route.loading && route.map)
                   MainModal(
                     mapController: mapController,
+                    packageInfo: _packageInfo,
                   ),
                 if (route.page == 'preview' && !route.loading && route.map)
                   RoutePreviewModal(
