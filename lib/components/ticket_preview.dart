@@ -104,7 +104,7 @@ class _TicketPreviewState extends State<TicketPreview> {
                                     ? 'Valabil ${tickets.expiry}'
                                     : tickets.last.expiresAt?.year != 1
                                         ? "Expirat"
-                                        : "Nevalidat")
+                                        : "Neactivat")
                                 : "Hmmm",
                             style: const TextStyle(
                                 fontFamily: "UberMoveMedium",

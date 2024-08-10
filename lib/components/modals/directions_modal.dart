@@ -73,34 +73,6 @@ class DirectionsModal extends StatelessWidget {
                                     BorderRadiusDirectional.circular(30)),
                             child: GestureDetector(
                               onTap: () {
-                                route.changePage("preview");
-                              },
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    '${normalizeDuration(route.routes[route.routeIndex].leg.duration.value)} ',
-                                    style: const TextStyle(
-                                        fontSize: 24,
-                                        fontFamily: "UberMoveBold"),
-                                  ),
-                                  Text(
-                                    'Arrival time: ${normalizeTime(route.routes[route.routeIndex].leg.arrivalTime!.text)}',
-                                    style: const TextStyle(
-                                        fontSize: 16,
-                                        fontFamily: "UberMoveMedium"),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                                color: const Color.fromARGB(255, 102, 91, 252),
-                                borderRadius:
-                                    BorderRadiusDirectional.circular(30)),
-                            child: GestureDetector(
-                              onTap: () {
                                 tickets.show
                                     ? TicketDetailsModal.show(
                                         context, ScreenBrightness().current)
