@@ -2,6 +2,7 @@ import 'package:blitz/pages/homescreen.dart';
 import 'package:blitz/pages/onboarding/ask_location.dart';
 import 'package:blitz/pages/onboarding/onboarding_name.dart';
 import 'package:flutter/material.dart';
+import 'package:otp_autofill/otp_autofill.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 import '../../providers/account_provider.dart';
@@ -15,12 +16,22 @@ class OnboardingCode extends StatefulWidget {
 }
 
 class _OnboardingCodeState extends State<OnboardingCode> {
-  TextEditingController otpController = TextEditingController();
+  TextEditingController otpController = OTPTextEditController(
+    codeLength: 4,
+    onCodeReceive: (code) {},
+    otpInteractor: OTPInteractor(),
+  )..startListenRetriever(
+      (code) {
+        final exp = RegExp(r'(\d{5})');
+        return exp.stringMatch(code ?? '') ?? '';
+      },
+    );
 
   @override
   void initState() {
     super.initState();
     otpController.addListener(_onOtpChanged);
+    // print(OTPInteractor().getAppSignature()); //get sms hash
   }
 
   @override

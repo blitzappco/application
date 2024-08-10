@@ -53,6 +53,11 @@ class RouteProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  void clearMarkers() {
+    markersSet.clear();
+    notifyListeners();
+  }
+
   getPredictions(String input) async {
     predictions = await getSearch(input);
     notifyListeners();

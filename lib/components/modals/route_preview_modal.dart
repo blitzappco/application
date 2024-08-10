@@ -3,9 +3,11 @@ import 'dart:async';
 import 'package:blitz/components/route_preview_card.dart';
 import 'package:blitz/providers/route_provider.dart';
 import 'package:blitz/utils/shorten.dart';
+import 'package:blitz/utils/station_marker.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:widget_to_marker/widget_to_marker.dart';
 import '../../maps/map_controller.dart';
 import '../../utils/vars.dart';
 import 'search_modal.dart';
@@ -35,13 +37,13 @@ class _RoutePreviewModalState extends State<RoutePreviewModal> {
 
       final startMarker = Marker(
         markerId: const MarkerId('start'),
-        position: LatLng(startLocation.latitude!, startLocation.longitude!),
+        position: LatLng(startLocation.latitude, startLocation.longitude),
         infoWindow: const InfoWindow(title: "Start Location"),
       );
 
       final endMarker = Marker(
         markerId: const MarkerId('end'),
-        position: LatLng(endLocation.latitude!, endLocation.longitude!),
+        position: LatLng(endLocation.latitude, endLocation.longitude),
         infoWindow: const InfoWindow(title: "End Location"),
       );
 
@@ -97,6 +99,7 @@ class _RoutePreviewModalState extends State<RoutePreviewModal> {
                                   shape: BoxShape.circle, color: lightGrey),
                               child: GestureDetector(
                                 onTap: () async {
+                                  route.clearMarkers();
                                   await route.unloadPolylines();
                                   await route.changePage("home");
                                 },
