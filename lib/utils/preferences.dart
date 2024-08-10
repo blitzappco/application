@@ -8,6 +8,11 @@ Future<String> getToken() async {
   return prefs.getString('token') ?? '';
 }
 
+Future<int> getSelectedPM() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  return prefs.getInt('selectedPM') ?? 0;
+}
+
 Future<Account> getAccount() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
 
@@ -27,6 +32,11 @@ void setToken(String token) async {
   await prefs.setString('token', token);
 }
 
+void changeSelectedPM(int selectedPM) async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  await prefs.setInt('selectedPM', selectedPM);
+}
+
 void setAccount(Account account) async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
 
@@ -36,6 +46,11 @@ void setAccount(Account account) async {
 void removeToken() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   await prefs.remove('token');
+}
+
+void removeSelectedPM() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  await prefs.remove('selectedPM');
 }
 
 void removeAccount() async {
