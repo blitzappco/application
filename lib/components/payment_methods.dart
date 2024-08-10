@@ -14,9 +14,9 @@ class _PaymentMethodsState extends State<PaymentMethods> {
   Widget getCardLogo(String cardType) {
     switch (cardType) {
       case 'visa':
-        return Image.asset('assets/images/visa.png', width: 50, height: 50);
+        return Image.asset('assets/images/visa.svg', width: 50, height: 50);
       case 'mastercard':
-        return Image.asset('assets/images/mastercard.png',
+        return SvgPicture.asset('assets/images/mastercard.svg',
             width: 50, height: 50);
       case 'googlepay':
         return SvgPicture.asset(
