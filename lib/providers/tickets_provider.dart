@@ -14,6 +14,7 @@ class TicketsProvider with ChangeNotifier {
 
   late Ticket last;
   late bool show = false;
+  String expiry = '';
 
   bool loading = false;
   String errorMessage = '';
@@ -37,6 +38,28 @@ class TicketsProvider with ChangeNotifier {
   setTicketID(String value) {
     ticketID = value;
     notifyListeners();
+  }
+
+  setExpiry(String value) {
+    expiry = value;
+    notifyListeners();
+  }
+
+  Future<void> validateTicket(String token, String ticketID) async {
+    loading = true;
+    notifyListeners();
+
+    final body = await postValidateTicket(token, ticketID);
+
+    loading = false;
+    notifyListeners();
+
+    if (body["statusCode"] == 200) {
+      last = Ticket.fromJSON(body["ticket"]);
+      notifyListeners();
+    } else {
+      setError(body["message"]);
+    }
   }
 
   // get ticket types per city
@@ -171,6 +194,7 @@ class TicketsProvider with ChangeNotifier {
       if (tempTicket.confirmed == true) {
         disposePurchase();
         last = tempTicket;
+        show = true;
         list.add(tempTicket);
       }
       notifyListeners();

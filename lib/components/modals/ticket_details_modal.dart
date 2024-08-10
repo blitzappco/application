@@ -174,15 +174,15 @@ class _TicketDetailsModal extends State<TicketDetailsModal> {
                     ),
                   ),
                   Text(
-                    expiry != ""
-                        ? (expiry != "exp" ? expiry : "Expirat")
+                    tickets.expiry != ""
+                        ? (tickets.expiry != "exp" ? tickets.expiry : "Expirat")
                         : "Hmmm",
                     style: TextStyle(
-                      color: expiry == "exp"
+                      color: tickets.expiry == "exp"
                           ? Colors.red
                           : const Color.fromARGB(255, 114, 145, 255),
                       fontFamily: "SFProRounded",
-                      fontSize: expiry == '' ? 32 : 32,
+                      fontSize: tickets.expiry == '' ? 32 : 32,
                       fontWeight: FontWeight.w700,
                       height: 1.1,
                     ),

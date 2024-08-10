@@ -61,13 +61,8 @@ Future<dynamic> deletePurchase(String token, String ticketID) async {
             "ticketID": ticketID,
           }));
 
-  dynamic body;
-
-  if (response.statusCode != 200) {
-    body = jsonDecode(utf8.decode(response.bodyBytes));
-  } else {
-    body["statusCode"] = response.statusCode;
-  }
+  final body = jsonDecode(utf8.decode(response.bodyBytes));
+  body["statusCode"] = response.statusCode;
 
   return body;
 }

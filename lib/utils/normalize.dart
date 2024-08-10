@@ -52,7 +52,7 @@ String normalizeTime(String raw) {
     }
   } else {
     if (hour == '12') {
-      return tokens[0];
+      return '12:$minutes';
     } else {
       return '${int.parse(hour) + 12}:$minutes';
     }
