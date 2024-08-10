@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
 
 import 'package:blitz/bifrost/core/endpoints.dart';
 import 'package:blitz/components/modals/loading.dart';
@@ -44,8 +43,6 @@ class _HomescreenState extends State<Homescreen> {
 
       await tickets.getTicketTypes(auth.token, "ploiesti");
       await tickets.getLastTicket(auth.token, "ploiesti");
-
-      inspect(tickets.last.expiresAt);
 
       final from = await geocodeFromAddress("politehnica");
       route.setFrom(from);

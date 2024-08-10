@@ -166,7 +166,11 @@ class SubtotalTicket {
                       GestureDetector(
                         onTap: () async {
                           // this is when the purchase finally goes through
-                          inspect(tickets.clientSecret);
+
+                          // inspect(tickets.show);
+                          // inspect(tickets.last);
+                          // inspect(tickets.purchased);
+
                           Stripe.instance
                               .confirmPayment(
                                   paymentIntentClientSecret:
@@ -174,18 +178,30 @@ class SubtotalTicket {
                               .then((pi) async {
                             inspect(pi);
                             if (pi.status == PaymentIntentsStatus.Succeeded) {
-                              tickets.disposePurchase();
+                              String fare = getFareText(tickets.fare);
+                              tickets.movePurchasedToLast();
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => const Successful(
-                                            item: "Abonament zilnic",
-                                            amount: 6.00,
+                                      builder: (context) => Successful(
+                                            item: tickets.last.name ?? "Bilet",
+                                            amount: fare,
                                           )));
                             } else {
                               inspect(pi);
                             }
                           });
+
+                          // tickets.movePurchasedToLast();
+
+                          // inspect(tickets.show);
+                          // inspect(tickets.last);
+                          // inspect(tickets.purchased);
+                          // Navigator.push(
+                          //     context,
+                          //     MaterialPageRoute(
+                          //         builder: (context) => const Successful(
+                          //             item: 'item', amount: 2.5)));
                         },
                         child: Container(
                           height: 60,

@@ -5,7 +5,7 @@ import 'package:blitz/utils/vars.dart';
 
 class Successful extends StatefulWidget {
   final String item; // The item bought
-  final double amount; // The amount paid
+  final String amount; // The amount paid
 
   const Successful({
     super.key,
@@ -123,7 +123,7 @@ class _SuccessfulState extends State<Successful> {
                         height: 5,
                       ),
                       Text(
-                        'RON ${widget.amount.toStringAsFixed(2)}',
+                        'RON ${widget.amount}',
                         style: const TextStyle(
                           fontFamily: "SFProRounded",
                           fontWeight: FontWeight.w700,

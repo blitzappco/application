@@ -1,5 +1,4 @@
 import 'package:blitz/components/modals/ticket_details_modal.dart';
-import 'package:blitz/components/modals/wallet_modal.dart';
 import 'package:blitz/pages/ticket_flow/buy_ticket.dart';
 import 'package:blitz/providers/route_provider.dart';
 import 'package:blitz/providers/tickets_provider.dart';

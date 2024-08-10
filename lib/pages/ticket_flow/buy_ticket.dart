@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:blitz/components/ticket_selection.dart' as full;
 import 'package:blitz/components/ticket_selection_compact.dart' as compact;
 import 'package:blitz/pages/ticket_flow/subtotal_ticket.dart';
@@ -207,15 +205,14 @@ class _BuyTicketState extends State<BuyTicket> {
                   onTap: () {},
                   child: GestureDetector(
                     onTap: () async {
-                      SubtotalTicket.show(context,
-                          tickets.ticketTypesMap[typeID ?? '']!.fare ?? 0,
-                          () async {
-                        inspect(tickets.confirmed);
-                        if (tickets.confirmed == false) {
-                          await tickets.cancelPurchase(auth.token);
-                          await tickets.disposePurchase();
-                        }
-                      });
+                      // SubtotalTicket.show(context,
+                      //     tickets.ticketTypesMap[typeID ?? '']!.fare ?? 0,
+                      //     () async {
+                      //   if (tickets.confirmed == false) {
+                      //     await tickets.cancelPurchase(auth.token);
+                      //     await tickets.disposePurchase();
+                      //   }
+                      // });
 
                       // will pre-load the ticket, payment intent
                       // and will attach those two together
@@ -235,9 +232,18 @@ class _BuyTicketState extends State<BuyTicket> {
 
                       // attaching the payment to the purchase
                       // this function uses ticketID and paymentIntent
-                      await tickets.attachPurchasePayment(auth.token);
+                      tickets.attachPurchasePayment(auth.token).then((_) {
+                        SubtotalTicket.show(context,
+                            tickets.ticketTypesMap[typeID ?? '']!.fare ?? 0,
+                            () async {
+                          if (tickets.confirmed == false) {
+                            await tickets.cancelPurchase(auth.token);
+                            await tickets.disposePurchase();
+                          }
+                        });
+                      });
 
-                      inspect(tickets.clientSecret);
+                      // inspect(tickets.clientSecret);
                     },
                     child: Container(
                       decoration: BoxDecoration(

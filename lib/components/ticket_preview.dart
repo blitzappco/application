@@ -19,18 +19,11 @@ class TicketPreview extends StatefulWidget {
 
 class _TicketPreviewState extends State<TicketPreview> {
   Timer? _timer;
-  // String expiry = '';
-  // DateTime expiresAt = DateTime.now();
 
   @override
   void initState() {
     super.initState();
-    // WidgetsBinding.instance.addPostFrameCallback((_) {
-    //   final tickets = Provider.of<TicketsProvider>(context, listen: false);
-    //   // setState(() {
-    //   //   expiresAt = tickets.last.expiresAt!;
-    //   // });
-    // });
+
     startTimer();
   }
 
@@ -39,14 +32,6 @@ class _TicketPreviewState extends State<TicketPreview> {
     _timer?.cancel();
     super.dispose();
   }
-
-  // void startTimer() {
-  //   _timer = Timer.periodic(
-  //       const Duration(seconds: 1),
-  //       (Timer timer) => setState(() {
-  //             expiry = calculateExpiry(expiresAt, DateTime.now());
-  //           }));
-  // }
 
   void startTimer() {
     _timer = Timer.periodic(const Duration(seconds: 1), (Timer timer) {
@@ -127,9 +112,6 @@ class _TicketPreviewState extends State<TicketPreview> {
                             tickets
                                 .validateTicket(auth.token, tickets.last.id!)
                                 .then((_) {
-                              // expiresAt =
-                              //     tickets.last.expiresAt ?? DateTime.now();
-
                               TicketDetailsModal.show(
                                   context, ScreenBrightness().current);
                             });
