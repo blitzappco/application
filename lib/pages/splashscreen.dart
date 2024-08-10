@@ -38,22 +38,21 @@ class _SplashScreenState extends State<SplashScreen> {
             () => Navigator.push(context,
                 MaterialPageRoute(builder: (context) => const GetStarted())));
       } else {
-        Timer(const Duration(milliseconds: 500), () async {
-          // Position? pos = await getCurrentLocation();
-          permission = await Geolocator.checkPermission();
-
-          if (permission == LocationPermission.denied ||
-              permission == LocationPermission.deniedForever) {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const AskLocation()),
-            );
-          } else {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const Homescreen()),
-            );
-          }
+        Timer(const Duration(milliseconds: 200), () async {
+          Geolocator.checkPermission().then((permission) {
+            if (permission == LocationPermission.denied ||
+                permission == LocationPermission.deniedForever) {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const AskLocation()),
+              );
+            } else {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const Homescreen()),
+              );
+            }
+          });
         });
       }
     });

@@ -3,6 +3,7 @@ import 'package:blitz/providers/route_provider.dart';
 import 'package:blitz/utils/vars.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
@@ -11,6 +12,10 @@ import './providers/tickets_provider.dart';
 
 Future main() async {
   await dotenv.load(fileName: ".env");
+
+  Stripe.publishableKey =
+      'pk_test_51N7GUIA57ELnbsBv1BTv3Ez0xrddttwv7fJAtC5u1ISSCR5yHHxH1gcY4md0u7iygd0k8nUhTDOplFUqbgwtP83t00vcnZRno7';
+  Stripe.merchantIdentifier = 'merchant.blitzapp.co';
 
   if (dev) {
     runApp(const MyApp());

@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:blitz/bifrost/core/models/route.dart';
+import 'package:blitz/components/shorthand.dart';
 import 'package:blitz/utils/normalize.dart';
 import 'package:blitz/utils/shorthand.dart';
 import 'package:flutter/material.dart';
@@ -34,25 +36,31 @@ class RoutePreviewCard extends StatelessWidget {
                       const TextStyle(fontFamily: 'UberMoveBold', fontSize: 23),
                 ),
                 Row(
-                  children: [
-                    Text(
-                      route.leg.steps[0].travelMode == "TRANSIT"
-                          ? 'Leaves at ${normalizeTime(route.leg.departureTime.text)}'
-                          : 'Leave now',
-                      style: const TextStyle(
-                          fontFamily: 'UberMove',
-                          fontSize: 14,
-                          color: Colors.grey),
-                    ),
-                    Transform.rotate(
-                      angle: 45 * 3.141592653589793 / 180,
-                      child: Lottie.network(
-                          'https://lottie.host/1e2cd4a1-120e-4f95-8b15-2257bf2e9a1b/j8iPCwLDUL.json',
-                          height: 20,
-                          width: 20),
-                    )
-                  ],
-                ),
+                    children: route.leg.travelMode == "TRANSIT"
+                        ? [
+                            Text(
+                              route.leg.steps[0].travelMode == "TRANSIT"
+                                  ? 'Leaves at ${normalizeTime(route.leg.departureTime!.text)}'
+                                  : 'Leave now',
+                              style: const TextStyle(
+                                  fontFamily: 'UberMove',
+                                  fontSize: 14,
+                                  color: Colors.grey),
+                            ),
+                            Transform.rotate(
+                              angle: 45 * 3.141592653589793 / 180,
+                              child: Lottie.network(
+                                  'https://lottie.host/1e2cd4a1-120e-4f95-8b15-2257bf2e9a1b/j8iPCwLDUL.json',
+                                  height: 20,
+                                  width: 20),
+                            )
+                          ]
+                        : [
+                            Shorthand(
+                                transit: false,
+                                duration: route.leg.duration.text,
+                                line: Line.fromEmpty()),
+                          ]),
                 const SizedBox(
                   height: 10,
                 ),
@@ -63,7 +71,9 @@ class RoutePreviewCard extends StatelessWidget {
                     spacing:
                         0.0, // Adjust the spacing between elements as needed
                     runSpacing: 8.0, // Adjust the run spacing as needed
-                    children: processShorthands(route.leg.steps),
+                    children: route.leg.travelMode == "TRANSIT"
+                        ? processShorthands(route.leg.steps)
+                        : [],
                   ),
                 )
               ],

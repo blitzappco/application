@@ -35,8 +35,9 @@ class Bounds {
 }
 
 class Leg {
-  Field departureTime;
-  Field arrivalTime;
+  Field? departureTime;
+  Field? arrivalTime;
+  String travelMode;
 
   Field distance;
   Field duration;
@@ -47,29 +48,48 @@ class Leg {
   LatLng endLocation;
 
   List<Step> steps;
+  List<StepWalking> stepsWalking;
 
-  Leg({
-    required this.departureTime,
-    required this.arrivalTime,
-    required this.distance,
-    required this.duration,
-    required this.startAddress,
-    required this.startLocation,
-    required this.endAddress,
-    required this.endLocation,
-    required this.steps,
-  });
+  Leg(
+      {this.departureTime,
+      this.arrivalTime,
+      required this.travelMode,
+      required this.distance,
+      required this.duration,
+      required this.startAddress,
+      required this.startLocation,
+      required this.endAddress,
+      required this.endLocation,
+      required this.steps,
+      required this.stepsWalking});
 
   factory Leg.fromJSON(Map<String, dynamic> json) {
+    String mode;
+    if (json.containsKey('arrival_time')) {
+      mode = 'TRANSIT';
+    } else {
+      mode = 'WALKING';
+    }
     List<Step> stepsList = [];
-
-    for (int i = 0; i < json['steps'].length; i++) {
-      stepsList.add(Step.fromJSON(json['steps'][i]));
+    List<StepWalking> stepsWalkingList = [];
+    if (mode == 'TRANSIT') {
+      for (int i = 0; i < json['steps'].length; i++) {
+        stepsList.add(Step.fromJSON(json['steps'][i]));
+      }
+    } else {
+      for (int i = 0; i < json['steps'].length; i++) {
+        stepsWalkingList.add(StepWalking.fromJSON(json['steps'][i]));
+      }
     }
 
     return Leg(
-      arrivalTime: Field.fromJSON(json['arrival_time']),
-      departureTime: Field.fromJSON(json['departure_time']),
+      travelMode: mode,
+      arrivalTime: mode == 'TRANSIT'
+          ? Field.fromJSON(json['arrival_time'])
+          : Field.fromEmpty(),
+      departureTime: mode == 'TRANSIT'
+          ? Field.fromJSON(json['departure_time'] ?? false)
+          : Field.fromEmpty(),
       distance: Field.fromJSON(json['distance']),
       duration: Field.fromJSON(json['duration']),
       startAddress: json['start_address'],
@@ -79,6 +99,7 @@ class Leg {
       endLocation:
           LatLng(json['end_location']['lat'], json['end_location']['lng']),
       steps: stepsList,
+      stepsWalking: stepsWalkingList,
     );
   }
 }
@@ -245,7 +266,7 @@ class Line {
     );
   }
 
-  factory Line.empty() {
+  factory Line.fromEmpty() {
     return Line(color: '', name: '', vehicleType: '');
   }
 }
@@ -259,10 +280,14 @@ class Field {
     required this.value,
   });
 
-  factory Field.fromJSON(Map<String, dynamic> json) {
+  factory Field.fromJSON(dynamic json) {
     return Field(
       text: json['text'],
       value: json['value'],
     );
+  }
+
+  factory Field.fromEmpty() {
+    return Field(text: "NOOOOOOO", value: 123456);
   }
 }

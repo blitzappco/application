@@ -11,7 +11,7 @@ List<Widget> processShorthands(List<r.Step> steps) {
     result.add(Shorthand(
       duration: step.duration.text,
       transit: step.travelMode == "TRANSIT",
-      line: step.transitDetails?.line ?? Line.empty(),
+      line: step.transitDetails?.line ?? Line.fromEmpty(),
     ));
     // Add an Icon between each Shorthand except for the last one
     if (i < steps.length - 1) {

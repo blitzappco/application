@@ -34,18 +34,46 @@ class DirectionsModal extends StatelessWidget {
                   topRight: Radius.circular(20),
                 ),
               ),
-              child: CustomScrollView(
-                controller: scrollController,
-                slivers: [
-                  SliverToBoxAdapter(
-                    child: Padding(
-                      padding: const EdgeInsets.only(
-                          left: 20, right: 20, top: 13, bottom: 5),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          GestureDetector(
+
+            ),
+            child: CustomScrollView(
+              controller: scrollController,
+              slivers: [
+                SliverToBoxAdapter(
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                        left: 20, right: 20, top: 13, bottom: 5),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            route.changePage("preview");
+                          },
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                '${normalizeDuration(route.routes[route.routeIndex].leg.duration.value)} ',
+                                style: const TextStyle(
+                                    fontSize: 24, fontFamily: "UberMoveBold"),
+                              ),
+                              Text(
+                                'Arrival time: ${normalizeTime(route.routes[route.routeIndex].leg.arrivalTime!.text)}',
+                                style: const TextStyle(
+                                    fontSize: 16, fontFamily: "UberMoveMedium"),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                              color: const Color.fromARGB(255, 102, 91, 252),
+                              borderRadius:
+                                  BorderRadiusDirectional.circular(30)),
+                          child: GestureDetector(
+
                             onTap: () {
                               route.changePage("preview");
                             },

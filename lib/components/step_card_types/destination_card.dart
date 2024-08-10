@@ -38,7 +38,7 @@ class DestinationCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          destination?.mainText ?? '',
+                          shorten(destination?.mainText ?? '', 30),
                           style: const TextStyle(
                               fontSize: 18, fontFamily: "UberMoveBold"),
                         ),

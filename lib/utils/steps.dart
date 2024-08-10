@@ -2,6 +2,30 @@ import 'package:blitz/components/step_card_types/step_card.dart';
 import 'package:blitz/bifrost/core/models/place.dart';
 import 'package:blitz/bifrost/core/models/route.dart' as route;
 
+List<StepCard> processStepsWalking(
+    List<route.StepWalking> steps, Place destination) {
+  List<StepCard> result = [];
+
+  for (int i = 0; i < steps.length; i++) {
+    var step = steps[i];
+
+    result.add(StepCard(
+      type: 'walking_directions',
+      distance: step.distance.value,
+      duration: step.duration.value,
+      instructions: step.instructions,
+    ));
+  }
+
+  result.add(StepCard(
+    type: 'destination',
+    destination: destination,
+    distance: 0,
+    duration: 0,
+  ));
+  return result;
+}
+
 List<StepCard> processSteps(List<route.Step> steps, Place destination) {
   List<StepCard> result = [];
 
