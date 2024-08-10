@@ -37,6 +37,7 @@ class AccountProvider with ChangeNotifier {
   loadAccount() async {
     token = await getToken();
     account = await getAccount();
+    selectedPM = await getSelectedPM();
     notifyListeners();
   }
 
@@ -47,6 +48,7 @@ class AccountProvider with ChangeNotifier {
 
   setSelectedPM(int index) {
     selectedPM = index;
+    changeSelectedPM(index);
     notifyListeners();
   }
 
@@ -82,13 +84,16 @@ class AccountProvider with ChangeNotifier {
     if (body["statusCode"] == 200) {
       token = body['token'];
       setToken(token);
-      notifyListeners();
 
       account = Account.fromJSON(body['account']);
       account.trips = account.trips?.reversed.toList();
       setAccount(account);
 
+      setSelectedPM(0);
+
       await setError('');
+
+      notifyListeners();
     } else {
       await setError(body["message"]);
     }
@@ -347,9 +352,11 @@ class AccountProvider with ChangeNotifier {
   logout() async {
     account = Account();
     token = '';
+    selectedPM = 0;
     notifyListeners();
 
     removeAccount();
     removeToken();
+    removeSelectedPM();
   }
 }
