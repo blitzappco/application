@@ -1,12 +1,14 @@
 import 'dart:developer';
 
 // import 'package:blitz/pages/ticket_flow/add_card.dart';
+import 'package:blitz/pages/ticket_flow/add_card.dart';
 import 'package:blitz/pages/ticket_flow/add_payment_method.dart';
 import 'package:blitz/providers/account_provider.dart';
 import 'package:blitz/providers/tickets_provider.dart';
 import 'package:blitz/utils/payments.dart';
 import 'package:blitz/utils/vars.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:provider/provider.dart';
 
 class SelectMethodModal {
@@ -111,7 +113,7 @@ class SelectMethodModal {
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  const AddPaymentMethodPage()));
+                                                  const AddCardPage()));
 
                                       // auth.createSetupIntent().then((_) async {
                                       //   initPaymentSheet(
@@ -137,6 +139,7 @@ class SelectMethodModal {
                                       //     // });
                                       //     // Stripe.instance.confirmSetupIntent(paymentIntentClientSecret: auth.clientSecret, params: PaymentMethodParams.card(paymentMethodData: PaymentMethodDataCardFromMethod(paymentMethodId: )))
                                       //   });
+                                      // Stripe.instance.confirmSetupIntent();
                                       // });
                                     },
                                     child: Row(

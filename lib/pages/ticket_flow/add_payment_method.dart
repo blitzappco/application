@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'dart:ui';
+
+import 'package:flutter_stripe/flutter_stripe.dart';
 
 class AddPaymentMethodPage extends StatefulWidget {
   const AddPaymentMethodPage({super.key});
@@ -10,6 +11,23 @@ class AddPaymentMethodPage extends StatefulWidget {
 
 class _AddPaymentMethodPageState extends State<AddPaymentMethodPage>
     with WidgetsBindingObserver {
+  final controller = CardFormEditController();
+
+  void update() => setState(() {});
+
+  @override
+  void initState() {
+    controller.addListener(update);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    controller.removeListener(update);
+    controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,6 +101,15 @@ class _AddPaymentMethodPageState extends State<AddPaymentMethodPage>
                     ),
                     const SizedBox(
                       height: 50,
+                    ),
+                    // this is where the form on the previous page started
+                    CardFormField(
+                      controller: controller,
+                      style: CardFormStyle(
+                        backgroundColor: const Color(0xFFF8F8F8),
+                        textColor: Colors.black,
+                        placeholderColor: Colors.grey[800],
+                      ),
                     ),
                   ],
                 ),
