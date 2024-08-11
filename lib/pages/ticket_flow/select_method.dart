@@ -1,4 +1,7 @@
-import 'package:blitz/pages/ticket_flow/add_card.dart';
+import 'dart:developer';
+
+// import 'package:blitz/pages/ticket_flow/add_card.dart';
+import 'package:blitz/pages/ticket_flow/add_payment_method.dart';
 import 'package:blitz/providers/account_provider.dart';
 import 'package:blitz/providers/tickets_provider.dart';
 import 'package:blitz/utils/payments.dart';
@@ -60,6 +63,8 @@ class SelectMethodModal {
                                 ? GestureDetector(
                                     onTap: () {
                                       auth.setSelectedPM(index);
+                                      inspect(auth.account
+                                          .paymentMethods![auth.selectedPM].id);
                                       Navigator.pop(context);
                                     },
                                     child: Row(
@@ -101,12 +106,38 @@ class SelectMethodModal {
                                   )
                                 : GestureDetector(
                                     // the element to add other payment methods
-                                    onTap: () {
+                                    onTap: () async {
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  const AddCardPage()));
+                                                  const AddPaymentMethodPage()));
+
+                                      // auth.createSetupIntent().then((_) async {
+                                      //   initPaymentSheet(
+                                      //           context, auth.clientSecret)
+                                      //       .then((_) {
+                                      //     // Stripe.instance.presentPaymentSheet();
+                                      //     // Stripe.instance
+                                      //     //     .confirmPlatformPaySetupIntent(
+                                      //     //         clientSecret:
+                                      //     //             auth.clientSecret,
+                                      //     //         confirmParams:
+                                      //     //             const PlatformPayConfirmParams
+                                      //     //                 .googlePay(
+                                      //     //                 googlePay:
+                                      //     //                     GooglePayParams(
+                                      //     //                         testEnv: true,
+                                      //     //                         merchantCountryCode:
+                                      //     //                             "RO",
+                                      //     //                         currencyCode:
+                                      //     //                             "RON")))
+                                      //     //     .then((si) {
+                                      //     //   inspect(si);
+                                      //     // });
+                                      //     // Stripe.instance.confirmSetupIntent(paymentIntentClientSecret: auth.clientSecret, params: PaymentMethodParams.card(paymentMethodData: PaymentMethodDataCardFromMethod(paymentMethodId: )))
+                                      //   });
+                                      // });
                                     },
                                     child: Row(
                                       mainAxisAlignment:

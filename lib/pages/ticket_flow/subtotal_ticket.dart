@@ -39,16 +39,6 @@ class SubtotalTicket {
           // ticketID and fare
           await tickets.createPurchase(auth.token, typeID, name);
 
-          // creating the payment intent (stripe)
-          // this function will return
-          // clientSecret and paymentIntent
-          // and it uses fare
-          await tickets.createPayment(auth.token, auth.selectedPM);
-
-          // attaching the payment to the purchase
-          // this function uses ticketID and paymentIntent
-          await tickets.attachPurchasePayment(auth.token);
-
           tickets.setBuyLoading(false);
         });
         return Consumer<AccountProvider>(builder: (context, auth, _) {
@@ -191,14 +181,21 @@ class SubtotalTicket {
                       ),
                       GestureDetector(
                         onTap: () async {
-                          // this is when the purchase finally goes through
-
-                          // inspect(tickets.show);
-                          // inspect(tickets.last);
-                          // inspect(tickets.purchased);
-
                           tickets.setBuyLoading(true);
 
+                          // creating the payment intent (stripe)
+                          // this function will return
+                          // clientSecret and paymentIntent
+                          // and it uses fare
+                          await tickets.createPayment(
+                              auth.token, auth.selectedPM);
+
+                          // attaching the payment to the purchase
+                          // this function uses ticketID and paymentIntent
+                          await tickets.attachPurchasePayment(auth.token);
+
+                          // and finally,
+                          // confirming the payment through stripe
                           Stripe.instance
                               .confirmPayment(
                                   paymentIntentClientSecret:
