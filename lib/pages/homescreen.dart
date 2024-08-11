@@ -34,12 +34,11 @@ class _HomescreenState extends State<Homescreen> {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       final route = Provider.of<RouteProvider>(context, listen: false);
       final auth = Provider.of<AccountProvider>(context, listen: false);
+      final tickets = Provider.of<TicketsProvider>(context, listen: false);
 
       // await auth.getTrips();
       // await auth.getLabels();
       // await auth.getPaymentMethods();
-
-      final tickets = Provider.of<TicketsProvider>(context, listen: false);
 
       await tickets.getTicketTypes(auth.token, "ploiesti");
       await tickets.getLastTicket(auth.token, "ploiesti");

@@ -78,4 +78,6 @@ flutter {
     source '../..'
 }
 
-dependencies {}
+dependencies {
+    implementation 'com.stripe:stripe-android:17.1.1'
+}
