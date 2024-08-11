@@ -1,4 +1,3 @@
-import 'package:blitz/utils/vars.dart';
 import 'package:flutter/material.dart';
 import 'package:stroke_text/stroke_text.dart';
 
@@ -7,7 +6,7 @@ class StationMarker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 290,
       width: 2000,
       child: Center(
@@ -24,7 +23,7 @@ class StationMarker extends StatelessWidget {
               strokeColor: Colors.white.withOpacity(0),
               strokeWidth: 10,
             ),
-            SizedBox(
+            const SizedBox(
               width: 20,
             ),
             Container(
@@ -35,10 +34,10 @@ class StationMarker extends StatelessWidget {
                   color: Colors.white,
                   border: Border.all(color: Colors.black, width: 5)),
             ),
-            SizedBox(
+            const SizedBox(
               width: 20,
             ),
-            StrokeText(
+            const StrokeText(
               text: "Piata",
               textStyle: TextStyle(
                   fontFamily: "SFProRounded",
