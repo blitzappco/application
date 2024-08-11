@@ -17,7 +17,6 @@ class _BuyTicketPromptState extends State<BuyTicketPrompt> {
     return Consumer<TicketsProvider>(builder: (context, tickets, _) {
       return GestureDetector(
         onTap: () {
-          tickets.setMustActivate(false);
           BuyTicket.show(context);
         },
         child: Container(

@@ -1,3 +1,4 @@
+import 'package:blitz/components/modals/ticket_details_modal.dart';
 import 'package:blitz/providers/account_provider.dart';
 import 'package:blitz/providers/tickets_provider.dart';
 import 'package:flutter/material.dart';
@@ -5,6 +6,7 @@ import 'package:lottie/lottie.dart';
 import 'dart:async'; // Import the async package
 import 'package:blitz/utils/vars.dart';
 import 'package:provider/provider.dart';
+import 'package:screen_brightness/screen_brightness.dart';
 
 class Successful extends StatefulWidget {
   final String item; // The item bought
@@ -176,16 +178,12 @@ class _SuccessfulState extends State<Successful> {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          // final tickets =
-                          //     Provider.of<TicketsProvider>(context, listen: false);
-                          // final auth =
-                          //     Provider.of<AccountProvider>(context, listen: false);
-
-                          //Add action to activate ticket
                           tickets.validateTicket(auth.token, tickets.last.id!);
                           Navigator.pop(context);
                           Navigator.pop(context);
                           Navigator.pop(context);
+                          TicketDetailsModal.show(
+                              context, ScreenBrightness().current);
                         },
                         child: Container(
                           decoration: BoxDecoration(
@@ -212,35 +210,34 @@ class _SuccessfulState extends State<Successful> {
                       const SizedBox(
                         height: 8,
                       ),
-                      if (!tickets.mustActivate)
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.pop(context);
-                            Navigator.pop(context);
-                            Navigator.pop(context);
-                          },
-                          child: Container(
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(9),
-                                color: const Color.fromARGB(255, 79, 79, 79)),
-                            child: const Padding(
-                              padding: EdgeInsets.all(13.0),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    "Inchide pagina",
-                                    style: TextStyle(
-                                        fontFamily: "SFProRounded",
-                                        color: Colors.white,
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.w600),
-                                  ),
-                                ],
-                              ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pop(context);
+                          Navigator.pop(context);
+                          Navigator.pop(context);
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(9),
+                              color: const Color.fromARGB(255, 79, 79, 79)),
+                          child: const Padding(
+                            padding: EdgeInsets.all(13.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "Inchide pagina",
+                                  style: TextStyle(
+                                      fontFamily: "SFProRounded",
+                                      color: Colors.white,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ],
                             ),
                           ),
                         ),
+                      ),
                     ],
                   );
                 });
