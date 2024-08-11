@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:blitz/components/route_preview_card.dart';
 import 'package:blitz/providers/route_provider.dart';
 import 'package:blitz/utils/shorten.dart';
+import 'package:blitz/utils/station_marker.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
@@ -278,7 +280,30 @@ class _RoutePreviewModalState extends State<RoutePreviewModal> {
                                   ),
                                 ),
                               )
-                            : const Center(child: Text("Te pup jos serifule")),
+                            : Center(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    SizedBox(
+                                      height: 20,
+                                    ),
+                                    Icon(
+                                      CupertinoIcons
+                                          .exclamationmark_circle_fill,
+                                      color: darkGrey,
+                                      size: 30,
+                                    ),
+                                    Text(
+                                      "Nu exista rute ce contin mijloace de transport",
+                                      style: TextStyle(
+                                          fontFamily: "SFProRounded",
+                                          fontSize: 16,
+                                          color: darkGrey,
+                                          fontWeight: FontWeight.w600),
+                                    ),
+                                  ],
+                                ),
+                              ),
                       ]),
                 ),
               ),

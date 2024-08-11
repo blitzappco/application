@@ -38,7 +38,7 @@ dependencies:
   flutter_launcher_icons: ^0.13.1
   widget_to_marker: ^1.0.6
   stroke_text: ^0.0.3
-  # otp_autofill: ^3.0.2
+  package_info_plus: ^8.0.2
 
 dev_dependencies:
   flutter_test:
