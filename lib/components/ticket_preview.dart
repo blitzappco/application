@@ -6,7 +6,6 @@ import 'package:blitz/providers/tickets_provider.dart';
 import 'package:blitz/utils/vars.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:screen_brightness/screen_brightness.dart';
 import 'package:blitz/utils/normalize.dart';
 
 class TicketPreview extends StatefulWidget {
@@ -19,18 +18,11 @@ class TicketPreview extends StatefulWidget {
 
 class _TicketPreviewState extends State<TicketPreview> {
   Timer? _timer;
-  // String expiry = '';
-  // DateTime expiresAt = DateTime.now();
 
   @override
   void initState() {
     super.initState();
-    // WidgetsBinding.instance.addPostFrameCallback((_) {
-    //   final tickets = Provider.of<TicketsProvider>(context, listen: false);
-    //   // setState(() {
-    //   //   expiresAt = tickets.last.expiresAt!;
-    //   // });
-    // });
+
     startTimer();
   }
 
@@ -39,14 +31,6 @@ class _TicketPreviewState extends State<TicketPreview> {
     _timer?.cancel();
     super.dispose();
   }
-
-  // void startTimer() {
-  //   _timer = Timer.periodic(
-  //       const Duration(seconds: 1),
-  //       (Timer timer) => setState(() {
-  //             expiry = calculateExpiry(expiresAt, DateTime.now());
-  //           }));
-  // }
 
   void startTimer() {
     _timer = Timer.periodic(const Duration(seconds: 1), (Timer timer) {
@@ -62,8 +46,11 @@ class _TicketPreviewState extends State<TicketPreview> {
       return Consumer<TicketsProvider>(builder: (context, tickets, _) {
         return GestureDetector(
           onTap: () async {
-            if (widget.activeTicket) {
-              TicketDetailsModal.show(context, ScreenBrightness().current);
+            if (tickets.last.expiresAt?.year != 1) {
+              // ScreenBrightness().current.then((brightness) {
+              //   TicketDetailsModal.show(context, brightness);
+              // });
+              TicketDetailsModal.show(context);
             }
           },
           child: Container(
@@ -126,12 +113,8 @@ class _TicketPreviewState extends State<TicketPreview> {
                             //Activate the ticket
                             tickets
                                 .validateTicket(auth.token, tickets.last.id!)
-                                .then((_) {
-                              // expiresAt =
-                              //     tickets.last.expiresAt ?? DateTime.now();
-
-                              TicketDetailsModal.show(
-                                  context, ScreenBrightness().current);
+                                .then((_) async {
+                              TicketDetailsModal.show(context);
                             });
                           },
                           child: Container(

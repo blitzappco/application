@@ -1,11 +1,15 @@
+import 'package:blitz/components/modals/ticket_details_modal.dart';
+import 'package:blitz/providers/account_provider.dart';
+import 'package:blitz/providers/tickets_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'dart:async'; // Import the async package
 import 'package:blitz/utils/vars.dart';
+import 'package:provider/provider.dart';
 
 class Successful extends StatefulWidget {
   final String item; // The item bought
-  final double amount; // The amount paid
+  final String amount; // The amount paid
 
   const Successful({
     super.key,
@@ -123,7 +127,7 @@ class _SuccessfulState extends State<Successful> {
                         height: 5,
                       ),
                       Text(
-                        'RON ${widget.amount.toStringAsFixed(2)}',
+                        'RON ${widget.amount}',
                         style: const TextStyle(
                           fontFamily: "SFProRounded",
                           fontWeight: FontWeight.w700,
@@ -166,70 +170,76 @@ class _SuccessfulState extends State<Successful> {
                 ],
               ),
               const Spacer(),
-              Column(
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      //Add action to activate ticket
-                      Navigator.pop(context);
-                      Navigator.pop(context);
-                      Navigator.pop(context);
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(9),
-                          color: const Color.fromARGB(255, 94, 8, 199)),
-                      child: const Padding(
-                        padding: EdgeInsets.all(13.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              "Activeaza bilet",
-                              style: TextStyle(
-                                  fontFamily: "SFProRounded",
-                                  color: Colors.white,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w600),
+              Consumer<AccountProvider>(builder: (context, auth, _) {
+                return Consumer<TicketsProvider>(
+                    builder: (context, tickets, _) {
+                  return Column(
+                    children: [
+                      GestureDetector(
+                        onTap: () async {
+                          tickets.validateTicket(auth.token, tickets.last.id!);
+                          Navigator.pop(context);
+                          Navigator.pop(context);
+                          Navigator.pop(context);
+                          TicketDetailsModal.show(context);
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(9),
+                              color: const Color.fromARGB(255, 94, 8, 199)),
+                          child: const Padding(
+                            padding: EdgeInsets.all(13.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "Activeaza bilet",
+                                  style: TextStyle(
+                                      fontFamily: "SFProRounded",
+                                      color: Colors.white,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ],
                             ),
-                          ],
+                          ),
                         ),
                       ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pop(context);
-                      Navigator.pop(context);
-                      Navigator.pop(context);
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(9),
-                          color: const Color.fromARGB(255, 79, 79, 79)),
-                      child: const Padding(
-                        padding: EdgeInsets.all(13.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              "Inchide pagina",
-                              style: TextStyle(
-                                  fontFamily: "SFProRounded",
-                                  color: Colors.white,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w600),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pop(context);
+                          Navigator.pop(context);
+                          Navigator.pop(context);
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(9),
+                              color: const Color.fromARGB(255, 79, 79, 79)),
+                          child: const Padding(
+                            padding: EdgeInsets.all(13.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "Inchide pagina",
+                                  style: TextStyle(
+                                      fontFamily: "SFProRounded",
+                                      color: Colors.white,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ],
                             ),
-                          ],
+                          ),
                         ),
                       ),
-                    ),
-                  ),
-                ],
-              ),
+                    ],
+                  );
+                });
+              }),
               const SizedBox(
                 height: 10,
               ),

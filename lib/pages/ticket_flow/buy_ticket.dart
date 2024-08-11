@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:blitz/components/ticket_selection.dart' as full;
 import 'package:blitz/components/ticket_selection_compact.dart' as compact;
 import 'package:blitz/pages/ticket_flow/subtotal_ticket.dart';
@@ -207,37 +205,11 @@ class _BuyTicketState extends State<BuyTicket> {
                   onTap: () {},
                   child: GestureDetector(
                     onTap: () async {
-                      SubtotalTicket.show(context,
+                      SubtotalTicket.show(
+                          context,
                           tickets.ticketTypesMap[typeID ?? '']!.fare ?? 0,
-                          () async {
-                        inspect(tickets.confirmed);
-                        if (tickets.confirmed == false) {
-                          await tickets.cancelPurchase(auth.token);
-                          await tickets.disposePurchase();
-                        }
-                      });
-
-                      // will pre-load the ticket, payment intent
-                      // and will attach those two together
-                      await tickets.setConfirmed(false);
-
-                      // creating the purchase intent (the ticket)
-                      // this function will return
-                      // ticketID and fare
-                      await tickets.createPurchase(
-                          auth.token, typeID ?? '1234', name ?? 'fu');
-
-                      // creating the payment intent (stripe)
-                      // this function will return
-                      // clientSecret and paymentIntent
-                      // and it uses fare
-                      await tickets.createPayment(auth.token, auth.selectedPM);
-
-                      // attaching the payment to the purchase
-                      // this function uses ticketID and paymentIntent
-                      await tickets.attachPurchasePayment(auth.token);
-
-                      inspect(tickets.clientSecret);
+                          typeID ?? '1234',
+                          name ?? "Bilet");
                     },
                     child: Container(
                       decoration: BoxDecoration(

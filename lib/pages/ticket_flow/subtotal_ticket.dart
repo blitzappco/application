@@ -12,8 +12,7 @@ import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:provider/provider.dart';
 
 class SubtotalTicket {
-  static void show(
-      BuildContext context, int fare, Future<void> Function() onClose) {
+  static void show(BuildContext context, int fare, String typeID, String name) {
     showModalBottomSheet(
       backgroundColor: const Color.fromARGB(255, 250, 250, 250),
       isScrollControlled: true,
@@ -25,6 +24,23 @@ class SubtotalTicket {
         ),
       ),
       builder: (BuildContext context) {
+        WidgetsBinding.instance.addPostFrameCallback((_) async {
+          final tickets = Provider.of<TicketsProvider>(context, listen: false);
+          final auth = Provider.of<AccountProvider>(context, listen: false);
+
+          tickets.setBuyLoading(true);
+
+          // will pre-load the ticket, payment intent
+          // and will attach those two together
+          await tickets.setConfirmed(false);
+
+          // creating the purchase intent (the ticket)
+          // this function will return
+          // ticketID and fare
+          await tickets.createPurchase(auth.token, typeID, name);
+
+          tickets.setBuyLoading(false);
+        });
         return Consumer<AccountProvider>(builder: (context, auth, _) {
           return Consumer<TicketsProvider>(builder: (context, tickets, _) {
             return Padding(
@@ -165,8 +181,21 @@ class SubtotalTicket {
                       ),
                       GestureDetector(
                         onTap: () async {
-                          // this is when the purchase finally goes through
-                          inspect(tickets.clientSecret);
+                          tickets.setBuyLoading(true);
+
+                          // creating the payment intent (stripe)
+                          // this function will return
+                          // clientSecret and paymentIntent
+                          // and it uses fare
+                          await tickets.createPayment(
+                              auth.token, auth.selectedPM);
+
+                          // attaching the payment to the purchase
+                          // this function uses ticketID and paymentIntent
+                          await tickets.attachPurchasePayment(auth.token);
+
+                          // and finally,
+                          // confirming the payment through stripe
                           Stripe.instance
                               .confirmPayment(
                                   paymentIntentClientSecret:
@@ -174,26 +203,71 @@ class SubtotalTicket {
                               .then((pi) async {
                             inspect(pi);
                             if (pi.status == PaymentIntentsStatus.Succeeded) {
-                              tickets.disposePurchase();
+                              String fare = getFareText(tickets.fare);
+                              tickets.movePurchasedToLast();
+                              tickets.setBuyLoading(false);
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => const Successful(
-                                            item: "Abonament zilnic",
-                                            amount: 6.00,
+                                      builder: (context) => Successful(
+                                            item: tickets.last.name ?? "Bilet",
+                                            amount: fare,
                                           )));
                             } else {
                               inspect(pi);
                             }
                           });
+
+                          // tickets.movePurchasedToLast();
+
+                          // inspect(tickets.show);
+                          // inspect(tickets.last);
+                          // inspect(tickets.purchased);
+                          // Navigator.push(
+                          //     context,
+                          //     MaterialPageRoute(
+                          //         builder: (context) => const Successful(
+                          //             item: 'item', amount: 2.5)));
                         },
+                        // child: Container(
+                        //   height: 60,
+                        //   width: double.infinity,
+                        //   decoration: const BoxDecoration(
+                        //       image: DecorationImage(
+                        //           image:
+                        //               AssetImage("assets/images/PayWAP.png"))),
+                        // ),
                         child: Container(
-                          height: 60,
-                          width: double.infinity,
-                          decoration: const BoxDecoration(
-                              image: DecorationImage(
-                                  image:
-                                      AssetImage("assets/images/PayWAP.png"))),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(9),
+                            color: Colors.black,
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(13.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                !tickets.buyLoading
+                                    ? const Text(
+                                        'Continua',
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w600,
+                                          fontFamily: 'SFProRounded',
+                                        ),
+                                      )
+                                    : const SizedBox(
+                                        width: 30,
+                                        height: 30,
+                                        child: CircularProgressIndicator(
+                                          color: Colors.white,
+                                          strokeWidth: 2,
+                                        ),
+                                      ),
+                              ],
+                            ),
+                          ),
                         ),
                       ),
                     ],
@@ -202,8 +276,14 @@ class SubtotalTicket {
           });
         });
       },
-    ).then((void _) {
-      onClose();
+    ).then((void _) async {
+      final tickets = Provider.of<TicketsProvider>(context, listen: false);
+      final auth = Provider.of<AccountProvider>(context, listen: false);
+
+      if (tickets.confirmed == false) {
+        await tickets.cancelPurchase(auth.token);
+        await tickets.disposePurchase();
+      }
     });
   }
 }

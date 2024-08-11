@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:blitz/bifrost/mercury/models/ticket_type.dart';
 import 'package:blitz/bifrost/mercury/models/ticket.dart';
 import 'package:blitz/bifrost/mercury/purchase.dart';
@@ -10,7 +12,7 @@ class TicketsProvider with ChangeNotifier {
   Map<String, List<TicketType>> typesMap = {};
   Map<String, TicketType> ticketTypesMap = {};
 
-  Ticket purchased = Ticket();
+  Ticket purchased = Ticket(confirmed: false);
 
   late Ticket last;
   late bool show = false;
@@ -18,12 +20,18 @@ class TicketsProvider with ChangeNotifier {
 
   bool loading = false;
   String errorMessage = '';
+  bool buyLoading = false;
 
   int fare = 0;
   String ticketID = '';
   bool confirmed = true;
   String clientSecret = '';
   String paymentIntent = '';
+
+  setBuyLoading(bool value) {
+    buyLoading = value;
+    notifyListeners();
+  }
 
   setConfirmed(bool value) {
     confirmed = value;
@@ -163,7 +171,7 @@ class TicketsProvider with ChangeNotifier {
     }
   }
 
-  attachPurchasePayment(String token) async {
+  Future<void> attachPurchasePayment(String token) async {
     loading = true;
     notifyListeners();
 
@@ -172,12 +180,28 @@ class TicketsProvider with ChangeNotifier {
     notifyListeners();
 
     if (body["statusCode"] == 200) {
+      inspect(body["ticket"]);
       purchased = Ticket.fromJSON(body["ticket"]);
+      inspect(purchased);
 
       notifyListeners();
     } else {
       setError(body["message"]);
     }
+  }
+
+  movePurchasedToLast() {
+    last = purchased;
+    last.confirmed = true;
+    show = true;
+    list.add(last);
+
+    purchased = Ticket();
+    ticketID = '';
+    fare = 0;
+    confirmed = true;
+
+    notifyListeners();
   }
 
   confirmPurchase(String token) async {

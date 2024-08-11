@@ -302,7 +302,7 @@ class AccountProvider with ChangeNotifier {
     }
   }
 
-  createSetupIntent() async {
+  Future<void> createSetupIntent() async {
     loading = true;
     notifyListeners();
 

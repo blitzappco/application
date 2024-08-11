@@ -480,14 +480,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.0"
-  otp_autofill:
-    dependency: "direct main"
-    description:
-      name: otp_autofill
-      sha256: bb816c94ba84452d4b069e9727cc96f0d2848f6ad0488f99c8ebd7b88d68901f
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.0.2"
   otp_text_field:
     dependency: "direct main"
     description:

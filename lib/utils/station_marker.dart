@@ -23,7 +23,7 @@ class StationMarker extends StatelessWidget {
               strokeColor: Colors.white.withOpacity(0),
               strokeWidth: 10,
             ),
-            SizedBox(
+            const SizedBox(
               width: 20,
             ),
             Container(
@@ -34,10 +34,10 @@ class StationMarker extends StatelessWidget {
                   color: Colors.white,
                   border: Border.all(color: Colors.black, width: 5)),
             ),
-            SizedBox(
+            const SizedBox(
               width: 20,
             ),
-            StrokeText(
+            const StrokeText(
               text: "Piata",
               textStyle: TextStyle(
                   fontFamily: "SFProRounded",
