@@ -20,12 +20,18 @@ class TicketsProvider with ChangeNotifier {
 
   bool loading = false;
   String errorMessage = '';
+  bool buyLoading = false;
 
   int fare = 0;
   String ticketID = '';
   bool confirmed = true;
   String clientSecret = '';
   String paymentIntent = '';
+
+  setBuyLoading(bool value) {
+    buyLoading = value;
+    notifyListeners();
+  }
 
   setConfirmed(bool value) {
     confirmed = value;

@@ -15,40 +15,35 @@ class TicketDetailsModal extends StatefulWidget {
   @override
   State<TicketDetailsModal> createState() => _TicketDetailsModal();
 
-  static void show(BuildContext context, Future<double> prevBrightness) {
-    showModalBottomSheet(
-        isScrollControlled: true,
-        context: context,
-        backgroundColor: Colors.white,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(9),
-            topRight: Radius.circular(9),
+  static void show(BuildContext context) {
+    ScreenBrightness().current.then((brightness) {
+      showModalBottomSheet(
+          isScrollControlled: true,
+          context: context,
+          backgroundColor: Colors.white,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(9),
+              topRight: Radius.circular(9),
+            ),
           ),
-        ),
-        builder: (BuildContext context) {
-          return const TicketDetailsModal();
-        }).then((_) async {
-      // Restore the previous brightness level when the modal is dismissed
-      await ScreenBrightness().setScreenBrightness(await prevBrightness);
+          builder: (BuildContext context) {
+            return const TicketDetailsModal();
+          }).then((_) async {
+        // Restore the previous brightness level when the modal is dismissed
+        await ScreenBrightness().setScreenBrightness(brightness);
+      });
     });
   }
 }
 
 class _TicketDetailsModal extends State<TicketDetailsModal> {
   Timer? _timer;
-  String expiry = '';
-  DateTime? expiresAt;
 
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      final tickets = Provider.of<TicketsProvider>(context, listen: false);
-      setState(() {
-        expiresAt = tickets.last.expiresAt!;
-      });
-    });
+
     startTimer();
   }
 
@@ -62,8 +57,10 @@ class _TicketDetailsModal extends State<TicketDetailsModal> {
     _timer = Timer.periodic(
         const Duration(seconds: 1),
         (Timer timer) => setState(() {
-              expiry =
-                  calculateExpiry(expiresAt ?? DateTime.now(), DateTime.now());
+              final tickets =
+                  Provider.of<TicketsProvider>(context, listen: false);
+              tickets.setExpiry(
+                  calculateExpiry(tickets.last.expiresAt!, DateTime.now()));
             }));
   }
 

@@ -205,45 +205,11 @@ class _BuyTicketState extends State<BuyTicket> {
                   onTap: () {},
                   child: GestureDetector(
                     onTap: () async {
-                      // SubtotalTicket.show(context,
-                      //     tickets.ticketTypesMap[typeID ?? '']!.fare ?? 0,
-                      //     () async {
-                      //   if (tickets.confirmed == false) {
-                      //     await tickets.cancelPurchase(auth.token);
-                      //     await tickets.disposePurchase();
-                      //   }
-                      // });
-
-                      // will pre-load the ticket, payment intent
-                      // and will attach those two together
-                      await tickets.setConfirmed(false);
-
-                      // creating the purchase intent (the ticket)
-                      // this function will return
-                      // ticketID and fare
-                      await tickets.createPurchase(
-                          auth.token, typeID ?? '1234', name ?? 'fu');
-
-                      // creating the payment intent (stripe)
-                      // this function will return
-                      // clientSecret and paymentIntent
-                      // and it uses fare
-                      await tickets.createPayment(auth.token, auth.selectedPM);
-
-                      // attaching the payment to the purchase
-                      // this function uses ticketID and paymentIntent
-                      tickets.attachPurchasePayment(auth.token).then((_) {
-                        SubtotalTicket.show(context,
-                            tickets.ticketTypesMap[typeID ?? '']!.fare ?? 0,
-                            () async {
-                          if (tickets.confirmed == false) {
-                            await tickets.cancelPurchase(auth.token);
-                            await tickets.disposePurchase();
-                          }
-                        });
-                      });
-
-                      // inspect(tickets.clientSecret);
+                      SubtotalTicket.show(
+                          context,
+                          tickets.ticketTypesMap[typeID ?? '']!.fare ?? 0,
+                          typeID ?? '1234',
+                          name ?? "Bilet");
                     },
                     child: Container(
                       decoration: BoxDecoration(
