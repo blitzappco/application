@@ -15,22 +15,24 @@ class TicketDetailsModal extends StatefulWidget {
   @override
   State<TicketDetailsModal> createState() => _TicketDetailsModal();
 
-  static void show(BuildContext context, Future<double> prevBrightness) {
-    showModalBottomSheet(
-        isScrollControlled: true,
-        context: context,
-        backgroundColor: Colors.white,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(9),
-            topRight: Radius.circular(9),
+  static void show(BuildContext context) {
+    ScreenBrightness().current.then((brightness) {
+      showModalBottomSheet(
+          isScrollControlled: true,
+          context: context,
+          backgroundColor: Colors.white,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(9),
+              topRight: Radius.circular(9),
+            ),
           ),
-        ),
-        builder: (BuildContext context) {
-          return const TicketDetailsModal();
-        }).then((_) async {
-      // Restore the previous brightness level when the modal is dismissed
-      await ScreenBrightness().setScreenBrightness(await prevBrightness);
+          builder: (BuildContext context) {
+            return const TicketDetailsModal();
+          }).then((_) async {
+        // Restore the previous brightness level when the modal is dismissed
+        await ScreenBrightness().setScreenBrightness(brightness);
+      });
     });
   }
 }

@@ -6,7 +6,6 @@ import 'package:lottie/lottie.dart';
 import 'dart:async'; // Import the async package
 import 'package:blitz/utils/vars.dart';
 import 'package:provider/provider.dart';
-import 'package:screen_brightness/screen_brightness.dart';
 
 class Successful extends StatefulWidget {
   final String item; // The item bought
@@ -177,13 +176,12 @@ class _SuccessfulState extends State<Successful> {
                   return Column(
                     children: [
                       GestureDetector(
-                        onTap: () {
+                        onTap: () async {
                           tickets.validateTicket(auth.token, tickets.last.id!);
                           Navigator.pop(context);
                           Navigator.pop(context);
                           Navigator.pop(context);
-                          TicketDetailsModal.show(
-                              context, ScreenBrightness().current);
+                          TicketDetailsModal.show(context);
                         },
                         child: Container(
                           decoration: BoxDecoration(

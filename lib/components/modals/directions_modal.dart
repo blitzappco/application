@@ -7,7 +7,6 @@ import 'package:blitz/utils/normalize.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:screen_brightness/screen_brightness.dart';
 
 class DirectionsModal extends StatelessWidget {
   final GoogleMapController mapController;
@@ -83,14 +82,11 @@ class DirectionsModal extends StatelessWidget {
                                             tickets
                                                 .validateTicket(auth.token,
                                                     tickets.last.id!)
-                                                .then((_) =>
+                                                .then((_) async =>
                                                     TicketDetailsModal.show(
-                                                        context,
-                                                        ScreenBrightness()
-                                                            .current));
+                                                        context));
                                           } else {
-                                            TicketDetailsModal.show(context,
-                                                ScreenBrightness().current);
+                                            TicketDetailsModal.show(context);
                                           }
                                         }()
                                       : BuyTicket.show(context);
