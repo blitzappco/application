@@ -75,7 +75,10 @@ class DirectionsModal extends StatelessWidget {
                                 tickets.show
                                     ? TicketDetailsModal.show(
                                         context, ScreenBrightness().current)
-                                    : BuyTicket.show(context);
+                                    : () {
+                                        tickets.setMustActivate(true);
+                                        BuyTicket.show(context);
+                                      }();
                               },
                               child: Padding(
                                 padding: const EdgeInsets.symmetric(
@@ -123,7 +126,7 @@ class DirectionsModal extends StatelessWidget {
                             const Divider(),
                         ]);
                       },
-                      childCount: route.stepCards.length,
+                      // childCount: route.stepCards.length,
                     ),
                   ),
                 ],

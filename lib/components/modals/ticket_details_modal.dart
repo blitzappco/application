@@ -37,18 +37,11 @@ class TicketDetailsModal extends StatefulWidget {
 
 class _TicketDetailsModal extends State<TicketDetailsModal> {
   Timer? _timer;
-  String expiry = '';
-  DateTime? expiresAt;
 
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      final tickets = Provider.of<TicketsProvider>(context, listen: false);
-      setState(() {
-        expiresAt = tickets.last.expiresAt!;
-      });
-    });
+
     startTimer();
   }
 
@@ -62,8 +55,10 @@ class _TicketDetailsModal extends State<TicketDetailsModal> {
     _timer = Timer.periodic(
         const Duration(seconds: 1),
         (Timer timer) => setState(() {
-              expiry =
-                  calculateExpiry(expiresAt ?? DateTime.now(), DateTime.now());
+              final tickets =
+                  Provider.of<TicketsProvider>(context, listen: false);
+              tickets.setExpiry(
+                  calculateExpiry(tickets.last.expiresAt!, DateTime.now()));
             }));
   }
 
