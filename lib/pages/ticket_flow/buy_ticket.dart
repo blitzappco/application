@@ -19,6 +19,7 @@ class BuyTicket extends StatefulWidget {
       backgroundColor: const Color.fromARGB(255, 250, 250, 250),
       isScrollControlled: true,
       context: context,
+      enableDrag: false, //preventing accidental dissmisal of the modal
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(9),

@@ -13,8 +13,6 @@ PODS:
   - GoogleMaps/Base (8.4.0)
   - GoogleMaps/Maps (8.4.0):
     - GoogleMaps/Base
-  - otp_autofill (0.0.1):
-    - Flutter
   - package_info_plus (0.4.5):
     - Flutter
   - path_provider_foundation (0.0.1):
@@ -80,7 +78,6 @@ DEPENDENCIES:
   - Flutter (from `Flutter`)
   - geolocator_apple (from `.symlinks/plugins/geolocator_apple/ios`)
   - google_maps_flutter_ios (from `.symlinks/plugins/google_maps_flutter_ios/ios`)
-  - otp_autofill (from `.symlinks/plugins/otp_autofill/ios`)
   - package_info_plus (from `.symlinks/plugins/package_info_plus/ios`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
   - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
@@ -113,8 +110,6 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/geolocator_apple/ios"
   google_maps_flutter_ios:
     :path: ".symlinks/plugins/google_maps_flutter_ios/ios"
-  otp_autofill:
-    :path: ".symlinks/plugins/otp_autofill/ios"
   package_info_plus:
     :path: ".symlinks/plugins/package_info_plus/ios"
   path_provider_foundation:
@@ -142,7 +137,6 @@ SPEC CHECKSUMS:
   Google-Maps-iOS-Utils: 66d6de12be1ce6d3742a54661e7a79cb317a9321
   google_maps_flutter_ios: e31555a04d1986ab130f2b9f24b6cdc861acc6d3
   GoogleMaps: 8939898920281c649150e0af74aa291c60f2e77d
-  otp_autofill: 93bcc21475705d35445927cb9aef24e818bbf083
   package_info_plus: 58f0028419748fad15bf008b270aaa8e54380b1c
   path_provider_foundation: 2b6b4c569c0fb62ec74538f866245ac84301af46
   permission_handler_apple: 9878588469a2b0d0fc1e048d9f43605f92e6cec2

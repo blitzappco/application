@@ -12,9 +12,9 @@ String getPMTitle(PaymentMethod? paymentMethod) {
           '  ••••'
           '${paymentMethod?.title ?? ''}';
     case "applepay":
-      return 'ApplePay';
+      return 'Apple Pay';
     case "googlepay":
-      return 'GooglePay';
+      return 'Google Pay';
     default:
       return 'u poor';
   }
