@@ -88,6 +88,7 @@ class AccountProvider with ChangeNotifier {
       account = Account.fromJSON(body['account']);
       account.trips = account.trips?.reversed.toList();
       setAccount(account);
+      account = await getAccount();
 
       setSelectedPM(0);
 
@@ -115,6 +116,7 @@ class AccountProvider with ChangeNotifier {
 
       account = Account.fromJSON(body['account']);
       setAccount(account);
+      account = await getAccount();
 
       setError('');
     } else {

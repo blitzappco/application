@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:blitz/bifrost/mantle/models/account.dart' as bifrost;
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 
@@ -32,4 +35,34 @@ Future<void> initPaymentSheet(BuildContext context, String clientSecret) async {
 Future<bool> checkPlatformPay() async {
   return await Stripe.instance.isPlatformPaySupported(
       googlePay: const IsGooglePaySupportedParams(testEnv: true));
+}
+
+Future<bifrost.PaymentMethod> getPlatformPaymentMethod() async {
+  bifrost.PaymentMethod platformPM = bifrost.PaymentMethod();
+  if (Platform.isAndroid) {
+    platformPM = bifrost.PaymentMethod(
+        id: 'googlepay',
+        type: 'googlepay',
+        icon: 'googlepay',
+        title: 'googlepay');
+  }
+  if (Platform.isIOS) {
+    platformPM = bifrost.PaymentMethod(
+        id: 'applepay', type: 'applepay', icon: 'applepay', title: 'applepay');
+  }
+  return platformPM;
+}
+
+Future<List<bifrost.PaymentMethod>> addPlatformPaymentMethod(
+    List<bifrost.PaymentMethod> accountPMList) async {
+  final check = await checkPlatformPay();
+  if (check) {
+    final pm = await getPlatformPaymentMethod();
+    List<bifrost.PaymentMethod> pmList = [];
+    pmList.add(pm);
+    pmList = pmList + accountPMList;
+    return pmList;
+  } else {
+    return accountPMList;
+  }
 }
