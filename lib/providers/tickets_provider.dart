@@ -171,6 +171,25 @@ class TicketsProvider with ChangeNotifier {
     }
   }
 
+  createPlatformPayment(String token) async {
+    loading = true;
+    notifyListeners();
+
+    final body = await postPurchasePlatformPayment(token, fare);
+
+    loading = false;
+    notifyListeners();
+
+    if (body["statusCode"] == 200) {
+      clientSecret = body['clientSecret'];
+      paymentIntent = body['paymentIntent'];
+
+      notifyListeners();
+    } else {
+      setError(body['message']);
+    }
+  }
+
   Future<void> attachPurchasePayment(String token) async {
     loading = true;
     notifyListeners();

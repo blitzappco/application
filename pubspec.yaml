@@ -108,7 +108,7 @@ flutter:
     - assets/images/stock1.jpg
     - assets/icons/logo.png
     - assets/images/mastercard.svg
-    - assets/images/gpay.svg
+    - assets/images/googlepay.svg
     - assets/images/applepay.svg
     - assets/images/visa.svg
     - .env

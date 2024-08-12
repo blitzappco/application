@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:blitz/utils/stripe.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:blitz/bifrost/mantle/models/account.dart';
 
@@ -21,7 +22,9 @@ Future<Account> getAccount() async {
 
   if (accountString != '') {
     account = Account.fromJSON(jsonDecode(accountString));
-    // account.paymentMethods = [];
+
+    account.paymentMethods =
+        await addPlatformPaymentMethod(account.paymentMethods!);
   }
 
   return account;

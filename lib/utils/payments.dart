@@ -25,11 +25,13 @@ String getPMIcon(PaymentMethod? paymentMethod) {
 
   switch (icon) {
     case "visa":
-      return 'assets/images/visa-color_large.png';
+      return 'assets/images/visa.svg';
     case "mastercard":
-      return 'assets/images/mastercard-color_large.png';
+      return 'assets/images/mastercard.svg';
     case "applepay":
-      return 'assets/images/ApplePay.png';
+      return 'assets/images/applepay.svg';
+    case "googlepay":
+      return 'assets/images/googlepay.svg';
 
     default:
       return 'assets/images/payment-method.png';

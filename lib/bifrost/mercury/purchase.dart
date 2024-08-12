@@ -37,6 +37,23 @@ Future<dynamic> postPurchasePayment(
   return body;
 }
 
+Future<dynamic> postPurchasePlatformPayment(
+  String token,
+  int amount,
+) async {
+  final response = await http.post(
+      Uri.parse('$mercuryURL/$mercuryVersion/purchase/platform-payment'),
+      headers: authHeader(token),
+      body: jsonEncode(<String, int>{
+        "amount": amount,
+      }));
+
+  final body = jsonDecode(utf8.decode(response.bodyBytes));
+  body["statusCode"] = response.statusCode;
+
+  return body;
+}
+
 Future<dynamic> postPurchaseAttach(
     String token, String paymentIntent, String ticketID) async {
   final response =

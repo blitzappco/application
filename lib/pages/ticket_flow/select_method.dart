@@ -1,25 +1,15 @@
 import 'dart:developer';
 
-// import 'package:blitz/pages/ticket_flow/add_card.dart';
 import 'package:blitz/pages/ticket_flow/add_card.dart';
-import 'package:blitz/pages/ticket_flow/add_payment_method.dart';
 import 'package:blitz/providers/account_provider.dart';
-import 'package:blitz/providers/tickets_provider.dart';
 import 'package:blitz/utils/payments.dart';
 import 'package:blitz/utils/vars.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
 class SelectMethodModal {
   static void show(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback((_) async {
-      final account = Provider.of<AccountProvider>(context, listen: false);
-      final tickets = Provider.of<TicketsProvider>(context, listen: false);
-
-      await tickets.getTickets(account.token);
-      await account.getPaymentMethods();
-    });
     showModalBottomSheet(
       backgroundColor: const Color.fromARGB(255, 250, 250, 250),
       isScrollControlled: true,
@@ -75,15 +65,12 @@ class SelectMethodModal {
                                       children: [
                                         Row(
                                           children: [
-                                            Container(
+                                            SizedBox(
                                               height: 30,
                                               width: 50,
-                                              decoration: BoxDecoration(
-                                                  image: DecorationImage(
-                                                      image: AssetImage(
-                                                          getPMIcon(auth.account
-                                                                  .paymentMethods?[
-                                                              index])))),
+                                              child: SvgPicture.asset(getPMIcon(
+                                                  auth.account
+                                                      .paymentMethods?[index])),
                                             ),
                                             const SizedBox(
                                               width: 10,

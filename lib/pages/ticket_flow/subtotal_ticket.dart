@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:blitz/pages/successful.dart';
 import 'package:blitz/pages/ticket_flow/add_card.dart';
@@ -9,6 +10,7 @@ import 'package:blitz/utils/payments.dart';
 import 'package:blitz/utils/vars.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
 class SubtotalTicket {
@@ -94,15 +96,12 @@ class SubtotalTicket {
                                 children: [
                                   Row(
                                     children: [
-                                      Container(
+                                      SizedBox(
                                         height: 30,
                                         width: 50,
-                                        decoration: BoxDecoration(
-                                            image: DecorationImage(
-                                                image: AssetImage(getPMIcon(auth
-                                                        .account
-                                                        .paymentMethods?[
-                                                    auth.selectedPM])))),
+                                        child: SvgPicture.asset(getPMIcon(auth
+                                            .account
+                                            .paymentMethods?[auth.selectedPM])),
                                       ),
                                       const SizedBox(
                                         width: 10,
@@ -179,97 +178,302 @@ class SubtotalTicket {
                       const SizedBox(
                         height: 30,
                       ),
-                      GestureDetector(
-                        onTap: () async {
-                          tickets.setBuyLoading(true);
+                      auth.account.paymentMethods![auth.selectedPM].type ==
+                              'card'
+                          ? GestureDetector(
+                              onTap: () async {
+                                tickets.setBuyLoading(true);
 
-                          // creating the payment intent (stripe)
-                          // this function will return
-                          // clientSecret and paymentIntent
-                          // and it uses fare
-                          await tickets.createPayment(
-                              auth.token, auth.selectedPM);
+                                // creating the payment intent (stripe)
+                                // this function will return
+                                // clientSecret and paymentIntent
+                                // and it uses fare
+                                await tickets.createPayment(
+                                    auth.token, auth.selectedPM);
 
-                          // attaching the payment to the purchase
-                          // this function uses ticketID and paymentIntent
-                          await tickets.attachPurchasePayment(auth.token);
+                                // attaching the payment to the purchase
+                                // this function uses ticketID and paymentIntent
+                                await tickets.attachPurchasePayment(auth.token);
 
-                          // and finally,
-                          // confirming the payment through stripe
-                          Stripe.instance
-                              .confirmPayment(
-                                  paymentIntentClientSecret:
-                                      tickets.clientSecret)
-                              .then((pi) async {
-                            inspect(pi);
-                            if (pi.status == PaymentIntentsStatus.Succeeded) {
-                              String fare = getFareText(tickets.fare);
-                              tickets.movePurchasedToLast();
-                              tickets.setBuyLoading(false);
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Successful(
-                                            item: tickets.last.name ?? "Bilet",
-                                            amount: fare,
-                                          )));
-                            } else {
-                              inspect(pi);
-                            }
-                          });
+                                // and finally,
+                                // confirming the payment through stripe
+                                Stripe.instance
+                                    .confirmPayment(
+                                        paymentIntentClientSecret:
+                                            tickets.clientSecret)
+                                    .then((pi) async {
+                                  inspect(pi);
+                                  if (pi.status ==
+                                      PaymentIntentsStatus.Succeeded) {
+                                    String fare = getFareText(tickets.fare);
+                                    tickets.movePurchasedToLast();
+                                    tickets.setBuyLoading(false);
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => Successful(
+                                                  item: tickets.last.name ??
+                                                      "Bilet",
+                                                  amount: fare,
+                                                )));
+                                  } else {
+                                    inspect(pi);
+                                  }
+                                });
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(9),
+                                  color: Colors.black,
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(13.0),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      !tickets.buyLoading
+                                          ? const Text(
+                                              'Continua',
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w600,
+                                                fontFamily: 'SFProRounded',
+                                              ),
+                                            )
+                                          : const SizedBox(
+                                              width: 30,
+                                              height: 30,
+                                              child: CircularProgressIndicator(
+                                                color: Colors.white,
+                                                strokeWidth: 2,
+                                              ),
+                                            ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            )
+                          // : SizedBox(
+                          //     height: 40,
+                          //     child: PlatformPayButton(
+                          //       type: PlatformButtonType.buy,
+                          //       onPressed: () {
+                          //         print("hello there");
+                          //         // tickets.setBuyLoading(true);
+                          //         // print("BUTTON PRESSED");
 
-                          // tickets.movePurchasedToLast();
+                          //         // // creating the payment intent (stripe)
+                          //         // // this function will return
+                          //         // // clientSecret and paymentIntent
+                          //         // // and it uses fare
+                          //         // await tickets
+                          //         //     .createPlatformPayment(auth.token);
 
-                          // inspect(tickets.show);
-                          // inspect(tickets.last);
-                          // inspect(tickets.purchased);
-                          // Navigator.push(
-                          //     context,
-                          //     MaterialPageRoute(
-                          //         builder: (context) => const Successful(
-                          //             item: 'item', amount: 2.5)));
-                        },
-                        // child: Container(
-                        //   height: 60,
-                        //   width: double.infinity,
-                        //   decoration: const BoxDecoration(
-                        //       image: DecorationImage(
-                        //           image:
-                        //               AssetImage("assets/images/PayWAP.png"))),
-                        // ),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(9),
-                            color: Colors.black,
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(13.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                !tickets.buyLoading
-                                    ? const Text(
-                                        'Continua',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.w600,
-                                          fontFamily: 'SFProRounded',
-                                        ),
-                                      )
-                                    : const SizedBox(
-                                        width: 30,
-                                        height: 30,
-                                        child: CircularProgressIndicator(
-                                          color: Colors.white,
-                                          strokeWidth: 2,
-                                        ),
-                                      ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
+                          //         // // attaching the payment to the purchase
+                          //         // // this function uses ticketID and paymentIntent
+                          //         // await tickets
+                          //         //     .attachPurchasePayment(auth.token);
+
+                          //         // // and finally,
+                          //         // // confirming the payment through stripe
+
+                          //         // if (Platform.isAndroid) {
+                          //         //   Stripe.instance
+                          //         //       .confirmPlatformPayPaymentIntent(
+                          //         //           clientSecret: tickets.clientSecret,
+                          //         //           confirmParams:
+                          //         //               const PlatformPayConfirmParams
+                          //         //                   .googlePay(
+                          //         //                   googlePay: GooglePayParams(
+                          //         //             currencyCode: "RON",
+                          //         //             merchantCountryCode: "RO",
+                          //         //             testEnv: true,
+                          //         //           )))
+                          //         //       .then((pi) async {
+                          //         //     inspect(pi);
+                          //         //     if (pi.status ==
+                          //         //         PaymentIntentsStatus.Succeeded) {
+                          //         //       String fare = getFareText(tickets.fare);
+                          //         //       tickets.movePurchasedToLast();
+                          //         //       tickets.setBuyLoading(false);
+                          //         //       Navigator.push(
+                          //         //           context,
+                          //         //           MaterialPageRoute(
+                          //         //               builder: (context) =>
+                          //         //                   Successful(
+                          //         //                     item: tickets.last.name ??
+                          //         //                         "Bilet",
+                          //         //                     amount: fare,
+                          //         //                   )));
+                          //         //     } else {
+                          //         //       inspect(pi);
+                          //         //     }
+                          //         //   });
+                          //         // }
+
+                          //         // if (Platform.isIOS) {
+                          //         //   Stripe.instance
+                          //         //       .confirmPlatformPayPaymentIntent(
+                          //         //           clientSecret: tickets.clientSecret,
+                          //         //           confirmParams:
+                          //         //               const PlatformPayConfirmParams
+                          //         //                   .applePay(
+                          //         //                   applePay: ApplePayParams(
+                          //         //                       currencyCode: "RON",
+                          //         //                       merchantCountryCode:
+                          //         //                           "RO",
+                          //         //                       cartItems: [])))
+                          //         //       .then((pi) async {
+                          //         //     inspect(pi);
+                          //         //     if (pi.status ==
+                          //         //         PaymentIntentsStatus.Succeeded) {
+                          //         //       String fare = getFareText(tickets.fare);
+                          //         //       tickets.movePurchasedToLast();
+                          //         //       tickets.setBuyLoading(false);
+                          //         //       Navigator.push(
+                          //         //           context,
+                          //         //           MaterialPageRoute(
+                          //         //               builder: (context) =>
+                          //         //                   Successful(
+                          //         //                     item: tickets.last.name ??
+                          //         //                         "Bilet",
+                          //         //                     amount: fare,
+                          //         //                   )));
+                          //         //     } else {
+                          //         //       inspect(pi);
+                          //         //     }
+                          //         //   });
+                          //         // }
+                          //       },
+                          //       appearance: PlatformButtonStyle.black,
+                          //     ),
+                          //   ),
+                          : GestureDetector(
+                              onTap: () async {
+                                tickets.setBuyLoading(true);
+
+                                // creating the payment intent (stripe)
+                                // this function will return
+                                // clientSecret and paymentIntent
+                                // and it uses fare
+                                await tickets.createPlatformPayment(auth.token);
+
+                                // attaching the payment to the purchase
+                                // this function uses ticketID and paymentIntent
+                                await tickets.attachPurchasePayment(auth.token);
+
+                                // and finally,
+                                // confirming the payment through stripe
+
+                                if (Platform.isAndroid) {
+                                  Stripe.instance
+                                      .confirmPlatformPayPaymentIntent(
+                                          clientSecret: tickets.clientSecret,
+                                          confirmParams:
+                                              const PlatformPayConfirmParams
+                                                  .googlePay(
+                                                  googlePay: GooglePayParams(
+                                            currencyCode: "RON",
+                                            merchantCountryCode: "RO",
+                                            testEnv: true,
+                                          )))
+                                      .then((pi) async {
+                                    inspect(pi);
+                                    if (pi.status ==
+                                        PaymentIntentsStatus.Succeeded) {
+                                      String fare = getFareText(tickets.fare);
+                                      tickets.movePurchasedToLast();
+                                      tickets.setBuyLoading(false);
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => Successful(
+                                                    item: tickets.last.name ??
+                                                        "Bilet",
+                                                    amount: fare,
+                                                  )));
+                                    } else {
+                                      inspect(pi);
+                                    }
+                                  });
+                                }
+
+                                if (Platform.isIOS) {
+                                  Stripe.instance
+                                      .confirmPlatformPayPaymentIntent(
+                                          clientSecret: tickets.clientSecret,
+                                          confirmParams:
+                                              const PlatformPayConfirmParams
+                                                  .applePay(
+                                                  applePay: ApplePayParams(
+                                                      currencyCode: "RON",
+                                                      merchantCountryCode: "RO",
+                                                      cartItems: [])))
+                                      .then((pi) async {
+                                    inspect(pi);
+                                    if (pi.status ==
+                                        PaymentIntentsStatus.Succeeded) {
+                                      String fare = getFareText(tickets.fare);
+                                      tickets.movePurchasedToLast();
+                                      tickets.setBuyLoading(false);
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => Successful(
+                                                    item: tickets.last.name ??
+                                                        "Bilet",
+                                                    amount: fare,
+                                                  )));
+                                    } else {
+                                      inspect(pi);
+                                    }
+                                  });
+                                }
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(9),
+                                  color: Colors.black,
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(13.0),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: !tickets.buyLoading
+                                        ? [
+                                            const Text(
+                                              'Plateste cu',
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w600,
+                                                fontFamily: 'SFProRounded',
+                                              ),
+                                            ),
+                                            const SizedBox(width: 10),
+                                            SizedBox(
+                                              height: 30,
+                                              width: 50,
+                                              child: SvgPicture.asset(getPMIcon(
+                                                  auth.account.paymentMethods?[
+                                                      auth.selectedPM])),
+                                            ),
+                                          ]
+                                        : [
+                                            const SizedBox(
+                                              width: 30,
+                                              height: 30,
+                                              child: CircularProgressIndicator(
+                                                color: Colors.white,
+                                                strokeWidth: 2,
+                                              ),
+                                            ),
+                                          ],
+                                  ),
+                                ),
+                              ),
+                            )
                     ],
                   )),
             );
