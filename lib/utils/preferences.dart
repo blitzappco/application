@@ -1,5 +1,7 @@
 import 'dart:convert';
+import 'dart:io';
 
+import 'package:blitz/utils/stripe.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:blitz/bifrost/mantle/models/account.dart';
 
@@ -21,7 +23,29 @@ Future<Account> getAccount() async {
 
   if (accountString != '') {
     account = Account.fromJSON(jsonDecode(accountString));
-    // account.paymentMethods = [];
+
+    final check = await checkPlatformPay();
+    if (check) {
+      PaymentMethod platformPM = PaymentMethod();
+      if (Platform.isAndroid) {
+        platformPM = PaymentMethod(
+            id: 'googlepay',
+            type: 'googlepay',
+            icon: 'googlepay',
+            title: 'googlepay');
+      }
+      if (Platform.isIOS) {
+        platformPM = PaymentMethod(
+            id: 'applepay',
+            type: 'applepay',
+            icon: 'applepay',
+            title: 'applepay');
+      }
+      List<PaymentMethod> pmList = [];
+      pmList.add(platformPM);
+      pmList = pmList + account.paymentMethods!;
+      account.paymentMethods = pmList;
+    }
   }
 
   return account;

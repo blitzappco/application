@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:blitz/components/route_preview_card.dart';
 import 'package:blitz/providers/route_provider.dart';
 import 'package:blitz/utils/shorten.dart';
-import 'package:blitz/utils/station_marker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -280,7 +279,7 @@ class _RoutePreviewModalState extends State<RoutePreviewModal> {
                                   ),
                                 ),
                               )
-                            : Center(
+                            : const Center(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [

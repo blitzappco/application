@@ -28,3 +28,8 @@ Future<void> initPaymentSheet(BuildContext context, String clientSecret) async {
     rethrow;
   }
 }
+
+Future<bool> checkPlatformPay() async {
+  return await Stripe.instance.isPlatformPaySupported(
+      googlePay: const IsGooglePaySupportedParams(testEnv: true));
+}
