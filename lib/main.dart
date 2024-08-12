@@ -15,7 +15,7 @@ Future main() async {
 
   Stripe.publishableKey =
       'pk_test_51N7GUIA57ELnbsBv1BTv3Ez0xrddttwv7fJAtC5u1ISSCR5yHHxH1gcY4md0u7iygd0k8nUhTDOplFUqbgwtP83t00vcnZRno7';
-  Stripe.merchantIdentifier = 'merchant.blitzapp.co';
+  Stripe.merchantIdentifier = 'merchant.blitzapp.blitz';
 
   if (dev) {
     runApp(const MyApp());

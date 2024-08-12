@@ -7,6 +7,7 @@ import 'package:blitz/pages/ticket_flow/select_method.dart';
 import 'package:blitz/providers/account_provider.dart';
 import 'package:blitz/providers/tickets_provider.dart';
 import 'package:blitz/utils/payments.dart';
+import 'package:blitz/utils/stripe.dart';
 import 'package:blitz/utils/vars.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
@@ -26,6 +27,7 @@ class SubtotalTicket {
         ),
       ),
       builder: (BuildContext context) {
+        bool platformPay = false;
         WidgetsBinding.instance.addPostFrameCallback((_) async {
           final tickets = Provider.of<TicketsProvider>(context, listen: false);
           final auth = Provider.of<AccountProvider>(context, listen: false);
@@ -41,6 +43,8 @@ class SubtotalTicket {
           // ticketID and fare
           await tickets.createPurchase(auth.token, typeID, name);
 
+          platformPay = await checkPlatformPay();
+
           tickets.setBuyLoading(false);
         });
         return Consumer<AccountProvider>(builder: (context, auth, _) {
@@ -55,9 +59,9 @@ class SubtotalTicket {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Text(
-                            "TOTAL",
-                            style: TextStyle(
+                          Text(
+                            "TOTAL: $platformPay",
+                            style: const TextStyle(
                                 fontFamily: "UberMoveBold", fontSize: 20),
                           ),
                           Text(
@@ -407,9 +411,10 @@ class SubtotalTicket {
                                               const PlatformPayConfirmParams
                                                   .applePay(
                                                   applePay: ApplePayParams(
-                                                      currencyCode: "RON",
-                                                      merchantCountryCode: "RO",
-                                                      cartItems: [])))
+                                            currencyCode: "RON",
+                                            merchantCountryCode: "RO",
+                                            cartItems: [],
+                                          )))
                                       .then((pi) async {
                                     inspect(pi);
                                     if (pi.status ==
