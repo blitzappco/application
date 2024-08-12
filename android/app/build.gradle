@@ -80,4 +80,5 @@ flutter {
 
 dependencies {
     implementation 'com.stripe:stripe-android:17.1.1'
+    implementation 'androidx.activity:activity:1.9.1'
 }
