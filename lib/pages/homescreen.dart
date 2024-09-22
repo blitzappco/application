@@ -6,6 +6,7 @@ import 'package:blitz/components/modals/directions_modal.dart';
 import 'package:blitz/components/modals/main_modal.dart';
 import 'package:blitz/components/modals/route_preview_modal.dart';
 import 'package:blitz/components/modals/route_test.dart';
+import 'package:blitz/maps/map_controller.dart';
 import 'package:blitz/providers/account_provider.dart';
 import 'package:blitz/providers/route_provider.dart';
 import 'package:blitz/providers/tickets_provider.dart';
@@ -52,7 +53,7 @@ class _HomescreenState extends State<Homescreen> {
       await tickets.getTicketTypes(auth.token, "ploiesti");
       await tickets.getLastTicket(auth.token, "ploiesti");
 
-      final from = await geocodeFromAddress("politehnica");
+      final from = route.setFromCurrentLocation();
       route.setFrom(from);
       _initPackageInfo();
     });
@@ -111,7 +112,7 @@ class _HomescreenState extends State<Homescreen> {
                     _controller.complete(controller);
                     mapController = controller;
                     await route.initMap();
-                    // setCameraLocation(mapController);
+                    setCameraLocation(mapController);
                   },
                   markers: route.markersSet,
                 ),

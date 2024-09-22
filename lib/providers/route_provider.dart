@@ -69,8 +69,8 @@ class RouteProvider with ChangeNotifier {
   }
 
   setFromCurrentLocation() async {
-    // loading = true;
-    // notifyListeners();
+    loading = true;
+    notifyListeners();
 
     final position = await getCurrentLocation();
 
@@ -79,8 +79,8 @@ class RouteProvider with ChangeNotifier {
 
     await setFrom(place);
 
-    // loading = false;
-    // notifyListeners();
+    loading = false;
+    notifyListeners();
   }
 
   Future<void> setFrom(Place f) async {
